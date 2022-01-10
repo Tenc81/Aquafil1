@@ -1,0 +1,74 @@
+.innovation-proposition {
+	padding: var(--p120) 0;
+	background: $background;
+
+	&__content {
+		padding: 0 0 var(--cw) 0;
+	}
+
+	&__category {
+		@extend .small;
+		color: $foreground-primary;
+	}
+
+	&__title {
+		@extend .h2;
+		color: $foreground;
+	}
+}
+
+.card--innovation {
+	display: block;
+	background: $background-negative;
+	color: $foreground-negative;
+
+	&__picture {
+		@include aspect-clip(426, 400);
+
+		&>img {
+			transition: transform ease-in-out $fast;
+		}
+	}
+
+	&__content {
+		position: relative;
+		padding: var(--cw) var(--p40);
+	}
+
+	&__title {
+		font-weight: bold;
+		color: $foreground-negative;
+		margin-bottom: var(--p40);
+	}
+
+	&__abstract {
+		@extend .small;
+		color: #BDCFD8;
+	}
+
+	&__cta {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	cursor: pointer;
+
+	&:hover {
+
+		.card--innovation__picture {
+			&>img {
+				transform: scale(1.1, 1.1);
+			}
+		}
+
+		.btn--more-md {
+			svg {
+				transform: translateX(5px);
+			}
+		}
+	}
+
+	@include media-down(xs) {
+		margin-bottom: var(--p40);
+	}
+}
