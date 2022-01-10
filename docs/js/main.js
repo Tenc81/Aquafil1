@@ -484,9 +484,9 @@ ClickOutsideDirective.meta = {
   api: '/aquafil/api',
   assets: '/aquafil/',
   slug: {
-    configureProduct: "products-configure.html",
-    cart: "cart.html",
-    reservedArea: "reserved-area.html"
+    configureProduct: "/aquafil/products-configure.html",
+    cart: "/aquafil/cart.html",
+    reservedArea: "/aquafil/reserved-area.html"
   },
   template: {
     modal: {
@@ -3307,7 +3307,7 @@ ControlCustomSelectComponent.meta = {
   inputs: ['control', 'label', 'multiple', 'select'],
   template:
   /* html */
-  "\n\t\t<div class=\"group--form--select\" [class]=\"{ required: control.validators.length, multiple: isMultiple }\" [dropdown]=\"dropdownId\" (dropped)=\"onDropped($event)\">\n\t\t\t<label><span [innerHTML]=\"label\"></span> <span class=\"required__sign\">*</span></label>\n\t\t\t<span class=\"control--custom-select\" [innerHTML]=\"getLabel() | label\"></span>\n\t\t\t<svg class=\"caret-down\"><use xlink:href=\"#caret-down\"></use></svg>\n\t\t\t<span class=\"required__badge\" [innerHTML]=\"'required' | label\"></span>\n\t\t</div>\n\t\t<errors-component [control]=\"control\"></errors-component>\n\t\t<div class=\"dropdown\" [dropdown-item]=\"dropdownId\">\n\t\t\t<div class=\"category\" [innerHTML]=\"label\"></div>\n\t\t\t<ul class=\"nav--dropdown\" [class]=\"{ multiple: isMultiple }\">\n\t\t\t\t<li (click)=\"setOption(item)\" [class]=\"{ empty: item.id == null }\" *for=\"let item of control.options\">\n\t\t\t\t\t<span [class]=\"{ active: hasOption(item) }\" [innerHTML]=\"item.name | label\"></span>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\t"
+  "\n\t\t<div class=\"group--form--select\" [class]=\"{ required: control.validators.length, multiple: isMultiple }\" [dropdown]=\"dropdownId\" (dropped)=\"onDropped($event)\">\n\t\t\t<!--<label><span [innerHTML]=\"label\"></span> <span class=\"required__sign\">*</span></label>-->\n\t\t\t<span class=\"control--custom-select\" [innerHTML]=\"getLabel() | label\"></span>\n\t\t\t<svg class=\"caret-down\"><use xlink:href=\"#caret-down\"></use></svg>\n\t\t\t<span class=\"required__badge\" [innerHTML]=\"'required' | label\"></span>\n\t\t</div>\n\t\t<errors-component [control]=\"control\"></errors-component>\n\t\t<div class=\"dropdown\" [dropdown-item]=\"dropdownId\">\n\t\t\t<div class=\"category\" [innerHTML]=\"label\"></div>\n\t\t\t<ul class=\"nav--dropdown\" [class]=\"{ multiple: isMultiple }\">\n\t\t\t\t<li (click)=\"setOption(item)\" [class]=\"{ empty: item.id == null }\" *for=\"let item of control.options\">\n\t\t\t\t\t<span [class]=\"{ active: hasOption(item) }\" [innerHTML]=\"item.name | label\"></span>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\t"
 };var ControlEmailComponent = /*#__PURE__*/function (_ControlComponent) {
   _inheritsLoose(ControlEmailComponent, _ControlComponent);
 
@@ -3378,7 +3378,7 @@ ControlFileComponent.meta = {
   inputs: ['control', 'label'],
   template:
   /* html */
-  "\n\t\t<div class=\"group--form--file\" [class]=\"{ required: control.validators.length }\">\n\t\t\t<label for=\"file\"><span [innerHTML]=\"label\"></span> <span class=\"required__sign\">*</span></label>\n\t\t\t<span class=\"control--text\" [innerHTML]=\"file?.name || labels.select_file\"></span>\n\t\t\t<svg class=\"upload\"><use xlink:href=\"#upload\"></use></svg>\n\t\t\t<span class=\"required__badge\" [innerHTML]=\"'required' | label\"></span>\n\t\t\t<input name=\"file\" type=\"file\" accept=\".pdf,.doc,.docx,*.txt\" class=\"control--file\" (change)=\"onInputDidChange($event)\" />\n\t\t</div>\n\t\t<errors-component [control]=\"control\"></errors-component>\n\t"
+  "\n\t\t<div class=\"group--form--file\" [class]=\"{ required: control.validators.length }\">\n\t\t\t<!--<label for=\"file\"><span [innerHTML]=\"label\"></span> <span class=\"required__sign\">*</span></label>-->\n\t\t\t<span class=\"control--text\" [innerHTML]=\"file?.name || labels.select_file\"></span>\n\t\t\t<svg class=\"upload\"><use xlink:href=\"#upload\"></use></svg>\n\t\t\t<span class=\"required__badge\" [innerHTML]=\"'required' | label\"></span>\n\t\t\t<input name=\"file\" type=\"file\" accept=\".pdf,.doc,.docx,*.txt\" class=\"control--file\" (change)=\"onInputDidChange($event)\" />\n\t\t</div>\n\t\t<errors-component [control]=\"control\"></errors-component>\n\t"
 };var ControlPasswordComponent = /*#__PURE__*/function (_ControlComponent) {
   _inheritsLoose(ControlPasswordComponent, _ControlComponent);
 
@@ -3542,7 +3542,7 @@ ControlTextComponent.meta = {
   inputs: ['control', 'label', 'disabled'],
   template:
   /* html */
-  "\n\t\t<div class=\"group--form\" [class]=\"{ required: control.validators.length, disabled: disabled }\">\n\t\t\t<label [labelFor]=\"uniqueId\"><span [innerHTML]=\"label\"></span> <span class=\"required__sign\">*</span></label>\n\t\t\t<span class=\"required__badge\" [innerHTML]=\"'required' | label\"></span>\n\t\t\t<input [id]=\"uniqueId\" type=\"text\" class=\"control--text\" [formControl]=\"control\" [placeholder]=\"label\" [disabled]=\"disabled\" />\n\t\t</div>\n\t\t<errors-component [control]=\"control\"></errors-component>\n\t"
+  "\n\t\t<div class=\"group--form\" [class]=\"{ required: control.validators.length, disabled: disabled }\">\n\t\t\t<!--<label [labelFor]=\"uniqueId\"><span [innerHTML]=\"label\"></span> <span class=\"required__sign\">*</span></label>-->\n\t\t\t<span class=\"required__badge\" [innerHTML]=\"'required' | label\"></span>\n\t\t\t<input [id]=\"uniqueId\" type=\"text\" class=\"control--text\" [formControl]=\"control\" [placeholder]=\"label\" [disabled]=\"disabled\" />\n\t\t</div>\n\t\t<errors-component [control]=\"control\"></errors-component>\n\t"
 };var ControlTextareaComponent = /*#__PURE__*/function (_ControlComponent) {
   _inheritsLoose(ControlTextareaComponent, _ControlComponent);
 
@@ -4131,6 +4131,9 @@ _defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);v
       newsletter: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       commercial: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       promotion: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      company: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      address: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      zip: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       newsletterLanguage: new rxcompForm.FormControl(null, [RequiredIfValidator('newsletter', form)]),
       checkRequest: window.antiforgery,
       checkField: ''
@@ -4879,7 +4882,7 @@ var UserService = /*#__PURE__*/function () {
       UserService.busyMe = true;
       return rxjs.of(1).pipe(operators.switchMap(function (_) {
         if (environment.flags.production) {
-          return ApiService.get$("user/me");
+          return ApiService.get$("/aquafil/user/me");
         } else {
           var sessionUser = SessionStorageService.get('user');
 
@@ -4905,7 +4908,7 @@ var UserService = /*#__PURE__*/function () {
   UserService.signin$ = function signin$(payload) {
     var _this2 = this;
 
-    return (environment.flags.production ? ApiService.post$("user/signin", payload) : ApiService.get$("/user/signin.json")).pipe(operators.map(function (response) {
+    return (environment.flags.production ? ApiService.post$("/aquafil/user/signin", payload) : ApiService.get$("/user/signin.json")).pipe(operators.map(function (response) {
       return _this2.mapUser(response);
     }), operators.tap(function (user) {
       return _this2.setUser(user);
@@ -4915,7 +4918,7 @@ var UserService = /*#__PURE__*/function () {
   UserService.signout$ = function signout$() {
     var _this3 = this;
 
-    return (environment.flags.production ? ApiService.post$("user/signout") : ApiService.get$("/user/signout.json")).pipe(operators.tap(function (_) {
+    return (environment.flags.production ? ApiService.post$("/aquafil/user/signout") : ApiService.get$("/user/signout.json")).pipe(operators.tap(function (_) {
       return _this3.setUser(null);
     }));
   };
@@ -4924,7 +4927,7 @@ var UserService = /*#__PURE__*/function () {
     var _this4 = this;
 
     // console.log('UserService.signup$', payload);
-    return (environment.flags.production ? ApiService.post$("user/signup", payload) : ApiService.get$("/user/signup.json")).pipe(operators.map(function (response) {
+    return (environment.flags.production ? ApiService.post$("/aquafil/user/signup", payload) : ApiService.get$("/user/signup.json")).pipe(operators.map(function (response) {
       response.user = _this4.mapUser(response.user);
       return response;
     }), operators.tap(function (response) {
@@ -4937,7 +4940,7 @@ var UserService = /*#__PURE__*/function () {
     var _this5 = this;
 
     // console.log('UserService.edit$', payload);
-    return (environment.flags.production ? ApiService.post$("user/edit", payload) : ApiService.get$("/user/edit.json")).pipe(operators.map(function (response) {
+    return (environment.flags.production ? ApiService.post$("/aquafil/user/edit", payload) : ApiService.get$("/user/edit.json")).pipe(operators.map(function (response) {
       response.user = _this5.mapUser(response.user);
       return response;
     }), operators.tap(function (response) {
@@ -4948,17 +4951,17 @@ var UserService = /*#__PURE__*/function () {
 
   UserService.editPassword$ = function editPassword$(payload) {
     // console.log('UserService.editPassword$', payload);
-    return environment.flags.production ? ApiService.post$("user/edit-password", payload) : ApiService.get$("/user/edit-password.json");
+    return environment.flags.production ? ApiService.post$("/aquafil/user/edit-password", payload) : ApiService.get$("/user/edit-password.json");
   };
 
   UserService.accessData$ = function accessData$(payload) {
     // console.log('UserService.accessData$', payload);
-    return environment.flags.production ? ApiService.post$("user/access-data", payload) : ApiService.get$("/user/access-data.json");
+    return environment.flags.production ? ApiService.post$("/aquafil/user/access-data", payload) : ApiService.get$("/user/access-data.json");
   };
 
   UserService.delete$ = function delete$(payload) {
     // console.log('UserService.delete$', payload);
-    return environment.flags.production ? ApiService.post$("user/delete", payload) : ApiService.get$("/user/delete.json");
+    return environment.flags.production ? ApiService.post$("/aquafil/user/delete", payload) : ApiService.get$("/user/delete.json");
   };
 
   UserService.gdpr$ = function gdpr$() {
@@ -5904,4 +5907,9 @@ AppModule.meta = {
   imports: [rxcomp.CoreModule, rxcompForm.FormModule, CommonModule, ControlsModule, SharedModule],
   declarations: [ContactModalComponent, CardProductDetailComponent, OpenModallyDirective, SideModalComponent],
   bootstrap: AppComponent
-};rxcomp.Browser.bootstrap(AppModule);})));
+};rxcomp.Browser.bootstrap(AppModule);
+[].forEach.call(document.getElementsByClassName('page--investors__accordion-title'), function (classnameElement) {
+  classnameElement.addEventListener('click', function () {
+    this.parentElement.classList.toggle('open');
+  });
+});})));

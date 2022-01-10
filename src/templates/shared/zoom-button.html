@@ -1,0 +1,1 @@
+<button type="button" class="zoom-button"><svg><use xlink:href="#zoom"></use></svg></button>
