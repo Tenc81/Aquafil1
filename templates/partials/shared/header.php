@@ -10,7 +10,7 @@
 					<div class="header__menu" [class]="{ active: header == 'menu' }">
 						<ul class="nav--main">
 							<li class="nav__item">
-								<span (click)="onMenu(1)"><span>Company</span>
+								<span (click)="onMenu(1)"><span>Who we are</span>
 									<svg class="down"><use xlink:href="#caret-down"></use></svg>
 									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
 								</span>
@@ -23,7 +23,7 @@
 								</ul>
 							</li>
 							<li class="nav__item">
-								<span (click)="onMenu(2)"><span>Products</span>
+								<span (click)="onMenu(2)"><span>What we do</span>
 									<svg class="down"><use xlink:href="#caret-down"></use></svg>
 									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
 								</span>
@@ -51,7 +51,7 @@
 								</ul>
 							</li>
 							<li class="nav__item">
-								<span (click)="onMenu(4)"><span>Innovation</span>
+								<span (click)="onMenu(4)"><span>Innovation & partnership</span>
 									<svg class="down"><use xlink:href="#caret-down"></use></svg>
 									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
 								</span>
@@ -70,27 +70,7 @@
 							</li>
 						</ul>
 						<a href="#" type="button" class="btn--investor">Investor relations</a>
-						<ul class="nav--service">
-							<li class="nav__item">
-								<a href="#"><span>Contatti</span></a>
-							</li>
-							<li class="nav__item">
-								<a href="#"><span>Careers</span></a>
-							</li>
-						</ul>
-						<ul class="nav--language">
-							<li class="nav__item">
-								<span (click)="onMenu(5)"><span>En</span>
-									<svg class="down"><use xlink:href="#arrow-down"></use></svg>
-									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
-								</span>
-								<ul class="nav--submenu" [class]="{ active: menu == 5 }">
-									<li class="nav__item"><a href="#"><span>It</span></a></li>
-									<li class="nav__item"><a href="#"><span>De</span></a></li>
-									<li class="nav__item back"><span (click)="onBack()"><svg><use xlink:href="#back"></use></svg> <span>Back</span></span></li>
-								</ul>
-							</li>
-						</ul>
+                        <!-- @@include ../shared/navigation-top.html -->
 					</div>
 					<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
 						<svg class="menu"><use xlink:href="#menu"></use></svg>
