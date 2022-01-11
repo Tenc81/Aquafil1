@@ -70,7 +70,7 @@
 							</li>
 						</ul>
 						<a href="#" type="button" class="btn--investor">Investor relations</a>
-                        <!-- @@include ../shared/navigation-top.html -->
+						<?php get_template_part( 'templates/partials/shared/navigation', 'top'); ?>
 					</div>
 					<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
 						<svg class="menu"><use xlink:href="#menu"></use></svg>
