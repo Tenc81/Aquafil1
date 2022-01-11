@@ -1,0 +1,116 @@
+@import 'fonts';
+@import 'mixins';
+
+@import '_components/reset';
+@import '_components/base';
+@import '_components/locomotive';
+@import '_components/grid';
+@import '_components/responsive';
+@import '_components/navs';
+@import '_components/typography';
+@import '_components/dropdowns';
+@import '_components/filters';
+@import '_components/buttons';
+@import '_components/modal';
+@import '_components/table';
+@import '_components/spinner';
+@import '_components/swiper';
+@import '_components/thron';
+@import '_components/stagger';
+@import '_components/video-embed';
+// @import '_components/appear';
+@import '_components/animation-enter';
+
+@import '_forms/forms';
+
+@import '_sections/header';
+@import '_sections/footer';
+@import '_sections/breadcrumb';
+@import '_sections/horizontal-menu';
+@import '_sections/sticky-menu';
+@import '_sections/content-slider';
+
+// generic
+@import '_sections/generic-hero';
+
+// homepage
+@import '_sections/main-hero';
+@import '_sections/profile-proposition';
+@import '_sections/area-proposition';
+@import '_sections/sustainability-proposition';
+@import '_sections/report-proposition';
+@import '_sections/innovation-proposition';
+@import '_sections/news-proposition';
+@import '_sections/newsletter-proposition';
+
+// location
+@import '_sections/location/location-hero';
+@import '_sections/location/location-proposition';
+
+// location-detail
+@import '_sections/location-detail/location-detail-hero';
+@import '_sections/location-detail/address-detail';
+@import '_sections/location-detail/certification';
+@import '_sections/location-detail/product-proposition';
+@import '_sections/location-detail/toolkit-proposition';
+
+// pillars
+@import '_sections/primary-hero';
+@import '_sections/pillars/title-hero';
+@import '_sections/pillars/research-proposition';
+
+// product
+@import '_sections/product/product-hero';
+
+// history
+@import '_sections/history/history-hero';
+@import '_sections/history/history-listing';
+
+// news
+@import '_sections/news/news-hero';
+@import '_sections/news/news-listing';
+
+// news detail
+@import '_sections/news-detail/news-detail-hero';
+@import '_sections/news-detail/news-detail-content';
+
+// case-studies
+@import '_sections/case-studies/case-studies-hero';
+@import '_sections/case-studies/case-studies-listing';
+
+// certifications
+@import '_sections/certifications/certifications-hero';
+
+// modals
+@import '_sections/side-modal';
+@import '_sections/contact-modal';
+@import '_sections/gallery-modal';
+
+/*
+@import '_pages/breadcrumb';
+@import '_pages/filters';
+@import '_pages/generic';
+@import '_pages/homepage';
+@import '_pages/user';
+@import '_pages/social-login';
+*/
+
+@import '_pages/index';
+
+
+.section-generic
+{
+    padding-top:80px;
+    &:last-child
+    {
+        padding-bottom:80px;
+    }
+    @include media-up(md)
+    {
+        padding-top:120px;
+        &:last-child
+        {
+            padding-bottom:120px;
+        }    
+    }
+}
