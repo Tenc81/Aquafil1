@@ -1,33 +1,37 @@
-import { Component } from 'rxcomp';
+import { Component, getContext } from 'rxcomp';
 import { FormControl, FormGroup, Validators } from 'rxcomp-form';
 import { first, takeUntil, tap } from 'rxjs/operators';
 import { GtmService } from '../../common/gtm/gtm.service';
+import { ModalOutletComponent } from '../../common/modal/modal-outlet.component';
 import { ModalService } from '../../common/modal/modal.service';
 import { FormService } from '../../controls/form.service';
-import RequiredIfValidator from '../../controls/required-if.validator';
 import { ContactsService } from './contacts.service';
 
 export class ContactModalComponent extends Component {
 
 	onInit() {
+		const { parentInstance } = getContext(this);
+		if (parentInstance instanceof ModalOutletComponent) {
+			const data = parentInstance.modal.data;
+			const id = data.id;
+			const countryId = data.countryId;
+			this.countryId = countryId ? countryId : this.countryId;
+			console.log('ContactModalComponent.onInit', id, countryId);
+		}
 		this.error = null;
 		this.success = false;
 		const form = this.form = new FormGroup({
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
-			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
-			telephone: new FormControl(null),
-			country: new FormControl(null, [Validators.RequiredValidator()]),
+			company: new FormControl(null, [Validators.RequiredValidator()]),
+			address: new FormControl(null, [Validators.RequiredValidator()]),
 			city: new FormControl(null, [Validators.RequiredValidator()]),
-			message: new FormControl(null),
+			zip: new FormControl(null, [Validators.RequiredValidator()]),
+			country: new FormControl(null, [Validators.RequiredValidator()]),
+			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
+			subject: new FormControl(null, [Validators.RequiredValidator()]),
+			message: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
-			newsletter: new FormControl(null, [Validators.RequiredValidator()]),
-			commercial: new FormControl(null, [Validators.RequiredValidator()]),
-			promotion: new FormControl(null, [Validators.RequiredValidator()]),
-            company: new FormControl(null, [Validators.RequiredValidator()]),
-            address: new FormControl(null, [Validators.RequiredValidator()]),
-            zip: new FormControl(null, [Validators.RequiredValidator()]),
-			newsletterLanguage: new FormControl(null, [RequiredIfValidator('newsletter', form)]),
 			checkRequest: window.antiforgery,
 			checkField: '',
 		});
@@ -47,6 +51,11 @@ export class ContactModalComponent extends Component {
 			tap(data => {
 				const controls = this.controls;
 				controls.country.options = FormService.toSelectOptions(data.country.options);
+				if (this.countryId) {
+					this.form.patch({
+						country: this.countryId,
+					});
+				}
 				this.pushChanges();
 			})
 		);
@@ -59,10 +68,13 @@ export class ContactModalComponent extends Component {
 		form.patch({
 			firstName: 'Jhon',
 			lastName: 'Appleseed',
-			email: 'jhonappleseed@gmail.com',
-			telephone: '0721 411112',
-			country: country,
+			company: 'Websolute',
+			address: 'Strada della Campanara, 15',
 			city: 'Pesaro',
+			zip: 61122,
+			country: country,
+			email: 'jhonappleseed@gmail.com',
+			subject: 'Subject',
 			message: 'Hi!',
 			privacy: true,
 			checkRequest: window.antiforgery,
@@ -91,12 +103,6 @@ export class ContactModalComponent extends Component {
 					'event': "Contact",
 					'form_name': "Contatti"
 				});
-				if (form.value.newsletter) {
-					GtmService.push({
-						'event': "ContactNewsletter",
-						'form_name': "ContattiNewsletter"
-					});
-				}
 			}, error => {
 				console.log('ContactModalComponent.error', error);
 				this.error = error;
@@ -114,4 +120,5 @@ export class ContactModalComponent extends Component {
 
 ContactModalComponent.meta = {
 	selector: '[contact-modal]',
+	inputs: ['countryId'],
 };
