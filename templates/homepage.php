@@ -2,7 +2,19 @@
 /**
  * Template Name: Homepage
  */
-get_header(); ?>
+get_header(); 
+
+$fields = get_fields(get_the_ID());
+
+/*[0] => Array
+(
+	[acf_fc_layout] => homepage-main-hero
+	[carousel] => 
+	[01_attiva_sticky_item] => 
+	[01_label_sticky_item] => 
+)*/
+
+?>
 
 <body>
 	<script>
@@ -25,6 +37,19 @@ get_header(); ?>
 
 			<!--<div class="wrapper">-->
 			<main class="main">
+
+<?php /*print_r($fields);
+
+foreach($fields as $field){
+	$partialPathRaw = explode('-', $field['acf_fc_layout']);
+	$partialFile = $partialPathRaw[count($partialPathRaw)-1];
+	$partialPathRaw = array_pop($partialPathRaw);
+	$partialPath = implode('/',$partialPathRaw);
+
+	get_template_part( 'templates/partials/' . $partialPath, $partialFile );
+}*/
+
+?>
 
 				<?php get_template_part( 'templates/partials/homepage/main', 'hero' ); ?>
 				<?php get_template_part( 'templates/partials/homepage/profile', 'proposition' ); ?>

@@ -40,6 +40,40 @@ if (! defined('DOCS_DIR')) {
 
 
 
+function setAnchorMenuItem($fg){
+
+    //print_r($fg);
+    $output = '';
+    $hasAnchor = false;
+    foreach($fg as $k => $v){
+        if(strstr($k, '_attiva_sticky_item') && $v == 1){
+            $hasAnchor = true;
+        }
+        if(strstr($k, '_label_sticky_item') && $hasAnchor == true){
+            $output = '<li class="nav__item"><a href="#'.sanitize_title($v).'" (scrollTo)="\'#'.sanitize_title($v).'\'">'.$v.'</a></li>';
+        }
+    }
+    
+        return $output;
+}
+
+
+function setAnchor($fg){
+$output = '';
+$hasAnchor = false;
+foreach($fg as $k => $v){
+    if(strstr($k, '_attiva_sticky_item') && $v == 1){
+        $hasAnchor = true;
+    }
+    if(strstr($k, '_label_sticky_item') && $hasAnchor == true){
+        $output = 'id="'.sanitize_title($v).'"';
+    }
+}
+
+    return $output;
+}
+
+
 function the_breadcrumb()
 {
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
