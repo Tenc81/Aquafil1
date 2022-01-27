@@ -5,9 +5,9 @@
 			<div class="row">
 				<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">
 					<div class="area-proposition__content" appear>
-						<div class="area-proposition__category">What we do</div>
-						<div class="area-proposition__title">Product areas</div>
-						<div class="area-proposition__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo massa ridiculus diam ultrices eu quis suspendisse aenean.</div>
+						<div class="area-proposition__category"><?=$f['area_abstract']?></div>
+						<div class="area-proposition__title"><?=$f['area_titolo']?></div>
+						<div class="area-proposition__abstract"><?=$f['area_sottotitolo']?></div>
 					</div>
 				</div>
 			</div>
@@ -15,54 +15,20 @@
 	</div>
 	<div class="container-fluid">
 		<div class="listing--area">
+		<?php foreach($f['area_cards'] as $s) { ?>
 			<div class="listing__item" appear>
 				<div class="card--area" scroll scrollSpeed="2">
-					<div class="card--area__title">Nylon Textile Filament</div>
+					<div class="card--area__title"><?=$s['area_cards_titolo']?></div>
 					<div class="card--area__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-01.jpg" />
+						<img loading="lazy" src="<?=$s['area_cards_image']?>" />
 					</div>
-					<div class="card--area__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus neque, vel morbi sit. Luctus id tempor non sed.</div>
+					<div class="card--area__abstract"><?=$s['area_cards_sottotitolo']?></div>
 					<div class="card--area__cta">
-						<a href="#" class="btn--primary">Learn more</a>
+						<a href="<?=$s['area_cards_link_cta']?>" target="<?=$s['area_cards_target_cta']?>" class="btn--primary"><?=($s['area_cards_testo_cta'] != '' ? $s['area_cards_testo_cta'] : __('Read more'))?></a>
 					</div>
 				</div>
 			</div>
-			<div class="listing__item" appear>
-				<div class="card--area" scroll scrollSpeed="0.5">
-					<div class="card--area__title">Bulk Continuos Filament</div>
-					<div class="card--area__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-02.jpg" />
-					</div>
-					<div class="card--area__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus neque, vel morbi sit. Luctus id tempor non sed.</div>
-					<div class="card--area__cta">
-						<a href="#" class="btn--primary">Learn more</a>
-					</div>
-				</div>
-			</div>
-			<div class="listing__item" appear>
-				<div class="card--area" scroll>
-					<div class="card--area__title">Engineering</div>
-					<div class="card--area__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-03.jpg" />
-					</div>
-					<div class="card--area__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus neque, vel morbi sit. Luctus id tempor non sed.</div>
-					<div class="card--area__cta">
-						<a href="#" class="btn--primary">Learn more</a>
-					</div>
-				</div>
-			</div>
-			<div class="listing__item" appear>
-				<div class="card--area" scroll scrollSpeed="2">
-					<div class="card--area__title">Polymer</div>
-					<div class="card--area__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-04.jpg" />
-					</div>
-					<div class="card--area__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus neque, vel morbi sit. Luctus id tempor non sed.</div>
-					<div class="card--area__cta">
-						<a href="#" class="btn--primary">Learn more</a>
-					</div>
-				</div>
-			</div>
+		<?php } ?>
 		</div>
 	</div>
 </div>

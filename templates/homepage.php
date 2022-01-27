@@ -38,28 +38,34 @@ $fields = get_fields(get_the_ID());
 			<!--<div class="wrapper">-->
 			<main class="main">
 
-<?php /*print_r($fields);
 
-foreach($fields as $field){
-	$partialPathRaw = explode('-', $field['acf_fc_layout']);
-	$partialFile = $partialPathRaw[count($partialPathRaw)-1];
-	$partialPathRaw = array_pop($partialPathRaw);
-	$partialPath = implode('/',$partialPathRaw);
 
-	get_template_part( 'templates/partials/' . $partialPath, $partialFile );
-}*/
+			
+<?php
 
+set_query_var( 'all', $fields['sezioni'] );
+get_template_part( 'templates/partials/shared/sticky' ); //the sticky menu (if present)
+//get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb ?>
+
+
+
+<?php //print_r($fields);
+	foreach($fields['sezioni'] as $section){
+		$partialPathRaw = explode('-', $section['acf_fc_layout']);
+		set_query_var( 'f', $section );
+		switch(count($partialPathRaw)){
+			case 2:
+				get_template_part( 'templates/partials/' . implode('/',$partialPathRaw) );
+			break;								
+			default:
+				$partialPath =	$partialPathRaw[0] . '/' . $partialPathRaw[1];
+				array_shift($partialPathRaw);
+				array_shift($partialPathRaw);
+				get_template_part( 'templates/partials/' . $partialPath, implode('-',$partialPathRaw) );
+			break;	
+		}
+	}
 ?>
-
-				<?php get_template_part( 'templates/partials/homepage/main', 'hero' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/profile', 'proposition' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/area', 'proposition' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/sustainability', 'proposition' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/report', 'proposition' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/innovation', 'proposition' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/news', 'proposition' ); ?>
-				<?php get_template_part( 'templates/partials/homepage/newsletter', 'proposition' ); ?>
-
 			</main>
 				<?php get_template_part( 'templates/partials/shared/footer'); ?>
 			<!--</div>-->

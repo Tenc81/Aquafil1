@@ -219,4 +219,53 @@ foreach ($wstheme_includes as $file) {
 }
 unset($file, $filepath);
 
+
+
+function get_the_content_with_formatting ($more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
+	$content = get_the_content($more_link_text, $stripteaser, $more_file);
+	$content = apply_filters('the_content', $content);
+	$content = str_replace(']]>', ']]&gt;', $content);
+	return $content;
+}
+
+
+function at_more_by_cat($cat_id = '', $limit = 3, $exclusions = null){
+
+    if ($cat_id != '') {
+        $args = array(
+            'posts_per_page'   => $limit,
+            'orderby'          => 'rand',
+            'order'            => 'ASC',
+            'include'          => '',
+            'exclude'          => $exclusions == null ? [] : $exclusions,
+            'meta_key'         => '',
+            'meta_value'       => '',
+            'post_type'        => 'post',
+            'post_mime_type'   => '',
+            'post_parent'      => '',
+            'author'	       => '',
+            'author_name'	   => '',
+            'post_status'      => 'publish',
+            'suppress_filters' => true,
+            'fields'           => '',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field' => 'term_id',
+                    'terms' => $cat_id
+                )
+            )
+        );
+    } 
+    
+        $posts_array = get_posts( $args );
+            $output = [];
+            foreach($posts_array as $p){
+                array_push($output, $p->ID);
+            }
+    
+        return $output;
+    }
+
+
 ?>

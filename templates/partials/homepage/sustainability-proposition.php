@@ -4,83 +4,29 @@
 		<div class="row">
 			<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">
 				<div class="sustainability-proposition__content" appear>
-					<div class="sustainability-proposition__category">How we do</div>
-					<div class="sustainability-proposition__title">Sustainability</div>
-					<div class="sustainability-proposition__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo massa ridiculus diam ultrices eu quis suspendisse aenean.</div>
+					<div class="sustainability-proposition__category"><?=$f['sustainability_abstract']?></div>
+					<div class="sustainability-proposition__title"><?=$f['sustainability_titolo']?></div>
+					<div class="sustainability-proposition__abstract"><?=$f['sustainability_sottotitolo']?></div>
 				</div>
 			</div>
 		</div>
 		<div class="listing--sustainability">
-			<div class="listing__item">
-				<a href="<?=DOCS_DIR; ?>pillars.html" class="card--sustainability">
-					<div class="card--sustainability__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-01.jpg" />
-					</div>
-					<div class="card--sustainability__content" appear>
-						<div class="card--sustainability__title">Our Pillars</div>
-						<div class="card--sustainability__abstract" ellipsis>For more than 50 years, Aquafil has led the way for doing business with sustainability and circular economy at the core of its values and development strategy.</div>
-						<div class="card--sustainability__cta">
-							<button type="button" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
+			<?php foreach($f['sustainability_cards'] as $s) { ?>
+				<div class="listing__item">
+					<a href="<?=$s['sustainability_cards_link_cta']?>" target="<?=$s['sustainability_cards_target_cta']?>" class="card--sustainability">
+						<div class="card--sustainability__picture">
+							<img loading="lazy" src="<?=$s['sustainability_cards_image']?>" />
 						</div>
-					</div>
-				</a>
-			</div>
-			<div class="listing__item">
-				<a href="<?=DOCS_DIR; ?>environment.html" class="card--sustainability">
-					<div class="card--sustainability__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-02.jpg" />
-					</div>
-					<div class="card--sustainability__content" appear>
-						<div class="card--sustainability__title">Environment SDG’s</div>
-						<div class="card--sustainability__abstract" ellipsis>For more than 50 years, Aquafil has led the way for doing business with sustainability and circular economy at the core of its values and development strategy.</div>
-						<div class="card--sustainability__cta">
-							<button type="button" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
+						<div class="card--sustainability__content" appear>
+							<div class="card--sustainability__title"><?=$s['sustainability_cards_titolo']?></div>
+							<div class="card--sustainability__abstract" ellipsis><?=$s['sustainability_cards_sottotitolo']?></div>
+							<div class="card--sustainability__cta">
+								<button type="button" class="btn--more"><span><?=($s['sustainability_cards_testo_cta'] != '' ? $s['sustainability_cards_testo_cta'] : __('Read more'))?></span> <svg><use xlink:href="#arrow-next"></use></svg></button>
+							</div>
 						</div>
-					</div>
-				</a>
-			</div>
-			<div class="listing__item">
-				<a href="#" class="card--sustainability">
-					<div class="card--sustainability__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-03.jpg" />
-					</div>
-					<div class="card--sustainability__content" appear>
-						<div class="card--sustainability__title">Social SDG’s</div>
-						<div class="card--sustainability__abstract" ellipsis>For more than 50 years, Aquafil has led the way for doing business with sustainability and circular economy at the core of its values and development strategy.</div>
-						<div class="card--sustainability__cta">
-							<button type="button" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="listing__item">
-				<a href="#" class="card--sustainability">
-					<div class="card--sustainability__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-04.jpg" />
-					</div>
-					<div class="card--sustainability__content" appear>
-						<div class="card--sustainability__title">Economic SDG’s</div>
-						<div class="card--sustainability__abstract" ellipsis>For more than 50 years, Aquafil has led the way for doing business with sustainability and circular economy at the core of its values and development strategy.</div>
-						<div class="card--sustainability__cta">
-							<button type="button" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="listing__item">
-				<a href="#" class="card--sustainability">
-					<div class="card--sustainability__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/02-01.jpg" />
-					</div>
-					<div class="card--sustainability__content" appear>
-						<div class="card--sustainability__title">Certifications</div>
-						<div class="card--sustainability__abstract" ellipsis>For more than 50 years, Aquafil has led the way for doing business with sustainability and circular economy at the core of its values and development strategy.</div>
-						<div class="card--sustainability__cta">
-							<button type="button" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
-						</div>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

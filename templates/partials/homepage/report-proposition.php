@@ -4,15 +4,15 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="report-proposition__picture" scroll="img">
-					<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/04-01.jpg" />
+					<img loading="lazy" src="<?=$f['report_image']?>" />
 				</div>
 			</div>
 			<div class="col-sm-8 offset-sm-1">
 				<div class="report-proposition__content" appear>
-					<div class="report-proposition__title">Download the 2021 report</div>
-					<div class="report-proposition__abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo massa ridiculus diam ultrices eu quis suspendisse aenean. Accumsan luctus at ac ipsum arcu. Eget nullam massa consequat vestibulum. Rhoncus integer arcu massa dui.</div>
+					<div class="report-proposition__title"><?=$f['report_titolo']?></div>
+					<div class="report-proposition__abstract"><?=$f['report_sottotitolo']?></div>
 					<div class="report-proposition__cta">
-						<a href="#" class="btn--download"><span>Download the report</span> <svg><use xlink:href="#download"></use></svg></a>
+						<a href="<?=$f['report_link_cta']?>" class="btn--download"><span><?=($f['report_testo_cta'] != '' ? $f['report_testo_cta'] : __('Read more'))?></span> <svg><use xlink:href="#download"></use></svg></a>
 					</div>
 				</div>
 			</div>

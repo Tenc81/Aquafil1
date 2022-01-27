@@ -1,4 +1,14 @@
 <!-- NEWS PROPOSITION -->
+<?php 
+
+if(!is_array($f)){ //pick 5 post automatic
+$f = [
+	'news_cards' => at_more_by_cat($cids,5)
+];
+}
+
+?>
+
 <div class="news-proposition">
 	<div class="container-fluid">
 		<div class="row">
@@ -10,13 +20,14 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-9 offset-sm-2 col-md-8 offset-md-3">
-				<a href="#" class="card--news">
+				
+				<a href="<?=get_permalink($f['news_cards'][0])?>" class="card--news">
 					<div class="card--news__picture">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/06-01.png" />
+						<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url($f['news_cards'][0],'full'));?>" />
 					</div>
 					<div class="card--news__content" appear>
-						<div class="card--news__title">Best circular economy practices in the textile field: Giulio Bonazzi speaker at the meeting of ministers in Slovenia</div>
-						<div class="card--news__abstract">Slovenia, as the presiding country of the Council of the European Union, organises an Informal Meeting of Competitiveness Ministers (Internal Market and Industry) on 22 July 2021 in Ljubljana. The theme of the meeting under the heading “Building a Green, Creative and Smart Future” will be based on two priorities of the Slovenian Presidency: the...</div>
+						<div class="card--news__title"><?=get_the_title($f['news_cards'][0])?></div>
+						<div class="card--news__abstract"><?=get_the_excerpt($f['news_cards'][0])?></div>
 						<div class="card--news__cta">
 							<button type="button" class="btn--more"><span>Read more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
 						</div>
@@ -25,58 +36,27 @@
 			</div>
 			<div class="col-sm-10 offset-sm-1 col-md-9 offset-md-1">
 				<div class="listing--news-proposition">
-					<div class="listing__item">
-						<a href="#" class="card--news">
-							<div class="card--news__picture">
-								<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/06-02.png" />
-							</div>
-							<div class="card--news__content" appear>
-								<div class="card--news__title">The sustainability report 2020 has been published</div>
-								<div class="card--news__cta">
-									<button type="button" class="btn--more"><span>Read more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
+
+					<?php foreach($f['news_cards'] as $k => $v) {
+						if ($k > 0) {
+							?>
+
+						<div class="listing__item">
+							<a href="<?=get_permalink($v)?>" class="card--news">
+								<div class="card--news__picture">
+									<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url($v));?>" />
 								</div>
-							</div>
-						</a>
-					</div>
-					<div class="listing__item">
-						<a href="#" class="card--news">
-							<div class="card--news__picture">
-								<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/06-03.png" />
-							</div>
-							<div class="card--news__content" appear>
-								<div class="card--news__title">Aquafil launches digital platform bringing Econyl® to conscious consumers</div>
-								<div class="card--news__cta">
-									<button type="button" class="btn--more"><span>Read more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
+								<div class="card--news__content" appear>
+									<div class="card--news__title"><?=get_the_title($v)?></div>
+									<div class="card--news__cta">
+										<button type="button" class="btn--more"><span>Read more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
+									</div>
 								</div>
-							</div>
-						</a>
-					</div>
-					<div class="listing__item">
-						<a href="#" class="card--news">
-							<div class="card--news__picture">
-								<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/06-04.png" />
-							</div>
-							<div class="card--news__content" appear>
-								<div class="card--news__title">Giulio Bonazzi key speaker at fashion futures live</div>
-								<div class="card--news__cta">
-									<button type="button" class="btn--more"><span>Read more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="listing__item">
-						<a href="#" class="card--news">
-							<div class="card--news__picture">
-								<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/06-05.png" />
-							</div>
-							<div class="card--news__content" appear>
-								<div class="card--news__title">Giulio Bonazzi speaker at changenow summit</div>
-								<div class="card--news__cta">
-									<button type="button" class="btn--more"><span>Read more</span> <svg><use xlink:href="#arrow-next"></use></svg></button>
-								</div>
-							</div>
-						</a>
-					</div>
+							</a>
+						</div>
+
+					<?php
+						} } ?>
 				</div>
 			</div>
 		</div>

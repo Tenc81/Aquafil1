@@ -2,21 +2,23 @@
 	<!-- swiper -->
 	<div class="swiper-container" swiper-main>
 		<div class="swiper-wrapper">
-			<!-- slide -->
+
+		<!-- slide -->
+		<?php foreach($f['carousel'] as $s) { ?>
 			<div class="swiper-slide">
 				<div class="card--main-hero">
 					<div class="card--main-hero__background">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/hero-01.jpg" />
+						<img loading="lazy" src="<?=$s['hero_slide'] ?>" />
 					</div>
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-20 col-sm-9 offset-sm-2">
 								<div class="card--main-hero__content">
-									<div class="card--main-hero__category">Sustainability & Circularity</div>
-									<div class="card--main-hero__title">The Ecopledge</div>
-									<div class="card--main-hero__abstract">The ECO PLEDGE® is the set of principles that, like a lighthouse in the night, guides and inspires all the work of the Group.</div>
+									<div class="card--main-hero__category"><?=$s['hero_abstract'] ?></div>
+									<div class="card--main-hero__title"><?=$s['hero_titolo'] ?></div>
+									<div class="card--main-hero__abstract"><?=$s['hero_sottotitolo'] ?></div>
 									<div class="card--main-hero__cta">
-										<a href="#" class="btn--primary">Learn more</a>
+										<a href="<?=$s['hero_link_cta']?>" target="<?=$s['hero_target_cta']?>" class="btn--primary"><?=($s['hero_testo_cta'] != '' ? $s['hero_testo_cta'] : __('Read more'))?></a>
 									</div>
 								</div>
 							</div>
@@ -24,50 +26,9 @@
 					</div>
 				</div>
 			</div>
-			<!-- slide -->
-			<div class="swiper-slide">
-				<div class="card--main-hero">
-					<div class="card--main-hero__background">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/hero-02.jpg" />
-					</div>
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-20 col-sm-9 offset-sm-2">
-								<div class="card--main-hero__content">
-									<div class="card--main-hero__category">What We Do</div>
-									<div class="card--main-hero__title">Yarn for Carpets</div>
-									<div class="card--main-hero__abstract">BCF (Bulk Continuous Filaments) division produces Nylon 6 yarn for synthetic carpet flooring.</div>
-									<div class="card--main-hero__cta">
-										<a href="#" class="btn--primary">Learn more</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- slide -->
-			<div class="swiper-slide">
-				<div class="card--main-hero">
-					<div class="card--main-hero__background">
-						<img loading="lazy" src="<?=DOCS_DIR; ?>img/homepage/hero-03.jpg" />
-					</div>
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-20 col-sm-9 offset-sm-2">
-								<div class="card--main-hero__content">
-									<div class="card--main-hero__category">What We Do</div>
-									<div class="card--main-hero__title">Yarn for Garments</div>
-									<div class="card--main-hero__abstract">NTF (Nylon Textile Filaments) division produces Nylon 6 yarn for sportswear and fashion.</div>
-									<div class="card--main-hero__cta">
-										<a href="#" class="btn--primary">Learn more</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<?php } ?>
+		<!-- slide -->
+
 		</div>
 		<div class="main-hero__nav">
 			<!-- up button -->
