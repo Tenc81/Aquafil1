@@ -15,11 +15,16 @@ $rendervideo = [];
 
     if (is_array($video) && count($video)> 0) { 
         foreach($video as $code){
-            array_push($rendervideo,'<div class="video-embed">
+            array_push($rendervideo,'</div>
+            </div><div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
+            <div class="news-detail-content__text">
+            <div class="video-embed">
             <div class="video-embed__iframe-container">
                 <iframe class="video-embed__iframe" width="560" height="315" src="https://www.youtube.com/embed/'.$code['cod'].'"></iframe>
             </div>
-            </div>'); 
+            </div>
+            <div class="col-sm-20 offset-sm-2 col-md-10 offset-md-7">
+            <div class="news-detail-content__text">'); 
         }
     }
 
@@ -70,12 +75,26 @@ $rendervideo = [];
                     <div class="row news-detail-content__row" appear>
                         <div class="col-sm-20 offset-sm-2 col-md-10 offset-md-7">
                             <div class="news-detail-content__text">
-                                <?php 
+                                <?php
+                                $placed = []; 
                                 $content = get_the_content_with_formatting(); 
                                 foreach($rendervideo as $k => $v){
-                                    $content = str_replace('[insertVideo_'.$k.']', $v, $content);
+                                    if (strstr($content, '[insertVideo_')) {
+                                        $content = str_replace('[insertVideo_'.$k.']', $v, $content);
+                                        $placed[$k] = true;
+                                    } else {
+                                        $placed[$k] = false;
+                                    }
                                 }
                                 echo $content;
+
+                                foreach ($rendervideo as $k => $v) {
+                                    if(!$placed[$k]){
+                                        echo $v;
+                                    }
+                                }
+                                
+
                                 ?>
                             </div>
                         </div>

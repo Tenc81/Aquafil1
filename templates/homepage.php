@@ -43,8 +43,8 @@ $fields = get_fields(get_the_ID());
 			
 <?php
 
-set_query_var( 'all', $fields['sezioni'] );
-get_template_part( 'templates/partials/shared/sticky' ); //the sticky menu (if present)
+//set_query_var( 'all', $fields['sezioni'] );
+//get_template_part( 'templates/partials/shared/sticky' ); //the sticky menu (if present)
 //get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb ?>
 
 

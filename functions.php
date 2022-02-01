@@ -36,8 +36,20 @@ if (! defined('DOCS_DIR')) {
     } else {
         define('DOCS_DIR', get_template_directory_uri().'/docs/');
     }
+
+
 }
 
+function aquafil_enqueue_scripts(){
+    wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script('websolute_helper');
+    wp_localize_script('websolute_helper', 'ws_vars', array(
+    'docsDir' => DOCS_DIR,
+  ));
+}
+
+
+  add_action('wp_enqueue_scripts', 'aquafil_enqueue_scripts', 11);
 
 
 function setAnchorMenuItem($fg){
@@ -80,7 +92,7 @@ function the_breadcrumb()
     $delimiter = ''; // delimiter between crumbs
     $home = 'Homepage'; // text for the 'Home' link
     $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
-    $before = '</li><li class="breadcrumb__list-item line-with-circle"><span class="current breadcrumb__list-title">'; // tag before the current crumb
+    $before = '<li class="nav__item"><span>'; // tag before the current crumb
     $after = '</span></li>'; // tag after the current crumb
 
     $output = '';
@@ -91,10 +103,10 @@ function the_breadcrumb()
     $homeLink = get_bloginfo('url');
     if (is_home() || is_front_page()) {
         if ($showOnHome == 1) {
-            $output .= '<ul id="crumbs" class="list inline breadcrumb__list"><li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 1" href="' . $homeLink . '">' . $home . '</a></li></ul>';
+            $output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 1" href="' . $homeLink . '">' . $home . '</a></li></ul>';
         }
     } else {
-        $output .= '<ul id="crumbs" class="list inline breadcrumb__list"><li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 2" href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' ';
+        $output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 2" href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' ';
         if (is_category()) {
             $thisCat = get_category(get_query_var('cat'), false);
             if ($thisCat->parent != 0) {
@@ -104,11 +116,11 @@ function the_breadcrumb()
         } elseif (is_search()) {
             $output .= $before . 'Search results for "' . get_search_query() . '"' . $after;
         } elseif (is_day()) {
-            $output .= '<li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 3" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</li></a> ' . $delimiter . ' ';
-            $output .= '<li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 4" href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</li></a> ' . $delimiter . ' ';
+            $output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 3" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</li></a> ' . $delimiter . ' ';
+            $output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 4" href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</li></a> ' . $delimiter . ' ';
             $output .= $before . get_the_time('d') . $after;
         } elseif (is_month()) {
-            $output .= '<li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 5" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</li></a> ' . $delimiter . ' ';
+            $output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 5" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</li></a> ' . $delimiter . ' ';
             $output .= $before . get_the_time('F') . $after;
         } elseif (is_year()) {
             $output .= $before . get_the_time('Y') . $after;
@@ -117,7 +129,7 @@ function the_breadcrumb()
                 $post_type = get_post_type_object(get_post_type());
                 $slug = $post_type->rewrite;
                 if($post_type->labels->singular_name != "Service" && $post_type->labels->singular_name != "Posizione Lavorativa"){
-                $output .= '<li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 6" href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</li></a>';
+                $output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 6" href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</li></a>';
                 }
                 if ($showCurrent == 1) {
                     $output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
@@ -142,7 +154,7 @@ function the_breadcrumb()
             $cat = get_the_category($parent->ID);
             $cat = $cat[0];
             $output .= get_category_parents($cat, true, ' ' . $delimiter . ' ');
-            $output .= '<li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 7" href="' . get_permalink($parent) . '">' . $parent->post_title . '</li></a>';
+            $output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 7" href="' . get_permalink($parent) . '">' . $parent->post_title . '</li></a>';
             if ($showCurrent == 1) {
                 $output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
             }
@@ -155,7 +167,7 @@ function the_breadcrumb()
             $breadcrumbs = array();
             while ($parent_id) {
                 $page = get_post($parent_id);
-                $breadcrumbs[] = '<li class="breadcrumb__list-item line-with-circle"><a class="breadcrumb__list-link link-bold 8" href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</li></a>';
+                $breadcrumbs[] = '<li class="nav__item"><a class="breadcrumb__list-link link-bold 8" href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</li></a>';
                 $parent_id  = $page->post_parent;
             }
             $breadcrumbs = array_reverse($breadcrumbs);

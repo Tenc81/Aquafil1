@@ -4,6 +4,7 @@
 				<div class="col-sm-11 offset-sm-1 col-md-11 offset-md-1">
 					<div class="media-text-primary__picture" gallery="<?=$f['internal_media_image']?>" scroll scrollSpeed="1">
 						<img loading="lazy" src="<?=$f['internal_media_image']?>" />
+						<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
 					</div>
 				</div>
 				<div class="col-sm-7 offset-sm-2 col-md-7 offset-md-2">

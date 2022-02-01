@@ -19,12 +19,21 @@
 										<div class="card--content__cta">
 											<a href="#" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></a>
 										</div>
+										slider_mp4_video
 										-->
 									</div>
 									<div class="card--content__right">
-										<div class="card--content__picture" gallery="<?=$slide['slide_image']?>">
-											<img loading="lazy" src="<?=$slide['slide_image']?>" />
-										</div>
+										<?php if($slide['slider_mp4_video'] != '') { ?>
+											<div class="card--content__picture" gallery="<?=$slide['slider_mp4_video']?>">
+												<video src="<?=$slide['slider_mp4_video']?>" playsinline="" autoplay="" loop="" muted="" style="width:100%; height:100%; object-fit:cover"></video>
+												<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
+											</div>
+										<?php } else { ?>
+											<div class="card--content__picture" gallery="<?=$slide['slide_image']?>">
+												<img loading="lazy" src="<?=$slide['slide_image']?>" />
+												<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
+											</div>
+										<?php } ?>
 									</div>
 								</div>
 							</div>							

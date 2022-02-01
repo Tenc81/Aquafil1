@@ -10,6 +10,7 @@
 				<div class="col-sm-15 col-md-17 order-1 order-sm-2">
 					<div class="primary-hero__picture" gallery="<?=$f['internal_hero_image']?>" scroll scrollSpeed="1">
 						<img loading="lazy" src="<?=$f['internal_hero_image']?>" />
+						<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
 					</div>
 				</div>
 			</div>
