@@ -5,72 +5,72 @@
 			<div class="col-sm-20 offset-sm-2">
 				<div class="header__main">
 					<div class="header__logo">
-						<a href="/aquafil/" class="btn--logo"><svg><use xlink:href="#aquafil"></use></svg></a>
+						<a href="<?= home_url(); ?>" class="btn--logo">
+							<svg>
+								<use xlink:href="#aquafil"></use>
+							</svg>
+						</a>
 					</div>
 					<div class="header__menu" [class]="{ active: header == 'menu' }">
-						<ul class="nav--main">
-							<li class="nav__item">
-								<span (click)="onMenu(1)"><span>Who we are</span>
-									<svg class="down"><use xlink:href="#caret-down"></use></svg>
-									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
-								</span>
-								<ul class="nav--submenu" [class]="{ active: menu == 1 }">
-									<li class="nav__item"><a href="#"><span>Vision</span></a></li>
-									<li class="nav__item"><a href="/aquafil/mission.html"><span>Mission</span></a></li>
-									<li class="nav__item"><a href="/aquafil/history.html"><span>Storia</span></a></li>
-									<li class="nav__item"><a href="/aquafil/location.html"><span>Sedi</span></a></li>
-									<li class="nav__item back"><span (click)="onBack()"><svg><use xlink:href="#back"></use></svg> <span>Back</span></span></li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<span (click)="onMenu(2)"><span>What we do</span>
-									<svg class="down"><use xlink:href="#caret-down"></use></svg>
-									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
-								</span>
-								<ul class="nav--submenu" [class]="{ active: menu == 2 }">
-									<li class="nav__item"><a href="#"><span>Bulk continuos filament</span></a></li>
-									<li class="nav__item"><a href="#"><span>Nylon textile filament</span></a></li>
-									<li class="nav__item"><a href="#"><span>Polymer</span></a></li>
-									<li class="nav__item"><a href="#"><span>Engineering</span></a></li>
-									<li class="nav__item back"><span (click)="onBack()"><svg><use xlink:href="#back"></use></svg> <span>Back</span></span></li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<span (click)="onMenu(3)"><span>Sustainability</span>
-									<svg class="down"><use xlink:href="#caret-down"></use></svg>
-									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
-								</span>
-								<ul class="nav--submenu" [class]="{ active: menu == 3 }">
-									<li class="nav__item"><a href="/aquafil/pillars.html"><span>Our Pillars</span></a></li>
-									<li class="nav__item"><a href="/aquafil/environment.html"><span>Ambientale</span></a></li>
-									<li class="nav__item"><a href="#"><span>Sociale</span></a></li>
-									<li class="nav__item"><a href="#"><span>Economica</span></a></li>
-									<li class="nav__item"><a href="#"><span>Certificazioni</span></a></li>
-									<li class="nav__item"><a href="#"><span>Report sostenibilità</span></a></li>
-									<li class="nav__item back"><span (click)="onBack()"><svg><use xlink:href="#back"></use></svg> <span>Back</span></span></li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<span (click)="onMenu(4)"><span>Innovation & partnership</span>
-									<svg class="down"><use xlink:href="#caret-down"></use></svg>
-									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
-								</span>
-								<ul class="nav--submenu" [class]="{ active: menu == 4 }">
-									<li class="nav__item"><a href="#"><span>The future</span></a></li>
-									<li class="nav__item"><a href="#"><span>Partners</span></a></li>
-									<li class="nav__item"><a href="/aquafil/case-studies.html"><span>Case studies</span></a></li>
-									<li class="nav__item back"><span (click)="onBack()"><svg><use xlink:href="#back"></use></svg> <span>Back</span></span></li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<a href="#"><span>Magazine</span>
-									<svg class="down"><use xlink:href="#caret-down"></use></svg>
-									<svg class="next"><use xlink:href="#arrow-next"></use></svg>
-								</a>
-							</li>
-						</ul>
-						<a href="#" type="button" class="btn--investor">Investor relations</a>
-						<?php get_template_part( 'templates/partials/shared/navigation', 'top'); ?>
+						<?php
+						$locations = get_nav_menu_locations();
+						foreach ($locations as $key => $menu_id) {
+							$location = apply_filters('wpml_object_id', $menu_id, 'nav_menu', TRUE);
+							switch ($key) {
+								case "main_menu":
+									$mainMenu = menuParse($location);
+									break;
+								case "secondary_menu":
+									$secMenu = menuParse($location);
+									break;
+								default:;
+							}
+						}
+						if(!empty($mainMenu)) {
+							echo '
+									<ul class="nav--main">';
+							$hlItems = array();
+							foreach ($mainMenu as $i=>$item) {
+								if($item["label"] != "Highlighted Item") {
+									echo '
+										<li class="nav__item">';
+									if(!empty($item['children'])) {
+										echo '
+											<span (click)="onMenu('.($i+1).')"><span>'.$item["label"].'</span>
+												<svg class="down"><use xlink:href="#caret-down"></use></svg>
+												<svg class="next"><use xlink:href="#arrow-next"></use></svg>
+											</span>
+											<ul class="nav--submenu" [class]="{ active: menu == '.($i+1).' }">';
+										foreach($item['children'] as $subitem) {
+											echo '
+												<li class="nav__item"><a href="'.$subitem["url"].'" target="'.$subitem["target"].'" '.($subitem["rel"] != '' ? 'rel="'.$subitem["rel"].'"' : '').'><span>'.$subitem["label"].'</span></a></li>';
+										}
+										echo '
+											</ul>';
+									} else {
+										echo '
+											<a href="'.$item["url"].'" target="'.$item["target"].'" '.($item["rel"] != '' ? 'rel="'.$item["rel"].'"' : '').'><span>'.$item["label"].'</span>
+												<svg class="down"><use xlink:href="#caret-down"></use></svg>
+												<svg class="next"><use xlink:href="#arrow-next"></use></svg>
+											</a>';
+									}
+									echo '
+										</li>';
+								} else {
+									$hlItems= array_merge($hlItems, $item['children']);
+								}
+							}
+							echo '
+									</ul>';
+							foreach($hlItems as $item) {
+								echo '
+									<a href="'.$item["url"].'" target="'.$item["target"].'" '.($item["rel"] != '' ? 'rel="'.$item["rel"].'"' : '').' class="btn--investor">'.$item["label"].'</a>';
+							}
+						}
+						if(isset($secMenu)) {
+							get_template_part('templates/partials/shared/navigation', 'top', array("menu" => $secMenu));
+						}
+						?>
 					</div>
 					<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
 						<svg class="menu"><use xlink:href="#menu"></use></svg>
