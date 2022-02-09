@@ -29,10 +29,26 @@
  * Websolute Rocks!
  *
  */
+if ((!empty($_SERVER["HTTP_X_FORWARDED_PROTO"]) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") ||
+  (!empty($_SERVER["REQUEST_SCHEME"]) && $_SERVER["REQUEST_SCHEME"] == "https") ||
+  $_SERVER['SERVER_PORT'] == 443)
+	$_SERVER['HTTPS']='on';
+
+if (! defined('DOCS_DIR')) {
+  if (in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1' ))) {
+		$theme = wp_get_theme();
+		$protocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' || $_SERVER['HTTPS'] === 0 ? "http://" : "https://";
+		define('DOCS_DIR', $protocol.'localhost:'.$_SERVER['SERVER_PORT'].'/wp-content/themes/'.$theme->template.'/docs/');
+  } else {
+    define('DOCS_DIR', get_template_directory_uri().'/docs/');
+  }
+}
 
 if (! defined('DOCS_DIR')) {
   define('DOCS_DIR', get_template_directory_uri().'/docs/');
 }
+
+add_theme_support('post-thumbnails');
 
 function aquafil_enqueue_scripts(){
   wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
@@ -98,7 +114,7 @@ function the_breadcrumb()
 			$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 1" href="' . $homeLink . '">' . $home . '</a></li></ul>';
 		}
 	} else {
-		$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 2" href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' ';
+		$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 2" href="' . $homeLink . '">' . $home . '</a></li> ' . $delimiter . ' ';
 		if (is_category()) {
 			$thisCat = get_category(get_query_var('cat'), false);
 			if ($thisCat->parent != 0) {
@@ -108,11 +124,11 @@ function the_breadcrumb()
 		} elseif (is_search()) {
 			$output .= $before . 'Search results for "' . get_search_query() . '"' . $after;
 		} elseif (is_day()) {
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 3" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</li></a> ' . $delimiter . ' ';
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 4" href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</li></a> ' . $delimiter . ' ';
+			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 3" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
+			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 4" href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</a></li> ' . $delimiter . ' ';
 			$output .= $before . get_the_time('d') . $after;
 		} elseif (is_month()) {
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 5" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</li></a> ' . $delimiter . ' ';
+			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 5" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
 			$output .= $before . get_the_time('F') . $after;
 		} elseif (is_year()) {
 			$output .= $before . get_the_time('Y') . $after;
@@ -121,7 +137,7 @@ function the_breadcrumb()
 				$post_type = get_post_type_object(get_post_type());
 				$slug = $post_type->rewrite;
 				if($post_type->labels->singular_name != "Service" && $post_type->labels->singular_name != "Posizione Lavorativa"){
-					$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 6" href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</li></a>';
+					$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 6" href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</a></li>';
 				}
 				if ($showCurrent == 1) {
 					$output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
@@ -129,7 +145,7 @@ function the_breadcrumb()
 			} else {
 				$cat = get_the_category();
 				$cat = $cat[0];
-				$cats = get_category_parents($cat, true, ' ' . $delimiter . ' ');
+				$cats = get_category_parents($cat->term_id, true, ' ' . $delimiter . ' ');
 				if ($showCurrent == 0) {
 					$cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
 				}
@@ -140,13 +156,13 @@ function the_breadcrumb()
 			}
 		} elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
 			$post_type = get_post_type_object(get_post_type());
-			$output .= $before . '<<'.$post_type->labels->singular_name . $after;
+			$output .= $before.$post_type->labels->singular_name . $after;
 		} elseif (is_attachment()) {
 			$parent = get_post($post->post_parent);
 			$cat = get_the_category($parent->ID);
 			$cat = $cat[0];
-			$output .= get_category_parents($cat, true, ' ' . $delimiter . ' ');
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 7" href="' . get_permalink($parent) . '">' . $parent->post_title . '</li></a>';
+			$output .= get_category_parents($cat->term_id, true, ' ' . $delimiter . ' ');
+			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 7" href="' . get_permalink($parent) . '">' . $parent->post_title . '</a></li>';
 			if ($showCurrent == 1) {
 				$output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 			}
@@ -159,7 +175,7 @@ function the_breadcrumb()
 			$breadcrumbs = array();
 			while ($parent_id) {
 				$page = get_post($parent_id);
-				$breadcrumbs[] = '<li class="nav__item"><a class="breadcrumb__list-link link-bold 8" href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</li></a>';
+				$breadcrumbs[] = '<li class="nav__item"><a class="breadcrumb__list-link link-bold 8" href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a></li>';
 				$parent_id  = $page->post_parent;
 			}
 			$breadcrumbs = array_reverse($breadcrumbs);
@@ -361,3 +377,80 @@ function icl_post_languages() {
   }
   return '';
 }
+
+/**
+ * Locate template part by relative paths
+ * @param array $relativePaths array of relative paths
+ * @return string the path to subtemplate if it exists
+ */
+function locate_template_part($relativePaths) {
+		switch(count($relativePaths)) {
+			case 5:
+				$paths = array(
+					'templates/partials/' .implode('/',$relativePaths).'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'/'.$relativePaths[2].'-'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'/'.$relativePaths[2].'-'.$relativePaths[3].'/'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'-'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'-'.$relativePaths[3].'/'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'/'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'/'.$relativePaths[3].'/'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'-'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'-'.$relativePaths[3].'/'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'/'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'/'.$relativePaths[3].'/'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'/'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'/'.$relativePaths[3].'/'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'-'.$relativePaths[3].'-'.$relativePaths[4].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'-'.$relativePaths[3].'/'.$relativePaths[4].'.php'
+				);
+			break;
+			case 4:
+				$paths = array(
+					'templates/partials/' .implode('/',$relativePaths).'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'/'.$relativePaths[2].'-'.$relativePaths[3].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'-'.$relativePaths[3].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'/'.$relativePaths[3].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'-'.$relativePaths[3].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'/'.$relativePaths[3].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'/'.$relativePaths[3].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'-'.$relativePaths[3].'.php'
+				);
+			break;
+			case 3:
+				$paths = array(
+					'templates/partials/' .implode('/',$relativePaths).'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'/'.$relativePaths[2].'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'-'.$relativePaths[2].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'/'.$relativePaths[2].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'-'.$relativePaths[2].'.php'
+				);
+			break;
+			case 2:
+				$paths = array(
+					'templates/partials/' .implode('/',$relativePaths).'.php',
+					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'.php',
+					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'.php'
+				);
+			break;								
+			default:
+				$paths = array(
+					'templates/partials/' .implode('/',$relativePaths).'.php',
+					'templates/partials/' .implode('-',$relativePaths).'.php',
+				);
+		}
+		$template = locate_template($paths);
+		return $template;
+}
+
+function acf_link_target($value, $post_id, $field) {
+  if($field["type"] == "link" && is_array($value)) {
+    if($value["target"] == '') {
+      $value["target"] = "_self";
+		}
+    if($value["url"] == '#') {
+      $value["url"] = "javascript:void();";
+		}
+	}
+    return $value;
+}
+add_filter( "acf/format_value", "acf_link_target", 10, 3);

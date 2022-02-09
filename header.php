@@ -57,6 +57,10 @@
 				$class = 'page--homepage';
 			} elseif(is_404()) {
 				$class = 'page--404';
+			} elseif(is_tax('settori-sedi') || is_tax('nazione-sedi')) {
+				$class = 'page--location-country';
+			} elseif(is_singular('sedi')) {
+				$class = 'page--location-detail';
 			} else {
 				$class = 'page--location';
 			}

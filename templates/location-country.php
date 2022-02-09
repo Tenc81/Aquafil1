@@ -1,31 +1,33 @@
-<!-- @@master = ./templates/layout.html { "baseHref": "/aquafil/", "pageClass": "page--location-country" } -->
-<!-- @@block = main-->
+<?php get_header(); ?>
 
 <main class="main">
+	<?php
+	get_template_part('templates/partials/shared/sticky'); //the sticky menu (if present)
 
-	<div class="breadcrumb">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-20 offset-sm-2">
-					<ul class="nav--breadcrumb">
-						<li class="nav__item"><a href="/aquafil/">Homepage</a></li>
-						<li class="nav__item"><span>Who we are</span></li>
-						<li class="nav__item"><a href="/aquafil/location.html">Locations</a></li>
-						<li class="nav__item"><span>Usa</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	get_template_part('templates/partials/shared/breadcrumb');
 
-	<!-- @@include ./templates/location-country/location-hero.html -->
-	<!-- @@include ./templates/location-country/horizontal-menu-01.html -->
-	<!-- @@include ./templates/location-country/horizontal-menu-02.html -->
-	<!-- @@include ./templates/location-country/location-proposition.html -->
-	<!-- @@include ./templates/location-country/content-slider.html -->
-	<!-- @@include ./templates/shared/certification.html { "certificationTitle": "Certifications" } -->
-	<!-- @@include ./templates/homepage/news-proposition.html -->
-	<!-- @@include ./templates/homepage/newsletter-proposition.html -->
+	get_template_part('templates/partials/location/location-hero');
 
+	get_template_part('templates/partials/location/horizontal-menu', '01');
+	
+	get_template_part('templates/partials/location/horizontal-menu', '02');
+	
+	get_template_part('templates/partials/location/location-proposition');
+
+	$fields = get_fields(get_queried_object());
+	foreach($fields['sezioni'] as $i=>$section) {
+		$partialPathRaw = explode('-', $section['acf_fc_layout']);
+		$template = locate_template_part($partialPathRaw);
+		if($template) {
+			$part = substr(strstr($template, 'templates'), 0, strpos(strstr($template, 'templates'), '.php'));
+			get_template_part($part, null, array("section" => $section, "index" => $i+1));
+		}
+	}
+	wp_reset_postdata();
+
+	get_template_part("templates/partials/homepage/newsletter-proposition");
+	?>
 </main>
-<!-- @@close-->
+
+<?php get_footer(); ?>
+
