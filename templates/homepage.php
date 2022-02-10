@@ -15,20 +15,14 @@ $fields = get_fields(get_the_ID());
 		return !empty($result) && $section[reset($result)];
 	});
 	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
-
-	foreach($fields['sezioni'] as $section){
+	
+	$fields = get_fields(get_queried_object());
+	foreach($fields['sezioni'] as $i=>$section) {
 		$partialPathRaw = explode('-', $section['acf_fc_layout']);
-		set_query_var( 'f', $section );
-		switch(count($partialPathRaw)){
-			case 2:
-				get_template_part( 'templates/partials/' . implode('/',$partialPathRaw) );
-			break;								
-			default:
-				$partialPath =	$partialPathRaw[0] . '/' . $partialPathRaw[1];
-				array_shift($partialPathRaw);
-				array_shift($partialPathRaw);
-				get_template_part( 'templates/partials/' . $partialPath, implode('-',$partialPathRaw) );
-			break;	
+		$template = locate_template_part($partialPathRaw);
+		if($template) {
+			$part = substr(strstr($template, 'templates'), 0, strpos(strstr($template, 'templates'), '.php'));
+			get_template_part($part, null, array("section" => $section, "index" => $i+1));
 		}
 	}
 	?>

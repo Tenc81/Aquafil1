@@ -24,7 +24,7 @@ get_header();
 	
 	get_template_part('templates/partials/location/location-proposition');
 
-	if(!is_page()) {
+	if(is_post_type_archive('sedi')) {
 		$sedipage = get_posts(array(
 			'post_type' => 'page',
 			'post_status' => 'publish',
@@ -38,6 +38,7 @@ get_header();
 			setup_postdata($post);
 		}
 	}
+
 	$fields = get_fields(get_the_ID());
 	foreach($fields['sezioni'] as $i=>$section) {
 		$partialPathRaw = explode('-', $section['acf_fc_layout']);
@@ -47,6 +48,7 @@ get_header();
 			get_template_part($part, null, array("section" => $section, "index" => $i+1));
 		}
 	}
+
 	wp_reset_postdata();
 
 	get_template_part("templates/partials/homepage/newsletter-proposition");

@@ -3,13 +3,7 @@
  * Template Name: News
  */
 get_header();
-$q = get_queried_object();
-$f = get_fields(get_the_ID());
-$cat = get_the_category(get_the_ID());
-$cids = [];
-foreach($cat as $c){
-	array_push($cids, $c->term_id);
-}
+
 $video = get_field('video');
 $rendervideo = [];
 
@@ -176,9 +170,7 @@ if (is_array($video) && count($video)> 0) {
 	</section>
 
 
-	<?php
-	set_query_var( 'cids', $cids );
-	get_template_part( 'templates/partials/homepage/news', 'proposition' ); ?>
+	<?php get_template_part( 'templates/partials/homepage/news', 'proposition' ); ?>
 </main>
 
 <?php get_footer(); ?>

@@ -20,7 +20,6 @@
 			get_template_part($part, null, array("section" => $section, "index" => $i+1));
 		}
 	}
-	wp_reset_postdata();
 
 	get_template_part("templates/partials/homepage/newsletter-proposition");
 	?>
