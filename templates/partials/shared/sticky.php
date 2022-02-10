@@ -1,3 +1,11 @@
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'all' => array()
+  ));
+if(!empty($_args['all'])) :
+?>
 <div class="sticky-menu">
 	<div class="container-fluid">
 		<div class="row">
@@ -10,9 +18,9 @@
 					-->
 					<ul class="nav--scroll-menu" scroll-menu>
 
-<?php foreach($all as $k => $v) {
-	echo setAnchorMenuItem($v);
- } ?>
+					<?php foreach($_args['all'] as $k => $v) {
+						echo setAnchorMenuItem($v);
+					 } ?>
 
 					</ul>
 				</div>
@@ -20,3 +28,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>

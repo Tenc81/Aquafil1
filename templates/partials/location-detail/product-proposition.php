@@ -34,9 +34,10 @@ if(!empty($_args['section'])) :
 								</div>
 								<!-- in page detail - 1 -->
 								<div class="card--side-modal" card-product-detail id="detail-'.($i+1).'">
+									'.(!empty($img) ? '
 									<div class="card--side-modal__picture">
-										'.(!empty($img) ? '<img loading="lazy" src="'.$img["url"].'" alt="'.$product['titolo_prodotto'].'" />' : '').'
-									</div>
+										<img loading="lazy" src="'.$img["url"].'" alt="'.$product['titolo_prodotto'].'" />
+									</div>' : '').'
 									<div class="card--side-modal__content">
 										<div class="card--side-modal__title">'.$product['titolo_prodotto'].'</div>
 										<div class="card--side-modal__abstract">'.$product['descrizione_estesa_prodotto'].'</div>

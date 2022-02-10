@@ -7,10 +7,10 @@
 		the_row();
 		switch(get_row_layout()) {
 			case "generic_hero":
-				get_template_part( 'templates/partials/shared/generic-hero', null, array("title" => get_sub_field("title"), "text" => get_sub_field("text")) );
+				get_template_part('templates/partials/shared/generic-hero', null, array("section" => array("title" => get_sub_field("title"), "text" => get_sub_field("text")), "index" => 0));
 				break;
 			case "generic_text":
-				get_template_part( 'templates/partials/shared/generic-text', null, array("text" => get_sub_field("text")) );
+				get_template_part('templates/partials/shared/generic-text', null, array("section" => array("text" => get_sub_field("text")), "index" => 1));
 				break;
 			default:;
 		}

@@ -8,10 +8,16 @@ $fields = get_fields(get_the_ID());
 <main class="main">
 
 
-	<?php 
-	set_query_var( 'all', $fields['sezioni'] );
-	get_template_part( 'templates/partials/shared/sticky' ); //the sticky menu (if present) ?>
-	<?php get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb ?>
+	<?php
+	$filtered = array_filter($fields['sezioni'], function($section) {
+		$keys = array_keys($section);
+		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
+		return !empty($result) && $section[reset($result)];
+	});
+	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
+
+	get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb
+	?>
 
 
 	<?php //print_r($fields);

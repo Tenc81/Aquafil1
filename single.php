@@ -30,7 +30,16 @@ if (is_array($video) && count($video)> 0) {
 
 ?>
 <main class="main">
-	<?php  get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb ?>
+	<?php 
+	$filtered = array_filter($fields['sezioni'], function($section) {
+		$keys = array_keys($section);
+		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
+		return !empty($result) && $section[reset($result)];
+	});
+	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
+
+	get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb
+	?>
 
 
 	<div class="news-detail-hero">

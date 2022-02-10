@@ -5,28 +5,17 @@
 get_header(); 
 
 $fields = get_fields(get_the_ID());
-
-/*[0] => Array
-(
-	[acf_fc_layout] => homepage-main-hero
-	[carousel] => 
-	[01_attiva_sticky_item] => 
-	[01_label_sticky_item] => 
-)*/
-
 ?>
 
-<!--<div class="wrapper">-->
 <main class="main">
-<?php
+	<?php
+	$filtered = array_filter($fields['sezioni'], function($section) {
+		$keys = array_keys($section);
+		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
+		return !empty($result) && $section[reset($result)];
+	});
+	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
 
-//set_query_var( 'all', $fields['sezioni'] );
-//get_template_part( 'templates/partials/shared/sticky' ); //the sticky menu (if present)
-//get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb ?>
-
-
-
-<?php //print_r($fields);
 	foreach($fields['sezioni'] as $section){
 		$partialPathRaw = explode('-', $section['acf_fc_layout']);
 		set_query_var( 'f', $section );
@@ -42,7 +31,7 @@ $fields = get_fields(get_the_ID());
 			break;	
 		}
 	}
-?>
+	?>
 </main>
 
 <?php get_footer(); ?>
