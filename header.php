@@ -61,6 +61,8 @@
 				$class = 'page--location-country';
 			} elseif(is_singular('sedi')) {
 				$class = 'page--location-detail';
+			} elseif(is_page_template("templates/sales.php")) {
+				$class = 'page--sales';
 			} else {
 				$class = 'page--location';
 			}

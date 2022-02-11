@@ -16,26 +16,34 @@ export class SalesModalComponent extends Component {
 			const id = data.id;
 			const productName = data.productName;
 			this.productName = productName ? productName : this.productName;
+			const area = data.area;
+			this.area = area ? area : this.area;
 			const countryOfInterestId = data.countryOfInterestId;
 			this.countryOfInterestId = countryOfInterestId ? countryOfInterestId : this.countryOfInterestId;
+			const agent = data.agent;
+			this.agent = agent;
 			console.log('SalesModalComponent.onInit', id, productName, countryOfInterestId);
 		}
 		this.error = null;
 		this.success = false;
+		this.response = '';
+		this.message = '';
 		const form = this.form = new FormGroup({
-			productName: new FormControl(this.productName),
+			productName: this.productName,
 			countryOfInterest: new FormControl(this.countryOfInterestId),
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
-			company: new FormControl(null, [Validators.RequiredValidator()]),
-			address: new FormControl(null, [Validators.RequiredValidator()]),
-			city: new FormControl(null, [Validators.RequiredValidator()]),
-			zip: new FormControl(null, [Validators.RequiredValidator()]),
+			company: new FormControl(null),
+			address: new FormControl(null),
+			city: new FormControl(null),
+			zip: new FormControl(null),
 			country: new FormControl(null, [Validators.RequiredValidator()]),
 			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
 			subject: new FormControl(null, [Validators.RequiredValidator()]),
 			message: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
+			agent: this.agent,
+			action: 'save_contact',
 			checkRequest: window.antiforgery,
 			checkField: '',
 		});
@@ -96,9 +104,13 @@ export class SalesModalComponent extends Component {
 			SalesService.submit$(form.value).pipe(
 				first(),
 			).subscribe(_ => {
+				if (_.success) {
+					GtmService.push({ 'event': "Sales", 'form_name': "Contatti" });
+				}
 				this.success = true;
 				form.reset();
-				GtmService.push({ 'event': "Sales", 'form_name': "Contatti" });
+				this.response = _.data["response"];
+				this.message = _.data["message"];
 			}, error => {
 				console.log('SalesModalComponent.error', error);
 				this.error = error;

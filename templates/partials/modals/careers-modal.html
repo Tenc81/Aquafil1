@@ -1,4 +1,4 @@
-<div class="contact-modal" contact-modal>
+<div careers-modal [countryId]="<!--@@var=countryId-->">
 	<div *if="!success">
 		<!--
 		<div class="contact-modal__head">
@@ -29,10 +29,10 @@
 							<div control-text [control]="controls.lastName" label="Last Name"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.email" label="Email"></div>
+							<div control-text [control]="controls.company" label="Company"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.company" label="Company"></div>
+							<div control-text [control]="controls.email" label="Email"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
 							<div control-text [control]="controls.address" label="Address"></div>
@@ -47,10 +47,7 @@
 							<div control-custom-select [control]="controls.country" label="Country"></div>
 						</div>
 						<div class="col-sm-21 offset-sm-1">
-							<div control-text [control]="controls.subject" label="Subject"></div>
-						</div>
-						<div class="col-sm-21 offset-sm-1">
-							<div control-textarea [control]="controls.message" label="Message"></div>
+							<div control-file [control]="controls.file" label="cv"></div>
 						</div>
 					</div>
 
@@ -58,7 +55,7 @@
 						<div class="col-sm-22 offset-sm-1">
 							<!--
 							<div class="form__controls">
-                                <input name="checkField" [formControl]="controls.checkField" value="" type="text" style="display:none !important;" />
+								<input name="checkField" [formControl]="controls.checkField" value="" type="text" style="display:none !important;" />
 								<div control-text [control]="controls.firstName" label="Nome"></div>
 								<div control-text [control]="controls.lastName" label="Cognome"></div>
 								<div control-text [control]="controls.email" label="Email"></div>

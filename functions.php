@@ -54,7 +54,9 @@ function aquafil_enqueue_scripts(){
   wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script('websolute_helper');
   wp_localize_script('websolute_helper', 'ws_vars', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
     'docsDir' => DOCS_DIR,
+		'post_id' => is_singular() ? get_the_ID() : 0
   ));
 }
 add_action('wp_enqueue_scripts', 'aquafil_enqueue_scripts', 11);
@@ -454,3 +456,210 @@ function acf_link_target($value, $post_id, $field) {
     return $value;
 }
 add_filter( "acf/format_value", "acf_link_target", 10, 3);
+
+
+/*
+ * Endpoints custom per rest API
+ */
+function custom_rest_route() {
+  register_rest_route('aquafil/v1', '/sales/', array( // /wp-json/aquafil/v1/sales?page=ID
+    'methods' => 'GET',
+    'callback' => 'getSalesData',
+    'permission_callback' => '__return_true',
+    'args' => array(
+			'page' => array(
+        'validate_callback' => function($param, $request, $key) {
+          return is_numeric($param) && get_post_type(intval($param)) == 'page';
+        }
+      )
+		)
+  ));
+}
+add_action('rest_api_init', 'custom_rest_route');
+
+
+/**
+ * Genera una struttura dati custom per i post
+ * @return array
+ */
+function getSalesData($request) {
+  if(!isset($_GET["page"])) 
+    return array(
+      "code" => "rest_no_route",
+      "message" => "page ID param is missing",
+      "data" => array("status" => 404)
+    );
+
+  $data = get_transient("agents-".$request->get_param("page"));
+  if($data) {
+      return $data;
+  }
+  $args = array(
+    'posts_per_page' => 1,
+		'post_type' => 'page',
+    'post_status' => 'publish',
+		'include' => $request->get_param("page"),
+		'meta_key' => '_wp_page_template',
+		'meta_value' => 'templates/sales.php',
+		'fields' => 'ids'
+	);
+  $post_ids = get_posts($args);
+  if(empty($post_ids)) {
+		return array();
+	}
+  $data = array("area" => array(), "country" => array("label" => __("Paese", "wstheme"), "options" => array()), "agent" => array());
+  foreach($post_ids as $post_id) {
+		$fields = get_fields($post_id);
+		foreach($fields['sezioni'] as $section) {
+			if($section['acf_fc_layout'] == 'sales-sales-list') {
+				$areas = get_terms(array(
+					'taxonomy' => 'settori-sedi',
+					'hide_empty' => false
+				));
+				foreach($areas as $area) {
+					array_push($data["area"], array(
+						"value" => $area->slug,
+						"label" => $area->name
+					));
+				}
+				$countries = get_field_object('field_6203ae839e81a');
+				foreach($countries['choices'] as $label => $country) {
+					array_push($data["country"]["options"], array(
+						"value" => $country,
+						"label" => $label
+					));
+					foreach($areas as $area) {
+						$agents = array_filter($section['agenti'], function($agent) use($country, $area) {
+							return $agent['nazione_agente'] == $country && $agent['settore_agente'] == $area;
+						});
+						if(!empty($agents)) {
+							foreach($agents as $agent) {
+								array_push($data["agent"], array(
+									"name" => $agent["nome_agente"],
+									"area" => array(
+										"value" => $agent["settore_agente"]->slug,
+										"label" => $agent["settore_agente"]->name
+									),
+									"address" => $agent["indirizzo_agente"],
+									"country" => array(
+										"value" => $country,
+										"label" => $label
+									),
+									"email" => $agent["email_agente"]
+								));
+							}
+						} else {
+							$agents = array_filter($section['agenti_default'], function($agent) use($area) {
+								return $agent['settore_agente'] == $area;
+							});
+							foreach($agents as $agent) {
+								array_push($data["agent"], array(
+									"name" => $agent["nome_agente"],
+									"area" => array(
+										"value" => $agent["settore_agente"]->slug,
+										"label" => $agent["settore_agente"]->name
+									),
+									"address" => $agent["indirizzo_agente"],
+									"country" => array(
+										"value" => $country,
+										"label" => $label
+									),
+									"email" => $agent["email_agente"]
+								));
+							}
+						}
+					}
+				}
+				break;
+			}
+    }
+	}
+  set_transient("agents-".$request->get_param("page"), $data);
+  return $data;
+}
+
+
+function on_save_delete_transient($post_ID, $post, $update) {
+	if($post->post_type=='page') {
+    global $wpdb;
+    $query = "
+			SELECT option_name
+      FROM  ".$wpdb->options."
+      WHERE option_name = '_transient_agent-'".$post_ID.";";
+    $result = $wpdb->get_col($query);
+    foreach($result as $transient) {
+      delete_transient(str_replace('_transient_', '', $transient));
+    }
+	}
+}
+add_action('save_post', 'on_save_delete_transient', 10, 3);
+
+
+function frm_create_custom_contact() {
+	if(empty($_POST)) {
+    wp_send_json_error(array("result"=>__("C'è stato un problema durante la registrazione della richiesta", "wstheme")));
+	}
+	$defaults = array(
+		'firstName' => '',
+		'lastName' => '',
+		'countryOfInterest' => '',
+		'agent' => '',
+		'company' => '',
+		'address' => '',
+		'city' => '',
+		'zip' => '',
+		'country' => '',
+		'email' => '',
+		'subject' => '',
+		'message' => ''
+	);
+
+	$params = wp_parse_args($_POST, $defaults);
+	$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+	$form = WPCF7_ContactForm::get_instance($id);
+	$result = $form->submit($params);
+	if($result['status'] == "mail_failed") {
+		//$flamingo_contact = Flamingo_Contact::add(array(
+		//  'email' => $params['email'],
+		//  'name' => $params['firstName'].' '.$params['lastName'],
+		//  'last_contacted' => date('Y-m-d H:i:sP'),
+		//));
+		wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+	} else {
+		wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+	}
+  wp_die();
+}
+add_action('wp_ajax_save_contact', 'frm_create_custom_contact');
+add_action('wp_ajax_nopriv_save_contact', 'frm_create_custom_contact');
+
+
+function set_agent_recipient($components, $form, $mailer) {
+	$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+	if($form->id == $id && sanitize_email($_POST["agent"])) {
+		$components['recipient'] = $_POST["agent"];
+	}
+	return $components;
+}
+add_filter( 'wpcf7_mail_components', 'set_agent_recipient', 10, 3);
+
+
+function wpcf7_save_address_book($value, $field, $form) {
+	$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+	if($form->id == $id) {
+		switch($value) {
+			case "[your-email]":
+				$value = $_POST["email"];
+				break;
+			case "[your-name]":
+				$value = $_POST["firstName"].' '.$_POST["lastName"];
+				break;
+			case "[your-subject]":
+				$value = $_POST["subject"];
+				break;
+			default:;
+		}
+	}
+	return $value;
+}
+add_filter('wpcf7_flamingo_get_value', 'wpcf7_save_address_book', 10, 3);

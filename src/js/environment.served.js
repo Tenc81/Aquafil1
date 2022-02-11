@@ -10,8 +10,8 @@ export const environmentServed = {
 	languages: ['it', 'en', 'de', 'ch'],
 	defaultLanguage: 'it',
 	currentLanguage: 'it',
-	api: '/api',
-	assets: '/Client/docs/',
+	api: window.location.protocol + '//' + window.location.host,
+	assets: ws_vars.docsDir,
 	slug: {
 		configureProduct: `/it/it/products-configure`,
 		cart: `/it/it/cart`,
@@ -19,12 +19,12 @@ export const environmentServed = {
 	},
 	template: {
 		modal: {
-			genericModal: '/template/modals/generic-modal.cshtml',
-			sideModal: '/template/modals/side-modal.cshtml',
-			contactModal: '/template/modals/contact-modal.cshtml',
-			salesModal: '/template/modals/sales-modal.cshtml',
-			galleryModal: '/template/modals/gallery-modal.cshtml',
-			userModal: '/template/modals/user-modal.cshtml',
+			genericModal: ws_vars.docsDir + '../templates/partials/modals/generic-modal.html',
+			sideModal: ws_vars.docsDir + '../templates/partials/modals/side-modal.html',
+			contactModal: ws_vars.docsDir + '../templates/partials/modals/contact-modal.html',
+			salesModal: ws_vars.docsDir + '../templates/partials/modals/sales-modal.html',
+			galleryModal: ws_vars.docsDir + '../templates/partials/modals/gallery-modal.html',
+			userModal: ws_vars.docsDir + '../templates/partials/modals/user-modal.html'
 		}
 	},
 	facebook: {

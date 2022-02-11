@@ -427,8 +427,8 @@ ClickOutsideDirective.meta = {
   languages: ['it', 'en', 'de', 'ch'],
   defaultLanguage: 'it',
   currentLanguage: 'it',
-  api: '/api',
-  assets: '/Client/docs/',
+  api: window.location.protocol + '//' + window.location.host,
+  assets: ws_vars.docsDir,
   slug: {
     configureProduct: "/it/it/products-configure",
     cart: "/it/it/cart",
@@ -436,12 +436,12 @@ ClickOutsideDirective.meta = {
   },
   template: {
     modal: {
-      genericModal: '/template/modals/generic-modal.cshtml',
-      sideModal: '/template/modals/side-modal.cshtml',
-      contactModal: '/template/modals/contact-modal.cshtml',
-      salesModal: '/template/modals/sales-modal.cshtml',
-      galleryModal: '/template/modals/gallery-modal.cshtml',
-      userModal: '/template/modals/user-modal.cshtml'
+      genericModal: ws_vars.docsDir + '../templates/partials/modals/generic-modal.html',
+      sideModal: ws_vars.docsDir + '../templates/partials/modals/side-modal.html',
+      contactModal: ws_vars.docsDir + '../templates/partials/modals/contact-modal.html',
+      salesModal: ws_vars.docsDir + '../templates/partials/modals/sales-modal.html',
+      galleryModal: ws_vars.docsDir + '../templates/partials/modals/gallery-modal.html',
+      userModal: ws_vars.docsDir + '../templates/partials/modals/user-modal.html'
     }
   },
   facebook: {
@@ -491,12 +491,12 @@ ClickOutsideDirective.meta = {
   },
   template: {
     modal: {
-      genericModal: ws_vars.docsDir + '../templates/partials/modals/generic-modal.html',
-      sideModal: ws_vars.docsDir + '../templates/partials/modals/side-modal.html',
-      contactModal: ws_vars.docsDir + '../templates/partials/modals/contact-modal.html',
-      salesModal: ws_vars.docsDir + '../templates/partials/modals/sales-modal.html',
-      galleryModal: ws_vars.docsDir + '../templates/partials/modals/gallery-modal.html',
-      userModal: ws_vars.docsDir + '../templates/partials/modals/user-modal.html'
+      genericModal: '/aquafil/partials/modals/generic-modal.html',
+      sideModal: '/aquafil/partials/modals/side-modal.html',
+      contactModal: '/aquafil/partials/modals/contact-modal.html',
+      salesModal: '/aquafil/partials/modals/sales-modal.html',
+      galleryModal: '/aquafil/partials/modals/gallery-modal.html',
+      userModal: '/aquafil/partials/modals/user-modal.html'
     }
   },
   facebook: {
@@ -533,8 +533,8 @@ var PARAMS = NODE ? {
 var DEBUG =  PARAMS.get('debug') != null;
 var BASE_HREF = NODE ? null : document.querySelector('base').getAttribute('href');
 var HEROKU = NODE ? false : window && window.location.host.indexOf('herokuapp') !== -1;
-var STATIC = NODE ? false : HEROKU || window && (window.location.port === '48481' || window.location.port === '5000' || window.location.port === '6443' || window.location.host === 'actarian.github.io');
-var DEVELOPMENT = NODE ? false : window && ['localhost', '127.0.0.1', '0.0.0.0'].indexOf(window.location.host.split(':')[0]) !== -1;
+var STATIC = NODE ? false : BASE_HREF.indexOf('wp-content') === -1 && BASE_HREF.indexOf('contrib') === -1;
+var DEVELOPMENT = NODE ? false : BASE_HREF.indexOf('wp-content') === -1 && BASE_HREF.indexOf('contrib') === -1;
 var PRODUCTION = !DEVELOPMENT;
 var ENV = {
   STATIC: STATIC,
@@ -618,7 +618,7 @@ var defaultOptions = {
     drag_and_drop_images: 'Drag And Drop your images here'
   }
 };
-var environmentOptions = window.STATIC ? environmentStatic : environmentServed;
+var environmentOptions = ENV.STATIC ? environmentStatic : environmentServed;
 var options = Object.assign(defaultOptions, environmentOptions);
 options = Utils.merge(options, window.environment);
 var environment = new Environment(options); // console.log('environment', environment);
@@ -3727,6 +3727,10 @@ CardProductDetailComponent.meta = {
   HttpService.http$ = function http$(method, url, data, format, userPass, options) {
     var _this = this;
 
+    if (format === void 0) {
+      format = 'application/json';
+    }
+
     if (userPass === void 0) {
       userPass = null;
     }
@@ -3736,16 +3740,25 @@ CardProductDetailComponent.meta = {
     }
 
     var methods = ['POST', 'PUT', 'PATCH'];
-    var response_ = null; // url = this.getUrl(url, format);
+    var response_ = null;
+    var _body = undefined;
+
+    if (data && methods.indexOf(method) !== -1) {
+      if (format == 'application/json') {
+        _body = JSON.stringify(data);
+      } else if (format == 'application/x-www-form-urlencoded') {
+        _body = jQuery.param(data);
+      }
+    }
 
     options = Object.assign({
       method: method,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': format
       }
     }, options, {
-      body: methods.indexOf(method) !== -1 ? JSON.stringify(data) : undefined
+      body: _body
     });
 
     if (userPass) {
@@ -4090,26 +4103,26 @@ _defineProperty(LanguageService, "selectedLanguage", LanguageService.defaultLang
   return ApiService;
 }(HttpService);
 
-_defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);var ContactsService = /*#__PURE__*/function () {
-  function ContactsService() {}
+_defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);var SalesService = /*#__PURE__*/function () {
+  function SalesService() {}
 
-  ContactsService.data$ = function data$() {
+  SalesService.data$ = function data$() {
     if (environment.flags.production) {
-      return ApiService.get$('/contacts/data');
+      return ApiService.get$('/wp-json/aquafil/v1/sales?page=' + ws_vars.post_id);
     } else {
       return ApiService.get$('/contacts/data.json');
     }
   };
 
-  ContactsService.submit$ = function submit$(payload) {
+  SalesService.submit$ = function submit$(payload) {
     if (environment.flags.production) {
-      return ApiService.post$('/contacts/submit', payload);
+      return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded'); //return ApiService.post$('/wp-admin/admin-ajax.php', payload);
     } else {
       return ApiService.get$('/contacts/submit.json');
     }
   };
 
-  return ContactsService;
+  return SalesService;
 }();var CardSaleDetailComponent = /*#__PURE__*/function (_Component) {
   _inheritsLoose(CardSaleDetailComponent, _Component);
 
@@ -4122,11 +4135,19 @@ _defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);v
   _proto.onInit = function onInit() {
     var _this = this;
 
+    this.data = null;
+    this.agent = null;
     var form = this.form = new rxcompForm.FormGroup({
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()])
     });
     var controls = this.controls = form.controls;
-    form.changes$.pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (_) {
+    form.changes$.pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (values) {
+      if (_this.data) {
+        _this.agent = _this.data.agent.find(function (x) {
+          return x.country.value == values.country && x.area.label == _this.area;
+        });
+      }
+
       _this.pushChanges();
     });
     this.load$().pipe(operators.first()).subscribe();
@@ -4135,7 +4156,8 @@ _defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);v
   _proto.load$ = function load$() {
     var _this2 = this;
 
-    return ContactsService.data$().pipe(operators.tap(function (data) {
+    return SalesService.data$().pipe(operators.tap(function (data) {
+      _this2.data = data;
       var controls = _this2.controls;
       controls.country.options = FormService.toSelectOptions(data.country.options);
 
@@ -4144,15 +4166,19 @@ _defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);v
   };
 
   _proto.onRequestInfo = function onRequestInfo() {
+    var _this3 = this;
+
     if (this.form.valid) {
       ModalService.open$({
         src: environment.template.modal.salesModal,
         data: {
-          id: this.id,
           productName: this.productName,
-          countryOfInterestId: this.form.value.country
+          countryOfInterestId: this.form.value.country,
+          agent: this.agent.email
         }
       }).pipe(operators.first()).subscribe(function (event) {
+        _this3.data = null;
+        _this3.agent = null;
         console.log('CardSaleDetailComponent.open$', event);
       });
     }
@@ -4162,7 +4188,7 @@ _defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);v
 }(rxcomp.Component);
 CardSaleDetailComponent.meta = {
   selector: '[card-sale-detail]',
-  inputs: ['id', 'productName']
+  inputs: ['id', 'productName', 'area']
 };function push_(event) {
   var dataLayer = window.dataLayer || [];
   dataLayer.push(event);
@@ -4321,7 +4347,27 @@ var GtmService = /*#__PURE__*/function () {
 CareersModalComponent.meta = {
   selector: '[careers-modal]',
   inputs: ['countryId']
-};var ContactModalComponent = /*#__PURE__*/function (_Component) {
+};var ContactsService = /*#__PURE__*/function () {
+  function ContactsService() {}
+
+  ContactsService.data$ = function data$() {
+    if (environment.flags.production) {
+      return ApiService.get$('/contacts/data');
+    } else {
+      return ApiService.get$('/contacts/data.json');
+    }
+  };
+
+  ContactsService.submit$ = function submit$(payload) {
+    if (environment.flags.production) {
+      return ApiService.post$('/contacts/submit', payload);
+    } else {
+      return ApiService.get$('/contacts/submit.json');
+    }
+  };
+
+  return ContactsService;
+}();var ContactModalComponent = /*#__PURE__*/function (_Component) {
   _inheritsLoose(ContactModalComponent, _Component);
 
   function ContactModalComponent() {
@@ -4603,27 +4649,7 @@ OpenModallyDirective.meta = {
 ProductRequestComponent.meta = {
   selector: '[product-request]',
   inputs: ['productName']
-};var SalesService = /*#__PURE__*/function () {
-  function SalesService() {}
-
-  SalesService.data$ = function data$() {
-    if (environment.flags.production) {
-      return ApiService.get$('/sales/data');
-    } else {
-      return ApiService.get$('/contacts/data.json');
-    }
-  };
-
-  SalesService.submit$ = function submit$(payload) {
-    if (environment.flags.production) {
-      return ApiService.post$('/sales/submit', payload);
-    } else {
-      return ApiService.get$('/contacts/submit.json');
-    }
-  };
-
-  return SalesService;
-}();var SalesModalComponent = /*#__PURE__*/function (_Component) {
+};var SalesModalComponent = /*#__PURE__*/function (_Component) {
   _inheritsLoose(SalesModalComponent, _Component);
 
   function SalesModalComponent() {
@@ -4643,27 +4669,35 @@ ProductRequestComponent.meta = {
       var id = data.id;
       var productName = data.productName;
       this.productName = productName ? productName : this.productName;
+      var area = data.area;
+      this.area = area ? area : this.area;
       var countryOfInterestId = data.countryOfInterestId;
       this.countryOfInterestId = countryOfInterestId ? countryOfInterestId : this.countryOfInterestId;
+      var agent = data.agent;
+      this.agent = agent;
       console.log('SalesModalComponent.onInit', id, productName, countryOfInterestId);
     }
 
     this.error = null;
     this.success = false;
+    this.response = '';
+    this.message = '';
     var form = this.form = new rxcompForm.FormGroup({
-      productName: new rxcompForm.FormControl(this.productName),
+      productName: this.productName,
       countryOfInterest: new rxcompForm.FormControl(this.countryOfInterestId),
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      company: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      address: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      city: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      zip: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      company: new rxcompForm.FormControl(null),
+      address: new rxcompForm.FormControl(null),
+      city: new rxcompForm.FormControl(null),
+      zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
       subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
+      agent: this.agent,
+      action: 'save_contact',
       checkRequest: window.antiforgery,
       checkField: ''
     });
@@ -4721,12 +4755,17 @@ ProductRequestComponent.meta = {
       // console.log('SalesModalComponent.onSubmit', form.value);
       form.submitted = true;
       SalesService.submit$(form.value).pipe(operators.first()).subscribe(function (_) {
+        if (_.success) {
+          GtmService.push({
+            'event': "Sales",
+            'form_name': "Contatti"
+          });
+        }
+
         _this3.success = true;
         form.reset();
-        GtmService.push({
-          'event': "Sales",
-          'form_name': "Contatti"
-        });
+        _this3.response = _.data["response"];
+        _this3.message = _.data["message"];
       }, function (error) {
         console.log('SalesModalComponent.error', error);
         _this3.error = error;

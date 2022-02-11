@@ -7,8 +7,8 @@ export const PARAMS = NODE ? { get: () => { } } : new URLSearchParams(window.loc
 export const DEBUG = false || (PARAMS.get('debug') != null);
 export const BASE_HREF = NODE ? null : document.querySelector('base').getAttribute('href');
 export const HEROKU = NODE ? false : (window && window.location.host.indexOf('herokuapp') !== -1);
-export const STATIC = NODE ? false : (HEROKU || (window && (window.location.port === '48481' || window.location.port === '5000' || window.location.port === '6443' || window.location.host === 'actarian.github.io')));
-export const DEVELOPMENT = NODE ? false : (window && ['localhost', '127.0.0.1', '0.0.0.0'].indexOf(window.location.host.split(':')[0]) !== -1);
+export const STATIC = NODE ? false : BASE_HREF.indexOf('wp-content') === -1 && BASE_HREF.indexOf('contrib') === -1;
+export const DEVELOPMENT = NODE ? false : BASE_HREF.indexOf('wp-content') === -1 && BASE_HREF.indexOf('contrib') === -1;
 export const PRODUCTION = !DEVELOPMENT;
 export const ENV = {
 	STATIC,
@@ -88,7 +88,7 @@ const defaultOptions = {
 	}
 };
 
-const environmentOptions = window.STATIC ? environmentStatic : environmentServed;
+const environmentOptions = ENV.STATIC ? environmentStatic : environmentServed;
 
 let options = Object.assign(defaultOptions, environmentOptions);
 options = Utils.merge(options, window.environment);
