@@ -1,4 +1,13 @@
-<div class="title-text negative borders"<?=setAnchor($f);?>>
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
+<div class="title-text negative borders"<?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3 title-text__divline"></div>
@@ -6,12 +15,12 @@
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 				<div class="title-text__content" appear>
-					<div class="title-text__title"><?=$f['internal_multicol_two_titolo']?></div>
-					<div class="title-text__abstract"><?=$f['internal_multicol_two_abstract']?></div>
+					<div class="title-text__title"><?= $_args['section']['internal_multicol_two_titolo']?></div>
+					<div class="title-text__abstract"><?= $_args['section']['internal_multicol_two_abstract']?></div>
 				</div>
 			</div>
 
-			<?php foreach($f['internal_multicol_two_cta'] as $k => $cta){ ?>
+			<?php foreach($_args['section']['internal_multicol_two_cta'] as $k => $cta){ ?>
 				<div class="col-sm-9 offset-sm-2 col-md-8 <?=(is_int($k/2) ? 'offset-md-3' : '')?>">
 					<div class="title-text__content" appear>
 					
@@ -33,3 +42,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>

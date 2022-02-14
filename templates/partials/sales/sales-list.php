@@ -61,4 +61,3 @@ if(!empty($_args['section'])) :
 	</div>
 </div>
 <?php endif; ?>
-<?= do_shortcode('[contact-form-7 id="3983" title="Contact-it"]'); ?>

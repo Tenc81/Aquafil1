@@ -1,7 +1,16 @@
-	<div class="columns borders" <?=setAnchor($f);?>>
+	<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
+<div class="columns borders" <?=setAnchor($_args['section']);?>>
 		<div class="container-fluid">
 			<div class="row">
-				<?php foreach($f['internal_multicol_three_cta'] as $k => $cta) {?>
+				<?php foreach($_args['section']['internal_multicol_three_cta'] as $k => $cta) {?>
 					<?php if($cta['multicol_three_stile_cta'] == 'button') { ?>
 						<div class="col-sm-6 offset-sm-1 col-md-4 offset-md-3 columns__column">
 							<div class="card--numbers__title"><?=$cta['multicol_three_titolo_cta'] ?></div>
@@ -20,3 +29,4 @@
 			</div>
 		</div>
 	</div>
+<?php endif; ?>

@@ -1,3 +1,12 @@
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
 <!-- PRODUCT PROPOSITION -->
 <div class="area-proposition">
 	<div class="area-proposition__head">
@@ -5,9 +14,9 @@
 			<div class="row">
 				<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">
 					<div class="area-proposition__content" appear>
-						<div class="area-proposition__category"><?=$f['area_abstract']?></div>
-						<div class="area-proposition__title"><?=$f['area_titolo']?></div>
-						<div class="area-proposition__abstract"><?=$f['area_sottotitolo']?></div>
+						<div class="area-proposition__category"><?= $_args['section']['area_abstract']?></div>
+						<div class="area-proposition__title"><?= $_args['section']['area_titolo']?></div>
+						<div class="area-proposition__abstract"><?= $_args['section']['area_sottotitolo']?></div>
 					</div>
 				</div>
 			</div>
@@ -15,7 +24,7 @@
 	</div>
 	<div class="container-fluid">
 		<div class="listing--area">
-		<?php foreach($f['area_cards'] as $s) { ?>
+		<?php foreach($_args['section']['area_cards'] as $s) { ?>
 			<div class="listing__item" appear>
 				<div class="card--area" scroll scrollSpeed="2">
 					<div class="card--area__title"><?=$s['area_cards_titolo']?></div>
@@ -32,3 +41,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>

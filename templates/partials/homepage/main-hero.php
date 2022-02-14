@@ -1,10 +1,19 @@
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
 <div class="main-hero">
 	<!-- swiper -->
 	<div class="swiper-container" swiper-main>
 		<div class="swiper-wrapper">
 
 		<!-- slide -->
-		<?php foreach($f['carousel'] as $s) { ?>
+		<?php foreach($_args['section']['carousel'] as $s) { ?>
 			<div class="swiper-slide">
 				<div class="card--main-hero">
 					<div class="card--main-hero__background">
@@ -41,3 +50,4 @@
 	</div>
 	<div class="scroll-proposition"><span>Scroll</span></div>
 </div>
+<?php endif; ?>

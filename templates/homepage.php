@@ -3,8 +3,6 @@
  * Template Name: Homepage
  */
 get_header(); 
-
-$fields = get_fields(get_the_ID());
 ?>
 
 <main class="main">

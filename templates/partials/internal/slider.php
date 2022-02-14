@@ -1,4 +1,13 @@
-<div class="content-slider borders negative" <?=setAnchor($f);?>>
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
+<div class="content-slider borders negative" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
@@ -7,7 +16,7 @@
 					<div class="content-slider__index"><span class="page" [innerHTML]="slideIndex"></span> of <span [innerHTML]="slideTotal"></span></div>
 					<div class="swiper-wrapper">
 
-						<?php foreach($f['internal_slides'] as $k => $slide) { ?>
+						<?php foreach($_args['section']['internal_slides'] as $k => $slide) { ?>
 
 							<!-- slide -->
 							<div class="swiper-slide">
@@ -58,3 +67,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>

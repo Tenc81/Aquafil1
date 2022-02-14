@@ -1,17 +1,26 @@
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
 <!-- SUSTAINABILITY PROPOSITION -->
 <div class="sustainability-proposition">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">
 				<div class="sustainability-proposition__content" appear>
-					<div class="sustainability-proposition__category"><?=$f['sustainability_abstract']?></div>
-					<div class="sustainability-proposition__title"><?=$f['sustainability_titolo']?></div>
-					<div class="sustainability-proposition__abstract"><?=$f['sustainability_sottotitolo']?></div>
+					<div class="sustainability-proposition__category"><?= $_args['section']['sustainability_abstract']?></div>
+					<div class="sustainability-proposition__title"><?= $_args['section']['sustainability_titolo']?></div>
+					<div class="sustainability-proposition__abstract"><?= $_args['section']['sustainability_sottotitolo']?></div>
 				</div>
 			</div>
 		</div>
 		<div class="listing--sustainability">
-			<?php foreach($f['sustainability_cards'] as $s) { ?>
+			<?php foreach($_args['section']['sustainability_cards'] as $s) { ?>
 				<div class="listing__item">
 					<a href="<?=$s['sustainability_cards_link_cta']?>" target="<?=$s['sustainability_cards_target_cta']?>" class="card--sustainability">
 						<div class="card--sustainability__picture">
@@ -30,3 +39,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>
