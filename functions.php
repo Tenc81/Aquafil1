@@ -56,7 +56,21 @@ function aquafil_enqueue_scripts(){
   wp_localize_script('websolute_helper', 'ws_vars', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
     'docsDir' => DOCS_DIR,
-		'post_id' => is_singular() ? get_the_ID() : 0
+		'post_id' => is_singular() ? get_the_ID() : 0,
+		'labels' => array(
+			'nome' => __("Nome", "wstheme"),
+			'cognome' => __("Cognome", "wstheme"),
+			'azienda' => __("Azienda", "wstheme"),
+			'indirizzo' => __("Indirizzo", "wstheme"),
+			'citta' => __("Città", "wstheme"),
+			'cap' => __("CAP", "wstheme"),
+			'nazione' => __("Nazione", "wstheme"),
+			'soggetto' => __("Soggetto", "wstheme"),
+			'oggetto' => __("Oggetto", "wstheme"),
+			'privacy' => __("Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato", "wstheme"),
+			'invia' => __("Invia", "wstheme"),
+			'inviato' => __("Inviato!", "wstheme")
+		)
   ));
 }
 add_action('wp_enqueue_scripts', 'aquafil_enqueue_scripts', 11);
@@ -474,14 +488,22 @@ function custom_rest_route() {
       )
 		)
   ));
+  register_rest_route('aquafil/v1', '/careers/', array(
+    'methods' => 'GET',
+    'callback' => 'getCareesData',
+    'permission_callback' => '__return_true',
+    'args' => array(
+			'page' => array(
+        'validate_callback' => function($param, $request, $key) {
+          return is_numeric($param) && get_post_type(intval($param)) == 'page';
+        }
+      )
+		)
+  ));
 }
 add_action('rest_api_init', 'custom_rest_route');
 
 
-/**
- * Genera una struttura dati custom per i post
- * @return array
- */
 function getSalesData($request) {
   if(!isset($_GET["page"])) 
     return array(
@@ -579,13 +601,65 @@ function getSalesData($request) {
 }
 
 
+function getCareesData($request) {
+  if(!isset($_GET["page"])) 
+    return array(
+      "code" => "rest_no_route",
+      "message" => "page ID param is missing",
+      "data" => array("status" => 404)
+    );
+
+  $data = get_transient("careers-".$request->get_param("page"));
+  if($data) {
+      return $data;
+  }
+  $args = array(
+    'posts_per_page' => 1,
+		'post_type' => 'page',
+    'post_status' => 'publish',
+		'include' => $request->get_param("page"),
+		'fields' => 'ids'
+	);
+  $post_ids = get_posts($args);
+  if(empty($post_ids)) {
+		return array();
+	}
+	$data = array("country" => array("label" => __("Paese", "wstheme"), "options" => array()), "career" => array());
+  foreach($post_ids as $post_id) {
+		$fields = get_fields($post_id);
+		foreach($fields['sezioni'] as $section) {
+			if($section['acf_fc_layout'] == 'careers-careers-list') {
+				$countries = get_field_object('field_620a16c4ed727');
+				foreach($countries['choices'] as $label => $country) {
+					array_push($data["country"]["options"], array(
+						"value" => $country,
+						"label" => $label
+					));
+				}
+				foreach($section['candidature'] as $career) {
+					array_push($data["career"], array(
+						"country" => array(
+							"value" => $career['nazione_candidatura'],
+							"label" => $career['nazione_candidatura']
+						)
+					));
+				}
+				break;
+			}
+		}
+	}
+  set_transient("careers-".$request->get_param("page"), $data);
+  return $data;
+}
+
+
 function on_save_delete_transient($post_ID, $post, $update) {
 	if($post->post_type=='page') {
     global $wpdb;
     $query = "
 			SELECT option_name
       FROM  ".$wpdb->options."
-      WHERE option_name = '_transient_agent-'".$post_ID.";";
+      WHERE option_name = '_transient_agents-'".$post_ID." OR option_name = '_transient_careers-'".$post_ID.";";
     $result = $wpdb->get_col($query);
     foreach($result as $transient) {
       delete_transient(str_replace('_transient_', '', $transient));
@@ -599,39 +673,97 @@ function frm_create_custom_contact() {
 	if(empty($_POST)) {
     wp_send_json_error(array("result"=>__("C'è stato un problema durante la registrazione della richiesta", "wstheme")));
 	}
-	$defaults = array(
-		'firstName' => '',
-		'lastName' => '',
-		'countryOfInterest' => '',
-		'agent' => '',
-		'company' => '',
-		'address' => '',
-		'city' => '',
-		'zip' => '',
-		'country' => '',
-		'email' => '',
-		'subject' => '',
-		'message' => ''
-	);
+	if(strpos(current_filter(), "save_contact") !== false) {
+		$defaults = array(
+			'firstName' => '',
+			'lastName' => '',
+			'countryOfInterest' => '',
+			'agent' => '',
+			'company' => '',
+			'address' => '',
+			'city' => '',
+			'zip' => '',
+			'country' => '',
+			'email' => '',
+			'subject' => '',
+			'message' => ''
+		);
 
-	$params = wp_parse_args($_POST, $defaults);
-	$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-	$form = WPCF7_ContactForm::get_instance($id);
-	$result = $form->submit($params);
-	if($result['status'] == "mail_failed") {
-		//$flamingo_contact = Flamingo_Contact::add(array(
-		//  'email' => $params['email'],
-		//  'name' => $params['firstName'].' '.$params['lastName'],
-		//  'last_contacted' => date('Y-m-d H:i:sP'),
-		//));
-		wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
-	} else {
-		wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+		$params = wp_parse_args($_POST, $defaults);
+		$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+		$form = WPCF7_ContactForm::get_instance($id);
+		$result = $form->submit($params);
+		if($result['status'] == "mail_failed") {
+			//$flamingo_contact = Flamingo_Contact::add(array(
+			//  'email' => $params['email'],
+			//  'name' => $params['firstName'].' '.$params['lastName'],
+			//  'last_contacted' => date('Y-m-d H:i:sP'),
+			//));
+			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+		} else {
+			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+		}
+	} elseif(strpos(current_filter(), "save_career") !== false) {
+		$defaults = array(
+			'firstName' => '',
+			'lastName' => '',
+			'countryOfInterest' => '',
+			'curriculum' => '',
+			'company' => '',
+			'address' => '',
+			'city' => '',
+			'zip' => '',
+			'country' => '',
+			'email' => ''
+		);
+
+		$params = wp_parse_args($_POST, $defaults);
+
+		$upload_dir = wp_upload_dir();
+		if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+			$file = $upload_dir['path'] . '/' . $_POST['file']['name'];
+		}
+		else {
+			$file = $upload_dir['basedir'] . '/' . $_POST['file']['name'];
+		}
+		$content = explode(',', $_POST['file']['content']);
+		$content = end($content);
+		file_put_contents(
+			$file,
+			base64_decode($content)
+		);
+		
+		$attachment = array(
+			'post_mime_type' => $_POST['file']['type'],
+			'post_title' => sanitize_file_name($_POST['file']['name']),
+			'post_content' => '',
+			'post_status' => 'inherit'
+		);
+
+		$attach_id = wp_insert_attachment($attachment, $file);
+		$attach_data = wp_generate_attachment_metadata($attach_id, $file);
+		wp_update_attachment_metadata($attach_id, $attach_data);
+		if ($attach_id) {
+			file_put_contents(ABSPATH.'error_log.txt', get_the_date("d F Y H:i:s") .PHP_EOL. $attach_id.PHP_EOL. print_r($attachment, true).PHP_EOL , FILE_APPEND | LOCK_EX);
+			$_POST['curriculum'] = $upload_dir["url"].'/'.$_POST['file']['name'];
+			$id = wpml_object_id_filter(22509, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+			$form = WPCF7_ContactForm::get_instance($id);
+			$result = $form->submit();
+			if($result['status'] == "mail_failed") {
+				wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+			} else {
+				wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+			}
+		} else {
+			wp_send_json_error(array('message' => __("Errore durante il salvataggio del file", "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
+		}
 	}
   wp_die();
 }
 add_action('wp_ajax_save_contact', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_contact', 'frm_create_custom_contact');
+add_action('wp_ajax_save_career', 'frm_create_custom_contact');
+add_action('wp_ajax_nopriv_save_career', 'frm_create_custom_contact');
 
 
 function set_agent_recipient($components, $form, $mailer) {
@@ -645,8 +777,8 @@ add_filter( 'wpcf7_mail_components', 'set_agent_recipient', 10, 3);
 
 
 function wpcf7_save_address_book($value, $field, $form) {
-	$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-	if($form->id == $id) {
+	//$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+	//if($form->id == $id) {
 		switch($value) {
 			case "[your-email]":
 				$value = $_POST["email"];
@@ -655,11 +787,11 @@ function wpcf7_save_address_book($value, $field, $form) {
 				$value = $_POST["firstName"].' '.$_POST["lastName"];
 				break;
 			case "[your-subject]":
-				$value = $_POST["subject"];
+				$value = isset($_POST["subject"]) ? $_POST["subject"] : __($form->title, "wstheme");
 				break;
 			default:;
 		}
-	}
+	//}
 	return $value;
 }
 add_filter('wpcf7_flamingo_get_value', 'wpcf7_save_address_book', 10, 3);

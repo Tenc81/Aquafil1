@@ -10,27 +10,23 @@ import { CareersService } from './careers.service';
 export class CareersModalComponent extends Component {
 
 	onInit() {
-		const { parentInstance } = getContext(this);
-		if (parentInstance instanceof ModalOutletComponent) {
-			const data = parentInstance.modal.data;
-			const id = data.id;
-			const countryId = data.countryId;
-			this.countryId = countryId ? countryId : this.countryId;
-			console.log('CareersModalComponent.onInit', id, countryId);
-		}
 		this.error = null;
 		this.success = false;
+		this.response = null;
+		this.message = null;
 		const form = this.form = new FormGroup({
+			countryOfInterest: new FormControl(this.countryOfInterestId),
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
-			company: new FormControl(null, [Validators.RequiredValidator()]),
-			address: new FormControl(null, [Validators.RequiredValidator()]),
-			city: new FormControl(null, [Validators.RequiredValidator()]),
-			zip: new FormControl(null, [Validators.RequiredValidator()]),
+			company: new FormControl(null),
+			address: new FormControl(null),
+			city: new FormControl(null),
+			zip: new FormControl(null),
 			country: new FormControl(null, [Validators.RequiredValidator()]),
 			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
 			file: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
+			action: 'save_career',
 			checkRequest: window.antiforgery,
 			checkField: '',
 		});
@@ -48,6 +44,7 @@ export class CareersModalComponent extends Component {
 	load$() {
 		return CareersService.data$().pipe(
 			tap(data => {
+				this.data = data;
 				const controls = this.controls;
 				controls.country.options = FormService.toSelectOptions(data.country.options);
 				if (this.countryId) {
@@ -95,12 +92,13 @@ export class CareersModalComponent extends Component {
 			CareersService.submit$(form.value).pipe(
 				first(),
 			).subscribe(_ => {
+				if (_.success) {
+					GtmService.push({ 'event': "Careers", 'form_name': "Contatti" });
+				}
 				this.success = true;
 				form.reset();
-				GtmService.push({
-					'event': "Careers",
-					'form_name': "Contatti"
-				});
+				this.response = _.data["response"];
+				this.message = _.data["message"];
 			}, error => {
 				console.log('CareersModalComponent.error', error);
 				this.error = error;
@@ -112,11 +110,16 @@ export class CareersModalComponent extends Component {
 	}
 
 	onClose() {
+		//this.error = null;
+		//this.success = false;
+		//this.response = null;
+		//this.message = null;
+		//this.pushChanges();
 		ModalService.reject();
 	}
 }
 
 CareersModalComponent.meta = {
 	selector: '[careers-modal]',
-	inputs: ['countryId'],
+	inputs: ['countryOfInterestId'],
 };

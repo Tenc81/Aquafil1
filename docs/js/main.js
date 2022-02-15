@@ -4116,7 +4116,7 @@ _defineProperty(ApiService, "currentLanguage", LanguageService.activeLanguage);v
 
   SalesService.submit$ = function submit$(payload) {
     if (environment.flags.production) {
-      return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded'); //return ApiService.post$('/wp-admin/admin-ajax.php', payload);
+      return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');
     } else {
       return ApiService.get$('/contacts/submit.json');
     }
@@ -4208,7 +4208,7 @@ var GtmService = /*#__PURE__*/function () {
 
   CareersService.data$ = function data$() {
     if (environment.flags.production) {
-      return ApiService.get$('/careers/data');
+      return ApiService.get$('/wp-json/aquafil/v1/careers?page=' + ws_vars.post_id);
     } else {
       return ApiService.get$('/contacts/data.json');
     }
@@ -4216,7 +4216,7 @@ var GtmService = /*#__PURE__*/function () {
 
   CareersService.submit$ = function submit$(payload) {
     if (environment.flags.production) {
-      return ApiService.post$('/careers/submit', payload);
+      return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');
     } else {
       return ApiService.get$('/contacts/submit.json');
     }
@@ -4235,30 +4235,23 @@ var GtmService = /*#__PURE__*/function () {
   _proto.onInit = function onInit() {
     var _this = this;
 
-    var _getContext = rxcomp.getContext(this),
-        parentInstance = _getContext.parentInstance;
-
-    if (parentInstance instanceof ModalOutletComponent) {
-      var data = parentInstance.modal.data;
-      var id = data.id;
-      var countryId = data.countryId;
-      this.countryId = countryId ? countryId : this.countryId;
-      console.log('CareersModalComponent.onInit', id, countryId);
-    }
-
     this.error = null;
     this.success = false;
+    this.response = null;
+    this.message = null;
     var form = this.form = new rxcompForm.FormGroup({
+      countryOfInterest: new rxcompForm.FormControl(this.countryOfInterestId),
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      company: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      address: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      city: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      zip: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      company: new rxcompForm.FormControl(null),
+      address: new rxcompForm.FormControl(null),
+      city: new rxcompForm.FormControl(null),
+      zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
       file: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
+      action: 'save_career',
       checkRequest: window.antiforgery,
       checkField: ''
     });
@@ -4273,6 +4266,7 @@ var GtmService = /*#__PURE__*/function () {
     var _this2 = this;
 
     return CareersService.data$().pipe(operators.tap(function (data) {
+      _this2.data = data;
       var controls = _this2.controls;
       controls.country.options = FormService.toSelectOptions(data.country.options);
 
@@ -4321,12 +4315,17 @@ var GtmService = /*#__PURE__*/function () {
       // console.log('CareersModalComponent.onSubmit', form.value);
       form.submitted = true;
       CareersService.submit$(form.value).pipe(operators.first()).subscribe(function (_) {
+        if (_.success) {
+          GtmService.push({
+            'event': "Careers",
+            'form_name': "Contatti"
+          });
+        }
+
         _this3.success = true;
         form.reset();
-        GtmService.push({
-          'event': "Careers",
-          'form_name': "Contatti"
-        });
+        _this3.response = _.data["response"];
+        _this3.message = _.data["message"];
       }, function (error) {
         console.log('CareersModalComponent.error', error);
         _this3.error = error;
@@ -4339,6 +4338,11 @@ var GtmService = /*#__PURE__*/function () {
   };
 
   _proto.onClose = function onClose() {
+    //this.error = null;
+    //this.success = false;
+    //this.response = null;
+    //this.message = null;
+    //this.pushChanges();
     ModalService.reject();
   };
 
@@ -4346,7 +4350,7 @@ var GtmService = /*#__PURE__*/function () {
 }(rxcomp.Component);
 CareersModalComponent.meta = {
   selector: '[careers-modal]',
-  inputs: ['countryId']
+  inputs: ['countryOfInterestId']
 };var ContactsService = /*#__PURE__*/function () {
   function ContactsService() {}
 
@@ -4525,7 +4529,7 @@ ContactModalComponent.meta = {
       ModalService.open$({
         src: environment.template.modal.sideModal,
         data: {
-          target: target
+          target: target.cloneNode(true)
         }
       }).pipe(operators.first()).subscribe(function (event) {
         console.log('OpenModallyDirective.open$', event);

@@ -1,4 +1,4 @@
-<div careers-modal [countryId]="<!--@@var=countryId-->">
+
 	<div *if="!success">
 		<!--
 		<div class="contact-modal__head">
@@ -107,13 +107,13 @@
 		<div class="row">
 			<div class="col-sm-22 offset-sm-1">
 				<div class="contact-modal__head">
-					<div class="contact-modal__title">Richiesta Inviata</div>
+					<div class="contact-modal__title" [innerHTML]="response"></div>
 				</div>
 				<div class="contact-modal__content">
-					<div class="contact-modal__abstract">Grazie per averci contattato. La tua richiesta è stata inviata correttamente.</div>
+					<div class="contact-modal__abstract" [innerHTML]="message"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<button type="button" class="btn--close" (click)="onClose()"><svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#close"></use></svg></button>
-</div>
+
