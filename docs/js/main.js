@@ -4268,13 +4268,11 @@ var GtmService = /*#__PURE__*/function () {
     return CareersService.data$().pipe(operators.tap(function (data) {
       _this2.data = data;
       var controls = _this2.controls;
-      controls.country.options = FormService.toSelectOptions(data.country.options);
-
-      if (_this2.countryId) {
-        _this2.form.patch({
-          country: _this2.countryId
-        });
-      }
+      controls.country.options = FormService.toSelectOptions(data.country.options); //if (this.countryId) {
+      //	this.form.patch({
+      //		country: this.countryId,
+      //	});
+      //}
 
       _this2.pushChanges();
     }));
@@ -4338,11 +4336,6 @@ var GtmService = /*#__PURE__*/function () {
   };
 
   _proto.onClose = function onClose() {
-    //this.error = null;
-    //this.success = false;
-    //this.response = null;
-    //this.message = null;
-    //this.pushChanges();
     ModalService.reject();
   };
 
@@ -4356,7 +4349,7 @@ CareersModalComponent.meta = {
 
   ContactsService.data$ = function data$() {
     if (environment.flags.production) {
-      return ApiService.get$('/contacts/data');
+      return ApiService.get$('/wp-json/aquafil/v1/countries?page=' + ws_vars.post_id);
     } else {
       return ApiService.get$('/contacts/data.json');
     }
@@ -4364,7 +4357,7 @@ CareersModalComponent.meta = {
 
   ContactsService.submit$ = function submit$(payload) {
     if (environment.flags.production) {
-      return ApiService.post$('/contacts/submit', payload);
+      return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');
     } else {
       return ApiService.get$('/contacts/submit.json');
     }
@@ -4383,31 +4376,31 @@ CareersModalComponent.meta = {
   _proto.onInit = function onInit() {
     var _this = this;
 
-    var _getContext = rxcomp.getContext(this),
-        parentInstance = _getContext.parentInstance;
-
-    if (parentInstance instanceof ModalOutletComponent) {
-      var data = parentInstance.modal.data;
-      var id = data.id;
-      var countryId = data.countryId;
-      this.countryId = countryId ? countryId : this.countryId;
-      console.log('ContactModalComponent.onInit', id, countryId);
-    }
-
+    //const { parentInstance } = getContext(this);
+    //if (parentInstance instanceof ModalOutletComponent) {
+    //	const data = parentInstance.modal.data;
+    //	const id = data.id;
+    //	const countryId = data.countryId;
+    //	this.countryId = countryId ? countryId : this.countryId;
+    //	console.log('ContactModalComponent.onInit', id, countryId);
+    //}
     this.error = null;
     this.success = false;
+    this.response = null;
+    this.message = null;
     var form = this.form = new rxcompForm.FormGroup({
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      company: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      address: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      city: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      zip: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      company: new rxcompForm.FormControl(null),
+      address: new rxcompForm.FormControl(null),
+      city: new rxcompForm.FormControl(null),
+      zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
       subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
+      action: 'save_contact',
       checkRequest: window.antiforgery,
       checkField: ''
     });
@@ -4423,13 +4416,11 @@ CareersModalComponent.meta = {
 
     return ContactsService.data$().pipe(operators.tap(function (data) {
       var controls = _this2.controls;
-      controls.country.options = FormService.toSelectOptions(data.country.options);
-
-      if (_this2.countryId) {
-        _this2.form.patch({
-          country: _this2.countryId
-        });
-      }
+      controls.country.options = FormService.toSelectOptions(data.country.options); //if (this.countryId) {
+      //	this.form.patch({
+      //		country: this.countryId,
+      //	});
+      //}
 
       _this2.pushChanges();
     }));
@@ -4471,12 +4462,17 @@ CareersModalComponent.meta = {
       // console.log('ContactModalComponent.onSubmit', form.value);
       form.submitted = true;
       ContactsService.submit$(form.value).pipe(operators.first()).subscribe(function (_) {
+        if (_.success) {
+          GtmService.push({
+            'event': "Contact",
+            'form_name': "Contatti"
+          });
+        }
+
         _this3.success = true;
         form.reset();
-        GtmService.push({
-          'event': "Contact",
-          'form_name': "Contatti"
-        });
+        _this3.response = _.data["response"];
+        _this3.message = _.data["message"];
       }, function (error) {
         console.log('ContactModalComponent.error', error);
         _this3.error = error;
@@ -4496,7 +4492,7 @@ CareersModalComponent.meta = {
 }(rxcomp.Component);
 ContactModalComponent.meta = {
   selector: '[contact-modal]',
-  inputs: ['countryId']
+  inputs: []
 };var OpenModallyDirective = /*#__PURE__*/function (_Directive) {
   _inheritsLoose(OpenModallyDirective, _Directive);
 
@@ -4701,7 +4697,7 @@ ProductRequestComponent.meta = {
       message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       agent: this.agent,
-      action: 'save_contact',
+      action: 'save_agent_contact',
       checkRequest: window.antiforgery,
       checkField: ''
     });

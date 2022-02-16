@@ -10,28 +10,31 @@ import { ContactsService } from './contacts.service';
 export class ContactModalComponent extends Component {
 
 	onInit() {
-		const { parentInstance } = getContext(this);
-		if (parentInstance instanceof ModalOutletComponent) {
-			const data = parentInstance.modal.data;
-			const id = data.id;
-			const countryId = data.countryId;
-			this.countryId = countryId ? countryId : this.countryId;
-			console.log('ContactModalComponent.onInit', id, countryId);
-		}
+		//const { parentInstance } = getContext(this);
+		//if (parentInstance instanceof ModalOutletComponent) {
+		//	const data = parentInstance.modal.data;
+		//	const id = data.id;
+		//	const countryId = data.countryId;
+		//	this.countryId = countryId ? countryId : this.countryId;
+		//	console.log('ContactModalComponent.onInit', id, countryId);
+		//}
 		this.error = null;
 		this.success = false;
+		this.response = null;
+		this.message = null;
 		const form = this.form = new FormGroup({
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
-			company: new FormControl(null, [Validators.RequiredValidator()]),
-			address: new FormControl(null, [Validators.RequiredValidator()]),
-			city: new FormControl(null, [Validators.RequiredValidator()]),
-			zip: new FormControl(null, [Validators.RequiredValidator()]),
+			company: new FormControl(null),
+			address: new FormControl(null),
+			city: new FormControl(null),
+			zip: new FormControl(null),
 			country: new FormControl(null, [Validators.RequiredValidator()]),
 			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
 			subject: new FormControl(null, [Validators.RequiredValidator()]),
 			message: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
+			action: 'save_contact',
 			checkRequest: window.antiforgery,
 			checkField: '',
 		});
@@ -51,11 +54,11 @@ export class ContactModalComponent extends Component {
 			tap(data => {
 				const controls = this.controls;
 				controls.country.options = FormService.toSelectOptions(data.country.options);
-				if (this.countryId) {
-					this.form.patch({
-						country: this.countryId,
-					});
-				}
+				//if (this.countryId) {
+				//	this.form.patch({
+				//		country: this.countryId,
+				//	});
+				//}
 				this.pushChanges();
 			})
 		);
@@ -97,12 +100,13 @@ export class ContactModalComponent extends Component {
 			ContactsService.submit$(form.value).pipe(
 				first(),
 			).subscribe(_ => {
+				if (_.success) {
+					GtmService.push({ 'event': "Contact", 'form_name': "Contatti" });
+				}
 				this.success = true;
 				form.reset();
-				GtmService.push({
-					'event': "Contact",
-					'form_name': "Contatti"
-				});
+				this.response = _.data["response"];
+				this.message = _.data["message"];
 			}, error => {
 				console.log('ContactModalComponent.error', error);
 				this.error = error;
@@ -120,5 +124,5 @@ export class ContactModalComponent extends Component {
 
 ContactModalComponent.meta = {
 	selector: '[contact-modal]',
-	inputs: ['countryId'],
+	inputs: [],
 };

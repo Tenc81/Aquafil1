@@ -2,7 +2,6 @@ import { Component, getContext } from 'rxcomp';
 import { FormControl, FormGroup, Validators } from 'rxcomp-form';
 import { first, takeUntil, tap } from 'rxjs/operators';
 import { GtmService } from '../../common/gtm/gtm.service';
-import { ModalOutletComponent } from '../../common/modal/modal-outlet.component';
 import { ModalService } from '../../common/modal/modal.service';
 import { FormService } from '../../controls/form.service';
 import { CareersService } from './careers.service';
@@ -47,11 +46,11 @@ export class CareersModalComponent extends Component {
 				this.data = data;
 				const controls = this.controls;
 				controls.country.options = FormService.toSelectOptions(data.country.options);
-				if (this.countryId) {
-					this.form.patch({
-						country: this.countryId,
-					});
-				}
+				//if (this.countryId) {
+				//	this.form.patch({
+				//		country: this.countryId,
+				//	});
+				//}
 				this.pushChanges();
 			})
 		);
@@ -110,11 +109,6 @@ export class CareersModalComponent extends Component {
 	}
 
 	onClose() {
-		//this.error = null;
-		//this.success = false;
-		//this.response = null;
-		//this.message = null;
-		//this.pushChanges();
 		ModalService.reject();
 	}
 }

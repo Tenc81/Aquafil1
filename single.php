@@ -51,11 +51,12 @@ if (is_array($video) && count($video)> 0) {
 	</div>
 
 
-
-
+	<?php
+	$hero = !empty(get_field("news_detail_hero")) ? get_field("news_detail_hero")["url"] : esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full'));
+	?>
 	<section class="news-detail-content">
 		<div class="news-detail-content__row" appear>
-			<div class="news-detail-content__thumbnail" style="background-image:url(<?=esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>)"></div>
+			<div class="news-detail-content__thumbnail" style="background-image:url(<?= $hero; ?>)"></div>
 		</div>
 		<div class="row news-detail-content__row" appear>
 			<div class="col-sm-20 offset-sm-2 col-md-10 offset-md-7">

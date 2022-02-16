@@ -58,15 +58,18 @@ function aquafil_enqueue_scripts(){
     'docsDir' => DOCS_DIR,
 		'post_id' => is_singular() ? get_the_ID() : 0,
 		'labels' => array(
+			'titolo_contatti' => __("Contatti", "wstheme"),
+			'sottotitolo_contatti' => __("Per ulteriori informazioni, contattaci compilando il form sottostante:", "wstheme"),
 			'nome' => __("Nome", "wstheme"),
 			'cognome' => __("Cognome", "wstheme"),
 			'azienda' => __("Azienda", "wstheme"),
+			'email' => __("Email", "wstheme"),
 			'indirizzo' => __("Indirizzo", "wstheme"),
 			'citta' => __("Città", "wstheme"),
 			'cap' => __("CAP", "wstheme"),
 			'nazione' => __("Nazione", "wstheme"),
 			'soggetto' => __("Soggetto", "wstheme"),
-			'oggetto' => __("Oggetto", "wstheme"),
+			'messaggio' => __("Messaggio", "wstheme"),
 			'privacy' => __("Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato", "wstheme"),
 			'invia' => __("Invia", "wstheme"),
 			'inviato' => __("Inviato!", "wstheme")
@@ -476,6 +479,18 @@ add_filter( "acf/format_value", "acf_link_target", 10, 3);
  * Endpoints custom per rest API
  */
 function custom_rest_route() {
+  register_rest_route('aquafil/v1', '/countries/', array(
+    'methods' => 'GET',
+    'callback' => 'getCountriesData',
+    'permission_callback' => '__return_true',
+    'args' => array(
+			'page' => array(
+        'validate_callback' => function($param, $request, $key) {
+          return is_numeric($param) && get_post_type(intval($param)) == 'page';
+        }
+      )
+		)
+  ));
   register_rest_route('aquafil/v1', '/sales/', array( // /wp-json/aquafil/v1/sales?page=ID
     'methods' => 'GET',
     'callback' => 'getSalesData',
@@ -504,6 +519,43 @@ function custom_rest_route() {
 add_action('rest_api_init', 'custom_rest_route');
 
 
+function getCountriesData($request) {
+  $data = get_transient("countries");
+  if($data) {
+    return $data;
+  }
+  $args = array(
+    'posts_per_page' => 1,
+		'post_type' => 'page',
+    'post_status' => 'publish',
+		'include' => $request->get_param("page"),
+		'fields' => 'ids'
+	);
+  $post_ids = get_posts($args);
+  if(empty($post_ids)) {
+		return array();
+	}
+	$data = array("country" => array("label" => __("Paese", "wstheme"), "options" => array()));
+  foreach($post_ids as $post_id) {
+		$fields = get_fields($post_id);
+		foreach($fields['sezioni'] as $section) {
+			if($section['acf_fc_layout'] == 'contacts-contacts-form') {
+				$countries = get_field_object('field_620d1cd1b06de');
+				foreach($countries['choices'] as $label => $country) {
+					array_push($data["country"]["options"], array(
+						"value" => $country,
+						"label" => $label
+					));
+				}
+				break;
+			}
+		}
+	}
+  set_transient("countries", $data);
+  return $data;
+}
+
+
 function getSalesData($request) {
   if(!isset($_GET["page"])) 
     return array(
@@ -514,7 +566,7 @@ function getSalesData($request) {
 
   $data = get_transient("agents-".$request->get_param("page"));
   if($data) {
-      return $data;
+    return $data;
   }
   $args = array(
     'posts_per_page' => 1,
@@ -611,7 +663,7 @@ function getCareesData($request) {
 
   $data = get_transient("careers-".$request->get_param("page"));
   if($data) {
-      return $data;
+    return $data;
   }
   $args = array(
     'posts_per_page' => 1,
@@ -674,25 +726,23 @@ function frm_create_custom_contact() {
     wp_send_json_error(array("result"=>__("C'è stato un problema durante la registrazione della richiesta", "wstheme")));
 	}
 	if(strpos(current_filter(), "save_contact") !== false) {
-		$defaults = array(
-			'firstName' => '',
-			'lastName' => '',
-			'countryOfInterest' => '',
-			'agent' => '',
-			'company' => '',
-			'address' => '',
-			'city' => '',
-			'zip' => '',
-			'country' => '',
-			'email' => '',
-			'subject' => '',
-			'message' => ''
-		);
-
-		$params = wp_parse_args($_POST, $defaults);
+		$id = wpml_object_id_filter(22640, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+		$form = WPCF7_ContactForm::get_instance($id);
+		$result = $form->submit();
+		if($result['status'] == "mail_failed") {
+			//$flamingo_contact = Flamingo_Contact::add(array(
+			//  'email' => $params['email'],
+			//  'name' => $params['firstName'].' '.$params['lastName'],
+			//  'last_contacted' => date('Y-m-d H:i:sP'),
+			//));
+			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+		} else {
+			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+		}
+	} elseif(strpos(current_filter(), "save_agent_contact") !== false) {
 		$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
 		$form = WPCF7_ContactForm::get_instance($id);
-		$result = $form->submit($params);
+		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
 			//$flamingo_contact = Flamingo_Contact::add(array(
 			//  'email' => $params['email'],
@@ -704,21 +754,6 @@ function frm_create_custom_contact() {
 			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
 		}
 	} elseif(strpos(current_filter(), "save_career") !== false) {
-		$defaults = array(
-			'firstName' => '',
-			'lastName' => '',
-			'countryOfInterest' => '',
-			'curriculum' => '',
-			'company' => '',
-			'address' => '',
-			'city' => '',
-			'zip' => '',
-			'country' => '',
-			'email' => ''
-		);
-
-		$params = wp_parse_args($_POST, $defaults);
-
 		$upload_dir = wp_upload_dir();
 		if ( wp_mkdir_p( $upload_dir['path'] ) ) {
 			$file = $upload_dir['path'] . '/' . $_POST['file']['name'];
@@ -762,6 +797,8 @@ function frm_create_custom_contact() {
 }
 add_action('wp_ajax_save_contact', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_contact', 'frm_create_custom_contact');
+add_action('wp_ajax_save_agent_contact', 'frm_create_custom_contact');
+add_action('wp_ajax_nopriv_save_agent_contact', 'frm_create_custom_contact');
 add_action('wp_ajax_save_career', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_career', 'frm_create_custom_contact');
 

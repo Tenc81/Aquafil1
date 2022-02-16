@@ -43,7 +43,7 @@ export class SalesModalComponent extends Component {
 			message: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
 			agent: this.agent,
-			action: 'save_contact',
+			action: 'save_agent_contact',
 			checkRequest: window.antiforgery,
 			checkField: '',
 		});

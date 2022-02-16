@@ -1,21 +1,12 @@
-<div class="contact-modal" sales-modal>
-	<div *if="!success">
-		<!--
-		<div class="contact-modal__head">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-22 offset-sm-1">
-							<div class="contact-modal__title" [innerHTML]="ws_vars.labels.titolo_contatti"></div>
-					</div>
-				</div>
-			</div>
-		</div>-->
-		<form class="form" [formGroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate autocomplete="off">
-			<div class="contact-modal__content">
+<div class="contacts-form" contact-modal>
+	<div class="contacts-form__wrapper">
+		<div *if="!success">
+			<form class="form" [formGroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate autocomplete="off">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-22 offset-sm-1">
-							<p class="contact-modal__text-top" [innerHTML]="ws_vars.labels.sottotitolo_contatti"></p>
+							<div class="contacts-form__title" [innerHTML]="ws_vars.labels.titolo_contatti"></div>
+							<div class="contacts-form__text-top" [innerHTML]="ws_vars.labels.sottotitolo_contatti"></div>
 						</div>
 					</div>
 					<div class="row">
@@ -53,9 +44,9 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-22 offset-sm-1">
+						<div class="col-sm-21 offset-sm-1">
 							<test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
-							<div class="full" control-checkbox [control]="controls.privacy" label="Ho letto l&amp;#39;&amp;lt;a href=&amp;quot;/it/it/privacy-policy&amp;quot; target=&amp;quot;_blank&amp;quot;&gt;informativa&amp;lt;/a&gt; e do il consenso al trattamento del dato"></div>
+							<div class="full" control-checkbox [control]="controls.privacy" [label]="ws_vars.labels.privacy"></div>
 							<div class="form__error" *if="error">
 								<span class="status-code" [innerHTML]="error.statusCode"></span>
 								<span class="status-message" [innerHTML]="error.statusMessage"></span>
@@ -75,20 +66,17 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
-	</div>
-	<div class="container-fluid" *if="success">
-		<div class="row">
-			<div class="col-sm-22 offset-sm-1">
-				<div class="contact-modal__head">
-					<div class="contact-modal__title" [innerHTML]="response"></div>
-				</div>
-				<div class="contact-modal__content">
-					<div class="contact-modal__abstract" [innerHTML]="message"></div>
+			</form>
+		</div>
+		<div class="container-fluid" *if="success">
+			<div class="row">
+				<div class="col-sm-22 offset-sm-1">
+					<div class="contacts-form__title" [innerHTML]="response"></div>
+					<div class="contacts-form__content">
+						<div class="contacts-form__abstract" [innerHTML]="message"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<button type="button" class="btn--close" (click)="onClose()"><svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#close"></use></svg></button>
 </div>
