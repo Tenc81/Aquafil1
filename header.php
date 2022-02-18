@@ -63,6 +63,8 @@
 				$class = 'page--location-detail';
 			} elseif(is_page_template("templates/sales.php")) {
 				$class = 'page--sales';
+			} elseif(is_page_template("templates/sustainability.php")) {
+				$class = 'page--report';
 			} else {
 				$class = 'page--location';
 			}
