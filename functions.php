@@ -137,9 +137,9 @@ function the_breadcrumb()
 		if (is_category()) {
 			$thisCat = get_category(get_query_var('cat'), false);
 			if ($thisCat->parent != 0) {
-				$output .= get_category_parents($thisCat->parent, true, ' ' . $delimiter . ' ');
+				$output .= $before.get_category_parents($thisCat->parent, true, ' ' . $delimiter . ' '). $after;
 			}
-			$output .= $before . 'Archive by category "' . single_cat_title('', false) . '"' . $after;
+			$output .= $before . single_cat_title('', false) . $after;
 		} elseif (is_search()) {
 			$output .= $before . 'Search results for "' . get_search_query() . '"' . $after;
 		} elseif (is_day()) {
@@ -168,7 +168,8 @@ function the_breadcrumb()
 				if ($showCurrent == 0) {
 					$cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
 				}
-				$output .= $cats;
+				$cats = str_replace("</a> " . $delimiter . " <a", "</a> " . $after.$before . " <a", $cats);
+				$output .= $before.$cats.$after;
 				if ($showCurrent == 1) {
 					$output .= $before . get_the_title() . $after;
 				}

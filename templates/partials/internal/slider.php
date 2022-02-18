@@ -7,7 +7,7 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['section'])) :
 ?>
-<div class="content-slider borders negative" <?=setAnchor($_args['section']);?>>
+<div class="content-slider borders<?= $_args['section']['internal_slider_bg'] == "blu" ? " negative" : ''; ?>" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
@@ -24,25 +24,42 @@ if(!empty($_args['section'])) :
 									<div class="card--content__left">
 										<div class="card--content__title"><?=$slide['slide_titolo']?></div>
 										<div class="card--content__abstract"><?=$slide['slide_abstract']?></div>
-										<!--
-										<div class="card--content__cta">
-											<a href="#" class="btn--more"><span>Learn more</span> <svg><use xlink:href="#arrow-next"></use></svg></a>
-										</div>
-										slider_mp4_video
-										-->
+										<?php
+										$link = $slide['slide_link'];
+										if(!empty($link)) {
+											echo '
+												<div class="card--content__cta">
+													<a href="'.$link["url"].'" class="btn--more"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next"></use></svg></a>
+												</div>';
+										}
+										?>
 									</div>
 									<div class="card--content__right">
-										<?php if($slide['slider_mp4_video'] != '') { ?>
-											<div class="card--content__picture" gallery="<?=$slide['slider_mp4_video']?>">
-												<video src="<?=$slide['slider_mp4_video']?>" playsinline="" autoplay="" loop="" muted="" style="width:100%; height:100%; object-fit:cover"></video>
-												<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
-											</div>
-										<?php } else { ?>
-											<div class="card--content__picture" gallery="<?=$slide['slide_image']?>">
-												<img loading="lazy" src="<?=$slide['slide_image']?>" />
-												<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
-											</div>
-										<?php } ?>
+										<?php
+										$card = '<div class="card--content__picture" %1$s>%2$s</div>';
+										if($slide['slider_mp4_video'] != '') {
+											if($slide['slide_zoom_image']) {
+												ob_start();
+												include(locate_template('templates/partials/shared/zoom-button.html'));
+												$btn = ob_get_contents();
+												ob_end_clean();
+												$card = sprintf($card, 'gallery="'.$slide['slider_mp4_video'].'"', '<video src="'.$slide['slider_mp4_video'].'" playsinline="" autoplay="" loop="" muted="" style="width:100%; height:100%; object-fit:cover"></video>'.$btn);
+											} else {
+												$card = sprintf($card, '', '<video src="'.$slide['slider_mp4_video'].'" playsinline="" autoplay="" loop="" muted="" style="width:100%; height:100%; object-fit:cover"></video>');
+											}
+										} else {
+											if($slide['slide_zoom_image']) {
+												ob_start();
+												include(locate_template('templates/partials/shared/zoom-button.html'));
+												$btn = ob_get_contents();
+												ob_end_clean();
+												$card = sprintf($card, 'gallery="'.$slide['slide_image'].'"', '<img loading="lazy" src="'.$slide['slide_image'].'" />'.$btn);
+											} else {
+												$card = sprintf($card, '', '<img loading="lazy" src="'.$slide['slide_image'].'" />');
+											}
+										}
+										echo $card;
+										?>
 									</div>
 								</div>
 							</div>							
