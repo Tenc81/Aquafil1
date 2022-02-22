@@ -25,13 +25,13 @@ if(!empty($_args['section'])) :
 										<div class="card--content__left">
 											<div class="card--content__title">'.$slide['titolo_slide'].'</div>
 											<div class="card--content__abstract">'.$slide['sottotitolo_slide'].'</div>
+										</div>
+										<div class="card--content__right">
+											<div class="card--content__abstract">'.$slide['testo_slide'].'</div>
 											'.(!empty($link) ? 
 											'<div class="card--content__cta">
 												<a href="'.$link["url"].'" class="btn--more"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next"></use></svg></a>
 											</div>' : '').'
-										</div>
-										<div class="card--content__right">
-											<div class="card--content__abstract">'.$slide['testo_slide'].'</div>
 										</div>
 									</div>
 								</div>

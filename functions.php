@@ -712,7 +712,7 @@ function on_save_delete_transient($post_ID, $post, $update) {
     $query = "
 			SELECT option_name
       FROM  ".$wpdb->options."
-      WHERE option_name = '_transient_agents-'".$post_ID." OR option_name = '_transient_careers-'".$post_ID.";";
+      WHERE option_name = '_transient_agents-".$post_ID."' OR option_name = '_transient_careers-".$post_ID."';";
     $result = $wpdb->get_col($query);
     foreach($result as $transient) {
       delete_transient(str_replace('_transient_', '', $transient));

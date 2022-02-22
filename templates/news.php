@@ -24,7 +24,7 @@ $q = get_queried_object();
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 					<div class="news-hero__content" appear>
 						<div class="news-hero__title">
-							<?=get_the_title()?>
+							<?= get_the_title(get_option("page_for_posts")); ?>
 						</div>
 					</div>
 				</div>
@@ -33,7 +33,7 @@ $q = get_queried_object();
 				<div class="col-sm-8 offset-sm-3 col-md-7 offset-md-4">
 					<div class="news-hero__content" appear>
 						<div class="news-hero__abstract">
-							<?=get_the_content()?>
+							<?= get_post_field("post_content", get_option("page_for_posts")); ?>
 						</div>
 					</div>
 				</div>
@@ -43,32 +43,19 @@ $q = get_queried_object();
 
 
 	<?php
-
-	$terms    = get_terms([
-		'taxonomy'    => 'category',
-		'hide_empty'  => true
-	]);
-
-	//print_r($terms);
-
-	/*
-    [1] => WP_Term Object
-	(
-	[term_id] => 106
-	[name] => Agents-BCF
-	[slug] => agents-bcf-it
-	[term_group] => 0
-	[term_taxonomy_id] => 106
-	[taxonomy] => agents_category
-	[description] =>
-	[parent] => 0
-	[count] => 8
-	[filter] => raw
-	[term_order] => 0
-	)
-	 */
-
-    ?>
+	$terms = array();
+	$pcategory_id = apply_filters("wpml_get_object_id", 25, "category", false, ICL_LANGUAGE_CODE);
+	if($pcategory_id) {
+		global $wpdb;
+		$query = "
+			SELECT t.*, tt.count
+			FROM ".$wpdb->posts." AS p JOIN ".$wpdb->terms." AS t JOIN ".$wpdb->term_taxonomy." AS tt JOIN ".$wpdb->term_relationships." AS tr
+			ON p.ID = tr.object_id AND t.term_id = tt.term_id AND tr.term_taxonomy_id = tt.term_taxonomy_id
+			WHERE p.post_type='post' AND p.post_status='publish' AND tt.taxonomy='category' AND tt.count>0 AND tt.parent=%d
+			GROUP BY t.term_id, tt.count";
+		$terms = $wpdb->get_results($wpdb->prepare($query, $pcategory_id));
+	}
+	?>
 
 	<div class="horizontal-menu borders">
 		<!-- taxonomy filter -->
@@ -76,27 +63,28 @@ $q = get_queried_object();
 			<div class="row">
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 					<div class="horizontal-menu__content">
-						<div class="horizontal-menu__title">
-							Filtra per
-						</div>
+						<div class="horizontal-menu__title"><?= __("Filtra per", "wstheme"); ?></div>
 						<ul class="nav--horizontal-menu">
-
-							<?php foreach($terms as $term) {
-									  //if ($term->parent != 0) {
-                            ?>
-							<li class="nav__item" data-term-id="<?=$term->term_id?>">
-								<span>
+							<li class="nav__item" data-term-id="">
+								<a href="<?= get_permalink(get_option("page_for_posts")); ?>" style="color:inherit" class="active">
 									<span class="name">
-										<a href="<?=get_term_link($term->term_id);?>" style="color:inherit">
-											<?=$term->name?>
-										</a>
+											<?= __("Tutte", "wstheme"); ?>
 									</span><span class="count">
-										(<?=$term->count ?>)
+										(<?= array_sum(array_column($terms, "count")); ?>)
 									</span>
-								</span>
+								</a>
 							</li>
-							<?php } //} ?>
-
+							<?php foreach($terms as $term) : ?>
+							<li class="nav__item" data-term-id="<?= $term->term_id; ?>">
+								<a href="<?=get_category_link($term->term_id);?>" style="color:inherit">
+									<span class="name">
+											<?= $term->name; ?>
+									</span><span class="count">
+										(<?= $term->count; ?>)
+									</span>
+								</a>
+							</li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 				</div>
