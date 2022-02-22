@@ -50,7 +50,9 @@ if (! defined('DOCS_DIR')) {
 
 add_theme_support('post-thumbnails');
 
-function aquafil_enqueue_scripts(){
+function aquafil_enqueue_scripts() {
+	wp_enqueue_style('aquafil-style', get_stylesheet_uri(), array());
+
   wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script('websolute_helper');
   wp_localize_script('websolute_helper', 'ws_vars', array(
@@ -833,3 +835,80 @@ function wpcf7_save_address_book($value, $field, $form) {
 	return $value;
 }
 add_filter('wpcf7_flamingo_get_value', 'wpcf7_save_address_book', 10, 3);
+
+
+/**
+ * Crea un nuovo ruolo utente WP
+ */
+function create_new_user_role() {
+  global $wp_roles;
+  if (!isset($wp_roles)) $wp_roles = new WP_Roles();
+        
+  if(get_role('editor-ir') == null) {
+		add_role(
+			"editor-ir",
+			"Editor Investor Relations",
+			$wp_roles->get_role("subscriber")->capabilities
+		);
+	}
+}
+add_action('admin_init', 'create_new_user_role', 10);
+
+
+function ir_user_caps() {
+	global $wp_roles;
+
+  $all_roles = $wp_roles->roles;
+  $editable_roles = apply_filters('editable_roles', $all_roles);
+	unset($editable_roles["subscriber"]);
+	foreach(array_keys($editable_roles) as $rolename) {
+		$role = get_role($rolename); 
+		if($role instanceof WP_Role && !$role->has_cap('edit_investor_relation')) {
+			$role->add_cap('edit_investor_relation');
+			$role->add_cap('read_investor_relation');
+			$role->add_cap('delete_investor_relation');
+			$role->add_cap('edit_investor_relations');
+			$role->add_cap('edit_others_investor_relations');
+			$role->add_cap('delete_investor_relations');
+			$role->add_cap('publish_investor_relations');
+			$role->add_cap('read_private_investor_relations');
+			$role->add_cap('delete_private_investor_relations');
+			$role->add_cap('delete_published_investor_relations');
+			$role->add_cap('delete_others_investor_relations');
+			$role->add_cap('edit_private_investor_relations');
+			$role->add_cap('edit_published_investor_relations');
+			//file_put_contents(ABSPATH.'error_log.txt', date('d-m-Y h:m:s').print_r($role, true).PHP_EOL, FILE_APPEND | LOCK_EX);
+		}
+	}
+}
+add_action('admin_init', 'ir_user_caps', 15);
+
+
+function custom_query($query) {
+    // gestione risultati
+    if($query->is_main_query() && !is_admin()) {
+			if(is_home()) {
+				$terms = array();
+				$pcategory_id = apply_filters("wpml_get_object_id", 25, "category", false, ICL_LANGUAGE_CODE);
+				if($pcategory_id) {
+					global $wpdb;
+					$q = "
+						SELECT t.*, tt.count
+						FROM ".$wpdb->posts." AS p JOIN ".$wpdb->terms." AS t JOIN ".$wpdb->term_taxonomy." AS tt JOIN ".$wpdb->term_relationships." AS tr
+						ON p.ID = tr.object_id AND t.term_id = tt.term_id AND tr.term_taxonomy_id = tt.term_taxonomy_id
+						WHERE p.post_type='post' AND p.post_status='publish' AND tt.taxonomy='category' AND tt.count>0 AND tt.parent=%d
+						GROUP BY t.term_id, tt.count";
+					$terms = $wpdb->get_results($wpdb->prepare($q, $pcategory_id));
+				}
+        $query->set('posts_per_page', 12);
+        $query->set('tax_query', array(array(
+					'taxonomy' => 'category',
+					'field' => 'term_id',
+					'terms' => array_column($terms, "term_id")
+				)));
+			} elseif(is_category()) {
+        $query->set('posts_per_page', 12);
+			}
+    }
+}
+add_action('pre_get_posts', 'custom_query');

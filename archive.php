@@ -104,36 +104,10 @@ $q = get_queried_object();
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 					<div class="listing--news">
 						<!-- foreach -->
-
-
 						<?php
-
-
-						$paged    = get_query_var('paged') ? : 1;
-						$offset   = (1 === $paged) ? 0 : (($paged - 1) * 12) + (($paged - 1) * 2);
-
-
-
-
-						$af_args = array(
-							'paged' => $paged,
-							'offset' => $offset,
-							'post_type' => 'post',
-							'post_status' => 'publish',
-							'posts_per_page'=> 12,
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category',
-									'field' => 'term_id',
-									'terms' => $q->term_id
-								)
-							)
-							);
-						//echo $term->id;
-						$af_list = new WP_Query( $af_args );
-						while ($af_list->have_posts()) {
-							$af_list->the_post();
-                        ?>
+						while(have_posts()) {
+							the_post();
+            ?>
 						<div class="listing__item" appear>
 							<a href="<?=get_the_permalink()?>" class="card--news">
 								<div class="card--news__picture">
@@ -154,22 +128,17 @@ $q = get_queried_object();
 								</div>
 							</a>
 						</div>
-						<?php
-						}
-
-
-						previous_posts_link('&laquo; Precedente', $af_list->max_num_pages);
-						if ($paged > 1) echo ' | ';
-						next_posts_link('Prossimo &raquo;', $af_list->max_num_pages);
-
-						//echo '<br> Showing ' . $offset . '-' . ($offset + 6) . ' of ' . $query->found_posts . ' posts.';
-
-						wp_reset_postdata();
-
-            ?>
-
-
+						<?php } ?>
 					</div>
+					<?php
+					if ($paged > 1) {
+						previous_posts_link('&laquo; Precedente');
+						echo ' | ';
+					}
+					next_posts_link('Prossimo &raquo;');
+
+					wp_reset_postdata();
+          ?>
 				</div>
 			</div>
 		</div>
