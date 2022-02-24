@@ -17,10 +17,16 @@ if(!empty($_args['section'])) :
 					</div>
 				</div>
 				<div class="col-sm-15 col-md-17 order-1 order-sm-2">
-					<div class="primary-hero__picture" gallery="<?= $_args['section']['internal_hero_image'] ?>" scroll scrollSpeed="1">
-						<img loading="lazy" src="<?= $_args['section']['internal_hero_image']?>" />
-						<?php get_template_part( 'templates/partials/shared/zoom', 'button'); ?>
+					<?php if($_args['section']['internal_hero_zoom_image']) : ?>
+					<div class="primary-hero__picture" gallery="<?= $_args['section']['internal_hero_image']; ?>" scroll scrollSpeed="1">
+						<img loading="lazy" src="<?= $_args['section']['internal_hero_image']; ?>" alt="<?= get_the_title(); ?>" />
+						<?php include(locate_template('templates/partials/shared/zoom-button.html')); ?>
 					</div>
+					<?php else : ?>
+					<div class="primary-hero__picture" scroll scrollSpeed="1">
+						<img loading="lazy" src="<?= $_args['section']['internal_hero_image']; ?>" alt="<?= get_the_title(); ?>" />
+					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

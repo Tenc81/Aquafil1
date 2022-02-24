@@ -23,18 +23,21 @@ if(!empty($_args['section'])) :
 			<?php foreach($_args['section']['internal_multicol_two_cta'] as $k => $cta) : ?>
 				<div class="col-sm-9 offset-sm-2 col-md-8 <?= ($k%2==0 ? 'offset-md-3' : ''); ?>">
 					<div class="title-text__content" appear>
-						<?php if($cta['multicol_two_stile_cta'] == 'testo') : ?>
-						<div class="title-text__description">
-							<p><?=$cta['multicol_two_testo_cta'] ?></p>
-						</div>
-						<?php endif; ?>
-						<?php if($cta['multicol_two_link_cta'] != '') : ?>
-						<?php if($cta['multicol_two_titolo_cta'] != '') : ?>
-						<a href="<?= $cta['multicol_two_link_cta']; ?>" class="btn--category"><span><?= $cta['multicol_two_titolo_cta']; ?></span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>
-						<?php else : ?>
-						<a href="<?= $cta['multicol_two_link_cta']; ?>" class="btn--primary"><span><?= __("Leggi di pi�", "wstheme"); ?></span></a>
-						<?php endif; ?>
-						<?php endif; ?>
+						<?php
+						if($cta['multicol_two_testo_cta'] != '') {
+							echo '
+								<div class="title-text__description">
+									<p>'.$cta['multicol_two_testo_cta'].'</p>
+								</div>';
+						}
+						if($cta['multicol_two_link_cta'] != '') {
+							if($cta['multicol_two_stile_cta'] == 'testo') {
+								echo '<a href="'.$cta['multicol_two_link_cta'].'" target="'.$cta['multicol_two_target_cta'].'" class="btn--category"><span>'.($cta['multicol_two_titolo_cta'] != '' ? $cta['multicol_two_titolo_cta'] : __("Leggi di più", "wstheme")).'</span><svg><use xlink:href="#arrow-next-md"></use></svg></a>';
+							} else {
+								echo '<a href="'.$cta['multicol_two_link_cta'].'" target="'.$cta['multicol_two_target_cta'].'" class="btn--primary"> <span>'.($cta['multicol_two_titolo_cta'] != '' ? $cta['multicol_two_titolo_cta'] : __("Leggi di più", "wstheme")).'</span></a>';
+							}
+						}
+						?>
 					</div>
 				</div>
 			<?php endforeach; ?>
