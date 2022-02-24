@@ -5,6 +5,55 @@ namespace Roots\WStheme\Setup;
 function register_cposts_taxonomies() {
 	$args = array(
 		'labels'    => array(
+			'name'           => 'Sezione Investor Relations',
+			'singular_name'  => 'Pagina di Investor Relations',
+			'menu_name'      => 'Sezione Investor Relations',
+			'add_new'        => 'Aggiungi pagina di Investor Relations',
+			'all_items'      => 'Tutte le pagine di Investor Relations',
+			'edit_item'      => 'Modifica pagina di Investor Relations',
+			'add_new_item'   => 'Crea nuova pagina di Investor Relations',
+			'new_item'       => 'Nuova pagina di Investor Relations',
+			'new_item_name'  => 'Nome nuova pagina di Investor Relations',
+			'view_item'      => 'Visualizza pagina di Investor Relations',
+			'update_item'    => 'Aggiorna pagina di Investor Relations',
+			'search_items'   => 'Cerca pagina di Investor Relations',
+			'not_found'      => 'Nessuna pagina di Investor Relations trovata'
+		),
+		'show_in_rest' => true, // necessario per WP5
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_icon' => 'dashicons-chart-line',
+		'menu_position' => 20,
+		'has_archive' => false,
+		'hierarchical' => true,
+		'query_var' => true,
+		'capability_type' => 'page',
+		'capabilities' => array(
+			'edit_post' => 'edit_investor_relation',
+			'read_post' => 'read_investor_relation',
+			'delete_post' => 'delete_investor_relation',
+      'edit_posts' => 'edit_investor_relations',
+      'edit_others_posts' => 'edit_others_investor_relations',
+      'delete_posts' => 'delete_investor_relations',
+      'publish_posts' => 'publish_investor_relations',
+      'read_private_posts' => 'read_private_investor_relations',
+			//'read' => 'read_investor_relation',
+      'delete_private_posts' => 'delete_private_investor_relations',
+      'delete_published_posts' => 'delete_published_investor_relations',
+      'delete_others_posts' => 'delete_others_investor_relations',
+      'edit_private_posts' => 'edit_private_investor_relations',
+      'edit_published_posts' => 'edit_published_investor_relations'
+		),
+		'supports' => array('title', 'thumbnail'),
+	);
+	register_post_type("investor-relations", $args);
+
+	unset($args);
+
+	$args = array(
+		'labels'    => array(
 			'name'           => 'Sedi',
 			'singular_name'  => 'Sede',
 			'menu_name'      => 'Sedi',
@@ -25,7 +74,7 @@ function register_cposts_taxonomies() {
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'menu_icon' => 'dashicons-location',
-		'menu_position' => 20,
+		'menu_position' => 30,
 		'has_archive' => true,
 		'hierarchical' => true,
 		'query_var' => true,
@@ -33,7 +82,7 @@ function register_cposts_taxonomies() {
 		'supports' => array('title', 'thumbnail'),
 	);
 	register_post_type("sedi", $args);
-	
+
 	unset($args);
 
 	$args = array(

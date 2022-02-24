@@ -16,8 +16,6 @@ $q = get_queried_object();
 		return !empty($result) && $section[reset($result)];
 	});
 	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
-
-	get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb
 	?>
 
 	<div class="news-hero">
