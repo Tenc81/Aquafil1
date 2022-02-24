@@ -107,3 +107,6 @@ dist
 *.phpproj
 *.user
 /.vs
+error_log.txt
+node_modules
+package-lock.json

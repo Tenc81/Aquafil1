@@ -1,0 +1,6608 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: MyMail Newsletter Plugin\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Email"
+msgstr "E-Mail"
+
+#: 
+msgid "First Name"
+msgstr "Nome"
+
+#: 
+msgid "Last Name"
+msgstr "Cognome"
+
+#: 
+msgid "Subscribe"
+msgstr "Iscrivi"
+
+#: 
+msgid "This Campaign was sent on %s"
+msgstr "Questa campagna è stata inviata il %s"
+
+#: 
+msgid "This Campaign is currently in the queue"
+msgstr "Questa campagna è attualmente nella coda"
+
+#: 
+msgid "Enter Campaign Title here"
+msgstr "Inserisci qui il Titolo della Campagna"
+
+#: 
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: 
+msgid "Signup for the newsletter"
+msgstr "Iscriviti alla newsletter"
+
+#: 
+msgid "You have received this email because you have subscribed to %s as {email}. If you no longer wish to receive emails please {unsub}"
+msgstr "Hai ricevuto questa e-mail perché ti sei iscritto a %s come {email}. Se non vuoi più ricevere email per favore {unsub}"
+
+#: 
+msgid "If you received this email by mistake, simply delete it. You won't be subscribed if you don't click the confirmation link"
+msgstr "Se hai ricevuto questa e-mail per errore, per favore cancellala.\n"
+"Se non vuoi iscriverti alla Newsletter non cliccare sul link di conferma."
+
+#: 
+msgid "Replace Content"
+msgstr "Sostituire il contenuto"
+
+#: 
+msgid "Newsletter Settings"
+msgstr "Impostazioni newsletter"
+
+#: 
+msgid "Campaigns"
+msgstr "Campagne"
+
+#: 
+msgid "Campaign"
+msgid_plural "Campaigns"
+msgstr[0] "Campagne"
+msgstr[1] ""
+
+#: 
+msgid "New Campaign"
+msgstr "Nuova Campagna"
+
+#: 
+msgid "Create a new Campaign"
+msgstr "Crea nuova Campagna"
+
+#: 
+msgid "Edit Campaign"
+msgstr "Modifica Campagna"
+
+#: 
+msgid "All Campaigns"
+msgstr "Tutte le Campagne"
+
+#: 
+msgid "View Newsletter"
+msgstr "Visualizza Newsletter"
+
+#: 
+msgid "Search Campaigns"
+msgstr "Cerca Campagna"
+
+#: 
+msgid "No Campaign found"
+msgstr "Campagna non trovata"
+
+#: 
+msgid "No Campaign found in Trash"
+msgstr "Campagna non trovata nel cestino"
+
+#: 
+msgid "Active"
+msgstr "Attivo"
+
+#: 
+msgid "Finished"
+msgstr "Finito"
+
+#: 
+msgid "starts in %s"
+msgstr "inizia in %s"
+
+#: 
+msgid "progressing"
+msgstr "avanzamento"
+
+#: 
+msgid "open rate"
+msgstr "tasso di apertura"
+
+#: 
+msgid "click rate"
+msgstr "tasso di click"
+
+#: 
+msgid "Duplicate"
+msgstr "Duplica"
+
+#: 
+msgid "Template changed. %1$s"
+msgstr "Modello modificato. %1$s"
+
+#: 
+msgid "Go back"
+msgstr "Indietro"
+
+#: 
+msgid "Campaign updated."
+msgstr "Campagna aggiornata."
+
+#: 
+msgid "Campaign restored to revision from %s"
+msgstr "Campagna ripristinata alla revisione da %s"
+
+#: 
+msgid "Campaign scheduled."
+msgstr "Campagna pianificata."
+
+#: 
+msgid "Campaign draft updated."
+msgstr "Progetto campagna aggiornato."
+
+#: 
+msgid "Save"
+msgstr "Salva"
+
+#: 
+msgid "Subscribers"
+msgstr "Iscritti"
+
+#: 
+msgid "Subscriber"
+msgid_plural "Subscribers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Lists"
+msgstr "Liste"
+
+#: 
+msgid "Subscribed"
+msgstr "Iscritto"
+
+#: 
+msgid "Templates"
+msgstr "Templates"
+
+#: 
+msgid "No Lists found!"
+msgstr "Nessuna Lista Trovata!"
+
+#: 
+msgid "Create a List now"
+msgstr "Crea una lista Adesso"
+
+#: 
+msgid "original"
+msgstr "originale"
+
+#: 
+msgid "none"
+msgstr "nulla"
+
+#: 
+msgid "Delete Permanently"
+msgstr "Cancella Definitivamente"
+
+#: 
+msgid "Move to Trash"
+msgstr "Sposta nel Cestino"
+
+#: 
+msgid "Publish"
+msgstr "Pubblica"
+
+#: 
+msgid "Submit for Review"
+msgstr "Invia per Revisione"
+
+#: 
+msgid "Update"
+msgstr "Aggiorna"
+
+#: 
+msgid "Change Template"
+msgstr "Cambia Template"
+
+#: 
+msgid "Preview"
+msgstr "Anteprima"
+
+#: 
+msgid "General"
+msgstr "Generali"
+
+#: 
+msgid "Tags"
+msgstr "Tags"
+
+#: 
+msgid "Cron"
+msgstr "Cron"
+
+#: 
+msgid "Bouncing"
+msgstr "Rimbalzo"
+
+#: 
+msgid "From Name"
+msgstr "Dal Nome"
+
+#: 
+msgid "The sender name which is displayed in the from field"
+msgstr "La descrizione del mittente che verrà visualizzata da chi riceve il messaggio"
+
+#: 
+msgid "From Address"
+msgstr "Dall'indirizzo"
+
+#: 
+msgid "The sender email address. Force your recievers to whitelabel this email address."
+msgstr "Indirizzo email del mittente - invitate i destinatari ad aggiungerlo ai loro contatti"
+
+#: 
+msgid "Reply To Address"
+msgstr "Rispondi all'indirizzo"
+
+#: 
+msgid "The address users can reply to"
+msgstr "Il destinatario risponderà a questo indirizzo"
+
+#: 
+msgid "Default Template"
+msgstr "Default Template"
+
+#: 
+msgid "get more"
+msgstr "vai avanti"
+
+#: 
+msgid "Embed Images"
+msgstr "Allega Immagini"
+
+#: 
+msgid "Embed images in the mail"
+msgstr "Allega immagini nell'email"
+
+#: 
+msgid "can be changed in each campaign"
+msgstr "può essere modificato in ogni campagna"
+
+#: 
+msgid "Newsletter Homepage"
+msgstr "Newsletter Homepage"
+
+#: 
+msgid "Choose"
+msgstr "Scegli"
+
+#: 
+msgid "Subscription Form"
+msgstr "Modulo di iscrizione"
+
+#: 
+msgid "The text new subscribers get when Double-Opt-In is selected. Use %s for the link placeholder. Basic HTML is allowed"
+msgstr "Il testo che i nuovi iscritti ottengono quando Double-Opt è selezionato. Usa %s per il link segnaposto. E' Permesso HTML basico."
+
+#: 
+msgid "Custom Tags"
+msgstr "Tags Personalizzati"
+
+#: 
+msgid "add"
+msgstr "aggiungi"
+
+#: 
+msgid "Cron Service"
+msgstr "Cron Service"
+
+#: 
+msgid "Use the wp_cron function to send newsletters"
+msgstr "Utilizza la funzione wp-cron per inviare le Newsletters"
+
+#: 
+msgid "Use a real cron to send newsletters"
+msgstr "Utilizza real cron per inviare le Newsletters"
+
+#: 
+msgid "reccomended for many subscribers"
+msgstr "raccomandato per molti iscritti"
+
+#: 
+msgid "Interval for sending emails"
+msgstr "Intervallo di invio emails"
+
+#: 
+msgid "Send emails at most every %1$s minutes"
+msgstr "Invia emails al massimo ogni %1$s minuti"
+
+#: 
+msgid "Cron Settings"
+msgstr "Settaggi Cron"
+
+#: 
+msgid "a secret hash which is required to execute the cron"
+msgstr "l'hash segreto per eseguire il cron"
+
+#: 
+msgid "never"
+msgstr "mai"
+
+#: 
+msgid "Bounce Address"
+msgstr "Indirizzo del Rimbalzo"
+
+#: 
+msgid "Server Address : Port"
+msgstr "Indirizzo Server: Porta"
+
+#: 
+msgid "Username"
+msgstr "Nome utente"
+
+#: 
+msgid "%s attempts to deliver message until hardbounce"
+msgstr "%s tentativi di invio messaggio prima del rimbalzo"
+
+#: 
+msgid "Secure connection"
+msgstr "Connessione sicura"
+
+#: 
+msgid "If checked username and password are required"
+msgstr "Se selezionato username e password sono richiesti"
+
+#: 
+msgid "Send Test"
+msgstr "Invia un Test"
+
+#: 
+msgid "Save Changes"
+msgstr "Salva i Cambiamenti"
+
+#: 
+msgid "Status"
+msgstr "Stato"
+
+#: 
+msgid "add new list"
+msgstr "aggiungi nuova lista"
+
+#: 
+msgid "Upload"
+msgstr "Upload"
+
+#: 
+msgid "Unsubscribe"
+msgstr "Cancella"
+
+#: 
+msgid "Statistics"
+msgstr "Statistiche"
+
+#: 
+msgid "Title"
+msgstr "Titolo"
+
+#: 
+msgid "Thanks for your interest!"
+msgstr "Grazie per il Tuo interesse!"
+
+#: 
+msgid "Name"
+msgstr "Nome"
+
+#: 
+msgid "total"
+msgstr "totale"
+
+#: 
+msgid "bounces"
+msgstr "rimbalzo"
+
+#: 
+msgid "Date"
+msgstr "Data"
+
+#: 
+msgid "Campaign updated. %s"
+msgstr "Campagna aggiornata. %s"
+
+#: 
+msgid "Campaign published. %s"
+msgstr "Campagna pubbicata. %s"
+
+#: 
+msgid "Campaign submitted. %s"
+msgstr "Campagna inviata. %s"
+
+#: 
+msgid "Preview Newsletter"
+msgstr "Anteprima Newsletter"
+
+#: 
+msgctxt "send campaign \"on\" (date) \"at\" (time)"
+msgid "on %1$s @ %2$s"
+msgstr "il %1$s @ %2$s"
+
+#: 
+msgid "Subject"
+msgstr "Soggetto"
+
+#: 
+msgid "Preheader"
+msgstr "Preheader"
+
+#: 
+msgid "From Email"
+msgstr "Dalla Email"
+
+#: 
+msgid "reply-to email"
+msgstr "rispondi all'email"
+
+#: 
+msgid "Colors Schema"
+msgstr "Schemi Colore"
+
+#: 
+msgid "Background"
+msgstr "Sfondo"
+
+#: 
+msgid "Campaign saved."
+msgstr "Campagna salvata"
+
+#: 
+msgid "sent"
+msgstr "inviato"
+
+#: 
+msgid "Move module up"
+msgstr "Muovi su il modulo"
+
+#: 
+msgid "Move module down"
+msgstr "Muovi giu il modulo"
+
+#: 
+msgid "remove module"
+msgstr "elimina modulo"
+
+#: 
+msgid "Add Module"
+msgstr "+ Modulo"
+
+#: 
+msgid "Edit"
+msgstr "Edit"
+
+#: 
+msgctxt "for the autoimporter"
+msgid "Auto"
+msgstr "Auto"
+
+#: 
+msgid "add button"
+msgstr "aggiungi pulsante"
+
+#: 
+msgid "save this schema"
+msgstr "salva questo schema"
+
+#: 
+msgid "Reload"
+msgstr "Ricarica"
+
+#: 
+msgid "Select a post"
+msgstr "Seleziona un post"
+
+#: 
+msgid "Cancel"
+msgstr "Cancella"
+
+#: 
+msgid "remove element"
+msgstr "rimuovi elemento"
+
+#: 
+msgid "Embedded Images"
+msgstr "Allega Immagini"
+
+#: 
+msgid "Password"
+msgstr "Password"
+
+#: 
+msgid "Please select the status for the importing contacts!"
+msgstr "Per favore seleziona lo stato per importare i contatti!"
+
+#: 
+msgid "or"
+msgstr "o"
+
+#: 
+msgid "Import as"
+msgstr "Importa come"
+
+#: 
+msgid "%1$s of %2$s sent"
+msgstr "%1$s di %2$s inviato"
+
+#: 
+msgid "Paused"
+msgstr "Pausa"
+
+#: 
+msgid "Details"
+msgstr "Dettagli"
+
+#: 
+msgid "Template"
+msgstr "Template"
+
+#: 
+msgid "Delivery"
+msgstr "Consegna"
+
+#: 
+msgid "Options"
+msgstr "Opzioni"
+
+#: 
+msgid "Last hit"
+msgstr "Ultima azione"
+
+#: 
+msgid "Interval"
+msgstr "Intervallo"
+
+#: 
+msgctxt "short for minute"
+msgid "min"
+msgstr "min"
+
+#: 
+msgid "Source"
+msgstr "Sorgente"
+
+#: 
+msgid "Custom Fields"
+msgstr "Campi personalizzati"
+
+#: 
+msgid "next"
+msgstr "prossimo"
+
+#: 
+msgid "prev"
+msgstr "precedente"
+
+#: 
+msgid "webversion"
+msgstr "Vedi sul Browser"
+
+#: 
+msgid "Please confirm your Email Address"
+msgstr "Per favore conferma il Tuo indirizzo Email"
+
+#: 
+msgid "Permanent Tags"
+msgstr "Tags Permanenti"
+
+#: 
+msgid "Special Tags"
+msgstr "Special Tags"
+
+#: 
+msgid "use %1$s as placeholder tag to replace it with %2$s"
+msgstr "usa %1$s come tag segnaposto per sostituirlo con %2$s"
+
+#: 
+msgid "Newsletters"
+msgstr "Newsletters"
+
+#: 
+msgid "Offer share option for your customers"
+msgstr "Offre opzione di condivisione per i vostri clienti"
+
+#: 
+msgid "Services"
+msgstr "Servizi"
+
+#: 
+msgid "Share with %s"
+msgstr "Condividi con %s"
+
+#: 
+msgid "not yet"
+msgstr "non ancora"
+
+#: 
+msgid "There is no content for this newsletter."
+msgstr "Non ci sono contenuti per questa newsletter."
+
+#: 
+msgid "Add content"
+msgstr "Aggiungi contenuto"
+
+#: 
+msgid "This Campaign is currently progressing"
+msgstr "Questa Campagna è in corso"
+
+#: 
+msgid "%s is forwarding an email to you!"
+msgstr "%s inoltra una email a te"
+
+#: 
+msgid "Queued"
+msgstr "Accodato"
+
+#: 
+msgid "Latest Newsletter"
+msgstr "Ultima Newsletter"
+
+#: 
+msgid "email"
+msgstr "email"
+
+#: 
+msgid "edit"
+msgstr "modifica"
+
+#: 
+msgid "receiver"
+msgid_plural "receivers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "opened"
+msgid_plural "opens"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "clicks"
+msgstr "clicks"
+
+#: 
+msgid "unsubscribe"
+msgid_plural "unsubscribes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "bounce"
+msgid_plural "bounces"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Country"
+msgstr "Paese"
+
+#: 
+msgid "Frontend"
+msgstr "Frontend"
+
+#: 
+msgid "Share this via %s"
+msgstr "Condividi con %s"
+
+#: 
+msgid "Your name"
+msgstr "Nome"
+
+#: 
+msgid "Your email address"
+msgstr "Indirizzo Email"
+
+#: 
+msgid "Your friend's email address"
+msgstr "Indirizzo email del tuo amico"
+
+#: 
+msgid "A personal note to your friend"
+msgstr "Appunti personali sul tuo amico"
+
+#: 
+msgid "We respect your privacy. Nothing you enter on this page is saved by anyone"
+msgstr "Rispettiamo la tua privacy. Nessuna tua informazione sarà archiviata da alcuno"
+
+#: 
+msgid "Share the link"
+msgstr "Condividi il link"
+
+#: 
+msgid "opens"
+msgstr "aperti"
+
+#: 
+msgid "Older: %s"
+msgstr "Precedenti: %s"
+
+#: 
+msgid "Newer: %s"
+msgstr "Successivi: %s"
+
+#: 
+msgid "Purchasecode"
+msgstr "Codice di Acquisto"
+
+#: 
+msgid "Disable this tab"
+msgstr "Disabilita questa linguetta"
+
+#: 
+msgid "unsubscribe rate"
+msgstr "indice di cancellazioni"
+
+#: 
+msgid "bounce rate"
+msgstr "indice di rimbalzi"
+
+#: 
+msgid "Pause"
+msgstr "Pause"
+
+#: 
+msgid "Start"
+msgstr "Start"
+
+#: 
+msgid "All rights reserved"
+msgstr "Tutti i diritti riservati"
+
+#: 
+msgid "Currently selected"
+msgstr "Selezionato"
+
+#: 
+msgid "this isn't a valid email address!"
+msgstr "questo non è un indirizzo email valido!"
+
+#: 
+msgid "Use DomainKeys Identified Mail"
+msgstr "Utilizza il servizio di Identificazione DomainKeys"
+
+#: 
+msgid "read more"
+msgstr "leggi tutto"
+
+#: 
+msgid "DKIM often doesn't work out of the box. You may have to contact your email provider to get more information"
+msgstr "Per il corretto funzionamento di DKIM potrebbe essere necessario contattare il provider e-mail per avere maggiori informazioni"
+
+#: 
+msgid "Pause Campaign"
+msgstr "Sospendi Capmagna"
+
+#: 
+msgid "Start Campaign"
+msgstr "Avvia Campagna"
+
+#: 
+msgid "Start now"
+msgstr "Avvia adesso"
+
+#: 
+msgid "Send now"
+msgstr "Invia adesso"
+
+#: 
+msgid "Start Campaign now"
+msgstr "Avvia Campagna adesso"
+
+#: 
+msgid "Preview for %s"
+msgstr "Anteprima per %s"
+
+#: 
+msgid "Total"
+msgstr "Totale"
+
+#: 
+msgid "Open"
+msgstr "Aperto"
+
+#: 
+msgid "Clicks"
+msgstr "Clicks"
+
+#: 
+msgid "Unsubscribes"
+msgstr "Cancellati"
+
+#: 
+msgid "Bounces"
+msgstr "Rimbalzi"
+
+#: 
+msgid "Sorry, we couldn't deliver your message. Please try again later!"
+msgstr "Non è stato possibile recapitare il messaggio. Per favore prova più tardi!"
+
+#: 
+msgid "Share"
+msgstr "Share"
+
+#: 
+msgid "Duplicate Campaign %s"
+msgstr "Duplica Campagna %s"
+
+#: 
+msgid "restore default"
+msgstr "ripristina default"
+
+#: 
+msgid "%s is not a valid email address"
+msgstr "%s non è un indirizzo email valido"
+
+#: 
+msgid "The provided purchasecode %s is invalid"
+msgstr "Il codice di acquisto %s non è valido"
+
+#: 
+msgid "Update to %s"
+msgstr "Aggiorna a %s"
+
+#: 
+msgid "Latest"
+msgstr "Ultime"
+
+#: 
+msgid "Firstname"
+msgstr "Nome"
+
+#: 
+msgid "Lastname"
+msgstr "Cognome"
+
+#: 
+msgid "Export Subscribers"
+msgstr "Esporta Iscritti"
+
+#: 
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: 
+msgid "The caching time for tweets must be at least %d minutes"
+msgstr ""
+
+#: 
+msgid "Edit HTML"
+msgstr "Modifica HTML"
+
+#: 
+msgid "Country DB successfully loaded!"
+msgstr "DB delle Nazioni caricato correttamente!"
+
+#: 
+msgid "Couldn't load Country DB"
+msgstr "Non è possibile caricare il DB delle Nazioni"
+
+#: 
+msgid "Track Countries in Campaigns"
+msgstr "Traccia le Nazione nelle Campagne"
+
+#: 
+msgid "Your IP"
+msgstr "Il tuo IP"
+
+#: 
+msgid "%d campaign is active. You should pause it before you change the settings!"
+msgid_plural "%d campaigns are active. You should pause them before you change the settings!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "If you don't find your country down below the geo database is missing or corrupt"
+msgstr "Se non trovate il vostro paese vuol dire che il file dei dati geo è mancante o danneggiato"
+
+#: 
+msgid "Last update"
+msgstr "Ultimo aggiornamento"
+
+#: 
+msgid "Your country"
+msgstr "Il tuo Paese"
+
+#: 
+msgid "Please confirm your subscription!"
+msgstr "Per favore conferma la tua iscrizione!"
+
+#: 
+msgid "Default Form"
+msgstr "Default Form"
+
+#: 
+msgid "Form"
+msgstr "Form"
+
+#: 
+msgid "Forms"
+msgstr "Forms"
+
+#: 
+msgid "undefined"
+msgstr "indefinito"
+
+#: 
+msgid "add form"
+msgstr "aggiungi form"
+
+#: 
+msgid "Custom field tags are individual tags for each subscriber. You can ask for them on subscription and/or make it a required field."
+msgstr "Si possono personalizzare i tags per ogni iscritto. Si può chiedere loro di indicarli al momento della sottoscrizione e/o rendere un campo obbligatorio."
+
+#: 
+msgid "reserved tags"
+msgstr "tags riservati"
+
+#: 
+msgid "These are permanent tags which cannot get deleted. The CAN-SPAM tag is required in many countries."
+msgstr ""
+
+#: 
+msgid "Read more"
+msgstr "Leggi Tutto"
+
+#: 
+msgid "Add your custom tags here. They work like permanent tags"
+msgstr "Aggiungi i tuoi tags personalizzati qui. Funzionano come i tags permanenti"
+
+#: 
+msgid "Undeliverable emails will return to this address"
+msgstr "I messaggi non recapitati torneranno a questo indirizzo"
+
+#: 
+msgid "You have to save your settings before you can test them!"
+msgstr "È necessario salvare le impostazioni prima di poterle provare!"
+
+#: 
+msgid "If you disable this tab you cannot access it anymore from the settings page. If you would like to bring it back delete the %1$s option from the %2$s table"
+msgstr ""
+
+#: 
+msgid "You can set alternative content with %1$s which will be uses if %2$s is not defined. All unused tags will get removed in the final message"
+msgstr ""
+
+#: 
+msgid "Please fill out all fields correctly!"
+msgstr "Si prega di compilare tutti i campi correttamente!"
+
+#: 
+msgid "Newsletter Signup Form"
+msgstr "Form di sottoscrizione Newsletter"
+
+#: 
+msgid "Sign Up form for the newsletter"
+msgstr "Modulo di iscrizione alla Newsletter"
+
+#: 
+msgid "Newsletter sign up"
+msgstr "Iscrizione Newsletter"
+
+#: 
+msgid "Newsletter List"
+msgstr "Lista Newsletter"
+
+#: 
+msgid "Display the most recent newsletters"
+msgstr "Mostra le newsletter più recenti"
+
+#: 
+msgid "%s is a reserved tag!"
+msgstr "%s è un tag riservato!"
+
+#: 
+msgid "Total receivers"
+msgstr "Totale destinatari"
+
+#: 
+msgid "Import complete!"
+msgstr "Importazione Completata!"
+
+#: 
+msgid "displays the last tweet from Twitter user [username] (cache it for %s minutes)"
+msgstr "visualizza l'ultimo tweet dall'utente Twitter [username] (in cache per %s minuti)"
+
+#: 
+msgid "An error occurred! Please try again later!"
+msgstr "Errore! Per favore riprova più tardi!"
+
+#: 
+msgid "Please confirm"
+msgstr "Per favore conferma"
+
+#: 
+msgid "Click here to confirm"
+msgstr "Clicca qui per confermare"
+
+#: 
+msgid "Following fields are missing or incorrect"
+msgstr "I seguenti campi sono mancanti o errati"
+
+#: 
+msgid "You have successfully unsubscribed!"
+msgstr "Cancellazione avvenuta con successo!"
+
+#: 
+msgid "Headline"
+msgstr "Headline"
+
+#: 
+msgid "Linktext"
+msgstr "Linktext"
+
+#: 
+msgid "Text"
+msgstr "Testo"
+
+#: 
+msgid "Confirmation"
+msgstr "Conferma"
+
+#: 
+msgid "Successful"
+msgstr "Correttamente"
+
+#: 
+msgid "Error Message"
+msgstr "Messaggio di Errore"
+
+#: 
+msgid "You can setup an interval as low as one minute, but should consider a reasonable value of 5-15 minutes as well."
+msgstr "È possibile impostare un intervallo a partire da un minuto, ma si consideri un valore ragionevole almeno di 5-15 minuti."
+
+#: 
+msgid "If you need help setting up a cron job please refer to the documentation that your provider offers."
+msgstr ""
+
+#: 
+msgid "Anyway, chances are high that either %1$s, %2$s or %3$s  documentation will help you."
+msgstr ""
+
+#: 
+msgid "Share Button"
+msgstr "Pulsante Condivisione"
+
+#: 
+msgid "Optional if a real cron service is used"
+msgstr "Opzionale se si usa un servizio reale di cronologia"
+
+#: 
+msgid "Enter your purchasecode to enable automatic updates"
+msgstr "Inserisci il codice d'acquisto per abilitare gli aggiornamenti automatici"
+
+#: 
+msgid "or send it with your mail application"
+msgstr "oppure invia con la tua applicazione email"
+
+#: 
+msgid "show Templates"
+msgstr "mostra Templates"
+
+#: 
+msgid "no entries found"
+msgstr "nessun risultato trovato"
+
+#: 
+msgid "displays %1$s to share the newsletter via %2$s"
+msgstr ""
+
+#: 
+msgid "Send delay"
+msgstr "Ritardo di invio"
+
+#: 
+msgid "The default delay in minutes for sending campaigns."
+msgstr "Il ritardo di default per l'invio della campagna"
+
+#: 
+msgid "Delete messages without tracking code to keep postbox clear (recommended)"
+msgstr "Cancella messaggi senza codice di tracking per mantenere la cartella pulita (raccomandato)"
+
+#: 
+msgid "%1$s is forwarding this mail to you via %2$s"
+msgstr ""
+
+#: 
+msgid "An empty link will remove this button! Continue?"
+msgstr ""
+
+#: 
+msgid "insert URL"
+msgstr "inserisci URL"
+
+#: 
+msgid "You are not allowed to pause campaigns."
+msgstr "Non sei abilitato a sospendere la campagna"
+
+#: 
+msgid "You are not allowed to start campaigns."
+msgstr "Non sei abilitato ad avviare la campagna"
+
+#: 
+msgid "You are not allowed to duplicate campaigns."
+msgstr "Non sei abilitato a duplicare la campagna"
+
+#: 
+msgid "edit campaigns"
+msgstr "modifica campagna"
+
+#: 
+msgid "send campaigns"
+msgstr "invia campagna"
+
+#: 
+msgid "delete campaigns"
+msgstr "cancella campagna"
+
+#: 
+msgid "edit others campaigns"
+msgstr "modifica altre campagne"
+
+#: 
+msgid "delete others campaigns"
+msgstr "cancella altre campagne"
+
+#: 
+msgid "duplicate campaigns"
+msgstr "duplica campagna"
+
+#: 
+msgid "duplicate others campaigns"
+msgstr "duplica altre campagne"
+
+#: 
+msgid "change template"
+msgstr "cambia template"
+
+#: 
+msgid "see codeview"
+msgstr "vedi codice"
+
+#: 
+msgid "edit subscribers"
+msgstr "modifica iscritti"
+
+#: 
+msgid "delete subscribers"
+msgstr "cancella iscritti"
+
+#: 
+msgid "edit lists"
+msgstr "modifica liste"
+
+#: 
+msgid "delete lists"
+msgstr "cancella liste"
+
+#: 
+msgid "import subscribers"
+msgstr "importa iscritti"
+
+#: 
+msgid "export subscribers"
+msgstr "esporta iscritti"
+
+#: 
+msgid "manage templates"
+msgstr "gestisci templates"
+
+#: 
+msgid "edit templates"
+msgstr "modifica templates"
+
+#: 
+msgid "delete templates"
+msgstr "cancella templates"
+
+#: 
+msgid "upload templates"
+msgstr "carica templates"
+
+#: 
+msgid "see dashboard widget"
+msgstr "vedi il widget della bacheca"
+
+#: 
+msgid "Capabilities"
+msgstr "Autorizzazioni"
+
+#: 
+msgid "%1$s can %2$s"
+msgstr "%1$s può %2$s"
+
+#: 
+msgid "Define capabilities for each user role. To add new roles you can use a third party plugin. Administrator has always all privileges"
+msgstr "Definire le autorizzazioni per ogni ruolo utente. Per aggiungere nuovi ruoli è possibile utilizzare plugin di terze parti. L'amministratore ha sempre tutti i privilegi"
+
+#: 
+msgid "%d emails have not been sent"
+msgstr "%d emails non sono state inviate"
+
+#: 
+msgid "Field Name"
+msgstr "Nome Campo"
+
+#: 
+msgid "Tag"
+msgstr "Tag"
+
+#: 
+msgid "Type"
+msgstr "Tipo"
+
+#: 
+msgid "Textfield"
+msgstr "Campo Testo"
+
+#: 
+msgid "Dropdown Menu"
+msgstr "Menu a discesa"
+
+#: 
+msgid "Radio Buttons"
+msgstr "Radio Buttons"
+
+#: 
+msgid "default"
+msgstr "default"
+
+#: 
+msgid "this field is selected by default"
+msgstr "questo campo è selezionato di default"
+
+#: 
+msgid "add field"
+msgstr "aggiungi campo"
+
+#: 
+msgid "remove field"
+msgstr "rimuovi campo"
+
+#: 
+msgid "move up"
+msgstr "muovi su"
+
+#: 
+msgid "move down"
+msgstr "muovi giu"
+
+#: 
+msgid "Error"
+msgstr "Errore"
+
+#: 
+msgid "subscribed"
+msgstr "iscritto"
+
+#: 
+msgid "unsubscribed"
+msgstr "cancellato"
+
+#: 
+msgid "hardbounced"
+msgstr "rimbalzato"
+
+#: 
+msgid "Texts"
+msgstr "Testi"
+
+#: 
+msgid "Define messages for the subscription form"
+msgstr "Definisci i messaggi per il modulo di sottoscrizione"
+
+#: 
+msgid "Field Labels"
+msgstr "Etichette campo"
+
+#: 
+msgid "Define texts for the labels of forms. Custom field labels can be defined on the Subscribers tab"
+msgstr "Definisci il testo per il label. Il campo personalizzato può essere definito in \"Abbonati\""
+
+#: 
+msgid "Submit Button"
+msgstr "Pulsante Invio"
+
+#: 
+msgid "Mail"
+msgstr "Mail"
+
+#: 
+msgid "Define texts for the mails"
+msgstr "Definisci testo per le email"
+
+#: 
+msgid "Unsubscribe Link"
+msgstr "Link di cancellazione"
+
+#: 
+msgid "Webversion Link"
+msgstr "Link Vista Browser"
+
+#: 
+msgid "Yes, unsubscribe me"
+msgstr "Cancellami"
+
+#: 
+msgid "Unsubscribe Button"
+msgstr "Pulsante cancellazione"
+
+#: 
+msgid "Clickmap"
+msgstr "Clickmap"
+
+#: 
+msgid "Delete this color schema?"
+msgstr "Cancello questo schema colore?"
+
+#: 
+msgid "current"
+msgstr "corrente"
+
+#: 
+msgid "Colors"
+msgstr "Colori"
+
+#: 
+msgid "Autoresponder"
+msgid_plural "Autoresponders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Autoresponders"
+msgstr "Autorisponditori"
+
+#: 
+msgid "active"
+msgstr "attivo"
+
+#: 
+msgid "inactive"
+msgstr "inattivo"
+
+#: 
+msgid "after"
+msgstr "dopo"
+
+#: 
+msgid "only if"
+msgstr "solo se"
+
+#: 
+msgid "%s is missing!"
+msgstr "%s è mancante!"
+
+#: 
+msgid "activate"
+msgstr "attivato"
+
+#: 
+msgid "deactivate"
+msgstr "disattivato"
+
+#: 
+msgid "minute(s)"
+msgstr "minuto(i)"
+
+#: 
+msgid "hour(s)"
+msgstr "ora(e)"
+
+#: 
+msgid "day(s)"
+msgstr "giorno(i)"
+
+#: 
+msgid "user signed up"
+msgstr "utente registrato"
+
+#: 
+msgid "user unsubscribed"
+msgstr "utente cancellato"
+
+#: 
+msgid "is"
+msgstr "è"
+
+#: 
+msgid "is not"
+msgstr "non è"
+
+#: 
+msgid "contains"
+msgstr "contiene"
+
+#: 
+msgid "contains not"
+msgstr "non contiene"
+
+#: 
+msgid "begins with"
+msgstr "inizia con"
+
+#: 
+msgid "ends with"
+msgstr "finisce con"
+
+#: 
+msgid "edit autoresponders"
+msgstr "modifica autorisponditore"
+
+#: 
+msgid "edit others autoresponders"
+msgstr "modifica altri autorisponditori"
+
+#: 
+msgid "Regular Campaign"
+msgstr "Campagna Regolare"
+
+#: 
+msgid "send this campaign"
+msgstr "Invia questa Campagna"
+
+#: 
+msgid "one of the conditions is true"
+msgstr "una delle condizioni è vera"
+
+#: 
+msgid "and"
+msgstr "e"
+
+#: 
+msgid "all of the conditions are true"
+msgstr "tutte le condizioni sono vere"
+
+#: 
+msgid "remove condition"
+msgstr "rimuovi condizione"
+
+#: 
+msgid "add condition"
+msgstr "aggiungi condizione"
+
+#: 
+msgid "no lists selected"
+msgstr "nessuna lista selezionata"
+
+#: 
+msgid "%d job deleted"
+msgid_plural "%d jobs deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "background images are not displayed on all clients!"
+msgstr "L'immagine di background non è visualizzata in tutti i client"
+
+#: 
+msgid "You are about to delete this template \"%s\""
+msgstr "Stai per eliminare questo template \"%s\""
+
+#: 
+msgid "Template saved"
+msgstr "Template Salvato"
+
+#: 
+msgid "less than a minute"
+msgstr "meno di un minuto"
+
+#: 
+msgid "Base"
+msgstr "Base"
+
+#: 
+msgid "Notification"
+msgstr "Notifica"
+
+#: 
+msgid "remove modules"
+msgstr "rimuovi moduli"
+
+#: 
+msgid "preview"
+msgstr "anteprima"
+
+#: 
+msgid "undo"
+msgstr "undo"
+
+#: 
+msgid "redo"
+msgstr "redo"
+
+#: 
+msgid "toggle HTML/code view"
+msgstr "alterna vista HTML/testo"
+
+#: 
+msgid "Your currently working with %s"
+msgstr "Stai lavorando con %s"
+
+#: 
+msgid "save template"
+msgstr "salva template"
+
+#: 
+msgid "Save Template"
+msgstr "Salva Template"
+
+#: 
+msgid "template name"
+msgstr "nome del template"
+
+#: 
+msgid "Depending on your hosting provider you can increase these values"
+msgstr "A seconda del tuo provider di hosting potresti aumentare questi valori"
+
+#: 
+msgid "call it directly"
+msgstr "Chiama direttamente"
+
+#: 
+msgid "or set up a cron"
+msgstr "oppure imposta il cron"
+
+#: 
+msgid "send %1$s %2$s %3$s"
+msgstr "invia %1$s %2$s %3$s"
+
+#: 
+msgid "immediately"
+msgstr "immediatamente"
+
+#: 
+msgid "Sent limit of %1$s reached! You have to wait %2$s before you can send more mails!"
+msgstr ""
+
+#: 
+msgid "Unsubscribe Error"
+msgstr "Errore di Cancellazione"
+
+#: 
+msgid "Number of mails sent"
+msgstr "Numero di email inviate"
+
+#: 
+msgid "Send max %1$s emails at once and max %2$s within %3$s hours"
+msgstr ""
+
+#: 
+msgid "You can still send %1$s mails within the next %2$s"
+msgstr ""
+
+#: 
+msgid "Unable to save template!"
+msgstr "Impossibile salvare il template!"
+
+#: 
+msgid "overwrite if exists"
+msgstr "sovrascrivi esistente"
+
+#: 
+msgid "manage capabilities"
+msgstr "gestione autorizzazioni"
+
+#: 
+msgid "check this option to include the style.css of your theme into the form"
+msgstr ""
+
+#: 
+msgid "include themes style.css"
+msgstr ""
+
+#: 
+msgid "City DB successfully loaded!"
+msgstr "DB delle Città caricato correttamente!"
+
+#: 
+msgid "Couldn't load City DB"
+msgstr "Non è possibile caricare il DB delle Città"
+
+#: 
+msgid "Not able to save file!"
+msgstr "Non abilitato a salvare il file!"
+
+#: 
+msgid "File has been saved!"
+msgstr "Salvataggio riuscito!"
+
+#: 
+msgid "back to world view"
+msgstr "torna alla vista mondo"
+
+#: 
+msgid "Post List Count"
+msgstr ""
+
+#: 
+msgid "Number of posts or images displayed at once in the editbar."
+msgstr "Numero di elementi visualizzati ogni pagina"
+
+#: 
+msgid "Track Cities in Campaigns"
+msgstr ""
+
+#: 
+msgid "forward to a friend"
+msgstr "invia a un amico"
+
+#: 
+msgid "Track Geolocation"
+msgstr ""
+
+#: 
+msgid "The city DB is about 12 MB. It can take a while to load it"
+msgstr "Il DB delle città è di circa 12 MB. Ci vorrà un pò per caricarlo..."
+
+#: 
+msgid "Your city"
+msgstr "La tua Città"
+
+#: 
+msgid "place labels inside input fields"
+msgstr ""
+
+#: 
+msgid "assign new lists automatically to this form"
+msgstr "assegna la nuova lista automaticamente a questo form"
+
+#: 
+msgid "Forward Link"
+msgstr ""
+
+#: 
+msgid "You are about to create new DKIM keys. The old ones will get deleted. Continue?"
+msgstr ""
+
+#: 
+msgid "New DKIM keys have been created!"
+msgstr "Una nuova chiave DKIM è stata creata!"
+
+#: 
+msgid "Not able to create new DKIM keys!"
+msgstr "Non è possibile creare una nuova chiave DKIM!"
+
+#: 
+msgid "no subscribers removed"
+msgstr "nessun iscritto rimosso"
+
+#: 
+msgid "You are about to delete these subscribers permanently. This step is irreversible!"
+msgstr ""
+
+#: 
+msgid "Type \"%s\" to confirm deletion"
+msgstr "Digita \"%s\" per confermare la cancellazione"
+
+#: 
+msgid "Authentication"
+msgstr "Autenticazione"
+
+#: 
+msgid "Pagination"
+msgstr "Paginazione"
+
+#: 
+msgid "Allow users to view the next/last newsletters"
+msgstr ""
+
+#: 
+msgid "Save Subscriber IP"
+msgstr ""
+
+#: 
+msgid "Save IP address and time of new subscribers"
+msgstr ""
+
+#: 
+msgid "In some countries it's required to save the IP address and the sign up time for legal reasons. Please add a note in your privacy policy if you save users data"
+msgstr "In alcuni paesi è richiesto di conservare l'indirizzo IP degli iscritti per motivi legali. Si prega di aggiungere una nota nel disclaimer della privacy se si salvano i dati degli utenti"
+
+#: 
+msgid "Send test email with current settings"
+msgstr ""
+
+#: 
+msgid "Delivery Method"
+msgstr "Metodo di Consegna"
+
+#: 
+msgid "use this option if you don't have access to a SMTP server or any other provided options"
+msgstr "Usa questa opzione se non disponi di un accesso a un server SMTP o altra possibilità"
+
+#: 
+msgid "seconds"
+msgstr "secondi"
+
+#: 
+msgid "Gmail has a limit of 500 mails within 24 hours! Also sending a mail can take up to one second which is quite long. This options is only recommended for few subscribers. DKIM works only if set the from address to your Gmail address."
+msgstr "Gmail ha un limite di 500 mail in 24 ore! Anche l'invio di una e-mail può richiedere fino a un secondo che è abbastanza. Questa opzione è consigliata solo per pochi abbonati. DKIM funziona solo se si imposta l'indirizzo del mittente nel tuo indirizzo Gmail."
+
+#: 
+msgid "enable automatic bounce handling"
+msgstr "abilitare la gestione automatica del rimbalzo"
+
+#: 
+msgid "If you would like to enable bouncing you have to setup a separate POP3 mail account"
+msgstr ""
+
+#: 
+msgid "Use SSL. Default port is 995"
+msgstr "Utilizza SSL. La porta di default è 995"
+
+#: 
+msgid "Delete messages"
+msgstr "Cancella messaggi"
+
+#: 
+msgid "You need to change the namespace records of your domain if you would like to use one of these methods. Ask your provider how to add \"TXT namespace records\". Changes take some time to get published on all DNS worldwide."
+msgstr "È necessario modificare i record dello spazio dei nomi di dominio se si desidera utilizzare uno di questi metodi. Chiedete al vostro provider come aggiungere \"TXT record namespace \". Le modifiche impiegheranno un po 'di tempo per essere pubblicate su tutti i DNS in tutto il mondo."
+
+#: 
+msgid "Use Sender Policy Framework"
+msgstr ""
+
+#: 
+msgid "Domain %s"
+msgstr "Dominio %s"
+
+#: 
+msgid "TXT record found"
+msgstr "Trovato record TXT"
+
+#: 
+msgid "no TXT record found"
+msgstr "Non è stato trovato il record TXT"
+
+#: 
+msgid "No or wrong record found for %s. Please adjust the namespace records and add these lines:"
+msgstr "Nessun record trovato o record corrotto per %s. Per favore controllare il registro e aggiungere queste righe:"
+
+#: 
+msgid "this wizard"
+msgstr "questo wizard"
+
+#: 
+msgid "The domain you would like to add a SPF record"
+msgstr "Il dominio al quale si desidera aggiungere un record SPF"
+
+#: 
+msgid "verified"
+msgstr "verificato"
+
+#: 
+msgid "not verified"
+msgstr "non verificato"
+
+#: 
+msgid "The domain you have set the TXT namespace records"
+msgstr "Il dominio al quale è stato impostato lo spazio dei nomi record TXT"
+
+#: 
+msgid "You can leave this field blank unless you know what you do"
+msgstr ""
+
+#: 
+msgid "Keys"
+msgstr "Chiavi"
+
+#: 
+msgid "If you have defined the domain and a selector you have to generate a public and a private key. Once created you have to add some TXT namespace records at your mail provider"
+msgstr ""
+
+#: 
+msgid "Changing namespace entries can take up to 48 hours to take affect around the world."
+msgstr ""
+
+#: 
+msgid "It's recommend to change the keys occasionally"
+msgstr "Si consiglia di modificare le chiavi di tanto in tanto"
+
+#: 
+msgid "If you change one of the settings above new keys are required"
+msgstr ""
+
+#: 
+msgid "Some providers don't allow TXT records with a specific size. Choose less bits in this case"
+msgstr ""
+
+#: 
+msgid "Private keys should be kept private. Don't share them or post it somewhere"
+msgstr ""
+
+#: 
+msgid "new Keys"
+msgstr "nuove Chiavi"
+
+#: 
+msgid "Bit Size"
+msgstr "Bit Size"
+
+#: 
+msgid "generate Keys"
+msgstr "genera Chiavi"
+
+#: 
+msgid "Delete Subscribers"
+msgstr "Cancella Iscritti"
+
+#: 
+msgid "and have one of these statuses"
+msgstr ""
+
+#: 
+msgid "Delete Subscribers permanently"
+msgstr "Cancella Iscritti definitivamente"
+
+#: 
+msgid "with IP %s"
+msgstr "con IP %s"
+
+#: 
+msgid "Couldn't send message. Check your settings!"
+msgstr "Errore nell'invio del messaggio. Controlla le impostazioni!"
+
+#: 
+msgid "Time between mails"
+msgstr "Intervallo tra le email"
+
+#: 
+msgid "milliseconds"
+msgstr "millisecondi"
+
+#: 
+msgid "define a delay between mails in milliseconds if you have problems with sending two many mails at once"
+msgstr ""
+
+#: 
+msgid "Send limit has been adjusted to %d for Gmail"
+msgstr ""
+
+#: 
+msgid "The selector is used to identify the keys used to attach a token to the email"
+msgstr ""
+
+#: 
+msgid "Simple"
+msgstr "Semplice"
+
+#: 
+msgid "Campaign %1$s has been paused cause of a sending error: %2$s"
+msgstr ""
+
+#: 
+msgid "Y/m/d"
+msgstr "Y/m/d"
+
+#: 
+msgid "This campaign has been started on %1$s, %2$s ago"
+msgstr "Questa campagna è iniziata il %1$s, %2$s fa"
+
+#: 
+msgid "Media Manager"
+msgstr "Media Manager"
+
+#: 
+msgid "wrong post type"
+msgstr "tipo di post errato"
+
+#: 
+msgid "User has not subscribed"
+msgstr "L'utente non è iscritto"
+
+#: 
+msgid "Message sent. Check your inbox!"
+msgstr "Messaggio inviato. Controlla la tua casella!"
+
+#: 
+msgid "Manage Subscribers"
+msgstr "Gestione Iscritti"
+
+#: 
+msgid "Please select at least the column with the email addresses!"
+msgstr ""
+
+#: 
+msgid "preparing data"
+msgstr "dati in preparazione"
+
+#: 
+msgid "uploading...%s"
+msgstr "caricamento...%s"
+
+#: 
+msgid "Importing Contacts...%s"
+msgstr "Importa Contatti...%s"
+
+#: 
+msgid "Estimate time left: %s minutes"
+msgstr "Tempo stimato rimanente: %s minuti"
+
+#: 
+msgid "continues in %s seconds"
+msgstr "continua tra %s secondi"
+
+#: 
+msgid "Preparing Download...%s"
+msgstr "Preparazione Download...%s"
+
+#: 
+msgid "writing file: %s"
+msgstr "file in scrittura: %s"
+
+#: 
+msgid "Download finished"
+msgstr "Download terminato"
+
+#: 
+msgid "Downloading..."
+msgstr "Downloading..."
+
+#: 
+msgid "Please select at least one list!"
+msgstr "Per favore seleziona almeno una lista!"
+
+#: 
+msgid "You are currently importing subscribers! If you leave the page all pending subscribers don't get imported!"
+msgstr ""
+
+#: 
+msgid "Your download is preparing! If you leave this page the progress will abort!"
+msgstr ""
+
+#: 
+msgid "IP Address"
+msgstr "Indirizzo IP"
+
+#: 
+msgid "Signup Date"
+msgstr "Data Sottoscrizione"
+
+#: 
+msgid "Ignore column"
+msgstr "Ignora colonna"
+
+#: 
+msgid "add contacts to following lists"
+msgstr "aggiungi contatti alle liste seguenti"
+
+#: 
+msgid "invalid email address"
+msgstr "indirizzo email non valido"
+
+#: 
+msgid "The following addresses were not imported"
+msgstr ""
+
+#: 
+msgid "Reason"
+msgstr ""
+
+#: 
+msgid "no subscribers found"
+msgstr "nessun iscritto trovato"
+
+#: 
+msgid "Signup IP"
+msgstr ""
+
+#: 
+msgid "Confirm Date"
+msgstr "Conferma Data"
+
+#: 
+msgid "Confirm IP"
+msgstr "Conferma IP"
+
+#: 
+msgid "The web browser on your device cannot be used to upload files. You may be able to use the <a href=\"http://wordpress.org/extend/mobile/\">native app for your device</a> instead."
+msgstr ""
+
+#: 
+msgid "Comma-separated values (CSV)"
+msgstr ""
+
+#: 
+msgid "Drop your list here"
+msgstr "Rilascia la tua lista qui"
+
+#: 
+msgctxt "Uploader: Drop files here - or - Select Files"
+msgid "or"
+msgstr ""
+
+#: 
+msgid "Select File"
+msgstr "Seleziona File"
+
+#: 
+msgid "Split your lists into max 50.000 subscribers each"
+msgstr ""
+
+#: 
+msgid "Your browser has some limitations uploading large files with the multi-file uploader. Please use the browser uploader for files over 100MB."
+msgstr ""
+
+#: 
+msgid "Text before the form"
+msgstr "Testo prima del form"
+
+#: 
+msgid "Text after the form"
+msgstr "Testo dopo il form"
+
+#: 
+msgid "manage subscribers"
+msgstr "gesione iscritti"
+
+#: 
+msgid "Do you really want to unsubscribe?"
+msgstr "Vuoi veramente cancellarti?"
+
+#: 
+msgid "Import"
+msgstr "Importa"
+
+#: 
+msgid "Export"
+msgstr "Esporta"
+
+#: 
+msgid "Delete"
+msgstr "Cancella"
+
+#: 
+msgid "upload you subscribers as comma-separated list (CSV)"
+msgstr "carica iscritti come lista comma-separated (CSV)"
+
+#: 
+msgid "Paste"
+msgstr "Incolla"
+
+#: 
+msgid "paste your list here"
+msgstr "incolla la lista qui"
+
+#: 
+msgid "which are in one of these lists"
+msgstr "che sono in una di queste liste"
+
+#: 
+msgid "subscribers not assigned to a list"
+msgstr "iscritto non assegnato ad alcuna lista"
+
+#: 
+msgid "error"
+msgstr "errore"
+
+#: 
+msgid "include header"
+msgstr "include testata"
+
+#: 
+msgid "Date Format"
+msgstr "Formato Data"
+
+#: 
+msgid "MySQL Server Performance"
+msgstr "Prestazioni Server MySQL"
+
+#: 
+msgid "low"
+msgstr "basso"
+
+#: 
+msgid "normal"
+msgstr "normale"
+
+#: 
+msgid "high"
+msgstr "alto"
+
+#: 
+msgid "super high"
+msgstr "molto alto"
+
+#: 
+msgid "super extreme high"
+msgstr "altissimo"
+
+#: 
+msgid "Define order and included columns"
+msgstr "Definisce l'ordine e le colonne incluse"
+
+#: 
+msgid "Listnames"
+msgstr "Nomi delle liste"
+
+#: 
+msgid "Download Subscribers"
+msgstr "Download Iscritti"
+
+#: 
+msgid "no subscriber found"
+msgstr "nessun iscritto trovato"
+
+#: 
+msgid "remove selected lists"
+msgstr "rimuovi liste selezionate"
+
+#: 
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai sufficienti autorizzazioni per accedere a questa pagina."
+
+#: 
+msgid "fill fields with known data if user is logged in"
+msgstr ""
+
+#: 
+msgid "Do you really like to import these contacts?"
+msgstr "Vuoi veramente importare questi contatti?"
+
+#: 
+msgid "frontend settings page"
+msgstr "impostazioni del frontend"
+
+#: 
+msgid "Resend Confirmation"
+msgstr "Reinvio della conferma"
+
+#: 
+msgid "resend confirmation %1$s times with a delay of %2$s hours if user hasn't confirmed the subscription"
+msgstr "reinvia la conferma %1$s volte con un ritardo di %2$s ore se l'utente non ha confermato l'iscrizione"
+
+#: 
+msgid "%s ago"
+msgstr "%s fa"
+
+#: 
+msgid "Link image to the this URL"
+msgstr ""
+
+#: 
+msgid "required"
+msgstr "richiesto"
+
+#: 
+msgid "You have to enable Custom fields for each form:"
+msgstr ""
+
+#: 
+msgctxt "Translators: put your personal info here to display it on the settings page. Leave blank for no info"
+msgid "translator string"
+msgstr ""
+
+#: 
+msgid "This plugin has been translated by %s"
+msgstr "Questo plugin è stato tradotto da %s"
+
+#: 
+msgid "Do you really like to delete all custom color schemas for this template?"
+msgstr "Sei sicuro di voler cancellare tutti gli schemi di colore personalizzati per questo modello?"
+
+#: 
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: 
+msgid "checked by default"
+msgstr "selezionato di default"
+
+#: 
+msgid "Colors Schemas"
+msgstr "Schemi Colore"
+
+#: 
+msgid "delete all custom schemas"
+msgstr "cancella gli schemi personalizzati"
+
+#: 
+msgid "users decide which list they subscribe to"
+msgstr "l'utente sceglie le liste alle quali iscriversi"
+
+#: 
+msgid "show drop down instead of check boxes"
+msgstr "mostra menu a discesa invece che casella di controllo"
+
+#: 
+msgid "subscribe new users to"
+msgstr "iscrivi i nuovi utenti a:"
+
+#: 
+msgid "users can subscribe to"
+msgstr ""
+
+#: 
+msgid "redirect after submit"
+msgstr ""
+
+#: 
+msgid "width"
+msgstr "larghezza"
+
+#: 
+msgid "height"
+msgstr "altezza"
+
+#: 
+msgid "add %s"
+msgstr "aggiunge %s"
+
+#: 
+msgid "remove %s"
+msgstr "rimuove %s"
+
+#: 
+msgid "Alt Text"
+msgstr "Testo Alternativo"
+
+#: 
+msgid "image description"
+msgstr "descrizione immagine"
+
+#: 
+msgid "Currently %s of %s imported with %s errors. %s memory usage"
+msgstr ""
+
+#: 
+msgid "There was a problem during importing contacts. Please check the error logs for more information!"
+msgstr ""
+
+#: 
+msgid "has opened"
+msgstr "è stato aperto"
+
+#: 
+msgid "has not opened yet"
+msgstr "non è stato ancora aperto"
+
+#: 
+msgid "load more recipients from this campaign"
+msgstr ""
+
+#: 
+msgid "last %s"
+msgstr "ultimo %s"
+
+#: 
+msgid "second last %s"
+msgstr ""
+
+#: 
+msgid "third last %s"
+msgstr ""
+
+#: 
+msgid "fourth last %s"
+msgstr ""
+
+#: 
+msgid "fifth last %s"
+msgstr ""
+
+#: 
+msgid "sixth last %s"
+msgstr ""
+
+#: 
+msgid "seventh last %s"
+msgstr ""
+
+#: 
+msgid "eighth last %s"
+msgstr ""
+
+#: 
+msgid "ninth last %s"
+msgstr ""
+
+#: 
+msgid "tenth last %s"
+msgstr ""
+
+#: 
+msgid "eleventh last %s"
+msgstr ""
+
+#: 
+msgid "twelfth last %s"
+msgstr ""
+
+#: 
+msgid "create a new one"
+msgstr "creare un nuovo"
+
+#: 
+msgid "any %s"
+msgstr "qualsiasi %s"
+
+#: 
+msgid "WordPress is not able to access to your filesystem!"
+msgstr ""
+
+#: 
+msgid "Please add following lines to the wp-config.php %s"
+msgstr "Per favore aggiungi le seguenti linee ne file wp-config.php %s"
+
+#: 
+msgid "completing job"
+msgstr "completa il lavoro"
+
+#: 
+msgid "Duplicate module"
+msgstr "Modulo duplicato"
+
+#: 
+msgid "%s does not contain a valid image"
+msgstr "%s non contiene un'immagine valida"
+
+#: 
+msgid "something has been published"
+msgstr "qualcosa è stato pubblicato"
+
+#: 
+msgid "Output Format"
+msgstr "Formato di Otput"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "HTML"
+msgstr "HTML"
+
+#: 
+msgid "Encoding"
+msgstr "Encoding"
+
+#: 
+msgid "Auto Responder"
+msgstr "Risposta Automatica"
+
+#: 
+msgid "send this auto responder"
+msgstr "invia questa risposta automatica"
+
+#: 
+msgid "Next issue: %s"
+msgstr ""
+
+#: 
+msgid "Use the %s tag to display the current issue in the campaign"
+msgstr ""
+
+#: 
+msgid "%1$s matching %2$s has been published"
+msgid_plural "%1$s matching %2$s have been published"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "reset counter"
+msgstr "reset contatore"
+
+#: 
+msgid "Total Recipients"
+msgstr "Totale Recipienti"
+
+#: 
+msgid "Total Errors"
+msgstr "Totale Errori"
+
+#: 
+msgid "Total Clicks"
+msgstr "Totale Clicks"
+
+#: 
+msgid "Insert from URL"
+msgstr "Inserisci da URL"
+
+#: 
+msgid "Image URL"
+msgstr "URL Immagine"
+
+#: 
+msgid "static"
+msgstr "statico"
+
+#: 
+msgid "dynamic"
+msgstr "dinamico"
+
+#: 
+msgid "use the excerpt if exists otherwise use the content"
+msgstr "utilizza riassunto se esiste, altrimenti il contenuto"
+
+#: 
+msgid "excerpt"
+msgstr "riassunto"
+
+#: 
+msgid "use the content"
+msgstr "usa il contenuto"
+
+#: 
+msgid "full content"
+msgstr "contenuto completo"
+
+#: 
+msgid "the excerpt"
+msgstr "il riassunto"
+
+#: 
+msgid "the full content"
+msgstr "tutto il contenuto"
+
+#: 
+msgid "the latest"
+msgstr "l'ultimo"
+
+#: 
+msgid "the second latest"
+msgstr "il penultimo"
+
+#: 
+msgid "the third latest"
+msgstr "il terzultimo"
+
+#: 
+msgid "the fourth latest"
+msgstr "il quartultimo"
+
+#: 
+msgid "the fifth latest"
+msgstr "il quintultimo"
+
+#: 
+msgid "the sixth latest"
+msgstr "il sestultimo"
+
+#: 
+msgid "the seventh latest"
+msgstr "il settimo dall'ultimo"
+
+#: 
+msgid "the eighth latest"
+msgstr "l'ottavo dall'ultimo"
+
+#: 
+msgid "the ninth latest"
+msgstr "il nono dall'ultimo"
+
+#: 
+msgid "the tenth latest"
+msgstr "il decimo dall'ultimo"
+
+#: 
+msgid "the eleventh latest"
+msgstr "l'undicesimo dall'ultimo"
+
+#: 
+msgid "the twelfth latest"
+msgstr "il dodicesimo dall'ultimo"
+
+#: 
+msgctxt "Insert [excerpt] of [latest] [post]"
+msgid "Insert %1$s of %2$s %3$s"
+msgstr "Inserire %1$s di %2$s %3$s"
+
+#: 
+msgid "dynamic content get replaced with the proper content as soon as the campaign get send. Check the quick preview to see the current status of dynamic elements"
+msgstr "il contenuto dinamico verrà corretto automaticamente quando la campagna sarà inviata. Controllare l'anteprima rapida per visualizzare lo stato corrente degli elementi dinamici"
+
+#: 
+msgid "Special tags display dynamic content and are equally for all subscribers"
+msgstr ""
+
+#: 
+msgid "Dynamic Tags"
+msgstr "Tags dinamici"
+
+#: 
+msgid "Dynamic tags let you display your posts or pages in a reverse chronicle order. Some examples:"
+msgstr ""
+
+#: 
+msgid "displays the latest post title"
+msgstr "mostra il titolo dell'ultimo post"
+
+#: 
+msgid "displays the fourth latest page title"
+msgstr "mostra il titolo del quartultimo post"
+
+#: 
+msgid "displays the feature image of the latest posts"
+msgstr "mostra l'immagine in rilievo dell'ultimo post"
+
+#: 
+msgid "displays the feature image of the fourth latest posts. Uses the image with ID 23 if the post doesn't have a feature image"
+msgstr "mostra l'immagine in rilievo del quartultimo post. Usa l'immagine con ID 23 se il post non ha un'immagine in rilievo"
+
+#: 
+msgid "displays the latest posts content"
+msgstr "mostra il contenuto dell'ultimo post"
+
+#: 
+msgid "displays the latest posts excerpt or content if no excerpt is defined"
+msgstr "mostra il riassunto dell'ultimo post oppure il contenuto se il riassunto non è definito"
+
+#: 
+msgid "displays the latest posts date"
+msgstr "mostra la data dell'ultimo post"
+
+#: 
+msgid "you can also use absolute values"
+msgstr ""
+
+#: 
+msgid "displays the post title of post ID 23"
+msgstr ""
+
+#: 
+msgid "displays the permalink of post ID 15"
+msgstr ""
+
+#: 
+msgid "Instead of \"post_\" and \"page_\" you can use custom post types too"
+msgstr ""
+
+#: 
+msgid "Image Fallback"
+msgstr ""
+
+#: 
+msgid "Fallback image for dynamic image tags"
+msgstr ""
+
+#: 
+msgid "Template %s is now your default template"
+msgstr "Il Template %s è ora di default"
+
+#: 
+msgid "Template %s is missing or broken. Reset to default"
+msgstr "Template %s inesistente o corrotto. Reset a default"
+
+#: 
+msgid "Use as default"
+msgstr "Predefinito"
+
+#: 
+msgid "an error occurred while sending to this receiver"
+msgstr ""
+
+#: 
+msgid "New campaign %1$s has been created and is going to be sent in %2$s."
+msgstr ""
+
+#: 
+msgid "Resume Campaign"
+msgstr "Riavviare Campagna"
+
+#: 
+msgid "Resume"
+msgstr "Riavvio"
+
+#: 
+msgid "It seems your last cronjob hasn't been finished! Increase the %1$s, add %2$s to your wp-config.php or reduce the %3$s in the settings"
+msgstr ""
+
+#: 
+msgid "MyMail is not able access the filesystem! If you have issues saving templates or other files please add this line to you wp-config.php: %s"
+msgstr ""
+
+#: 
+msgid "only if in %s"
+msgstr "solo se in %s"
+
+#: 
+msgid "Your email may look different on mobile devices"
+msgstr ""
+
+#: 
+msgid "from %s"
+msgstr "da %s"
+
+#: 
+msgid "Pause campaign"
+msgstr "Sospendi campagna"
+
+#: 
+msgid "Split campaigns"
+msgstr "Scambia Campagne"
+
+#: 
+msgid "send campaigns simultaneously instead of one after the other"
+msgstr "invia campagne simultaneamente anzichè una dopo l'altra"
+
+#: 
+msgid "paste in your vCard content. You can use %s to generate your personal vcard"
+msgstr "incolla il contenuto nella tua vCard. Pioi usare %s per generare la tua vCard personale"
+
+#: 
+msgid "WordPress Users"
+msgstr "Utenti WordPress"
+
+#: 
+msgid "Registered Users"
+msgstr "Utenti Registrati"
+
+#: 
+msgid "new WordPress users can choose to sign up on the register page"
+msgstr "I nuovi utenti di WordPress possono scegliere di iscriversi sulla pagina di registrazione"
+
+#: 
+msgid "allow %s to your blog to enable this option"
+msgstr "abilita %s nel tuo blog per attivare questa opzione"
+
+#: 
+msgid "users to subscribe"
+msgstr "utenti da iscrivere"
+
+#: 
+msgid "Subscribe them to these lists:"
+msgstr ""
+
+#: 
+msgid "New Comments"
+msgstr "Nuovi Commenti"
+
+#: 
+msgid "allow users to signup on the comment form if they are currently not subscribed to any list"
+msgstr "aggiunge gli utenti che si registrano tramite il backend o plugin di terze parti"
+
+#: 
+msgid "sign up only if comment is"
+msgstr "iscrivi solo se il commento è"
+
+#: 
+msgid "approved"
+msgstr "approvato"
+
+#: 
+msgid "not approved"
+msgstr "non approvato"
+
+#: 
+msgid "spam"
+msgstr "spam"
+
+#: 
+msgid "Others"
+msgstr "Altri"
+
+#: 
+msgid "add people who are added via the backend or any third party plugin"
+msgstr ""
+
+#: 
+msgid "Newsletter Sign up"
+msgstr "Iscrizione Newsletter"
+
+#: 
+msgid "Sign up to our newsletter"
+msgstr "Iscriviti alla nostra Newsletter"
+
+#: 
+msgid "attach vCard to all confirmation mails"
+msgstr "allega vCard a tutte le email di conferma"
+
+#: 
+msgid "display name"
+msgstr "nome visualizzato"
+
+#: 
+msgid "registered"
+msgstr "registrato"
+
+#: 
+msgid "Select columns"
+msgstr "Seleziona colonne"
+
+#: 
+msgid "Existing subscribers"
+msgstr ""
+
+#: 
+msgid "skip"
+msgstr "salta"
+
+#: 
+msgid "overwrite"
+msgstr "sovrascrivi"
+
+#: 
+msgid "merge"
+msgstr "incolla"
+
+#: 
+msgid "File uploaded to %s"
+msgstr ""
+
+#: 
+msgid "unable to upload file"
+msgstr ""
+
+#: 
+msgid "No country database found! Please load it!"
+msgstr ""
+
+#: 
+msgid "No city database found! Please load it!"
+msgstr ""
+
+#: 
+msgid "Update Country Database"
+msgstr "Aggiorna Country Database"
+
+#: 
+msgid "Update City Database"
+msgstr "Aggiorna City Database"
+
+#: 
+msgid "Unable to connect to bounce server! Please check your settings."
+msgstr ""
+
+#: 
+msgid "checking for new messages"
+msgstr "controlla nuovi messaggi"
+
+#: 
+msgid "Unable to get test message! Please check your settings."
+msgstr ""
+
+#: 
+msgid "Your bounce server is good!"
+msgstr ""
+
+#: 
+msgid "Import WordPress users with following roles"
+msgstr "Importa utenti di WordPress con le regole seguenti"
+
+#: 
+msgid "Next Step"
+msgstr "Prossimo passo"
+
+#: 
+msgid "%s click"
+msgid_plural "%s clicks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Load Country Database"
+msgstr "Carica Country Database"
+
+#: 
+msgid "upload file"
+msgstr "upload file"
+
+#: 
+msgid "upload the GeoIPv6.dat you can find in the package here:"
+msgstr ""
+
+#: 
+msgid "Load City Database"
+msgstr "Carica City Database"
+
+#: 
+msgid "upload the GeoLiteCity.dat you can find in the package here:"
+msgstr ""
+
+#: 
+msgid "Some text can get defined on the %s as well"
+msgstr ""
+
+#: 
+msgid "Test bounce settings"
+msgstr "Test dei settaggi del rimbalzo"
+
+#: 
+msgid "sending message..."
+msgstr "sto inviando i messaggi..."
+
+#: 
+msgid "used template file"
+msgstr "template da utilizzare"
+
+#: 
+msgid "use"
+msgstr ""
+
+#: 
+msgid "resend confirmation"
+msgstr "Reinvio della conferma"
+
+#: 
+msgid "Access token"
+msgstr ""
+
+#: 
+msgid "Access token Secret"
+msgstr ""
+
+#: 
+msgid "Consumer key"
+msgstr ""
+
+#: 
+msgid "Consumer secret"
+msgstr ""
+
+#: 
+msgid "To enable the tweet feature you have to create a new %s and insert your credentials"
+msgstr ""
+
+#: 
+msgid "See stats of Campaign %s"
+msgstr ""
+
+#: 
+msgid "You have to %s to change the delivery settings"
+msgstr ""
+
+#: 
+msgid "switch to the edit mode"
+msgstr ""
+
+#: 
+msgid "This campaign is based on an %s"
+msgstr ""
+
+#: 
+msgid "auto responder campaign"
+msgstr ""
+
+#: 
+msgid "Total Sent"
+msgstr ""
+
+#: 
+msgid "Statistic"
+msgstr ""
+
+#: 
+msgid "replace with image"
+msgstr ""
+
+#: 
+msgid "Number of Newsletters"
+msgstr ""
+
+#: 
+msgid "Maximum upload file size: %s."
+msgstr ""
+
+#: 
+msgid "This campaign has been sent on %s. You cannot edit it anymore"
+msgstr ""
+
+#: 
+msgid "CharSet"
+msgstr ""
+
+#: 
+msgid "change Charset and encoding of your mails if you have problems with some characters"
+msgstr ""
+
+#: 
+msgid "send every %1$s %2$s"
+msgstr ""
+
+#: 
+msgid "at a specific time"
+msgstr ""
+
+#: 
+msgid "before"
+msgstr ""
+
+#: 
+msgctxt "every [x] [timeframe] starting [startdate]"
+msgid "create a new campaign every %1$s%2$s"
+msgstr ""
+
+#: 
+msgid "end schedule"
+msgstr ""
+
+#: 
+msgid "set an end date for your campaign"
+msgstr ""
+
+#: 
+msgid "send campaigns only on these weekdays"
+msgstr ""
+
+#: 
+msgid "next campaign in %s"
+msgstr ""
+
+#: 
+msgid "until %s"
+msgstr ""
+
+#: 
+msgctxt "only one [weekdays]"
+msgid "only on %s"
+msgstr ""
+
+#: 
+msgid "create a new campaign every time a new %s has been published"
+msgstr ""
+
+#: 
+msgid "always skip %s release"
+msgid_plural "always skip %s releases"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "New campaign %s has been created!"
+msgstr ""
+
+#: 
+msgid "Auto responder campaign %s has been finished and is deactivated!"
+msgstr ""
+
+#: 
+msgid "week(s)"
+msgstr "settimana(e)"
+
+#: 
+msgid "month(s)"
+msgstr "mese(i)"
+
+#: 
+msgid "define a label for this field"
+msgstr ""
+
+#: 
+msgid "show asterisk on required fields"
+msgstr ""
+
+#: 
+msgid "System Info page"
+msgstr ""
+
+#: 
+msgid "To copy the system info, click below then press Ctrl + C (PC) or Cmd + C (Mac)."
+msgstr ""
+
+#: 
+msgid "next schedule"
+msgstr ""
+
+#: 
+msgid "Limits have been reseted"
+msgstr ""
+
+#: 
+msgid "reset these limits"
+msgstr ""
+
+#: 
+msgid "You can only perform 10 test within an hour. Please try again later!"
+msgstr ""
+
+#: 
+msgid "%s out of 10"
+msgstr ""
+
+#: 
+msgid "This mail will hardly see any inbox!"
+msgstr ""
+
+#: 
+msgid "You have to make it better!"
+msgstr ""
+
+#: 
+msgid "Many inboxes will refuse this mail!"
+msgstr ""
+
+#: 
+msgid "Not bad at all. Improve it further!"
+msgstr ""
+
+#: 
+msgid "Almost perfect!"
+msgstr "Quasi perfetto!"
+
+#: 
+msgid "Great! Your campaign is ready to send!"
+msgstr ""
+
+#: 
+msgid "A new user has subscribed to your newsletter!"
+msgstr ""
+
+#: 
+msgid "check your spam score"
+msgstr ""
+
+#: 
+msgid "Send a notification of new subscribers to following receivers (comma separated)"
+msgstr ""
+
+#: 
+msgid "Homepage created"
+msgstr ""
+
+#: 
+msgid "You haven't defined a homepage for the newsletter. This is required to make the subscription form work correctly. Please check the %1$s or %2$s"
+msgstr ""
+
+#: 
+msgid "create it right now"
+msgstr ""
+
+#: 
+msgid "change language of texts if available to"
+msgstr ""
+
+#: 
+msgid "change language"
+msgstr ""
+
+#: 
+msgid "Please define a homepage for the newsletter on the frontend tab"
+msgstr ""
+
+#: 
+msgid "English"
+msgstr "Inglese"
+
+#: 
+msgid "Enter name of the list"
+msgstr ""
+
+#: 
+msgctxt "[recipientstype] of [campaignname]"
+msgid "%s of %s"
+msgstr ""
+
+#: 
+msgid "List has been created"
+msgstr ""
+
+#: 
+msgid "who have opened"
+msgstr ""
+
+#: 
+msgid "who have opened but not clicked"
+msgstr ""
+
+#: 
+msgid "who have not opened"
+msgstr ""
+
+#: 
+msgid "Search Subscribers"
+msgstr ""
+
+#: 
+msgid "create a new list with all"
+msgstr ""
+
+#: 
+msgid "create list"
+msgstr ""
+
+#: 
+msgid "Couldn't create List"
+msgstr ""
+
+#: 
+msgid "Receivers"
+msgstr ""
+
+#: 
+msgid "convert all subscribers with error status back to subscribed"
+msgstr ""
+
+#: 
+msgid "who have received"
+msgstr ""
+
+#: 
+msgid "who have not received"
+msgstr ""
+
+#: 
+msgid "who have opened and clicked"
+msgstr ""
+
+#: 
+msgid "%s has joined"
+msgstr ""
+
+#: 
+msgid "send campaign to these lists"
+msgstr ""
+
+#: 
+msgid "toggle all"
+msgstr ""
+
+#: 
+msgid "create new list"
+msgstr ""
+
+#: 
+msgid "Save as"
+msgstr "Salva come"
+
+#: 
+msgid "Please enter the name of the new template"
+msgstr ""
+
+#: 
+msgid "Filter"
+msgstr ""
+
+#: 
+msgid "unopens"
+msgstr ""
+
+#: 
+msgid "%s bounce"
+msgid_plural "%s bounces"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "All rights reserved %s"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Full Size Image"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Intro"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Full Size Text Invert"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "iPhone Promotion"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Macbook Promotion"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Quotation"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Plans"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Image Full"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Text Invert"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Image on the Left"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "Image on the Right"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Image on the Left"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Image on the Right"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Floating Image left"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Floating Image right"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Image Features left"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Image Features right"
+msgstr ""
+
+#: 
+msgctxt "common module name"
+msgid "%s Text"
+msgstr ""
+
+#: 
+msgctxt "unsubscribelink"
+msgid "unsubscribe"
+msgstr ""
+
+#: 
+msgid "RSS"
+msgstr ""
+
+#: 
+msgid "Enter feed URL"
+msgstr ""
+
+#: 
+msgid "Recent Feeds"
+msgstr ""
+
+#: 
+msgid "change"
+msgstr "cambia"
+
+#. mymail
+#: 
+msgctxt "common module name"
+msgid "Separator"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "common module name"
+msgid "Separator with button"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "common module name"
+msgid "Quotation left"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "common module name"
+msgid "Quotation right"
+msgstr ""
+
+#. mymail
+#: 
+msgid "light"
+msgstr "chiaro"
+
+#. mymail
+#: 
+msgid "dark"
+msgstr "scuro"
+
+#: 
+msgid "Codeview"
+msgstr ""
+
+#: 
+msgid "Name of the module (click to edit)"
+msgstr ""
+
+#: 
+msgid "include modules"
+msgstr ""
+
+#: 
+msgid "convert to link"
+msgstr ""
+
+#: 
+msgid "Link"
+msgstr ""
+
+#: 
+msgid "Image Button"
+msgstr ""
+
+#: 
+msgid "Text Button"
+msgstr ""
+
+#: 
+msgid "Button Label"
+msgstr ""
+
+#: 
+msgid "button label"
+msgstr ""
+
+#: 
+msgid "use HighDPI/Retina ready images if available"
+msgstr ""
+
+#: 
+msgid "HighDPI/Retina ready"
+msgstr ""
+
+#: 
+msgid "Permalink Structure"
+msgstr ""
+
+#: 
+msgid "Campaign slug"
+msgstr ""
+
+#: 
+msgid "changing the slug may cause broken links in previous sent campaigns!"
+msgstr ""
+
+#: 
+msgctxt "Campaign slug"
+msgid "Define a %s to enable custom slugs"
+msgstr ""
+
+#: 
+msgid "nickname"
+msgstr ""
+
+#: 
+msgid "sending %s emails at once can cause problems with statistics cause of a server timeout or to much memory usage! You should decrease it if you have problems!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Not able to connected to %1$s via port %2$s! You may not be able to send mails cause of the locked port %3$s. Please contact your host or choose a different delivery method!"
+msgstr ""
+
+#: 
+msgid "MyMail Test Email"
+msgstr ""
+
+#: 
+msgid "no receivers!"
+msgstr ""
+
+#: 
+msgid "search for more delivery methods"
+msgstr ""
+
+#: 
+msgid "Check bounce server every %s minutes for new messages"
+msgstr ""
+
+#: 
+msgid "Soft Bounces"
+msgstr ""
+
+#: 
+msgid "Resend soft bounced mails after %s minutes"
+msgstr ""
+
+#: 
+msgid "by"
+msgstr ""
+
+#: 
+msgid "Cron is currently running!"
+msgstr ""
+
+#: 
+msgid "Options have been reseted!"
+msgstr ""
+
+#: 
+msgid "Please change the slug or permalink of %s since it's used by the archive page"
+msgstr ""
+
+#: 
+msgid "enable archive function to display your newsletters in a reverse chronological order"
+msgstr ""
+
+#: 
+msgid "WordPress cron is disabled! Uncomment the %s constant in the wp-config.php or use a real cron instead"
+msgstr ""
+
+#: 
+msgid "Do you really like to reset the options? This cannot be undone!"
+msgstr ""
+
+#: 
+msgid "Reset all settings"
+msgstr ""
+
+#: 
+msgid "Use following meta values"
+msgstr ""
+
+#: 
+msgid "via"
+msgstr ""
+
+#: 
+msgid "redirect after confirm"
+msgstr ""
+
+#: 
+msgid "Loading"
+msgstr ""
+
+#: 
+msgid "System Info"
+msgstr ""
+
+#: 
+msgid "%s unique"
+msgstr ""
+
+#: 
+msgid "unknown"
+msgstr ""
+
+#: 
+msgid "Template %s has been uploaded"
+msgstr ""
+
+#: 
+msgid "This Campaign has been paused"
+msgstr ""
+
+#: 
+msgid "This campaign is based on subscribers timezone and problably will take up to 24 hours"
+msgstr ""
+
+#: 
+msgid "year(s)"
+msgstr ""
+
+#: 
+msgid "based on the users %1$s value"
+msgstr ""
+
+#: 
+msgid "%s of sent"
+msgstr ""
+
+#: 
+msgid "%s of opens"
+msgstr ""
+
+#: 
+msgid "%s of totals"
+msgstr ""
+
+#: 
+msgid "loading"
+msgstr ""
+
+#: 
+msgid "Click to edit %s"
+msgstr ""
+
+#: 
+msgid "The status of this campaign has changed. Please reload the page or %s"
+msgstr ""
+
+#: 
+msgid "click here"
+msgstr ""
+
+#: 
+msgctxt "segment of all [recipients] from campaign [campaign]"
+msgid "A segment of all %1$s of %2$s"
+msgstr ""
+
+#: 
+msgid "ID"
+msgstr ""
+
+#: 
+msgid "Sent date"
+msgstr ""
+
+#: 
+msgid "Open date"
+msgstr ""
+
+#: 
+msgid "Open Count"
+msgstr ""
+
+#: 
+msgid "Click Count"
+msgstr ""
+
+#: 
+msgid "unsubscribes"
+msgstr ""
+
+#: 
+msgid "order by"
+msgstr ""
+
+#: 
+msgid "order direction"
+msgstr ""
+
+#: 
+msgid "has unsubscribed"
+msgstr ""
+
+#: 
+msgid "Image files"
+msgstr ""
+
+#: 
+msgid "The WordPress Cron is disabled! Please remove the %s constant from your wp-config.php file or switch to a real cron job!"
+msgstr ""
+
+#: 
+msgid "Are your campaigns not sending? You may have to check your %1$s"
+msgstr ""
+
+#: 
+msgid "cron settings"
+msgstr ""
+
+#: 
+msgid "Update Profile"
+msgstr ""
+
+#: 
+msgid "You are already registered"
+msgstr ""
+
+#: 
+msgid "A new confirmation message has been sent"
+msgstr ""
+
+#: 
+msgid "%d Lists have been removed"
+msgstr ""
+
+#: 
+msgid "%d Lists with subscribers have been removed"
+msgstr ""
+
+#: 
+msgid "Subscribers have been subscribed"
+msgstr ""
+
+#: 
+msgid "Subscribers have been unsubscribed"
+msgstr ""
+
+#: 
+msgid "%1$s already exists. %2$s"
+msgstr ""
+
+#: 
+msgid "Edit this user"
+msgstr ""
+
+#: 
+msgid "List added"
+msgstr ""
+
+#: 
+msgid "List saved"
+msgstr ""
+
+#: 
+msgid "List %s has been removed"
+msgstr ""
+
+#: 
+msgid "Segments"
+msgstr ""
+
+#: 
+msgid "contains all segments"
+msgstr ""
+
+#: 
+msgid "Segment #%d"
+msgstr ""
+
+#: 
+msgid "Segment created by %s"
+msgstr ""
+
+#: 
+msgid "List"
+msgstr ""
+
+#: 
+msgid "All"
+msgstr ""
+
+#: 
+msgid "Description"
+msgstr ""
+
+#: 
+msgid "Updated"
+msgstr ""
+
+#: 
+msgid "Added"
+msgstr ""
+
+#: 
+msgid "Delete with subscribers"
+msgstr ""
+
+#: 
+msgid "Subscribe subscribers"
+msgstr ""
+
+#: 
+msgid "Unsubscribe subscribers"
+msgstr ""
+
+#: 
+msgid "Send new Campaign"
+msgstr ""
+
+#: 
+msgid "Signup + Confirm Date"
+msgstr ""
+
+#: 
+msgid "Signup IP Address"
+msgstr ""
+
+#: 
+msgid "Confirm IP Address"
+msgstr ""
+
+#: 
+msgid "Confirm + Signup IP Address"
+msgstr ""
+
+#: 
+msgid "all IP Addresses"
+msgstr ""
+
+#: 
+msgid "Language"
+msgstr ""
+
+#: 
+msgid "Define which column represents which field"
+msgstr ""
+
+#: 
+msgid "Basic"
+msgstr ""
+
+#: 
+msgid "no Custom Fields defined!"
+msgstr ""
+
+#: 
+msgid "Time Options"
+msgstr ""
+
+#: 
+msgid "IP Options"
+msgstr ""
+
+#: 
+msgid "Other Meta"
+msgstr ""
+
+#: 
+msgid "%s contacts are hidden"
+msgstr ""
+
+#: 
+msgid "Import %s contacts"
+msgstr ""
+
+#: 
+msgid "Please make sure you have the permission to import these contacts!"
+msgstr ""
+
+#: 
+msgid "ignore or as defined above"
+msgstr ""
+
+#: 
+msgid "Use following numbers for different statuses"
+msgstr ""
+
+#: 
+msgid "choosing \"pending\" as status will force a confirmation message to the subscriber"
+msgstr ""
+
+#: 
+msgid "Other"
+msgstr ""
+
+#: 
+msgid "low memory usage (slower)"
+msgstr ""
+
+#: 
+msgid "%1$s of %2$s contacts imported"
+msgstr ""
+
+#: 
+msgid "Hash"
+msgstr ""
+
+#: 
+msgid "%s subscribers removed"
+msgstr ""
+
+#: 
+msgid "Add Ons"
+msgstr ""
+
+#: 
+msgid "Return to Add Ons Page"
+msgstr ""
+
+#: 
+msgid "Your MyMail Newsletter Plugin is ready!"
+msgstr ""
+
+#: 
+msgid "Notification %1$s has thrown an error: %2$s"
+msgstr ""
+
+#: 
+msgid "Autoresponder %1$s has caused sending error: %2$s"
+msgstr ""
+
+#: 
+msgid "Profile updated!"
+msgstr ""
+
+#: 
+msgid "update profile"
+msgstr ""
+
+#: 
+msgid "You are about to overwrite all subscriber data with the matching WordPress User data. Continue?"
+msgstr ""
+
+#: 
+msgid "You are about to overwrite all WordPress User data with the matching subscriber data. Continue?"
+msgstr ""
+
+#: 
+msgid "%d Subscribers have been removed"
+msgstr ""
+
+#: 
+msgid "%d Subscribers have been unsubscribed"
+msgstr ""
+
+#: 
+msgid "%d Subscribers have been subscribed"
+msgstr ""
+
+#: 
+msgid "%d Subscribers have been assigned to a new list"
+msgstr ""
+
+#: 
+msgid "Subscriber added"
+msgstr ""
+
+#: 
+msgid "Subscriber saved"
+msgstr ""
+
+#: 
+msgid "Subscriber %s has been removed"
+msgstr ""
+
+#: 
+msgid "User does not exist!"
+msgstr ""
+
+#: 
+msgid "%d times"
+msgstr ""
+
+#: 
+msgid "with %s"
+msgstr ""
+
+#: 
+msgid "%s soft bounce"
+msgid_plural "%s soft bounces"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Hard bounced at %s"
+msgstr ""
+
+#: 
+msgid "pending"
+msgstr ""
+
+#: 
+msgid "emails"
+msgstr ""
+
+#: 
+msgid "%d Update available"
+msgid_plural "%d Updates available"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Unable to unzip template"
+msgstr ""
+
+#: 
+msgid "Unable to save template"
+msgstr ""
+
+#: 
+msgid "Template %s already exists!"
+msgstr ""
+
+#: 
+msgid "The header of this template files is missing or corrupt"
+msgstr ""
+
+#: 
+msgid "This is not a valid MyMail template ZIP"
+msgstr ""
+
+#: 
+msgid "uploading zip file %s"
+msgstr ""
+
+#: 
+msgid "Please enter a valid Licensecode!"
+msgstr ""
+
+#: 
+msgid "Cannot delete the default template %s"
+msgstr ""
+
+#: 
+msgid "Template %s has been deleted"
+msgstr ""
+
+#: 
+msgid "Template %s has not been deleted"
+msgstr ""
+
+#: 
+msgid "File does not exist. Please contact %s for help!"
+msgstr ""
+
+#: 
+msgid "There was an error: %s"
+msgstr ""
+
+#: 
+msgid "MyMail Template ZIP file"
+msgstr ""
+
+#: 
+msgid "Drop your ZIP file here to upload new template"
+msgstr ""
+
+#: 
+msgid "Profile Updated!"
+msgstr ""
+
+#: 
+msgid "a specific user time"
+msgstr ""
+
+#: 
+msgid "a specific action hook"
+msgstr ""
+
+#: 
+msgid "change text version"
+msgstr ""
+
+#: 
+msgid "add subscribers"
+msgstr ""
+
+#: 
+msgid "bulk delete subscribers"
+msgstr ""
+
+#: 
+msgid "add lists"
+msgstr ""
+
+#: 
+msgid "Deactivate"
+msgstr ""
+
+#: 
+msgid "Activate"
+msgstr ""
+
+#: 
+msgid "Download from wordpress.org"
+msgstr ""
+
+#: 
+msgid "Get this Add On"
+msgstr ""
+
+#: 
+msgid "You don't have the right permission to add new lists"
+msgstr ""
+
+#: 
+msgid "delete List"
+msgstr ""
+
+#: 
+msgid "Do you really like to remove this list?"
+msgstr ""
+
+#: 
+msgid "delete List with Subscribers"
+msgstr ""
+
+#: 
+msgid "Do you really like to remove this list with all subscribers?"
+msgstr ""
+
+#: 
+msgid "Add new List"
+msgstr ""
+
+#: 
+msgid "Edit List %s"
+msgstr ""
+
+#: 
+msgid "add New"
+msgstr ""
+
+#: 
+msgid "Name of the List"
+msgstr ""
+
+#: 
+msgid "%s Subscriber"
+msgid_plural "%s Subscribers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Mail sent"
+msgid_plural "Mails sent"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Activity"
+msgstr ""
+
+#: 
+msgid "Action"
+msgstr ""
+
+#: 
+msgid "Campaign %s has start sending"
+msgstr ""
+
+#: 
+msgid "First open in Campaign %s"
+msgstr ""
+
+#: 
+msgid "%1$s in Campaign %2$s clicked"
+msgstr ""
+
+#: 
+msgid "First subscription canceled"
+msgstr ""
+
+#: 
+msgid "Soft bounce (%d tries)"
+msgstr ""
+
+#: 
+msgid "Hard bounce"
+msgstr ""
+
+#: 
+msgid "no activity yet"
+msgstr ""
+
+#: 
+msgid "Copy and paste from your spreadsheet app"
+msgstr ""
+
+#: 
+msgid "remove all actions from affected users"
+msgstr ""
+
+#: 
+msgid "Server time: %s %s"
+msgstr ""
+
+#: 
+msgid "Send this campaign based on the subscribers timezone if known"
+msgstr ""
+
+#: 
+msgid "Use Subscribers timezone"
+msgstr ""
+
+#: 
+msgctxt "send campaign \"on\" (date) \"at\" (time)"
+msgid "%1$s @ %2$s"
+msgstr ""
+
+#: 
+msgid "Hook used to trigger campaign"
+msgstr ""
+
+#: 
+msgid "use `do_action(\"hook_name\")`, or `do_action(\"hook_name\", $subscriber_id)` to trigger this campaign"
+msgstr ""
+
+#: 
+msgid "Priority"
+msgstr ""
+
+#: 
+msgid "High"
+msgstr ""
+
+#: 
+msgid "Normal"
+msgstr ""
+
+#: 
+msgid "Low"
+msgstr ""
+
+#: 
+msgid "send campaign only once"
+msgstr ""
+
+#: 
+msgid "finished in approx. %s"
+msgstr ""
+
+#: 
+msgid "took %s"
+msgstr ""
+
+#: 
+msgid "details"
+msgstr ""
+
+#: 
+msgid "Desktop"
+msgstr ""
+
+#: 
+msgid "Mobile"
+msgstr ""
+
+#: 
+msgid "Web Client"
+msgstr ""
+
+#: 
+msgid "Environment"
+msgstr ""
+
+#: 
+msgid "Geo Location"
+msgstr ""
+
+#: 
+msgid "User Role"
+msgstr ""
+
+#: 
+msgid "User Level"
+msgstr ""
+
+#: 
+msgid "is greater"
+msgstr ""
+
+#: 
+msgid "is smaller"
+msgstr ""
+
+#: 
+msgid "is greater or equal"
+msgstr ""
+
+#: 
+msgid "is smaller or equal"
+msgstr ""
+
+#: 
+msgid "Meta Data"
+msgstr ""
+
+#: 
+msgid "WordPress User Meta"
+msgstr ""
+
+#: 
+msgid "Any List"
+msgstr ""
+
+#: 
+msgid "protect the webversion with a password"
+msgstr ""
+
+#: 
+msgid "password protected"
+msgstr ""
+
+#: 
+msgid "Confirm"
+msgstr ""
+
+#: 
+msgid "toggle HTML/Plain-Text view"
+msgstr ""
+
+#: 
+msgid "Size"
+msgstr ""
+
+#: 
+msgid "search for images"
+msgstr ""
+
+#: 
+msgid "search for posts"
+msgstr ""
+
+#: 
+msgid "Create the plain text version based on the HTML version of the campaign"
+msgstr ""
+
+#: 
+msgid "get text from HTML version"
+msgstr ""
+
+#: 
+msgid "Delivery by Time Zone"
+msgstr ""
+
+#: 
+msgid "Send Campaigns based on the subscribers timezone if known"
+msgstr ""
+
+#: 
+msgid "Sync WordPress Users"
+msgstr ""
+
+#: 
+msgid "Sync WordPress Users with Subscribers"
+msgstr ""
+
+#: 
+msgid "keep WordPress User data and Subscriber data synchronized. Only affects existing Subscribers"
+msgstr ""
+
+#: 
+msgid "Meta Data List"
+msgstr ""
+
+#: 
+msgid "Meta Fields"
+msgstr ""
+
+#: 
+msgid "%s syncs with %s"
+msgstr ""
+
+#: 
+msgid "manually sync all existing users based on the above settings. (save required)"
+msgstr ""
+
+#: 
+msgid "Profile Update"
+msgstr ""
+
+#: 
+msgid "Profile Button"
+msgstr ""
+
+#: 
+msgid "Profile Link"
+msgstr ""
+
+#: 
+msgid "You can keep a browser window open with following URL"
+msgstr ""
+
+#: 
+msgid "You don't have the right permission to add new subscribers"
+msgstr ""
+
+#: 
+msgid "delete Subscriber"
+msgstr ""
+
+#: 
+msgid "Do you really like to remove this subscriber?"
+msgstr ""
+
+#: 
+msgid "Add new Subscriber"
+msgstr ""
+
+#: 
+msgid "Edit %s"
+msgstr ""
+
+#: 
+msgid "goto WordPress User profile"
+msgstr ""
+
+#: 
+msgid "subscribed at"
+msgstr ""
+
+#: 
+msgid "import on %s"
+msgstr ""
+
+#: 
+msgid "WP user on %s"
+msgstr ""
+
+#: 
+msgid "Backend on %s"
+msgstr ""
+
+#: 
+msgid "an extern form on %s"
+msgstr ""
+
+#: 
+msgid "Homepage on %s"
+msgstr ""
+
+#: 
+msgid "more"
+msgstr ""
+
+#: 
+msgid "confirmed at"
+msgstr ""
+
+#: 
+msgid "latest known IP"
+msgstr ""
+
+#: 
+msgid "latest updated"
+msgstr ""
+
+#: 
+msgid "nothing selected"
+msgstr ""
+
+#: 
+msgid "yes"
+msgstr ""
+
+#: 
+msgid "no"
+msgstr ""
+
+#: 
+msgid "User has not been assigned to a list"
+msgstr ""
+
+#: 
+msgid "from"
+msgstr ""
+
+#: 
+msgid "Campaign sent"
+msgid_plural "Campaigns sent"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Most popular client"
+msgstr ""
+
+#: 
+msgid "Other used clients"
+msgstr ""
+
+#: 
+msgid "%1$s needs about %2$s to open a campaign"
+msgstr ""
+
+#: 
+msgid "User"
+msgstr ""
+
+#: 
+msgid "and %1$s to click a link"
+msgstr ""
+
+#: 
+msgid "User has never opened a campaign"
+msgstr ""
+
+#: 
+msgid "Campaign %s has been sent"
+msgstr ""
+
+#: 
+msgid "opened Campaign %s"
+msgstr ""
+
+#: 
+msgid "clicked %1$s in Campaign %2$s"
+msgstr ""
+
+#: 
+msgid "a link"
+msgstr ""
+
+#: 
+msgid "unsubscribed your newsletter"
+msgstr ""
+
+#: 
+msgid "import"
+msgstr ""
+
+#: 
+msgid "export"
+msgstr ""
+
+#: 
+msgid "Search result for %s"
+msgstr ""
+
+#: 
+msgid "Profile"
+msgstr ""
+
+#: 
+msgid "Edit my MyMail Profile"
+msgstr ""
+
+#: 
+msgid "Edit Users MyMail Profile"
+msgstr ""
+
+#: 
+msgid "Create"
+msgstr ""
+
+#: 
+msgid "Create MyMail Subscriber"
+msgstr ""
+
+#: 
+msgid "activate with licensecode"
+msgstr ""
+
+#: 
+msgid "update template"
+msgstr ""
+
+#: 
+msgid "This file is not writeable! Please change the file permission"
+msgstr ""
+
+#: 
+msgid "more Templates"
+msgstr ""
+
+#: 
+msgid "back to overview"
+msgstr ""
+
+#: 
+msgid "Change Code"
+msgstr ""
+
+#: 
+msgid "download template"
+msgstr ""
+
+#: 
+msgid "Download"
+msgstr ""
+
+#: 
+msgid "get this template"
+msgstr ""
+
+#: 
+msgid "this email address already exists!"
+msgstr ""
+
+#: 
+msgid "Subscriber already exists"
+msgstr ""
+
+#: 
+msgid "select the custom field which should sync with a certain meta field"
+msgstr ""
+
+#: 
+msgid "has been sent"
+msgstr ""
+
+#: 
+msgid "has been opened"
+msgstr ""
+
+#: 
+msgid "has been clicked"
+msgstr ""
+
+#: 
+msgid "Campaign does not exist"
+msgstr ""
+
+#: 
+msgid "ready!"
+msgstr ""
+
+#: 
+msgid "error!"
+msgstr "errore!"
+
+#: 
+msgid "An error occurs while uploading"
+msgstr ""
+
+#: 
+msgid "Unsupported file format"
+msgstr "Formato file non supportato"
+
+#: 
+msgid "Share this on %s"
+msgstr ""
+
+#: 
+msgid "No campaigns available"
+msgstr ""
+
+#: 
+msgid "no preheader"
+msgstr ""
+
+#: 
+msgid "You are currently sending with the %s delivery method"
+msgstr ""
+
+#: 
+msgid "Do you really like to reset all capabilities? This cannot be undone!"
+msgstr ""
+
+#: 
+msgid "Reset all capabilities"
+msgstr ""
+
+#: 
+msgid "campaign deleted"
+msgstr "campagna cancellata"
+
+#: 
+msgid "Do you really like to resend campaign %1$s to %2$s?"
+msgstr ""
+
+#: 
+msgid "resend this campaign"
+msgstr "invia di nuovo questa campagna"
+
+#: 
+msgctxt "in [city], [country]"
+msgid "in %s, %s"
+msgstr ""
+
+#: 
+msgid "timeout reached"
+msgstr ""
+
+#: 
+msgid "MyMail is not able to send your campaign cause of a server timeout. Please increase the %1$s on the %2$s"
+msgstr ""
+
+#: 
+msgid "Max. Execution Time"
+msgstr ""
+
+#: 
+msgid "settings page"
+msgstr "pagina impostazioni"
+
+#: 
+msgid "a specific campaign"
+msgstr ""
+
+#: 
+msgid "Auto Update"
+msgstr "Aggiornamento Automatico"
+
+#: 
+msgid "enabled"
+msgstr "abilita"
+
+#: 
+msgid "disabled"
+msgstr "disabilita"
+
+#: 
+msgid "only minor updates"
+msgstr "solo aggiornamenti minori"
+
+#: 
+msgid "define a maximum execution time to prevent server timeouts. If set to zero, no time limit is imposed."
+msgstr ""
+
+#: 
+msgid "import WordPress Users"
+msgstr "importa Utenti WordPress"
+
+#: 
+msgid "Link Button"
+msgstr ""
+
+#: 
+msgid "Please check out %s if you have problems with the plugin"
+msgstr ""
+
+#: 
+msgid "Support Page"
+msgstr ""
+
+#: 
+msgid "No list found"
+msgstr ""
+
+#: 
+msgid "Use a signup date if not defined"
+msgstr ""
+
+#: 
+msgid "Some Auto responder require a signup date. Define it here if it is not set or missing"
+msgstr ""
+
+#: 
+msgid "Campaign %1$s has some delay cause of a sending error: %2$s"
+msgstr ""
+
+#: 
+msgid "Confirmations sent to %d pending subscribers"
+msgstr ""
+
+#: 
+msgid "%d Subscribers added to list %s"
+msgstr ""
+
+#: 
+msgid "%d Subscribers removed from list %s"
+msgstr ""
+
+#: 
+msgid "Confirmation has been sent"
+msgstr ""
+
+#: 
+msgid "change status"
+msgstr ""
+
+#: 
+msgid "add to list"
+msgstr "aggiungi alla lista"
+
+#: 
+msgid "remove from list"
+msgstr "rimuovi dalla lista"
+
+#: 
+msgid "Homepage slugs"
+msgstr ""
+
+#: 
+msgid "Confirm Slug"
+msgstr ""
+
+#: 
+msgid "Subscribe Slug"
+msgstr ""
+
+#: 
+msgid "Unsubscribe Slug"
+msgstr ""
+
+#: 
+msgid "Profile Slug"
+msgstr ""
+
+#: 
+msgid "Pause campaigns"
+msgstr ""
+
+#: 
+msgid "pause campaigns if an error occurs"
+msgstr ""
+
+#: 
+msgid "MyMail will change the status to \"pause\" if an error occur otherwise it tries to finish the campaign"
+msgstr ""
+
+#: 
+msgid "This user does not exist or has been deleted!"
+msgstr ""
+
+#: 
+msgid "Do you really like to resend the confirmation?"
+msgstr ""
+
+#: 
+msgid "This subscriber has caused a sending error: %s"
+msgstr ""
+
+#: 
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: 
+msgid "Comment"
+msgstr ""
+
+#: 
+msgid "Screenshot"
+msgstr ""
+
+#: 
+msgid "You can only have up to %d custom fields! Following fields have been removed: %s"
+msgstr ""
+
+#: 
+msgid "load more entries (%s left)"
+msgstr ""
+
+#: 
+msgid "There was an error while deleting subscribers: %s"
+msgstr ""
+
+#: 
+msgid "%d Subscribers have been set to pending"
+msgstr ""
+
+#: 
+msgid "auto updates are recommended for important fixes."
+msgstr ""
+
+#: 
+msgid "System Mails"
+msgstr ""
+
+#: 
+msgid "decide how MyMail uses the wp_mail function"
+msgstr ""
+
+#: 
+msgid "Do not use MyMail for outgoing WordPress mails"
+msgstr ""
+
+#: 
+msgid "Use MyMail for all outgoing WordPress mails"
+msgstr ""
+
+#: 
+msgid "Use only the template for all outgoing WordPress mails"
+msgstr ""
+
+#: 
+msgid "send confirmation (double-opt-in)"
+msgstr ""
+
+#: 
+msgid "Not able to create file in %s. Please make sure WordPress can write files to your filesystem!"
+msgstr ""
+
+#: 
+msgid "Do you really like to remove file %s from template %s?"
+msgstr ""
+
+#: 
+msgid "Delete Subscriber"
+msgstr ""
+
+#: 
+msgid "Delete Subscriber if the WordPress User gets deleted"
+msgstr ""
+
+#: 
+msgid "only with these user roles:"
+msgstr ""
+
+#. mymail
+#: 
+msgid "List failed verification"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Subscriber failed verification"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No custom date fields found!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "add new fields"
+msgstr "aggiungi nuovi campi"
+
+#. mymail
+#: 
+msgid "List doesn't matter"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Check your console for more info."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Filter Newsletter list"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Newsletter list navigation"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Newsletter list"
+msgstr ""
+
+#. mymail
+#: 
+msgid "requires %1$s more %2$s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "assigned lists"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Rating"
+msgstr ""
+
+#. mymail
+#: 
+msgid "match regex pattern"
+msgstr ""
+
+#. mymail
+#: 
+msgid "does not match regex pattern"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Finish Campaign"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Finish"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Edit base"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Do you really like to finish this campaign?"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Do you really like to remove all modules?"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Click to add %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Check the JS console for more info!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are not allowed to finish campaigns."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Please enter your email address"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This is a success info"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This is an error message"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Shortcode"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Fields"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Occurrence"
+msgstr ""
+
+#. mymail
+#: 
+msgid "There was an error while deleting forms: %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "%d forms have been removed"
+msgstr ""
+
+#. mymail
+#: 
+msgid "There was an error while adding the form: %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "There was an error while updating the form: %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form added"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form updated"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form %s has been removed"
+msgstr ""
+
+#. mymail
+#: 
+msgid "The changes you made will be lost if you navigate away from this page."
+msgstr ""
+
+#. mymail
+#: 
+msgid "updating form requires ID"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You have to confirm your email address. Please click the link below to confirm. %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Email is missing or wrong"
+msgstr ""
+
+#. mymail
+#: 
+msgid "%s is missing"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No forms found"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This form is used for user profile updates"
+msgstr ""
+
+#. mymail
+#: 
+msgid "change structure"
+msgstr ""
+
+#. mymail
+#: 
+msgid "change design"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Design"
+msgstr ""
+
+#. mymail
+#: 
+msgid "change settings"
+msgstr ""
+
+#. mymail
+#: classes/forms.table.class.php:81
+msgid "use your form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Use it!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "%d Widget"
+msgid_plural "%d Widgets"
+msgstr[0] ""
+msgstr[1] ""
+
+#. mymail
+#: 
+msgid "Please selected at least two lists!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Lists have been merged. Please update your %s if necessary!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "campaigns"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Merged List #%d"
+msgstr ""
+
+#. mymail
+#: 
+msgid "A merged list of"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Merge selected Lists"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Statuscode"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Dismiss this notice (Alt-click to dismiss all notices)"
+msgstr ""
+
+#. mymail
+#: 
+msgid "View details"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Your newsletter homepage is not visible. Please %s the page"
+msgstr ""
+
+#. mymail
+#: 
+msgid "update"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This is your newsletter homepage but it seems it is not set up correctly! Please follow %s for help!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "this guid"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Please make sure all your campaigns are imported correctly!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are receiving this email because you have enabled notifications for new subscribers %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "on your settings page"
+msgstr ""
+
+#. mymail
+#: 
+msgid "A user has canceled your newsletter!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are receiving this email because you have enabled notifications for unsubscriptions %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This is a test mail sent from %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "from your settings page"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Confirmation Message"
+msgstr ""
+
+#. mymail
+#: 
+msgid "%s has canceled"
+msgstr ""
+
+#. mymail
+#: 
+msgid "use the tag %s as url in the editbar"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Please enter your Twitter application credentials on the settings page"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Textarea"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No pending subscribers found"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No unsubscribed subscribers found"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No hardbounced subscribers found"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No subscriber with delivery errors found"
+msgstr ""
+
+#. mymail
+#: 
+msgid "No subscribers found"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are about to OVERWRITE your exiting template files with a new version!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Please make sure you have a backup of your files."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Template successful updated!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Template successful loaded!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Licensecode has been updated!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "An additional update is required for MyMail!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "progress update now"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Show form on newsletter homepage as well"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Number of Subscribers"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Display the number of your Subscribers"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Prefix"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Postfix"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Round up to the next"
+msgstr ""
+
+#. mymail
+#: 
+msgid "do not round"
+msgstr ""
+
+#. mymail
+#: 
+msgid "format number"
+msgstr ""
+
+#. mymail
+#: 
+msgid "edit forms"
+msgstr ""
+
+#. mymail
+#: 
+msgid "add forms"
+msgstr ""
+
+#. mymail
+#: 
+msgid "delete forms"
+msgstr ""
+
+#. mymail
+#: 
+msgid "update templates"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Woha! Seems you havn't sent any campaign yet!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Check out existing Campaigns"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Subscriber Grows"
+msgstr ""
+
+#. mymail
+#: 
+msgid "7 days"
+msgstr ""
+
+#. mymail
+#: 
+msgid "30 days"
+msgstr ""
+
+#. mymail
+#: 
+msgid "3 month"
+msgstr ""
+
+#. mymail
+#: 
+msgid "1 year"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You have no subscribers yet!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Add a single Subscriber"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Import your existing Subscribers"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Create a Form to engage new Subscribers"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This form does not exist or has been deleted!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You don't have the right permission to add new forms"
+msgstr ""
+
+#. mymail
+#: 
+msgid "delete Form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Do you really like to remove this form?"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Add new Form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Edit Form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Define the structure of your form below. Drag available fields in the left area to add them to your form. Rearrange fields by dragging fields around"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form Fields"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Label"
+msgstr ""
+
+#. mymail
+#: 
+msgid "define an error message for this field"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Error Message (optional)"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Available Fields"
+msgstr ""
+
+#. mymail
+#: 
+msgid "back to Fields"
+msgstr ""
+
+#. mymail
+#: 
+msgid "define the Options"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form Design"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Include your Theme's style.css"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Your form may look different depending on the place you are using it!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Global"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Button"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Info Messages"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Label Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "custom style"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Input Text Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Input Background Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Input Focus Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Required Asterisk"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Background Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Text Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Hover Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Hover Text Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Input"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Input Background"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Success message Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Success message Background"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Custom Style"
+msgstr ""
+
+#. mymail
+#: 
+msgid "add custom CSS to your form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Selector Prefix"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form selector"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Field wrapper"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Custom Field Wrapper divs"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Custom Field Inputs"
+msgstr ""
+
+#. mymail
+#: 
+msgid "back to Design"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form Options"
+msgstr ""
+
+#. mymail
+#: 
+msgid "allow users to update their data with this form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "use this form as user profile."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Currently %s is your profile form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "List Options"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Double Opt In"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Confirmation Settings"
+msgstr ""
+
+#. mymail
+#: views/forms/detail.php:444 views/forms/detail.php:579
+msgid "back to Settings"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Use this shortcode wherever they are excepted."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Read more about shortcodes at %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Widget"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Use this form as a %s in one of your sidebars"
+msgstr ""
+
+#. mymail
+#: 
+msgid "widget"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Embed a button where users can subscribe on any website"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Button Style"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Button Options"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Popup width"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Use Form Default"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Subscriber Count"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Display subscriber count"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Count above Button"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Preview and Code"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Test your button"
+msgstr ""
+
+#. mymail
+#: 
+msgid "embed it somewhere"
+msgstr ""
+
+#. mymail
+#: 
+msgid "or use this shortcode on your site"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form HTML"
+msgstr ""
+
+#. mymail
+#: 
+msgid "iFrame Version"
+msgstr ""
+
+#. mymail
+#: 
+msgid "HTML Version"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Search Forms"
+msgstr ""
+
+#. mymail
+#: 
+msgid "This list does not exist or has been deleted!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "no description"
+msgstr ""
+
+#. mymail
+#: 
+msgid "users without a role"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Keep in mind it is bad practice to send campaigns after subscribers opt-out so use this option for \"Thank you\" messages or surveys."
+msgstr ""
+
+#. mymail
+#: 
+msgid "%1$s %2$s have been published"
+msgstr ""
+
+#. mymail
+#: 
+msgid "every %1$s %2$s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "on the exact date"
+msgstr ""
+
+#. mymail
+#: 
+msgid "of the users %1$s value"
+msgstr ""
+
+#. mymail
+#: 
+msgid "no title"
+msgstr ""
+
+#. mymail
+#: 
+msgid "click"
+msgid_plural "clicks"
+msgstr[0] ""
+msgstr[1] ""
+
+#. mymail
+#: 
+msgid "Distraction-free edit mode"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Form ID"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Referer"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Modules"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Advanced"
+msgstr ""
+
+#. mymail
+#: 
+msgid "visit"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Send a notification if subscribers cancel their subscription to following receivers (comma separated)"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Respect users \"Do Not Track\" option"
+msgstr ""
+
+#. mymail
+#: 
+msgid "If enabled MyMail will respect users option for not getting tracked. Read more on the %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "official website"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Single-Opt-Out"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Subscribers instantly signed out after clicking the unsubscribe link in mails"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Advanced Settings"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Disable Cache"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Disable Object Cache for MyMail"
+msgstr ""
+
+#. mymail
+#: 
+msgid "If enabled MyMail doesn't use cache anymore. This causes an increase in page load time! This option is not recommended!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "remove Data"
+msgstr ""
+
+#. mymail
+#: 
+msgid "remove all data on plugin deletion"
+msgstr ""
+
+#. mymail
+#: 
+msgid "The user rating is based on different factors like open rate, click rate and bounces"
+msgstr ""
+
+#. mymail
+#: 
+msgid "User Rating"
+msgstr ""
+
+#. mymail
+#: 
+msgid "adjusted click rate"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Start new Campaign"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Enter Licensecode"
+msgstr ""
+
+#. mymail
+#: 
+msgid "save"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Seems there was a problem getting the list of templates"
+msgstr ""
+
+#. mymail
+#: 
+msgid "no match for your selection!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "error is unknown"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Homepage already created!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are not allowed to add subscribers!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are not allowed to edit subscribers!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are not allowed to delete subscribers!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "There was an error while deleting subscribers!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You are not allowed to publish campaigns!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Module #%d"
+msgstr ""
+
+#. mymail
+#: 
+msgid "MyMail has been updated to %s."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Changelog"
+msgstr ""
+
+#. mymail
+#: 
+msgid "new subscribers are subscribed instantly without confirmation."
+msgstr ""
+
+#. mymail
+#: 
+msgid "new subscribers must confirm their subscription."
+msgstr ""
+
+#. mymail
+#: 
+msgid "only for subscribers who signed up"
+msgstr ""
+
+#. mymail
+#: 
+msgid "only for subscribers who canceled their subscription"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Current Match"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Search Engine Visibility"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Discourage search engines from indexing your campaigns"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Delete WordPress User"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Delete WordPress User if the Subscriber gets deleted"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Attention! This option will remove assigned WordPress Users without further notice. You must have the capability to delete WordPress Users. Administrators and the current user can not get deleted with this option"
+msgstr ""
+
+#. mymail
+#: 
+msgid "image ID"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Hide this tab if purchasecode has been entered"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Some of these settings may affect your website. In normal circumstance it is not required to change anything on this page."
+msgstr ""
+
+#. mymail
+#: 
+msgid "MyMail will remove all it's data if you delete the plugin via the plugin page."
+msgstr ""
+
+#. mymail
+#: 
+msgid "PHP Mailer"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Local Time"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Your message was sent successfully!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "edit form"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Please do not use %1$s in %2$s as page slug as it conflicts with MyMail form submission!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You should use the shortcode %s only on the newsletter homepage!"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "confirm slug"
+msgid "confirm"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "subscribe slug"
+msgid "subscribe"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "unsubscribe slug"
+msgid "unsubscribe"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "profile slug"
+msgid "profile"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Not able to set archive slug to %1$s. Used by %2$s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Your newsletter archive page is: %s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "There was a problem progressing the file"
+msgstr ""
+
+#. mymail
+#: 
+msgid "You haven't purchased this template with this account!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "add more custom fields on the %s."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Settings Page"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Error message Color"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Error message Background"
+msgstr ""
+
+#. mymail
+#: views/forms/detail.php:461
+msgid "Subscribe Button"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Module Thumbnails"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Show thumbails of modules in the editor if available"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Archive"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Archive Slug"
+msgstr ""
+
+#. mymail
+#: 
+msgid "show only"
+msgstr ""
+
+#. mymail
+#: 
+msgid "finished"
+msgstr ""
+
+#. mymail
+#: 
+msgid "paused"
+msgstr ""
+
+#. mymail
+#: 
+msgid "queued"
+msgstr ""
+
+#. mymail
+#: 
+msgid "use version"
+msgstr ""
+
+#. mymail
+#: 
+msgid "included in WordPress"
+msgstr ""
+
+#. mymail
+#: 
+msgid "update via Envato"
+msgstr ""
+
+#. mymail
+#: 
+msgid "your version"
+msgstr ""
+
+#. mymail
+#: 
+msgid "download via Envato"
+msgstr ""
+
+#. mymail
+#: 
+msgid "activate on Envato"
+msgstr ""
+
+#. mymail
+#: 
+msgctxt "user forwarded via website"
+msgid "%1$s via %2$s"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Texts have been reseted!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "update available"
+msgstr ""
+
+#. mymail
+#: 
+msgid "an update to your language is available!"
+msgstr ""
+
+#. mymail
+#: 
+msgid "update now"
+msgstr ""
+
+#. mymail
+#: 
+msgid "already registered"
+msgstr ""
+
+#. mymail
+#: 
+msgid "new confirmation message"
+msgstr ""
+
+#. mymail
+#: 
+msgid "enter your email"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Change Language"
+msgstr ""
+
+#. mymail
+#: 
+msgid "Tags are placeholder for your newsletter. You can set them anywhere in your newsletter template with the format %s. Custom field tags are individual for each subscriber."
+msgstr ""
+
+#. mymail
+#: 
+msgid "Select template file"
+msgstr ""
+
+#. mymail
+#: 
+msgid "MyMail is available in your language."
+msgstr ""
+
+#. mymail
+#: 
+msgid "load it now"
+msgstr ""
+
+#: 
+msgid "SPF doesn't require any configuration on this settings page. This should give you some help to set it up correctly. If this SPF configuration doesn't work or your mails returned as spam you should ask your provider for help or change your delivery method or try %s"
+msgstr ""
+
+#: 
+msgid "Enter Form Name"
+msgstr ""
+
+#: 
+msgid "Define in which order names appear in your language or country. This is used for the %s tag."
+msgstr ""
+
+#: 
+msgid "Embed your form on any site, no matter if it is your current or a third party one. It's similar to the Twitter button."
+msgstr ""
+
+#: 
+msgid "Name Order"
+msgstr ""
+
+#: 
+msgid "Subscriber Button"
+msgstr ""
+
+#: 
+msgid "Use a shortcode on a blog post, page or wherever they are excepted."
+msgstr ""
+
+#: 
+msgid "Use your form as"
+msgstr ""
+
+#: 
+msgid "You haven't saved your recent changes on this form!"
+msgstr ""
+
+#: 
+msgid "Use your form via the HTML markup. This is often required by third party plugins. You can choose between an iframe or the raw HTML."
+msgstr ""
+
+#: 
+msgid "%s other"
+msgid_plural "%d others"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "New subscribers to your newsletter!"
+msgstr ""
+
+#: 
+msgid "Subscribers are located in %s different countries"
+msgstr ""
+
+#: 
+msgid "You have %1$s cancellations since %2$s."
+msgstr ""
+
+#: 
+msgid "You have %1$s new subscribers since %2$s."
+msgstr ""
+
+#: 
+msgid "You have new cancellations!"
+msgstr ""
+
+#: 
+msgid "You have now %s subscribers in total."
+msgstr ""
+
+#: 
+msgid "from other countries"
+msgstr ""
+
+#: 
+msgid "Your daily summary"
+msgstr ""
+
+#: 
+msgid "Your monthly summary"
+msgstr ""
+
+#: 
+msgid "Your weekly summary"
+msgstr ""
+
+#: 
+msgid "daily"
+msgstr ""
+
+#: 
+msgid "location of %d subscriber"
+msgid_plural "location of %d subscribers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "monthly"
+msgstr ""
+
+#: 
+msgid "send"
+msgstr ""
+
+#: 
+msgid "weekly"
+msgstr ""
+
+#: 
+msgid "Create Screenshot for Feature Image"
+msgstr ""
+
+#: 
+msgid "Creating Screenshot"
+msgstr ""
+
+#: 
+msgid "Generating the screenshot may take a while. Please reload the page to update"
+msgstr ""
+
+#: 
+msgid "Geolocation is not available on localhost!"
+msgstr ""
+
+#: 
+msgid "Save Template File"
+msgstr ""
+
+#: 
+msgid "based on %1$s from %2$s"
+msgstr ""
+
+#: 
+msgid "include original modules from %s"
+msgstr ""
+
+#: 
+msgid "save as a new template file"
+msgstr ""
+
+#: 
+msgid "show custom modules by default"
+msgstr ""
+
+#: 
+msgid "will append the existing modules to your custom ones"
+msgstr ""
+
+#: 
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 
+msgid "Another process is currently running the cron process and you have been temporary blocked to prevent duplicate emails getting sent out."
+msgstr ""
+
+#: 
+msgid "Cron Lock"
+msgstr ""
+
+#: 
+msgid "Cron Lock Enabled!"
+msgstr ""
+
+#: 
+msgid "Cron Lock has been released!"
+msgstr ""
+
+#: 
+msgid "Cron Lock requested %s ago from:"
+msgstr ""
+
+#: 
+msgid "Database based"
+msgstr ""
+
+#: 
+msgid "File based"
+msgstr ""
+
+#: 
+msgid "Looks like your Cron Lock is still in place after %1$s! Read more about why this can happen %2$s."
+msgstr ""
+
+#: 
+msgid "Max Execution Time"
+msgstr ""
+
+#: 
+msgid "Purchase Code"
+msgstr ""
+
+#: 
+msgid "Read more about Cron Locks %s."
+msgstr ""
+
+#: 
+msgid "here"
+msgstr ""
+
+#: 
+msgid "probably you"
+msgstr ""
+
+#: 
+msgctxt "short for second"
+msgid "sec"
+msgstr ""
+
+#: 
+msgid "why?"
+msgstr ""
+
+#: 
+msgid "A Cron Lock ensures your cron is not overlapping and causing duplicate emails. Select which method you like to use."
+msgstr ""
+
+#: 
+msgid "An error occurred while updating MyMail!"
+msgstr ""
+
+#: 
+msgid "Buy a new MyMail License"
+msgstr ""
+
+#: 
+msgid "Buy an additional license for %s."
+msgstr ""
+
+#: 
+msgid "Buy new License"
+msgstr ""
+
+#: 
+msgid "Code in use!"
+msgstr ""
+
+#: 
+msgid "Downloading the latest version of MyMail"
+msgstr ""
+
+#: 
+msgid "Enter your Purchase Code to enable automatic updates"
+msgstr ""
+
+#: 
+msgid "Enter your purchase code on the %s."
+msgstr ""
+
+#: 
+msgid "Envato servers are currently down. Please try again later!"
+msgstr ""
+
+#: 
+msgid "Hide this tab if the Purchase Code has been entered"
+msgstr ""
+
+#: 
+msgid "Not able to download MyMail!"
+msgstr ""
+
+#: 
+msgid "Settings page"
+msgstr ""
+
+#: 
+msgid "To get automatic updates for MyMail you need to enter your purchase code on the %s."
+msgstr ""
+
+#: 
+msgid "You have to generate DKIM Keys to use DKIM signed mails!"
+msgstr ""
+
+#: 
+msgid "Your purchase code is already in use and can only be used for one site"
+msgstr ""
+
+#: 
+msgid "to get help here"
+msgstr ""
+
+#: 
+msgid "your new site"
+msgstr ""
+
+#: 
+msgid "Activate on Envato"
+msgstr ""
+
+#: 
+msgid "Add New"
+msgstr ""
+
+#: 
+msgid "Back to Overview"
+msgstr ""
+
+#: 
+msgid "Create A New Campaign"
+msgstr ""
+
+#: 
+msgid "Download via Envato"
+msgstr ""
+
+#: 
+msgid "Get This Template"
+msgstr ""
+
+#: 
+msgid "Install"
+msgstr ""
+
+#: 
+msgid "More Templates"
+msgstr ""
+
+#: 
+msgid "Purchase"
+msgstr ""
+
+#: 
+msgid "Reply-to Email"
+msgstr ""
+
+#: 
+msgid "Save to Test"
+msgstr ""
+
+#: 
+msgid "Separator for CSV output"
+msgstr ""
+
+#: 
+msgid "Show thumbnails of modules in the editor if available"
+msgstr ""
+
+#: 
+msgid "The sender email address. Force your receivers to whitelabel this email address."
+msgstr ""
+
+#: 
+msgid "Unable to connect to bounce server %1$s on port %2$d! Error: %3$s"
+msgstr ""
+
+#: 
+msgid "Unable to login with the given credentials! Error: %1$s"
+msgstr ""
+
+#: 
+msgid "[Tab]"
+msgstr ""
+
+#: 
+msgid "Enabling this option may solve connection problems to SMTP servers"
+msgstr ""
+
+#: 
+msgid "Enter your API Key if maps are not displayed"
+msgstr ""
+
+#: 
+msgid "Google Maps API Key"
+msgstr ""
+
+#: 
+msgid "Remove Data"
+msgstr ""
+
+#: 
+msgid "Self Signed Certificates"
+msgstr ""
+
+#: 
+msgid "allow self signed certificates"
+msgstr ""
+
+#: 
+msgid "enter keys manually"
+msgstr ""
+
+#: 
+msgid "latest (%s)"
+msgstr ""
+
