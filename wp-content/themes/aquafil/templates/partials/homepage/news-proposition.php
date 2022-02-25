@@ -28,12 +28,13 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 		</div>
 		<div class="row">
 			<div class="col-sm-9 offset-sm-2 col-md-8 offset-md-3">
-				
+
 				<a href="<?=get_permalink($_args['section']['news_cards'][0])?>" class="card--news">
 					<div class="card--news__picture">
 						<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url($_args['section']['news_cards'][0],'full'));?>" alt="<?=get_the_title($v)?>" />
 					</div>
 					<div class="card--news__content" appear>
+						<div class="card--news__date">23.06.2021</div>
 						<div class="card--news__title"><?=get_the_title($_args['section']['news_cards'][0])?></div>
 						<div class="card--news__abstract"><?=get_the_excerpt($_args['section']['news_cards'][0])?></div>
 						<div class="card--news__cta">
@@ -54,6 +55,7 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 								<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url($v));?>" alt="<?=get_the_title($v)?>" />
 							</div>
 							<div class="card--news__content" appear>
+								<div class="card--news__date">23.06.2021</div>
 								<div class="card--news__title"><?=get_the_title($v)?></div>
 								<div class="card--news__cta">
 									<button type="button" class="btn--more"><span><?= __("Read more", "wstheme"); ?></span> <svg><use xlink:href="#arrow-next"></use></svg></button>

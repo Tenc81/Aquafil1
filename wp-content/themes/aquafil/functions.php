@@ -74,6 +74,19 @@ function aquafil_enqueue_scripts() {
 			'inviato' => __("Inviato!", "wstheme")
 		)
   ));
+  wp_localize_script('websolute_helper', 'environment', array(
+		'assets' => DOCS_DIR,
+		'template' => array(
+			'modal' => array(
+				'genericModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/generic-modal.html',
+				'sideModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/side-modal.html',
+				'contactModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/contact-modal.html',
+				'salesModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/sales-modal.html',
+				'galleryModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/gallery-modal.html',
+				'userModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/user-modal.html',
+			)
+		)
+  ));
 }
 add_action('wp_enqueue_scripts', 'aquafil_enqueue_scripts', 11);
 
@@ -129,10 +142,10 @@ function the_breadcrumb()
 	$homeLink = get_bloginfo('url');
 	if (is_home() || is_front_page()) {
 		if ($showOnHome == 1) {
-			$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 1" href="' . $homeLink . '">' . $home . '</a></li></ul>';
+			$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a href="' . $homeLink . '">' . $home . '</a></li></ul>';
 		}
 	} else {
-		$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a class="breadcrumb__list-link link-bold 2" href="' . $homeLink . '">' . $home . '</a></li> ' . $delimiter . ' ';
+		$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a href="' . $homeLink . '">' . $home . '</a></li> ' . $delimiter . ' ';
 		if (is_category()) {
 			$thisCat = get_category(get_query_var('cat'), false);
 			if ($thisCat->parent != 0) {
@@ -142,11 +155,11 @@ function the_breadcrumb()
 		} elseif (is_search()) {
 			$output .= $before . 'Search results for "' . get_search_query() . '"' . $after;
 		} elseif (is_day()) {
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 3" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 4" href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</a></li> ' . $delimiter . ' ';
+			$output .= '<li class="nav__item"><a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
+			$output .= '<li class="nav__item"><a href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</a></li> ' . $delimiter . ' ';
 			$output .= $before . get_the_time('d') . $after;
 		} elseif (is_month()) {
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 5" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
+			$output .= '<li class="nav__item"><a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
 			$output .= $before . get_the_time('F') . $after;
 		} elseif (is_year()) {
 			$output .= $before . get_the_time('Y') . $after;
@@ -155,7 +168,7 @@ function the_breadcrumb()
 				$post_type = get_post_type_object(get_post_type());
 				$slug = $post_type->rewrite;
 				if($post_type->labels->singular_name != "Service" && $post_type->labels->singular_name != "Posizione Lavorativa"){
-					$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 6" href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</a></li>';
+					$output .= '<li class="nav__item"><a href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</a></li>';
 				}
 				if ($showCurrent == 1) {
 					$output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
@@ -181,7 +194,7 @@ function the_breadcrumb()
 			$cat = get_the_category($parent->ID);
 			$cat = $cat[0];
 			$output .= get_category_parents($cat->term_id, true, ' ' . $delimiter . ' ');
-			$output .= '<li class="nav__item"><a class="breadcrumb__list-link link-bold 7" href="' . get_permalink($parent) . '">' . $parent->post_title . '</a></li>';
+			$output .= '<li class="nav__item"><a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a></li>';
 			if ($showCurrent == 1) {
 				$output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 			}
@@ -194,7 +207,7 @@ function the_breadcrumb()
 			$breadcrumbs = array();
 			while ($parent_id) {
 				$page = get_post($parent_id);
-				$breadcrumbs[] = '<li class="nav__item"><a class="breadcrumb__list-link link-bold 8" href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a></li>';
+				$breadcrumbs[] = '<li class="nav__item"><a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a></li>';
 				$parent_id  = $page->post_parent;
 			}
 			$breadcrumbs = array_reverse($breadcrumbs);
@@ -371,7 +384,7 @@ function icl_post_languages() {
 						</span>';
       array_splice($languages, array_search($languages[ICL_LANGUAGE_CODE], array_values($languages)), 1);
       $items .= '
-            <ul class="nav--submenu" [class]="{ active: menu == 5 }">';
+            <ul class="nav--submenu" [class]="{ active: menu == 100 }">';
       foreach($languages as $lng) {
 				$items .= '
 							<li class="nav__item">
@@ -450,7 +463,7 @@ function locate_template_part($relativePaths) {
 					'templates/partials/' .$relativePaths[0] . '/' . $relativePaths[1].'.php',
 					'templates/partials/' .$relativePaths[0] . '-' . $relativePaths[1].'.php'
 				);
-			break;								
+			break;
 			default:
 				$paths = array(
 					'templates/partials/' .implode('/',$relativePaths).'.php',
@@ -557,7 +570,7 @@ function getCountriesData($request) {
 
 
 function getSalesData($request) {
-  if(!isset($_GET["page"])) 
+  if(!isset($_GET["page"]))
     return array(
       "code" => "rest_no_route",
       "message" => "page ID param is missing",
@@ -654,7 +667,7 @@ function getSalesData($request) {
 
 
 function getCareesData($request) {
-  if(!isset($_GET["page"])) 
+  if(!isset($_GET["page"]))
     return array(
       "code" => "rest_no_route",
       "message" => "page ID param is missing",
@@ -767,7 +780,7 @@ function frm_create_custom_contact() {
 			$file,
 			base64_decode($content)
 		);
-		
+
 		$attachment = array(
 			'post_mime_type' => $_POST['file']['type'],
 			'post_title' => sanitize_file_name($_POST['file']['name']),
@@ -840,7 +853,7 @@ add_filter('wpcf7_flamingo_get_value', 'wpcf7_save_address_book', 10, 3);
 function create_new_user_role() {
   global $wp_roles;
   if (!isset($wp_roles)) $wp_roles = new WP_Roles();
-        
+
   if(get_role('editor-ir') == null) {
 		add_role(
 			"editor-ir",
@@ -859,7 +872,7 @@ function ir_user_caps() {
   $editable_roles = apply_filters('editable_roles', $all_roles);
 	unset($editable_roles["subscriber"]);
 	foreach(array_keys($editable_roles) as $rolename) {
-		$role = get_role($rolename); 
+		$role = get_role($rolename);
 		if($role instanceof WP_Role && !$role->has_cap('edit_investor_relation')) {
 			$role->add_cap('edit_investor_relation');
 			$role->add_cap('read_investor_relation');

@@ -3,7 +3,7 @@
  * Template Name: News
  */
 get_header();
-$q = get_queried_object(); 
+$q = get_queried_object();
 
 //print_r($q);
 ?>
@@ -112,6 +112,7 @@ $q = get_queried_object();
 									<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" />
 								</div>
 								<div class="card--news__content" appear>
+									<div class="card--news__date">23.06.2021</div>
 									<div class="card--news__title">
 										<?=get_the_title();?>
 									</div>

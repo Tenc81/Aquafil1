@@ -28,7 +28,7 @@ if (is_array($video) && count($video)> 0) {
 
 ?>
 <main class="main">
-	<?php 
+	<?php
 	$filtered = array_filter($fields['sezioni'], function($section) {
 		$keys = array_keys($section);
 		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
@@ -45,6 +45,7 @@ if (is_array($video) && count($video)> 0) {
 			<div class="row">
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3 col-lg-11">
 					<div class="news-detail-hero__content" appear>
+						<div class="news-detail-hero__category">23.06.2021</div>
 						<div class="news-detail-hero__title-small">
 							<?=get_the_title()?>
 						</div>

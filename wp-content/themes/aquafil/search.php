@@ -3,7 +3,7 @@
 <main class="main">
 	<?php
 	get_template_part('templates/partials/shared/breadcrumb');
-	
+
 	get_template_part('templates/partials/shared/generic-hero', null, array("section" => array("title" => __("Ricerca", "wstheme"), "text" => sprintf('%1$s: "%2$s"', __("Risultati per", "wstheme"), get_query_var('s'))), "index" => 0));
 
 echo '
@@ -16,7 +16,9 @@ if(have_posts()) {
 		echo '
 			<div class="search__item">
 				<div class="search__thumb">
-					'.($thumb ? '<img src="'.$thumb.'">' : '').'
+					<div class="picture">
+						'.($thumb ? '<img src="'.$thumb.'">' : '').'
+					</div>
 				</div>
 				<div class="search__content">
 					<div class="search__title">'.get_the_title().'</div>

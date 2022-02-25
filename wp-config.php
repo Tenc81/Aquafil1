@@ -23,7 +23,7 @@ define( 'DISALLOW_FILE_EDIT', true ); // Disable File Editor - Security > Settin
 define('WP_USE_DB_DEVEL', true);
 
 if(WP_USE_DB_DEVEL) {
-    // ** Impostazioni MySQL - È possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
+    // ** Impostazioni MySQL - ï¿½ possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
     /** Il nome del database di WordPress */
     define('DB_NAME', 'aquafilsql1');
 
@@ -40,7 +40,7 @@ if(WP_USE_DB_DEVEL) {
         define('DB_HOST', 'localhost');
 	define('GOOGLE_API_KEY', 'AIzaSyADmr6lAc0DFdUXSsQqpnxzdM7kqrjnIbw');
 } else {
-    // ** Impostazioni MySQL - È possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
+    // ** Impostazioni MySQL - ï¿½ possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
     /** Il nome del database di WordPress */
     define('DB_NAME', '');
 
