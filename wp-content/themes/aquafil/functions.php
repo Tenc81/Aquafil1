@@ -75,6 +75,10 @@ function aquafil_enqueue_scripts() {
 		)
   ));
   wp_localize_script('websolute_helper', 'environment', array(
+		'flags' => array(
+			'production' => true,
+		),
+		'api' => '',
 		'assets' => DOCS_DIR,
 		'template' => array(
 			'modal' => array(

@@ -147,7 +147,7 @@ define('WP_CONTENT_URL', WP_SITEURL . WP_CONTENT_FOLDERNAME );
 define('UPLOADS', 'assets/uploads');
 define('WP_CDNURL', $protocol . WP_OUTER_URL . WP_ROOT . 'assets/uploads');
 
-define('DOCS_DIR', WP_CONTENT_URL.'/themes/aquafil/docs/');
+define('DOCS_DIR', WP_CONTENT_URL.'/themes/aquafil/client/docs/');
 
 
 /** Imposta le variabili di WordPress ed include i file. */
