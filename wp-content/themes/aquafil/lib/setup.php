@@ -5,6 +5,39 @@ namespace Roots\WStheme\Setup;
 function register_cposts_taxonomies() {
 	$args = array(
 		'labels'    => array(
+			'name'           => 'Articoli localizzati',
+			'singular_name'  => 'Articolo localizzato',
+			'menu_name'      => 'Local News',
+			'add_new'        => 'Aggiungi Local News',
+			'all_items'      => 'Tutte le Local News',
+			'edit_item'      => 'Modifica Local News',
+			'add_new_item'   => 'Crea nuova Local News',
+			'new_item'       => 'Nuova Local News',
+			'new_item_name'  => 'Nome nuova Local News',
+			'view_item'      => 'Visualizza Local News',
+			'update_item'    => 'Aggiorna Local News',
+			'search_items'   => 'Cerca Local News',
+			'not_found'      => 'Nessuna Local News'
+		),
+		'show_in_rest' => true, // necessario per WP5
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_icon' => 'dashicons-admin-site-alt',
+		'menu_position' => 5,
+		'has_archive' => false,
+		'hierarchical' => true,
+		'query_var' => true,
+		'capability_type' => 'post',
+		'supports' => array('title', 'thumbnail'),
+	);
+	register_post_type("localnews", $args);
+
+	unset($args);
+
+	$args = array(
+		'labels'    => array(
 			'name'           => 'Sezione Investor Relations',
 			'singular_name'  => 'Pagina di Investor Relations',
 			'menu_name'      => 'Sezione Investor Relations',
@@ -84,6 +117,37 @@ function register_cposts_taxonomies() {
 	register_post_type("sedi", $args);
 
 	unset($args);
+
+	$args = array(
+		'labels' => array(
+			'name' => 'Categorie Local News',
+			'singular_name' => 'Categoria Local News',
+			'menu_name' => 'Categorie Local News',
+			'all_items' => 'Tutti le Categorie Local News',
+			'edit_item' => 'Modifica Categoria Local News',
+			'view_item' => 'Visualizza Categoria Local News',
+			'update_item' => 'Aggiorna Categoria Local News',
+			'add_new_item' => 'Aggiungi nuova Categoria Local News',
+			'new_item_name' => 'Nome nuova Categoria Local News'
+		),
+		'hierarchical' => true,
+		'show_admin_column' => true,
+		'capabilities' => array(
+			'manage_terms' => 'manage_categories',
+			'edit_terms'   => 'edit_categories',
+			'delete_terms' => 'delete_categories',
+			'assign_terms' => 'assign_categories'
+		),
+		'show_in_rest' => true, // necessario per WP5
+		//'rest_base' => 'trasporti',
+		//'rest_controller_class' => 'WP_REST_Terms_Controller',
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_nav_menus' => true,
+		'update_count_callback' => '_update_generic_term_count'
+	);
+	register_taxonomy("localnews_category", array("localnews"), $args);
 
 	$args = array(
 		'labels' => array(

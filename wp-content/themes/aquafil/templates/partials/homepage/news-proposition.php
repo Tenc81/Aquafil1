@@ -22,7 +22,7 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 		<div class="row">
 			<div class="col-sm-9 offset-sm-2 col-md-8 offset-md-3">
 				<div class="news-proposition__content" appear>
-					<div class="news-proposition__title"><?= __("Latest News", "wstheme"); ?></div>
+					<div class="news-proposition__title"><?= $_args['section']['titolo_news_cards']; ?></div>
 				</div>
 			</div>
 		</div>

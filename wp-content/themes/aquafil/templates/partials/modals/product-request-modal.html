@@ -1,0 +1,45 @@
+<div class="card--side-modal__content">
+	<div *if="!success">
+		<div class="card--side-modal__title">Request color catalogue</div>
+		<form class="form" [formGroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate autocomplete="off">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-11">
+						<input name="checkField" [formControl]="controls.checkField" value="" type="text" style="display:none !important;" />
+						<div control-text [control]="controls.firstName" [label]="ws_vars.labels.nome"></div>
+					</div>
+					<div class="col-sm-11 offset-sm-2">
+						<div control-text [control]="controls.lastName" [label]="ws_vars.labels.cognome"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-11">
+						<div control-text [control]="controls.company" [label]="ws_vars.labels.azienda"></div>
+					</div>
+					<div class="col-sm-11 offset-sm-2">
+						<div control-text [control]="controls.email" [label]="ws_vars.labels.email"></div>
+					</div>
+				</div>
+				<div control-text [control]="controls.subject" [label]="ws_vars.labels.soggetto"></div>
+				<div control-textarea [control]="controls.message" [label]="ws_vars.labels.messaggio"></div>
+				<test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
+				<div class="full" control-checkbox [control]="controls.privacy" [label]="ws_vars.labels.privacy"></div>
+				<div class="form__error" *if="error">
+					<span class="status-code" [innerHTML]="error.statusCode"></span>
+					<span class="status-message" [innerHTML]="error.statusMessage"></span>
+					<span class="friendly-message" [innerHTML]="error.friendlyMessage"></span>
+				</div>
+				<button type="submit" class="btn--submit" data-title="Invia" *if="!form.submitted">
+					<span [innerHTML]="ws_vars.labels.invia"></span>
+				</button>
+				<button type="submit" class="btn--submit" data-title="Inviato!" *if="form.submitted">
+					<span [innerHTML]="ws_vars.labels.inviato"></span>
+				</button>
+			</div>
+		</form>
+	</div>
+	<div class="container-fluid" *if="success">
+		<div class="card--side-modal__title" [innerHTML]="response"></div>
+		<div class="card--side-modal__abstract" [innerHTML]="message"></div>
+	</div>
+</div>

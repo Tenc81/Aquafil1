@@ -4396,8 +4396,8 @@ CareersModalComponent.meta = {
       zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
-      subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      subject: new rxcompForm.FormControl(null),
+      message: new rxcompForm.FormControl(null),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       checkRequest: window.antiforgery,
       checkField: '',
@@ -4541,7 +4541,7 @@ OpenModallyDirective.meta = {
 
   ProductRequestService.submit$ = function submit$(payload) {
     if (environment.flags.production) {
-      return ApiService.post$('/product-request/submit', payload);
+      return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');
     } else {
       return ApiService.get$('/contacts/submit.json');
     }
@@ -4573,17 +4573,20 @@ OpenModallyDirective.meta = {
 
     this.error = null;
     this.success = false;
+    this.response = null;
+    this.message = null;
     var form = this.form = new rxcompForm.FormGroup({
       productName: new rxcompForm.FormControl(this.productName),
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      company: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      company: new rxcompForm.FormControl(null),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
-      subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      subject: new rxcompForm.FormControl(null),
+      message: new rxcompForm.FormControl(null),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       checkRequest: window.antiforgery,
-      checkField: ''
+      checkField: '',
+      action: 'save_product_request'
     });
     var controls = this.controls = form.controls;
     form.changes$.pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (_) {
@@ -4622,12 +4625,17 @@ OpenModallyDirective.meta = {
       // console.log('ProductRequestComponent.onSubmit', form.value);
       form.submitted = true;
       ProductRequestService.submit$(form.value).pipe(operators.first()).subscribe(function (_) {
+        if (_.success) {
+          GtmService.push({
+            'event': "Product Request",
+            'form_name': "Product Request"
+          });
+        }
+
         _this2.success = true;
         form.reset();
-        GtmService.push({
-          'event': "Product Request",
-          'form_name': "Product Request"
-        });
+        _this2.response = _.data["response"];
+        _this2.message = _.data["message"];
       }, function (error) {
         console.log('ProductRequestComponent.error', error);
         _this2.error = error;
@@ -4688,8 +4696,8 @@ ProductRequestComponent.meta = {
       zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
-      subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      subject: new rxcompForm.FormControl(null),
+      message: new rxcompForm.FormControl(null),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       agent: this.agent,
       checkRequest: window.antiforgery,

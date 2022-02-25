@@ -66,7 +66,7 @@
 			} elseif(is_page_template("templates/sustainability.php")) {
 				$class = 'page--report';
 			} else {
-				$class = 'page--location';
+				$class = 'page--location page--product-bfc';
 			}
 			?>
 			<div class="page <?= $class; ?>">

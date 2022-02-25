@@ -24,7 +24,7 @@ if(!empty($_args['section'])) :
 								<div class="horizontal-menu__content">
 									<div class="horizontal-menu__title">'.__("Filtra per", "wstheme").'</div>
 									<ul class="nav--horizontal-menu">
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="all" style="color:inherit"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['histories']).')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all" style="color:inherit"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['histories']).')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
 										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.$filter.'" style="color:inherit"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';

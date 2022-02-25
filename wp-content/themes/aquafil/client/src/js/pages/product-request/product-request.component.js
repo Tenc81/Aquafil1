@@ -19,17 +19,20 @@ export class ProductRequestComponent extends Component {
 		}
 		this.error = null;
 		this.success = false;
+		this.response = null;
+		this.message = null;
 		const form = this.form = new FormGroup({
 			productName: new FormControl(this.productName),
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
-			company: new FormControl(null, [Validators.RequiredValidator()]),
+			company: new FormControl(null),
 			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
-			subject: new FormControl(null, [Validators.RequiredValidator()]),
-			message: new FormControl(null, [Validators.RequiredValidator()]),
+			subject: new FormControl(null),
+			message: new FormControl(null),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
 			checkRequest: window.antiforgery,
 			checkField: '',
+			action: 'save_product_request',
 		});
 		const controls = this.controls = form.controls;
 		form.changes$.pipe(
@@ -70,9 +73,13 @@ export class ProductRequestComponent extends Component {
 			ProductRequestService.submit$(form.value).pipe(
 				first(),
 			).subscribe(_ => {
+				if (_.success) {
+					GtmService.push({ 'event': "Product Request", 'form_name': "Product Request" });
+				}
 				this.success = true;
 				form.reset();
-				GtmService.push({ 'event': "Product Request", 'form_name': "Product Request" });
+				this.response = _.data["response"];
+				this.message = _.data["message"];
 			}, error => {
 				console.log('ProductRequestComponent.error', error);
 				this.error = error;

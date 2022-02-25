@@ -761,11 +761,6 @@ function frm_create_custom_contact() {
 		$form = WPCF7_ContactForm::get_instance($id);
 		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
-			//$flamingo_contact = Flamingo_Contact::add(array(
-			//  'email' => $params['email'],
-			//  'name' => $params['firstName'].' '.$params['lastName'],
-			//  'last_contacted' => date('Y-m-d H:i:sP'),
-			//));
 			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
 		} else {
 			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
@@ -809,6 +804,15 @@ function frm_create_custom_contact() {
 		} else {
 			wp_send_json_error(array('message' => __("Errore durante il salvataggio del file", "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
 		}
+	} elseif(strpos(current_filter(), "save_product_request") !== false) {
+		$id = wpml_object_id_filter(23293, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
+		$form = WPCF7_ContactForm::get_instance($id);
+		$result = $form->submit();
+		if($result['status'] == "mail_failed") {
+			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+		} else {
+			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+		}
 	}
   wp_die();
 }
@@ -818,6 +822,8 @@ add_action('wp_ajax_save_agent_contact', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_agent_contact', 'frm_create_custom_contact');
 add_action('wp_ajax_save_career', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_career', 'frm_create_custom_contact');
+add_action('wp_ajax_save_product_request', 'frm_create_custom_contact');
+add_action('wp_ajax_nopriv_save_product_request', 'frm_create_custom_contact');
 
 
 function set_agent_recipient($components, $form, $mailer) {
