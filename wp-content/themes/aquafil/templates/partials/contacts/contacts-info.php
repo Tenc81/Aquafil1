@@ -10,14 +10,16 @@ if(!empty($_args['section'])) :
 <div class="contacts-info">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-11 offset-sm-2 col-md-10 offset-md-3"<?= !empty($_args['section']['immagine_cnt_info']) ? ' gallery="'.$_args['section']['immagine_cnt_info']['url'].'"' : ''; ?> scroll scrollSpeed="1">
-				<?php
-				if(!empty($_args['section']['immagine_cnt_info'])) {
-					echo '<img loading="lazy" src="'.$_args['section']['immagine_cnt_info']['url'].'" alt="'.get_the_title().'" />';
-					include(locate_template('templates/partials/shared/zoom-button.html'));
-				}
-				?>
-      </div>
+			<?php if($_args['section']['zoom_cnt_info']) : ?>
+			<div class="col-sm-11 offset-sm-2 col-md-10 offset-md-3" gallery="<?= $_args['section']['immagine_cnt_info']['url']; ?>" scroll scrollSpeed="1">
+				<img loading="lazy" src="<?= $_args['section']['immagine_cnt_info']['url']; ?>" alt="<?= get_the_title(); ?>" />
+				<?php include(locate_template('templates/partials/shared/zoom-button.html')); ?>
+			</div>
+			<?php else : ?>
+			<div class="col-sm-11 offset-sm-2 col-md-10 offset-md-3" scroll scrollSpeed="1">
+				<img loading="lazy" src="<?= $_args['section']['immagine_cnt_info']['url']; ?>" alt="<?= get_the_title(); ?>" />
+			</div>
+			<?php endif; ?>
 			<?php
 			if(!empty($_args['section']['informazioni_cnt_info'])) {
 				echo '

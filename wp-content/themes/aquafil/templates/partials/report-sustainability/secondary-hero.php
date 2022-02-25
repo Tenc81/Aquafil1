@@ -17,17 +17,16 @@ if(!empty($_args['section'])) :
 				</div>
 			</div>
 			<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-2 order-1 order-sm-2">
-				<?php
-				$img = $_args['section']['immagine_sec_hero'];
-				if(!empty($img)) {
-					echo '
-						<div class="secondary-hero__picture" gallery="'.$img["url"].'" scroll scrollSpeed="1">
-							<img loading="lazy" src="'.$img["url"].'" alt="'.get_the_title().'" />';
-					include(locate_template('templates/partials/shared/zoom-button.html'));
-					echo '
-						</div>';
-				}
-				?>
+				<?php if($_args['section']['zoom_sec_hero']) : ?>
+				<div class="secondary-hero__picture" gallery="<?= $_args['section']['immagine_sec_hero']['url']; ?>" scroll scrollSpeed="1">
+					<img loading="lazy" src="<?= $_args['section']['immagine_sec_hero']['url']; ?>" alt="<?= get_the_title(); ?>" />
+					<?php include(locate_template('templates/partials/shared/zoom-button.html')); ?>
+				</div>
+				<?php else : ?>
+				<div class="secondary-hero__picture" scroll scrollSpeed="1">
+					<img loading="lazy" src="<?= $_args['section']['immagine_sec_hero']['url']; ?>" alt="<?= get_the_title(); ?>" />
+				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
