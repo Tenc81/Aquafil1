@@ -16,7 +16,14 @@ if(!empty($_args['section'])) :
 					<?php
 					$areas = get_terms(array(
 						'taxonomy' => 'settori-sedi',
-						'hide_empty' => false
+						'hide_empty' => false,
+						'orderby' => 'meta_value_num',
+						'order' => 'ASC',
+						'meta_query' => [[
+							'key' => 'settori-sedi-order',
+							'compare' => '>=',
+							'type' => 'NUMERIC',
+						]]
 					));
 					//$product_areas = array_column($_args['section']['agenti'], "settore_agente");
 					//$product_areas = array_unique($product_areas);

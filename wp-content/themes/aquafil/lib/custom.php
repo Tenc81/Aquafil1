@@ -339,4 +339,45 @@ function create_breadcrumbs() {
 <?php
     }
 }
+
+
+/******************************************************
+ * CAMPO CUSTOM "ORDINE" SU TASSONOMIE LINEE PRODOTTO *
+ ******************************************************/
+function settori_sedi_add_order_menu($term) {
 ?>
+	<div class="form-field">
+		<label for="settori-sedi-order">Ordine</label>
+		<input type="number" name="linee-prodotto-order" min="1">
+		<p>Per disporre i termini della categoria in ordine crescente.</p>
+	</div>
+<?php
+}
+add_action('settori-sedi_add_form_fields', __NAMESPACE__ . '\\settori_sedi_add_order_menu', 10, 2);
+
+function settori_sedi_edit_order_menu($term) {
+	$term_id = $term->term_id;
+	$order = get_term_meta($term_id, 'settori-sedi-order', true);
+?>
+	<tr class="form-field">
+		<th><label for="settori-sedi-order">Ordine</label></th>		 
+		<td>
+			<input type="number" name="settori-sedi-order" value="<?php echo esc_attr($order) ? esc_attr($order) : ''; ?>">
+			<p class="description">Per disporre i termini della categoria in ordine crescente.</p>
+		</td>
+	</tr>
+<?php
+}
+add_action( 'settori-sedi_edit_form_fields', __NAMESPACE__ . '\\settori_sedi_edit_order_menu', 10);
+
+function settori_sedi_save_order_menu($term_id) {
+	if (isset($_POST['settori-sedi-order']) && !empty($_POST['settori-sedi-order']) && is_numeric($_POST['settori-sedi-order'])) {
+		$order = $_POST['settori-sedi-order'];
+		if($order) {
+			 update_term_meta($term_id, 'settori-sedi-order', $order);
+		}
+	} else {
+        update_term_meta($term_id, 'settori-sedi-order', 100);
+    }
+}
+add_action('edited_settori-sedi', __NAMESPACE__ . '\\settori_sedi_save_order_menu');

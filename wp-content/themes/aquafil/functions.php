@@ -172,7 +172,7 @@ function the_breadcrumb()
 				$post_type = get_post_type_object(get_post_type());
 				$slug = $post_type->rewrite;
 				if($post_type->labels->singular_name != "Service" && $post_type->labels->singular_name != "Posizione Lavorativa"){
-					$output .= '<li class="nav__item"><a href="' . $homeLink . '/' . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : $post_type->labels->singular_name) . '</a></li>';
+					$output .= '<li class="nav__item"><a href="' . $homeLink . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : ucfirst(__(strtolower($post_type->labels->name), "WordPress"))) . '</a></li>';
 				}
 				if ($showCurrent == 1) {
 					$output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
@@ -192,7 +192,7 @@ function the_breadcrumb()
 			}
 		} elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
 			$post_type = get_post_type_object(get_post_type());
-			$output .= $before.$post_type->labels->singular_name . $after;
+			$output .= ucfirst(__(strtolower($before.$post_type->labels->name), "WordPress")) . $after;
 		} elseif (is_attachment()) {
 			$parent = get_post($post->post_parent);
 			$cat = get_the_category($parent->ID);

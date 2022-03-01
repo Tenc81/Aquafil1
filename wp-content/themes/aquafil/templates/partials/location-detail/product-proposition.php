@@ -19,12 +19,12 @@ if(!empty($_args['section'])) :
 					</div>
 				</div>';
 		$filters = array();
-		$categories = array_column($_args['section']['prodotti_correlati'], 'filtro_prodotto');
+		$categories = array_column($_args['section']['filtri_prodotti_correlati'], 'titolo_filtro_prodotti_correlati');
 		foreach($categories as $category) {
-			if(!isset($filters[$category])) {
-				$filters[$category] = 0;
-			}
-			$filters[$category] += 1;
+		  if(!isset($filters[$category])) {
+		    $filters[$category] = 0;
+		  }
+		  $filters[$category] += 1;
 		}
 		if(!empty($filters)) {
 			echo '
@@ -38,7 +38,7 @@ if(!empty($_args['section'])) :
 										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all" style="color:inherit"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['prodotti_correlati']).')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.$filter.'" style="color:inherit"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.sanitize_title($filter).'" style="color:inherit"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
 			}
 			echo '
 									</ul>
@@ -51,10 +51,12 @@ if(!empty($_args['section'])) :
 				(function($) {
 					$(".history-filter").on("click", function() {
 						$(".listing__item").show();
+						$("[class$=-details]").hide();
 						$(".history-filter").removeClass("active");
 						$(this).addClass("active");
 						if($(this).attr("data-filter")!="all" && $(this).not(".active")) {
 							$(".listing__item").not("."+$(this).attr("data-filter")).hide();
+							$("."+$(this).attr("data-filter")+"-details").show();
 						}
 					});
 				})(jQuery);
@@ -66,74 +68,79 @@ if(!empty($_args['section'])) :
 ?>
 <div class="product-proposition">
 	<div class="container-fluid">
-		<div class="row">
-      <div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 			<?php
 			if($_args['section']['aggiungi_filtri']) {
+				foreach($_args['section']['filtri_prodotti_correlati'] as $filtro) {
+					echo '
+						<div class="row '.sanitize_title($filtro['titolo_filtro_prodotti_correlati']).'-details" style="display:none;">
+							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
+								<div class="product-proposition__content" appear>
+									<div class="product-proposition__title-small">'.$filtro['titolo_filtro_prodotti_correlati'].'</div>
+								</div>
+							</div>
+							<div class="col-sm-20 offset-sm-2 col-md-8 offset-md-3">
+								<div class="product-proposition__content" appear>
+									<div class="product-proposition__abstract">'.$filtro['descrizione_col1_filtro_prodotti_correlati'].'</div>
+								</div>
+							</div>
+							<div class="col-sm-20 offset-sm-2 col-md-8 offset-md-2">
+								<div class="product-proposition__content" appear>
+									<div class="product-proposition__abstract">'.$filtro['descrizione_col2_filtro_prodotti_correlati'].'</div>
+								</div>
+							</div>
+						</div>';
+				}
 				echo '
-						<div class="product-proposition__content" appear>
-							<div class="product-proposition__title-small">'.$_args['section']['sottotitolo_prodotti_correlati'].'</div>
-						</div>
-					</div>
-					<div class="col-sm-20 offset-sm-2 col-md-8 offset-md-3">
-						<div class="product-proposition__content" appear>
-							<div class="product-proposition__abstract">'.$_args['section']['descrizione_col1_prodotti_correlati'].'</div>
-						</div>
-					</div>
-					<div class="col-sm-20 offset-sm-2 col-md-8 offset-md-2">
-						<div class="product-proposition__content" appear>
-							<div class="product-proposition__abstract">'.$_args['section']['descrizione_col2_prodotti_correlati'].'</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">';
+						<div class="row">
+							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">';
 			} else {
 				echo '
-					<div class="product-proposition__title">'.$_args['section']['titolo_prodotti_correlati'].'</div>';
+						<div class="row">
+							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
+								<div class="product-proposition__title">'.$_args['section']['titolo_prodotti_correlati'].'</div>';
 			}
 			echo '
-				<div class="listing--product">';
+								<div class="listing--product">';
 			foreach($_args['section']['prodotti_correlati'] as $i=>$product) {
 				$thumb = $product['thumb_prodotto'];
 				$img = $product['immagine_prodotto'];
 				$link = $product['link_prodotto'];
 				echo '
-					<div class="listing__item '.($_args['section']['aggiungi_filtri'] ? $product['filtro_prodotto'] : '').'" appear>
-						<div class="card--product" open-modally="#detail-'.($i+1).'">
-							<div class="card--product__picture">
-								'.(!empty($thumb) ? '<img loading="lazy" src="'.$thumb["url"].'" alt="'.$product['titolo_prodotto'].'" />' : '').'
-							</div>
-							<div class="card--product__content">
-								<div class="card--product__title">'.$product['titolo_prodotto'].'</div>
-								<div class="card--product__abstract">'.$product['descrizione_breve_prodotto'].'</div>
-								<div class="card--product__cta">
-									<button type="button" class="btn--plus"><svg><use xlink:href="#plus"></use></svg></button>
-								</div>
-							</div>
-						</div>
-						<!-- in page detail - 1 -->
-						<div class="card--side-modal" card-product-detail id="detail-'.($i+1).'">
-							'.(!empty($img) ? '
-							<div class="card--side-modal__picture">
-								<img loading="lazy" src="'.$img["url"].'" alt="'.$product['titolo_prodotto'].'" />
-							</div>' : '').'
-							<div class="card--side-modal__content">
-								<div class="card--side-modal__title">'.$product['titolo_prodotto'].'</div>
-								<div class="card--side-modal__abstract">'.$product['descrizione_estesa_prodotto'].'</div>
-							</div>
-							<div class="card--side-modal__cta">
-								'.(!empty($link) ? '<a href="'.$link["url"].'" class="btn--more-md"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>' : '').'
-								<button type="button" class="btn--more-md" (click)="onRequestInfo()"><span>'.__("Maggiori informazioni", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg></button>
-							</div>
-						</div>
-					</div>';
+									<div class="listing__item '.($_args['section']['aggiungi_filtri'] ? sanitize_title($product['filtro_prodotto']) : '').'" appear>
+										<div class="card--product" open-modally="#detail-'.($i+1).'">
+											<div class="card--product__picture">
+												'.(!empty($thumb) ? '<img loading="lazy" src="'.$thumb["url"].'" alt="'.$product['titolo_prodotto'].'" />' : '').'
+											</div>
+											<div class="card--product__content">
+												<div class="card--product__title">'.$product['titolo_prodotto'].'</div>
+												<div class="card--product__abstract">'.$product['descrizione_breve_prodotto'].'</div>
+												<div class="card--product__cta">
+													<button type="button" class="btn--plus"><svg><use xlink:href="#plus"></use></svg></button>
+												</div>
+											</div>
+										</div>
+										<!-- in page detail - 1 -->
+										<div class="card--side-modal" card-product-detail id="detail-'.($i+1).'">
+											'.(!empty($img) ? '
+											<div class="card--side-modal__picture">
+												<img loading="lazy" src="'.$img["url"].'" alt="'.$product['titolo_prodotto'].'" />
+											</div>' : '').'
+											<div class="card--side-modal__content">
+												<div class="card--side-modal__title">'.$product['titolo_prodotto'].'</div>
+												<div class="card--side-modal__abstract">'.$product['descrizione_estesa_prodotto'].'</div>
+											</div>
+											<div class="card--side-modal__cta">
+												'.(!empty($link) ? '<a href="'.$link["url"].'" class="btn--more-md"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>' : '').'
+												<button type="button" class="btn--more-md" (click)="onRequestInfo()"><span>'.__("Maggiori informazioni", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg></button>
+											</div>
+										</div>
+									</div>';
 			}
 			echo '
-				</div>';
+								</div>
+							</div>
+						</div>';
 			?>
-			</div>
-		</div>
 	</div>
 </div>
 <?php endif; ?>
