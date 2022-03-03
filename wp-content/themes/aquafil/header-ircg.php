@@ -52,22 +52,54 @@
 		</script>
 		<?php get_template_part( 'templates/partials/shared/svg'); ?>
 		<div class="app hidden" app-component>
-			<?php
-			if(is_front_page()) {
-				$class = 'page--homepage';
-			} elseif(is_404()) {
-				$class = 'page--404';
-			} elseif(is_tax('settori-sedi') || is_tax('nazione-sedi')) {
-				$class = 'page--location-country';
-			} elseif(is_singular('sedi')) {
-				$class = 'page--location-detail';
-			} elseif(is_page_template("templates/sales.php")) {
-				$class = 'page--sales';
-			} elseif(is_page_template("templates/sustainability.php")) {
-				$class = 'page--report';
-			} else {
-				$class = 'page--location';
-			}
-			?>
-			<div class="page <?= $class; ?>">
-				<?php get_template_part( 'templates/partials/shared/header'); ?>
+			<div class="page page--investors">
+				<!-- header -->
+				<header class="header" header>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-20 offset-sm-2">
+								<div class="header__main">
+									<div class="header__logo">
+										<?php
+										$cposts = get_posts(array(
+											"post_type" => get_post_type(),
+											"posts_per_page" => 1,
+											"post_status" => "publish",
+											"orderby" => array("menu_order" => "ASC", "post_name" => "ASC")
+										));
+										$hurl = !empty($cposts) ? get_permalink($cposts[0]) : home_url();
+										?>
+										<a href="<?= $hurl; ?>" class="btn--logo">
+											<svg>
+												<use xlink:href="#aquafil"></use>
+											</svg>
+										</a>
+									</div>
+									<div class="header__menu" [class]="{ active: header == 'menu' }">
+										<a href="<?= home_url(); ?>" class="btn--investor"><?= __("Torna al sito web", "wstheme"); ?></a>
+										<?php
+										$locations = get_nav_menu_locations();
+										foreach ($locations as $key => $menu_id) {
+											$location = apply_filters('wpml_object_id', $menu_id, 'nav_menu', TRUE);
+											switch ($key) {
+												case "secondary_menu":
+													$secMenu = menuParse($location);
+													break;
+												default:;
+											}
+										}
+										if(isset($secMenu)) {
+											get_template_part('templates/partials/shared/navigation', 'top', array("menu" => $secMenu));
+										}
+										?>
+									</div>
+									<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
+										<svg class="menu"><use xlink:href="#menu"></use></svg>
+										<svg class="close"><use xlink:href="#close"></use></svg>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="wrapper">

@@ -1,18 +1,20 @@
-<section id="by-laws">
-  <h2 class="page--investors__section-title">By-laws</h2>
-  <a href="#" download="Iso-9001-2015-AquafilUSA.pdf" class="btn--certification"><span>By-laws</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
-</section>
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
+<section <?= setAnchor($_args['section']); ?>>
+  <h2 class="page--investors__section-title"><?= $_args['section']['titolo_download_file']; ?></h2>
 
-<section id="etics-code">
-  <h2 class="page--investors__section-title">Etics code</h2>
-  <img src="img/investors/etics.jpg">
-  <a href="#" download="Iso-9001-2015-AquafilUSA.pdf" class="btn--certification"><span>Etics code</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
+	<?php
+	echo !empty($_args['section']['immagine_download_file']) ? '<img src="'.$_args['section']['immagine_download_file']['url'].'">' : '';
+	echo !empty($_args['section']['descrizione_download_file']) ? '<p>'.$_args['section']['descrizione_download_file'].'</p>' : '';
+	echo '<a href="#" download="'.$_args['section']['download_file']['filename'].'" class="btn--certification"><span>'.$_args['section']['etichetta_download_file'].'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>';
+	?>
+  
 </section>
-
-<section id="organizations">
-  <h2 class="page--investors__section-title">Organization, management and control model</h2>
-  <p>
-      Organization, Management and Control Model
-  </p>
-  <a href="#" download="Iso-9001-2015-AquafilUSA.pdf" class="btn--certification"><span>PDF - 154 KB</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
-</section>
+<?php endif; ?>

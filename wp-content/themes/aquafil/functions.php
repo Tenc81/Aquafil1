@@ -867,7 +867,7 @@ function create_new_user_role() {
   if(get_role('editor-ir') == null) {
 		add_role(
 			"editor-ir",
-			"Editor Investor Relations",
+			"Editor IR e CG",
 			$wp_roles->get_role("subscriber")->capabilities
 		);
 	}
@@ -898,6 +898,21 @@ function ir_user_caps() {
 			$role->add_cap('edit_private_investor_relations');
 			$role->add_cap('edit_published_investor_relations');
 			//file_put_contents(ABSPATH.'error_log.txt', date('d-m-Y h:m:s').print_r($role, true).PHP_EOL, FILE_APPEND | LOCK_EX);
+		}
+		if($role instanceof WP_Role && !$role->has_cap('edit_corporate_governance')) {
+			$role->add_cap('edit_corporate_governance');
+			$role->add_cap('read_corporate_governance');
+			$role->add_cap('delete_corporate_governance');
+			$role->add_cap('edit_corporate_governances');
+			$role->add_cap('edit_others_corporate_governances');
+			$role->add_cap('delete_corporate_governances');
+			$role->add_cap('publish_corporate_governances');
+			$role->add_cap('read_private_corporate_governances');
+			$role->add_cap('delete_private_corporate_governances');
+			$role->add_cap('delete_published_corporate_governances');
+			$role->add_cap('delete_others_corporate_governances');
+			$role->add_cap('edit_private_corporate_governances');
+			$role->add_cap('edit_published_corporate_governances');
 		}
 	}
 }
@@ -932,3 +947,22 @@ function custom_query($query) {
     }
 }
 add_action('pre_get_posts', 'custom_query');
+
+
+function formatSizeUnits($bytes) {
+    if ($bytes >= 1073741824) {
+        $bytes = ceil(number_format($bytes / 1073741824, 2)) . ' GB';
+    } elseif ($bytes >= 1048576) {
+        $bytes = ceil(number_format($bytes / 1048576, 2)) . ' MB';
+    } elseif ($bytes >= 1024) {
+        $bytes = ceil(number_format($bytes / 1024, 2)) . ' KB';
+    } elseif ($bytes > 1) {
+        $bytes = ceil($bytes) . ' bytes';
+    } elseif ($bytes == 1) {
+        $bytes = ceil($bytes) . ' byte';
+    }
+    else {
+        $bytes = '0 bytes';
+    }
+    return $bytes;
+}

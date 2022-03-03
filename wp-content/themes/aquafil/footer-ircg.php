@@ -1,4 +1,5 @@
-				<?php get_template_part( 'templates/partials/shared/footer'); ?>
+					<?php get_template_part( 'templates/partials/shared/footer'); ?>
+					</div>
 				<?php get_template_part( 'templates/partials/shared/modal', 'outlet' ); ?>
 			</div>
 		</div>

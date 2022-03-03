@@ -1,11 +1,23 @@
-<section id="discover-aquafil">
-  <h2 class="page--investors__section-title">What we do and who we are</h2>
-
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
+<section <?= setAnchor($_args['section']); ?>>
+  <h2 class="page--investors__section-title"><?= $_args['section']['titolo_discover']; ?></h2>
+	<?php
+	$video = $_args['section']['video_discover'];
+	if(!empty($video)) {
+		echo '
   <div class="responsive-iframe__container">
-    <iframe class="responsive-iframe__iframe" src="https://www.youtube.com/embed/SlcQWUn5DeI" frameborder="0"></iframe>
-  </div>
-
-  <p>
-    For the transmission and storage of the Regulated Information, the Company uses the transmission system eMarket SDIR and the storage device eMarket STORAGE which can be consulted on the website www.emarketstorage.com and are managed by Spafid Connect S.p.A., with registered office in Milan, at 10, Foro Buonaparte.                        
-  </p>
+    <iframe class="responsive-iframe__iframe" src="'.$video.'" frameborder="0"></iframe>
+  </div>';
+	}
+	echo $_args['section']['descrizione_discover']; 
+	?>
 </section>
+<?php endif; ?>

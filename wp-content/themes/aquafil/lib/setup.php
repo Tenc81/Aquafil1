@@ -38,7 +38,7 @@ function register_cposts_taxonomies() {
 
 	$args = array(
 		'labels'    => array(
-			'name'           => 'Sezione Investor Relations',
+			'name'           => 'Investor Relations',
 			'singular_name'  => 'Pagina di Investor Relations',
 			'menu_name'      => 'Sezione Investor Relations',
 			'add_new'        => 'Aggiungi pagina di Investor Relations',
@@ -79,9 +79,58 @@ function register_cposts_taxonomies() {
       'edit_private_posts' => 'edit_private_investor_relations',
       'edit_published_posts' => 'edit_published_investor_relations'
 		),
-		'supports' => array('title', 'thumbnail'),
+		'supports' => array('title', 'thumbnail', 'page-attributes'),
 	);
 	register_post_type("investor-relations", $args);
+
+	unset($args);
+
+	$args = array(
+		'labels'    => array(
+			'name'           => 'Corporate Governance',
+			'singular_name'  => 'Pagina di Corporate Governance',
+			'menu_name'      => 'Sezione Corporate Governance',
+			'add_new'        => 'Aggiungi pagina di Corporate Governance',
+			'all_items'      => 'Tutte le pagine di Corporate Governance',
+			'edit_item'      => 'Modifica pagina di Corporate Governance',
+			'add_new_item'   => 'Crea nuova pagina di Corporate Governance',
+			'new_item'       => 'Nuova pagina di Corporate Governance',
+			'new_item_name'  => 'Nome nuova pagina di Corporate Governance',
+			'view_item'      => 'Visualizza pagina di Corporate Governance',
+			'update_item'    => 'Aggiorna pagina di Corporate Governance',
+			'search_items'   => 'Cerca pagina di Corporate Governance',
+			'not_found'      => 'Nessuna pagina di Corporate Governance trovata'
+		),
+		'show_in_rest' => true, // necessario per WP5
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_icon' => 'dashicons-groups',
+		'menu_position' => 21,
+		'has_archive' => false,
+		'hierarchical' => true,
+		'query_var' => true,
+		'capability_type' => 'page',
+		'capabilities' => array(
+			'edit_post' => 'edit_corporate_governance',
+			'read_post' => 'read_corporate_governance',
+			'delete_post' => 'delete_corporate_governance',
+      'edit_posts' => 'edit_corporate_governances',
+      'edit_others_posts' => 'edit_others_corporate_governances',
+      'delete_posts' => 'delete_corporate_governances',
+      'publish_posts' => 'publish_corporate_governances',
+      'read_private_posts' => 'read_private_corporate_governances',
+			//'read' => 'read_investor_relation',
+      'delete_private_posts' => 'delete_private_corporate_governances',
+      'delete_published_posts' => 'delete_published_corporate_governances',
+      'delete_others_posts' => 'delete_others_corporate_governances',
+      'edit_private_posts' => 'edit_private_corporate_governances',
+      'edit_published_posts' => 'edit_published_corporate_governances'
+		),
+		'supports' => array('title', 'thumbnail', 'page-attributes'),
+	);
+	register_post_type("corporate-governance", $args);
 
 	unset($args);
 

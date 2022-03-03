@@ -71,3 +71,4 @@
 			?>
 			<div class="page <?= $class; ?>">
 				<?php get_template_part( 'templates/partials/shared/header'); ?>
+				<div class="wrapper">

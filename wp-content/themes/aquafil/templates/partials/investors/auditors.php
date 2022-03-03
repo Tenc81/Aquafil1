@@ -1,28 +1,25 @@
-<section id="statutory">
-  <h2 class="page--investors__section-title">Board of Statutory Auditors</h2>
+<?php
+$_args = wp_parse_args(
+  $args,
+  array(
+    'section' => array(),
+    'index' => 0
+  ));
+if(!empty($_args['section'])) :
+?>
+<section <?= setAnchor($_args['section']); ?>>
+  <h2 class="page--investors__section-title"><?= $_args['section']['titolo_auditors']; ?></h2>
 
-  <p>
-      The Board of Auditors supervises the compliance with the law and with the By-laws, the compliance with the principles of correct administration, as well as the efficacy of the internal control system and of the financial information management process.
-  </p>
+	<?php
+  echo !empty($_args['section']['sottotitolo_auditors']) ? '<p>'.$_args['section']['sottotitolo_auditors'].'</p>' : '';
 
-  <div class="gray-card">
-    <span class="gray-card__name">Stefano Poggi Longostrevi</span>
-    <span class="gray-card__role">Chairman</span>
-  </div>
-  <div class="gray-card">
-    <span class="gray-card__name">Beatrice Bompieri</span>
-    <span class="gray-card__role">Statutory Auditor</span>
-  </div>
-  <div class="gray-card">
-    <span class="gray-card__name">Bettina Solimando</span>
-    <span class="gray-card__role">Statutory Auditor</span>
-  </div>
-  <div class="gray-card">
-    <span class="gray-card__name">Marina Manna</span>
-    <span class="gray-card__role">Chairman</span>
-  </div>
-  <div class="gray-card">
-    <span class="gray-card__name">Davide Barbieri</span>
-    <span class="gray-card__role">Statutory Auditor</span>
-  </div>
+	foreach($_args['section']['auditors'] as $i=>$auditor) {
+		echo '
+			<div class="gray-card">
+				<span class="gray-card__name">'.$auditor['nome'].'</span>
+				<span class="gray-card__role">'.$auditor['ruolo'].'</span>
+			</div>';
+	}
+	?>
 </section>
+<?php endif; ?>
