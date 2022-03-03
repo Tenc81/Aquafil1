@@ -7,7 +7,7 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['section'])) :
 ?>
-<div class="main-hero">
+<div class="main-hero" <?=setAnchor($_args['section']);?>>
 	<!-- swiper -->
 	<div class="swiper-container" swiper-main>
 		<div class="swiper-wrapper">

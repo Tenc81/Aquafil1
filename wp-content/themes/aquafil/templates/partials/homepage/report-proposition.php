@@ -8,7 +8,7 @@ $_args = wp_parse_args(
 if(!empty($_args['section'])) :
 ?>
 <!-- REPORT PROPOSITION -->
-<div class="report-proposition">
+<div class="report-proposition" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">

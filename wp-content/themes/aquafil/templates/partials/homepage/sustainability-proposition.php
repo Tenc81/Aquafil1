@@ -8,7 +8,7 @@ $_args = wp_parse_args(
 if(!empty($_args['section'])) :
 ?>
 <!-- SUSTAINABILITY PROPOSITION -->
-<div class="sustainability-proposition">
+<div class="sustainability-proposition" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">

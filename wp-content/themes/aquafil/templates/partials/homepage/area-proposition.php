@@ -8,7 +8,7 @@ $_args = wp_parse_args(
 if(!empty($_args['section'])) :
 ?>
 <!-- PRODUCT PROPOSITION -->
-<div class="area-proposition">
+<div class="area-proposition" <?=setAnchor($_args['section']);?>>
 	<div class="area-proposition__head">
 		<div class="container-fluid">
 			<div class="row">

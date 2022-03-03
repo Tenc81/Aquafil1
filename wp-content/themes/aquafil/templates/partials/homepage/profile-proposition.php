@@ -8,7 +8,7 @@ $_args = wp_parse_args(
 if(!empty($_args['section'])) :
 ?>
 <!-- PROFILE PROPOSITION -->
-<div class="profile-proposition">
+<div class="profile-proposition" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-8 background-primary">

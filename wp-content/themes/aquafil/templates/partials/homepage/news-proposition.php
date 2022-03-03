@@ -17,7 +17,7 @@ if((!isset($_args['section']['news_cards']) || empty($_args['section']['news_car
 if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_cards'])) :
 ?>
 <!-- NEWS PROPOSITION -->
-<div class="news-proposition">
+<div class="news-proposition" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-9 offset-sm-2 col-md-8 offset-md-3">

@@ -9,15 +9,6 @@ $q = get_queried_object();
 ?>
 
 <main class="main">
-	<?php
-	$filtered = array_filter($fields['sezioni'], function($section) {
-		$keys = array_keys($section);
-		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
-		return !empty($result) && $section[reset($result)];
-	});
-	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
-	?>
-
 	<div class="news-hero">
 		<!-- hero -->
 		<div class="container-fluid">

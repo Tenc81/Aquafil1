@@ -7,6 +7,7 @@ get_header();
 
 <main class="main">
 	<?php
+	$fields = get_fields(get_queried_object());
 	$filtered = array_filter($fields['sezioni'], function($section) {
 		$keys = array_keys($section);
 		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
@@ -14,7 +15,6 @@ get_header();
 	});
 	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
 	
-	$fields = get_fields(get_queried_object());
 	foreach($fields['sezioni'] as $i=>$section) {
 		$partialPathRaw = explode('-', $section['acf_fc_layout']);
 		$template = locate_template_part($partialPathRaw);
