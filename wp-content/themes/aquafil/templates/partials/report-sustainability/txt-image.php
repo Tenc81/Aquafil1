@@ -41,7 +41,7 @@ if(!empty($_args['section'])) :
 				$txt_container .= '
 					<div class="text-media-secondary__cta">
 						<button type="button" class="btn--right" open-modally="#product-request"><span>'.$_args['section']['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></button>
-						<div class="card--side-modal" product-request productName="'.$_args['section']['modal_label_txt_image'].'" id="product-request">';
+						<div class="card--side-modal" product-request productName="'.$_args['section']['modal_label_txt_image'].'" download="'.$_args['section']['modal_download_txt_image'].'" id="product-request">';
 				ob_start();
 				include(locate_template('templates/partials/modals/product-request-modal.html'));
 				$txt_container .= ob_get_contents();

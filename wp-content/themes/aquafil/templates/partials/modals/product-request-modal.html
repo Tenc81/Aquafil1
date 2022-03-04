@@ -1,6 +1,6 @@
 <div class="card--side-modal__content">
 	<div *if="!success">
-		<div class="card--side-modal__title">Request color catalogue</div>
+		<div class="card--side-modal__title [innerHTML]=""></div>
 		<form class="form" [formGroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate autocomplete="off">
 			<div class="container-fluid">
 				<div class="row">

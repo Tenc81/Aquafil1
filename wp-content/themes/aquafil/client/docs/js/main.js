@@ -4573,10 +4573,11 @@ OpenModallyDirective.meta = {
 
     this.error = null;
     this.success = false;
-    this.response = null;
-    this.message = null;
+    this.response = '';
+    this.message = '';
     var form = this.form = new rxcompForm.FormGroup({
-      productName: new rxcompForm.FormControl(this.productName),
+      productName: this.productName,
+      download: this.download,
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       company: new rxcompForm.FormControl(null),
@@ -4655,7 +4656,7 @@ OpenModallyDirective.meta = {
 }(rxcomp.Component);
 ProductRequestComponent.meta = {
   selector: '[product-request]',
-  inputs: ['productName']
+  inputs: ['productName', 'download']
 };var SalesModalComponent = /*#__PURE__*/function (_Component) {
   _inheritsLoose(SalesModalComponent, _Component);
 

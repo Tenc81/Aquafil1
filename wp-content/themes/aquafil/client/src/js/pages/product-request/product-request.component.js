@@ -19,10 +19,11 @@ export class ProductRequestComponent extends Component {
 		}
 		this.error = null;
 		this.success = false;
-		this.response = null;
-		this.message = null;
+		this.response = '';
+		this.message = '';
 		const form = this.form = new FormGroup({
-			productName: new FormControl(this.productName),
+			productName: this.productName,
+			download: this.download,
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
 			company: new FormControl(null),
@@ -97,5 +98,5 @@ export class ProductRequestComponent extends Component {
 
 ProductRequestComponent.meta = {
 	selector: '[product-request]',
-	inputs: ['productName'],
+	inputs: ['productName', 'download'],
 };

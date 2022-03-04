@@ -503,7 +503,7 @@ function custom_rest_route() {
     'args' => array(
 			'page' => array(
         'validate_callback' => function($param, $request, $key) {
-          return is_numeric($param) && get_post_type(intval($param)) == 'page';
+          return is_numeric($param) && 'publish' == get_post_status ($param);
         }
       )
 		)
@@ -515,7 +515,7 @@ function custom_rest_route() {
     'args' => array(
 			'page' => array(
         'validate_callback' => function($param, $request, $key) {
-          return is_numeric($param) && get_post_type(intval($param)) == 'page';
+          return is_numeric($param) && 'publish' == get_post_status ($param);
         }
       )
 		)
@@ -527,7 +527,7 @@ function custom_rest_route() {
     'args' => array(
 			'page' => array(
         'validate_callback' => function($param, $request, $key) {
-          return is_numeric($param) && get_post_type(intval($param)) == 'page';
+          return is_numeric($param) && 'publish' == get_post_status ($param);
         }
       )
 		)
@@ -811,7 +811,8 @@ function frm_create_custom_contact() {
 		if($result['status'] == "mail_failed") {
 			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
 		} else {
-			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+			$download = isset($_POST['download']) && !empty($_POST['download']) ? sprintf('<br /><br />'.__('Clicca su %s per scaricare il documento.', 'wstheme'), '<a href="'.$_POST['download'].'" target="_blank">download</a>') : '';
+			wp_send_json_success(array('message' => $result['message'].$download, 'response' => __("Richiesta inviata", "wstheme")));
 		}
 	}
   wp_die();

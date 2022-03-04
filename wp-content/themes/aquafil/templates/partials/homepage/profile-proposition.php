@@ -22,7 +22,7 @@ if(!empty($_args['section'])) :
 					<div class="profile-proposition__title"><?= $_args['section']['profile_titolo']?></div>
 					<div class="profile-proposition__abstract"><?= $_args['section']['profile_sottotitolo']?></div>
 					<div class="profile-proposition__cta">
-						<a href="<?= $_args['section']['profile_url_cta']?>" class="btn--primary" target="<?= $_args['section']['profile_target_cta']?>"><?=( $_args['section']['profile_testo_cta'] != '' ? $_args['section']['profile_testo_cta'] : __('Read more'))?></a>
+						<a href="<?= $_args['section']['profile_link_cta']?>" class="btn--primary" target="<?= $_args['section']['profile_target_cta']?>"><?=( $_args['section']['profile_testo_cta'] != '' ? $_args['section']['profile_testo_cta'] : __('Read more'))?></a>
 					</div>
 				</div>
 			</div>
