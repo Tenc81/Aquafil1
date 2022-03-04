@@ -101,11 +101,15 @@ function setAnchorMenuItem($fg){
 	$output = '';
 	$hasAnchor = false;
 	foreach($fg as $k => $v){
-		if(strstr($k, '_attiva_sticky_item') && $v == 1){
-			$hasAnchor = true;
-		}
-		if(strstr($k, '_label_sticky_item') && $hasAnchor == true){
-			$output = '<li class="nav__item"><a href="#'.sanitize_title($v).'" (scrollTo)="\'#'.sanitize_title($v).'\'">'.$v.'</a></li>';
+		if(is_array($v)) {
+			$output .= setAnchorMenuItem($v);
+		} else {
+			if(strstr($k, '_attiva_sticky_item') && $v == 1){
+				$hasAnchor = true;
+			}
+			if(strstr($k, '_label_sticky_item') && $hasAnchor == true){
+				$output = '<li class="nav__item"><a href="#'.sanitize_title($v).'" (scrollTo)="\'#'.sanitize_title($v).'\'">'.$v.'</a></li>';
+			}
 		}
 	}
 
@@ -117,12 +121,13 @@ function setAnchor($fg){
 	$output = '';
 	$hasAnchor = false;
 	foreach($fg as $k => $v){
-    if(strstr($k, '_attiva_sticky_item') && $v == 1){
-			$hasAnchor = true;
-    }
-    if(strstr($k, '_label_sticky_item') && $hasAnchor == true){
+		if(strstr($k, '_attiva_sticky_item') && $v == 1){
+				$hasAnchor = true;
+		}
+		if(strstr($k, '_label_sticky_item') && $hasAnchor == true){
 			$output = 'id="'.sanitize_title($v).'"';
-    }
+			break;
+		}
 	}
 
 	return $output;

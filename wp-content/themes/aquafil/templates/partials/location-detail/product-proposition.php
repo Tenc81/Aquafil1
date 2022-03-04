@@ -105,8 +105,12 @@ if(!empty($_args['section'])) :
 				$thumb = $product['thumb_prodotto'];
 				$img = $product['immagine_prodotto'];
 				$link = $product['link_prodotto'];
+				$filters = explode(',', $product['filtro_prodotto']);
+				$filters = array_map(function($filter) {
+					return sanitize_title(trim($filter));
+				}, $filters);
 				echo '
-									<div class="listing__item '.($_args['section']['aggiungi_filtri'] ? sanitize_title($product['filtro_prodotto']) : '').'" appear>
+									<div class="listing__item '.($_args['section']['aggiungi_filtri'] ? implode(' ', $filters) : '').'" appear>
 										<div class="card--product" open-modally="#detail-'.($i+1).'">
 											<div class="card--product__picture">
 												'.(!empty($thumb) ? '<img loading="lazy" src="'.$thumb["url"].'" alt="'.$product['titolo_prodotto'].'" />' : '').'

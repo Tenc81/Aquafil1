@@ -11,7 +11,23 @@ get_header("ircg");
 	$fields = get_fields(get_queried_object());
 	$filtered = array_filter($fields['sezioni'], function($section) {
 		$keys = array_keys($section);
+		$index = array_search('acf_fc_layout', $keys);
+		unset($keys[$index]);
 		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
+		if(empty($result)) {
+			foreach($keys as $key) {
+				if(is_array($section[$key])) {
+					$subfiltered = array_filter($section[$key], function($subsection) {
+						$subkeys = array_keys($subsection);
+						$res = preg_grep('@\d+_attiva_sticky_item@', $subkeys);
+						return !empty($res) && $subsection[reset($res)];
+					});
+					if(!empty($subfiltered)) {
+						array_push($result, $key);
+					}
+				}
+			}
+		}
 		return !empty($result) && $section[reset($result)];
 	});
 	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
