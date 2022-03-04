@@ -8,7 +8,7 @@ $_args = wp_parse_args(
 if(!empty($_args['section']) && !empty($_args['section']['location_related'])) :
 	$img = $_args['section']['immagine_location_related'];
 ?>
-<div class="global-capabilities">
+<div class="global-capabilities secondary">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">

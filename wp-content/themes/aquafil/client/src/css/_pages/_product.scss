@@ -117,8 +117,11 @@
 	}
 
 	.global-capabilities {
-		background: #F8F8F8;
 		padding: 40px 0;
+
+		&.secondary {
+			background: #F8F8F8;
+		}
 
 		@include media-up(md) {
 			padding: 80px 0;

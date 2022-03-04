@@ -123,6 +123,12 @@ main {
   position: relative;
   min-height: 100vh; }
 
+@media (min-width: 1024px) {
+  main > div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary) + div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary):not(.borders),
+  main > div.negative + div.negative,
+  main > div.secondary + div.secondary {
+    padding-top: 0; } }
+
 .hidden {
   display: none; }
 
@@ -4955,7 +4961,7 @@ h6 {
   line-height: 1.2;
   margin-bottom: 0.16666em; }
 
-.h2, .generic-hero__title, .news-hero__title, .news-detail-hero__title, .certifications-hero__title, .careers-hero__title, .card--main-hero__title, .profile-proposition__title, .area-proposition__title, .sustainability-proposition__title, .innovation-proposition__title, .news-proposition__title, .location-hero__title, .location-detail-hero__title, .title-hero__title, .media-text__title, .media-text-primary__title, .media-text-secondary__title, .text-media-secondary__title, .title-text__title, .title-hero-02__title, .research-proposition__title, .secondary-hero__title, .history-hero__title, .card--history__year, .case-studies-hero__title, .contacts-hero__title, .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title {
+.h2, .generic-hero__title, .news-hero__title, .news-detail-hero__title, .certifications-hero__title, .careers-hero__title, .card--main-hero__title, .profile-proposition__title, .area-proposition__title, .sustainability-proposition__title, .innovation-proposition__title, .news-proposition__title, .location-hero__title, .location-detail-hero__title, .title-hero__title, .media-text__title, .media-text-primary__title, .text-media-secondary__title, .title-text__title, .title-hero-02__title, .research-proposition__title, .secondary-hero__title, .history-hero__title, .card--history__year, .case-studies-hero__title, .contacts-hero__title, .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title {
   font-weight: bold;
   font-size: Max(30px, Min(72px, 3.75vw));
   line-height: 1.2;
@@ -4977,7 +4983,7 @@ h6 {
   line-height: 1.36;
   margin-bottom: 1.11111em; }
 
-.h5, .card--content__title, .card--area__title, .card--sustainability__title, .newsletter-proposition__title, .card--toolkit__title, .card--icon__title, .card--numbers__abstract, .card--history__title, .card--history-detail__title, .page--investors__section-title, .page--investor__menu-title, .contacts-hero__paragraph-title, .contacts-info__title, .contacts-form__title, .sales-country__title {
+.h5, .card--content__title, .card--area__title, .card--sustainability__title, .newsletter-proposition__title, .card--toolkit__title, .media-text-secondary__title, .card--icon__title, .card--numbers__abstract, .card--history__title, .card--history-detail__title, .page--investors__section-title, .page--investor__menu-title, .contacts-hero__paragraph-title, .contacts-info__title, .contacts-form__title, .sales-country__title {
   font-weight: bold;
   font-size: Max(16px, Min(36px, 1.875vw));
   line-height: 1.36;
@@ -8039,8 +8045,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .generic-hero, .news-hero, .news-detail-hero, .certifications-hero, .careers-hero {
   margin-top: -80px;
-  z-index: -1;
-  background: var(--background-quaternary); }
+  z-index: -1; }
+  .generic-hero.secondary, .secondary.news-hero, .secondary.news-detail-hero, .secondary.certifications-hero, .secondary.careers-hero {
+    background: var(--background-quaternary); }
   .generic-hero__content, .news-hero__content, .news-detail-hero__content, .certifications-hero__content, .careers-hero__content {
     display: flex;
     flex-direction: column;
@@ -8559,8 +8566,9 @@ input[type="search"]::-webkit-search-results-decoration {
       margin-bottom: var(--p40); } }
 
 .news-proposition {
-  padding: var(--p120) 0 var(--p60) 0;
-  background: var(--background-quaternary); }
+  padding: var(--p120) 0 var(--p60) 0; }
+  .news-proposition.secondary {
+    background: var(--background-quaternary); }
   .news-proposition__title {
     color: var(--foreground); }
 
@@ -9138,7 +9146,14 @@ input[type="search"]::-webkit-search-results-decoration {
         margin-bottom: var(--p80); } }
 
 .media-text-secondary {
-  position: relative; }
+  position: relative;
+  /*
+	&__title {
+		@extend .h2;
+	}
+	*/ }
+  .media-text-secondary__title {
+    margin-bottom: var(--p40); }
   @media (min-width: 768px) {
     .media-text-secondary__offset {
       position: relative; }
@@ -9161,7 +9176,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .media-text-secondary {
       padding: var(--p120) 0; }
       .media-text-secondary__content {
-        padding: var(--p120) 0; } }
+        padding: var(--p60) 0 0 0; } }
   @media (max-width: 1023.98px) {
     .media-text-secondary {
       padding: var(--p80) 0; }
@@ -9192,7 +9207,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .text-media-secondary {
       padding: var(--p120) 0; }
       .text-media-secondary__content {
-        padding: var(--p120) 0; } }
+        padding: var(--p120) 0 0 0; } }
   @media (max-width: 1023.98px) {
     .text-media-secondary {
       padding: var(--p80) 0; }
@@ -9267,13 +9282,17 @@ input[type="search"]::-webkit-search-results-decoration {
   .title-text {
     padding: var(--p120) 0; }
     .title-text__title, .title-text__abstract, .title-text__cta {
-      margin-bottom: var(--p80); } }
+      margin-bottom: var(--p80); }
+    .title-text__cta {
+      margin-top: var(--p40); } }
 
 @media (max-width: 767.98px) {
   .title-text {
     padding: var(--p80) 0; }
     .title-text__title, .title-text__abstract, .title-text__cta {
-      margin-bottom: var(--p60); } }
+      margin-bottom: var(--p60); }
+    .title-text__cta {
+      margin-top: var(--p20); } }
 
 .image-full {
   position: relative; }
@@ -10248,8 +10267,6 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 100%; }
 
 .contacts-info {
-  background-color: var(--foreground);
-  color: var(--foreground-negative);
   padding: 40px 0; }
   @media (min-width: 1024px) {
     .contacts-info {
@@ -10271,14 +10288,19 @@ input[type="search"]::-webkit-search-results-decoration {
   .contacts-info__arrow {
     width: 36px;
     height: 16px;
-    fill: var(--foreground-negative);
     margin-left: 10px; }
   .contacts-info__content {
     font-size: 18px; }
+  .contacts-info.negative {
+    background-color: var(--foreground);
+    color: var(--foreground-negative); }
+    .contacts-info.negative .contacts-info__arrow {
+      fill: var(--foreground-negative); }
 
 .contacts-form {
-  background: #F8F8F8;
   padding: 40px 0; }
+  .contacts-form.secondary {
+    background: #F8F8F8; }
   @media (min-width: 1024px) {
     .contacts-form {
       padding: 80px 0; } }
@@ -10461,8 +10483,6 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-bottom: 40px; }
 
 .sales-country {
-  background: var(--foreground);
-  color: var(--foreground-negative);
   padding: 40px 0; }
   @media (min-width: 1024px) {
     .sales-country {
@@ -10491,7 +10511,6 @@ input[type="search"]::-webkit-search-results-decoration {
     align-items: center;
     margin-bottom: 10px; }
     .sales-country__title svg {
-      fill: var(--foreground-negative);
       width: 30px;
       height: 18px;
       margin-left: 10px; }
@@ -10500,6 +10519,11 @@ input[type="search"]::-webkit-search-results-decoration {
     @media (min-width: 1024px) {
       .sales-country__text {
         font-size: 18px; } }
+  .sales-country.negative {
+    background: var(--foreground);
+    color: var(--foreground-negative); }
+    .sales-country.negative .sales-country__title svg {
+      fill: var(--foreground-negative); }
 
 .card--side-modal {
   display: none;
@@ -10874,7 +10898,8 @@ input[type="search"]::-webkit-search-results-decoration {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 130px); }
+  min-height: auto;
+  padding: 80px 0; }
   .section--index .title {
     display: block;
     margin-bottom: 70px;
@@ -10919,7 +10944,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .nav--index {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows: repeat(4, 0);
+    grid-template-rows: repeat(6, 0);
     grid-auto-flow: column; } }
 
 @media (min-width: 1920px) {
@@ -10944,26 +10969,23 @@ input[type="search"]::-webkit-search-results-decoration {
     .nav--index > .nav__item {
       margin-bottom: 15px; } }
 
-.page--report .title-text {
-  /*
-        &__title,
-        &__abstract,
-        &__description {
-        }
-        &.negative {
-        }
-        &:not(.negative) {
-        }
-        &.secondary {
-        }
-        */ }
-  @media (min-width: 768px) {
-    .page--report .title-text__cta {
-      margin-top: var(--p40); } }
-  @media (max-width: 767.98px) {
-    .page--report .title-text__cta {
-      margin-top: var(--p20); } }
+/*
+.page--report {
+	.title-text {
+		@include media-up(sm) {
+			&__cta {
+				margin-top: var(--p40);
+			}
+		}
 
+		@include media-down(xs) {
+			&__cta {
+				margin-top: var(--p20);
+			}
+		}
+	}
+}
+*/
 .search__title {
   margin-bottom: 20px; }
 
@@ -11171,8 +11193,9 @@ input[type="search"]::-webkit-search-results-decoration {
   padding-top: 0; }
 
 .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities {
-  background: #F8F8F8;
   padding: 40px 0; }
+  .page--product .global-capabilities.secondary, .page--product-bfc .global-capabilities.secondary, .page--product-ntf .global-capabilities.secondary, .page--product-polymers .global-capabilities.secondary {
+    background: #F8F8F8; }
   @media (min-width: 1024px) {
     .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities {
       padding: 80px 0; } }
@@ -11252,12 +11275,10 @@ input[type="search"]::-webkit-search-results-decoration {
   background: #4D4D4D;
   color: var(--foreground-negative); }
 
-.section-generic {
-  padding-top: 80px; }
-  .section-generic:last-child {
-    padding-bottom: 80px; }
-  @media (min-width: 1024px) {
-    .section-generic {
-      padding-top: 120px; }
-      .section-generic:last-child {
-        padding-bottom: 120px; } }
+@media (min-width: 1024px) {
+  .section-generic {
+    padding: 60px 0; } }
+
+@media (max-width: 1023.98px) {
+  .section-generic {
+    padding: 40px 0; } }

@@ -1,6 +1,9 @@
 .news-proposition {
 	padding: var(--p120) 0 var(--p60) 0;
-	background: $background-quaternary;
+
+	&.secondary {
+		background: $background-quaternary;
+	}
 
 	&__title {
 		@extend .h2;

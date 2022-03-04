@@ -7,7 +7,7 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['section'])) :
 ?>
-<div class="contacts-info">
+<div class="contacts-info negative">
   <div class="container-fluid">
     <div class="row">
 			<?php if($_args['section']['zoom_cnt_info']) : ?>
