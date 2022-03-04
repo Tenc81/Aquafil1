@@ -930,7 +930,7 @@ function custom_query($query) {
     if($query->is_main_query() && !is_admin()) {
 			if(is_home()) {
 				$terms = array();
-				$pcategory_id = apply_filters("wpml_get_object_id", 25, "category", false, ICL_LANGUAGE_CODE);
+				$pcategory_id = apply_filters("wpml_object_id", 25, "category", false, ICL_LANGUAGE_CODE);
 				if($pcategory_id) {
 					global $wpdb;
 					$q = "
