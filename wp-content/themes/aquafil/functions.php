@@ -924,31 +924,47 @@ add_action('admin_init', 'ir_user_caps', 15);
 
 
 function custom_query($query) {
-    // gestione risultati
-    if($query->is_main_query() && !is_admin()) {
-			if(is_home()) {
-				$terms = array();
-				$pcategory_id = apply_filters("wpml_object_id", 25, "category", false, ICL_LANGUAGE_CODE);
-				if($pcategory_id) {
-					global $wpdb;
-					$q = "
-						SELECT t.*, tt.count
-						FROM ".$wpdb->posts." AS p JOIN ".$wpdb->terms." AS t JOIN ".$wpdb->term_taxonomy." AS tt JOIN ".$wpdb->term_relationships." AS tr
-						ON p.ID = tr.object_id AND t.term_id = tt.term_id AND tr.term_taxonomy_id = tt.term_taxonomy_id
-						WHERE p.post_type='post' AND p.post_status='publish' AND tt.taxonomy='category' AND tt.count>0 AND tt.parent=%d
-						GROUP BY t.term_id, tt.count";
-					$terms = $wpdb->get_results($wpdb->prepare($q, $pcategory_id));
-				}
-        $query->set('posts_per_page', 12);
-        $query->set('tax_query', array(array(
+  // gestione risultati
+  if($query->is_main_query() && !is_admin()) {
+		if(is_home()) {
+			$terms = array();
+			$nations = get_terms(array(
+				'taxonomy' => 'localnews_category',
+				'hide_empty' => true,
+				'fields' => 'ids'
+			));
+			$pcategory_id = apply_filters("wpml_object_id", 25, "category", false, ICL_LANGUAGE_CODE);
+			if($pcategory_id) {
+				global $wpdb;
+				$q = "
+					SELECT t.*, tt.count
+					FROM ".$wpdb->posts." AS p JOIN ".$wpdb->terms." AS t JOIN ".$wpdb->term_taxonomy." AS tt JOIN ".$wpdb->term_relationships." AS tr
+					ON p.ID = tr.object_id AND t.term_id = tt.term_id AND tr.term_taxonomy_id = tt.term_taxonomy_id
+					WHERE p.post_type='post' AND p.post_status='publish' AND tt.taxonomy='category' AND tt.count>0 AND tt.parent=%d
+					GROUP BY t.term_id, tt.count";
+				$terms = $wpdb->get_results($wpdb->prepare($q, $pcategory_id));
+			}
+			$query->set('post_type', array('post', 'localnews'));
+      $query->set('posts_per_page', 12);
+      $query->set('tax_query', array(
+				'relation' => 'OR',
+				array(
 					'taxonomy' => 'category',
 					'field' => 'term_id',
-					'terms' => array_column($terms, "term_id")
-				)));
-			} elseif(is_category()) {
-        $query->set('posts_per_page', 12);
-			}
-    }
+					'terms' => array_column($terms, "term_id"),
+          'operator' => 'IN'
+				),
+				array(
+					'taxonomy' => 'localnews_category',
+					'field' => 'term_id',
+					'terms' => $nations,
+          'operator' => 'IN'
+				)
+			));
+		} elseif(is_category() || is_tax("localnews_category")) {
+      $query->set('posts_per_page', 12);
+		}
+  }
 }
 add_action('pre_get_posts', 'custom_query');
 
@@ -970,3 +986,13 @@ function formatSizeUnits($bytes) {
     }
     return $bytes;
 }
+
+
+function count_published_posts_for_terms($term, $name) {
+	global $wpdb;
+	$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $wpdb->term_relationships JOIN $wpdb->posts ON $wpdb->term_relationships.object_id=$wpdb->posts.ID WHERE $wpdb->term_relationships.term_taxonomy_id = %d AND $wpdb->posts.post_status='publish'", $term ) );
+
+	do_action( 'edit_term_taxonomy', $term, $name );
+	$wpdb->update( $wpdb->term_taxonomy, compact( 'count' ), array( 'term_taxonomy_id' => $term ) );
+}
+add_action('edited_term_taxonomy', 'count_published_posts_for_terms', 10, 2);

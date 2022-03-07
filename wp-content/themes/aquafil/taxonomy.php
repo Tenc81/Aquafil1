@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: News
- */
 get_header();
 $q = get_queried_object(); 
 

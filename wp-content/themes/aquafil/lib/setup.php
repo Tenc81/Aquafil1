@@ -34,6 +34,8 @@ function register_cposts_taxonomies() {
 	);
 	register_post_type("localnews", $args);
 
+	register_taxonomy_for_object_type("category", "localnews");
+
 	unset($args);
 
 	$args = array(

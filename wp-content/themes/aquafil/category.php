@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: News
- */
 get_header();
 $q = get_queried_object(); 
 
@@ -57,26 +54,33 @@ $q = get_queried_object();
 			GROUP BY t.term_id, tt.count";
 		$terms = $wpdb->get_results($wpdb->prepare($query, $pcategory_id));
 	}
+	$nations = get_terms(array(
+		'taxonomy' => 'localnews_category',
+		'hide_empty' => true
+	));
+	if(!empty($terms) || !empty($nations)) {
+		$labels = array(__("Filtra per categoria", "wstheme"), __("Filtra per nazione", "wstheme"));
+	}
+	foreach(array($terms, $nations) as $i=>$terms_group) :
 	?>
-
 	<div class="horizontal-menu borders">
 		<!-- taxonomy filter -->
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 					<div class="horizontal-menu__content">
-						<div class="horizontal-menu__title"><?= __("Filtra per", "wstheme"); ?></div>
+						<div class="horizontal-menu__title"><?= $labels[$i]; ?></div>
 						<ul class="nav--horizontal-menu">
 							<li class="nav__item" data-term-id="">
 								<a href="<?= get_permalink(get_option("page_for_posts")); ?>" style="color:inherit">
 									<span class="name">
 											<?= __("Tutte", "wstheme"); ?>
 									</span><span class="count">
-										(<?= array_sum(array_column($terms, "count")); ?>)
+										(<?= array_sum(array_merge(array_column($terms, "count"), array_column($nations, "count"))); ?>)
 									</span>
 								</a>
 							</li>
-							<?php foreach($terms as $term) : ?>
+							<?php foreach($terms_group as $term) : ?>
 							<li class="nav__item" data-term-id="<?= $term->term_id; ?>">
 								<a href="<?=get_category_link($term->term_id);?>" style="color:inherit"<?= $term->term_id==get_queried_object_id() ? ' class="active"' : ''; ?>>
 									<span class="name">
@@ -93,6 +97,7 @@ $q = get_queried_object();
 			</div>
 		</div>
 	</div>
+	<?php endforeach; ?>
 
 
 

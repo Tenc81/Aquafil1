@@ -1,14 +1,21 @@
 <?php
-/**
- * Template Name: News
- */
 get_header();
-$q = get_queried_object();
+$q = get_queried_object(); 
 
 //print_r($q);
 ?>
 
 <main class="main">
+	<?php
+	$fields = get_fields(get_queried_object());
+	$filtered = array_filter($fields['sezioni'], function($section) {
+		$keys = array_keys($section);
+		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
+		return !empty($result) && $section[reset($result)];
+	});
+	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
+	?>
+
 	<div class="news-hero">
 		<!-- hero -->
 		<div class="container-fluid">
@@ -93,6 +100,7 @@ $q = get_queried_object();
 	<?php endforeach; ?>
 
 
+
 	<div class="news-listing borders">
 		<!-- the listing - 12 -->
 		<div class="container-fluid">
@@ -110,7 +118,6 @@ $q = get_queried_object();
 									<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" />
 								</div>
 								<div class="card--news__content" appear>
-									<div class="card--news__date">23.06.2021</div>
 									<div class="card--news__title">
 										<?=get_the_title();?>
 									</div>
