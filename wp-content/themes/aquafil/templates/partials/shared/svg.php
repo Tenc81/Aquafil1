@@ -12,6 +12,9 @@
 	<symbol id="arrow-down" viewBox="0 0 8 7">
 		<path d="M4,6.6l3.5-6l-6.9,0L4,6.6z"/>
 	</symbol>
+	<symbol id="arrow-back" viewBox="0 0 12 9">
+		<path fill-rule="evenodd" d="M4.4,9l0.8-0.9l-2.9-3H12V3.9H2.3l2.9-3L4.4,0L0,4.5L4.4,9z" clip-rule="evenodd"/>
+	</symbol>
 	<symbol id="arrow-next" viewBox="0 0 12 9">
 		<path fill-rule="evenodd" d="M12,4.5L7.6,0L6.8,0.9l2.9,3H0v1.2h9.7l-2.9,3L7.6,9L12,4.5z" clip-rule="evenodd"/>
 	</symbol>

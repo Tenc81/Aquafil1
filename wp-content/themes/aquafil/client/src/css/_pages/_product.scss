@@ -253,15 +253,13 @@
 		}
 	}
 
-	&-bfc {
-		@extend .page--product;
-	}
-
-	&-ntf {
-		@extend .page--product;
-	}
-
+	&-bfc,
+	&-ntf,
 	&-polymers {
 		@extend .page--product;
 	}
+}
+
+.page--location-detail {
+	@extend .page--product;
 }

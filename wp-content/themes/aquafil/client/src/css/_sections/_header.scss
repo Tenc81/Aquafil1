@@ -209,7 +209,6 @@
 
 			&>span {
 				white-space: nowrap;
-				max-width: calc(20vw - 150px);
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
@@ -250,6 +249,8 @@
 
 			&>a,
 			&>span {
+				max-width: calc(20vw - 150px);
+
 				svg {
 					margin-left: var(--p10);
 				}
@@ -298,7 +299,6 @@
 		color: currentColor;
 
 		svg {
-			width: 12px;
 			height: auto;
 			fill: currentColor;
 		}
@@ -330,12 +330,6 @@
 			outline-color: rgb(0, 58, 86);
 			outline: none;
 			box-shadow: none;
-			text-align: right;
-		}
-
-		input,
-		input:focus {
-			padding: 0 8px;
 		}
 
 		@include media-up(md) {
@@ -343,6 +337,21 @@
 			margin-right: 5px;
 			border-right: 1px solid $border;
 			justify-content: flex-end;
+
+			svg {
+				width: 12px;
+			}
+
+			input,
+			input::placeholder,
+			input:focus {
+				text-align: right;
+			}
+
+			input,
+			input:focus {
+				padding: 0 8px;
+			}
 
 			span {
 				margin: 0;
@@ -352,6 +361,12 @@
 			form,
 			input {
 				width: 100%;
+			}
+		}
+
+		@include media-down(sm) {
+			svg {
+				width: 24px;
 			}
 		}
 	}
@@ -511,6 +526,7 @@
 	}
 
 	@include media-down(sm) {
+		display: block;
 		font-size: 24px;
 		margin: var(--p50) var(--cw2);
 		border: 1px solid white;
@@ -575,8 +591,7 @@
 			}
 		}
 
-		.nav__item:hover>&,
-		&.active {
+		.nav__item:hover>& {
 			display: block;
 		}
 	}
@@ -603,10 +618,10 @@
 				font-size: 30px;
 				padding: var(--p20) var(--cw2);
 
-				svg {
-					width: 1em;
-					height: 1em;
-					margin-right: var(--p10);
+				.back {
+					flex: 0 0 0.5em;
+					width: 0.5em;
+					height: 0.3333em;
 					fill: currentColor;
 					position: absolute;
 					transform: translateX(-150%);

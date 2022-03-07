@@ -405,9 +405,7 @@ function icl_post_languages() {
       $items .= '
 							<li class="nav__item back">
 								<span (click)="onBack()">
-									<svg>
-										<use xlink:href="#back"></use>
-									</svg><span>'.__("Indietro", "wstheme").'</span>
+									<svg class="back"><use xlink:href="#arrow-back"></use></svg><span>'.__("Indietro", "wstheme").'</span>
 								</span>
 							</li>
 						</ul>
