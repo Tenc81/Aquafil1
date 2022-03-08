@@ -148,7 +148,7 @@ function the_breadcrumb()
 
 
 	global $post;
-	$homeLink = get_bloginfo('url');
+	$homeLink = home_url('/');
 	if (is_home() || is_front_page()) {
 		if ($showOnHome == 1) {
 			$output .= '<ul class="nav--breadcrumb"><li class="nav__item"><a href="' . $homeLink . '">' . $home . '</a></li></ul>';
@@ -173,31 +173,33 @@ function the_breadcrumb()
 		} elseif (is_year()) {
 			$output .= $before . get_the_time('Y') . $after;
 		} elseif (is_single() && !is_attachment()) {
-			if (get_post_type() != 'post') { //$output .= get_the_ID();
+			if (get_post_type() != 'post' && get_post_type() != 'localnews') { //$output .= get_the_ID();
 				$post_type = get_post_type_object(get_post_type());
 				$slug = $post_type->rewrite;
-				if($post_type->labels->singular_name != "Service" && $post_type->labels->singular_name != "Posizione Lavorativa"){
-					$output .= '<li class="nav__item"><a href="' . $homeLink . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : $slug['slug'] ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : ucfirst(__(strtolower($post_type->labels->name), "WordPress"))) . '</a></li>';
+				if($post_type->has_archive && $post_type->labels->singular_name != "Service" && $post_type->labels->singular_name != "Posizione Lavorativa"){
+					$output .= '<li class="nav__item"><a href="' . $homeLink . ($post_type->labels->singular_name == 'Case History' ? 'our-xstories' : __($slug['slug'], "WordPress") ) . '/">' . ($post_type->labels->singular_name == 'Case History' ? 'xStories' : ucfirst(__(strtolower($post_type->labels->name), "WordPress"))) . '</a></li>';
 				}
 				if ($showCurrent == 1) {
 					$output .= ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 				}
 			} else {
 				$cat = get_the_category();
-				$cat = $cat[0];
-				$cats = get_category_parents($cat->term_id, true, ' ' . $delimiter . ' ');
-				if ($showCurrent == 0) {
-					$cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
+				if(!empty($cat)) {
+					$cat = $cat[0];
+					$cats = get_category_parents($cat->term_id, true, ' ' . $delimiter . ' ');
+					if ($showCurrent == 0) {
+						$cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
+					}
+					$cats = str_replace("</a> " . $delimiter . " <a", "</a> " . $after.$before . " <a", $cats);
+					$output .= $before.$cats.$after;
 				}
-				$cats = str_replace("</a> " . $delimiter . " <a", "</a> " . $after.$before . " <a", $cats);
-				$output .= $before.$cats.$after;
 				if ($showCurrent == 1) {
 					$output .= $before . get_the_title() . $after;
 				}
 			}
 		} elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
 			$post_type = get_post_type_object(get_post_type());
-			$output .= ucfirst(__(strtolower($before.$post_type->labels->name), "WordPress")) . $after;
+			$output .= $before.ucfirst(__(strtolower($post_type->labels->name), "WordPress")) . $after;
 		} elseif (is_attachment()) {
 			$parent = get_post($post->post_parent);
 			$cat = get_the_category($parent->ID);
