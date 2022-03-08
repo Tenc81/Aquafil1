@@ -962,6 +962,9 @@ function custom_query($query) {
 				)
 			));
 		} elseif(is_category() || is_tax("localnews_category")) {
+			$query->set('post_type', array('post', 'localnews'));
+      $query->set('posts_per_page', 12);
+		} elseif(is_tax("localnews_category")) {
       $query->set('posts_per_page', 12);
 		}
   }

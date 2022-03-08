@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: News
- */
 get_header();
 
 $video = get_field('video');
@@ -147,32 +144,7 @@ if (is_array($video) && count($video)> 0) {
 
 		<?php }  ?>
 
-		<div class="row news-detail-content__row" appear>
-			<div class="col-sm-20 offset-sm-2 col-md-10 offset-md-7">
-				<div class="news-detail-content__text">
-					<div class="share">
-						<p class="share__text">
-							Condividi
-						</p>
-						<a class="share__link" href="#">
-							<svg class="facebook">
-								<use xlink:href="#facebook"></use>
-							</svg>
-						</a>
-						<a class="share__link" href="#">
-							<svg class="twitter">
-								<use xlink:href="#twitter"></use>
-							</svg>
-						</a>
-						<a class="share__link" href="#">
-							<svg class="linkedin">
-								<use xlink:href="#linkedin"></use>
-							</svg>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php get_template_part('templates/partials/shared/share'); ?>
 
 	</section>
 

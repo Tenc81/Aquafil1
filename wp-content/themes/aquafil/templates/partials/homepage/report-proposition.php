@@ -21,7 +21,7 @@ if(!empty($_args['section'])) :
 					<div class="report-proposition__title"><?= $_args['section']['report_titolo']?></div>
 					<div class="report-proposition__abstract"><?= $_args['section']['report_sottotitolo']?></div>
 					<div class="report-proposition__cta">
-						<a href="<?= $_args['section']['report_link_cta']?>" class="btn--download"><span><?=($_args['section']['report_testo_cta'] != '' ? $_args['section']['report_testo_cta'] : __('Read more'))?></span> <svg><use xlink:href="#download"></use></svg></a>
+						<a href="<?= $_args['section']['report_link_cta']?>" target="<?= $_args['section']['report_target_cta']?>" class="btn--download"><span><?=($_args['section']['report_testo_cta'] != '' ? $_args['section']['report_testo_cta'] : __('Read more'))?></span> <svg><use xlink:href="#download"></use></svg></a>
 					</div>
 				</div>
 			</div>

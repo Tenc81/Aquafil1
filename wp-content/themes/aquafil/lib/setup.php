@@ -30,7 +30,7 @@ function register_cposts_taxonomies() {
 		'hierarchical' => true,
 		'query_var' => true,
 		'capability_type' => 'post',
-		'supports' => array('title', 'thumbnail'),
+		'supports' => array('title', 'thumbnail', 'editor'),
 	);
 	register_post_type("localnews", $args);
 

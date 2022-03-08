@@ -41,7 +41,7 @@ if(!empty($_args['section'])) :
 				echo '
 					<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 						<div class="title-text__cta">
-							<a href="'.$file["url"].'" class="btn--download"><span>'.$_args['section']['etichetta_download_report'].'</span> <svg><use xlink:href="#download"></use></svg></a>
+							<a href="'.$file["url"].'" target="_blank" class="btn--download"><span>'.$_args['section']['etichetta_download_report'].'</span> <svg><use xlink:href="#download"></use></svg></a>
 						</div>    
 					</div>';
 			}
