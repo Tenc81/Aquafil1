@@ -24,7 +24,12 @@ if(!empty($_args['section'])) :
 		  if(!isset($filters[$category])) {
 		    $filters[$category] = 0;
 		  }
-		  $filters[$category] += 1;
+		}
+		foreach($_args['section']['prodotti_correlati'] as $product) {
+			$flts = explode(',', $product['filtro_prodotto']);
+			foreach($flts as $filter) {
+				$filters[$filter] += 1;
+			}
 		}
 		if(!empty($filters)) {
 			echo '
