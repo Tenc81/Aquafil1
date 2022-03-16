@@ -62,13 +62,6 @@
 		}
 	}
 
-	.horizontal-menu {
-		padding-top: var(--p50);
-		padding-bottom: var(--p50);
-		border-top: 1px solid #F1F1F1;
-		border-bottom: 1px solid #F1F1F1;
-	}
-
 	//.title-text
 	#applications {
 		margin-bottom: 0;
@@ -264,16 +257,4 @@
 
 .page--location-detail {
 	@extend .page--product;
-}
-
-.page--location-country {
-	@extend .page--product;
-
-	.horizontal-menu {
-		padding-top: var(--p50);
-		padding-bottom: var(--p50);
-		border-top: 1px solid #F1F1F1;
-		border-bottom: 1px solid #F1F1F1;
-	}
-
 }

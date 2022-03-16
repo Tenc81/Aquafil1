@@ -36,7 +36,7 @@ if(!empty($_args['section'])) :
 		if(!empty($filters)) {
 			$total = array_sum($filters);
 			echo '
-				<div class="horizontal-menu borders">
+				<div class="horizontal-menu">
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
