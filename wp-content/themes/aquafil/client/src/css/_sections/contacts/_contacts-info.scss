@@ -39,8 +39,6 @@
 	}
 
 	&.negative {
-		background-color: $foreground;
-		color: $foreground-negative;
 
 		.contacts-info__arrow {
 			fill: $foreground-negative;

@@ -333,7 +333,6 @@
 	}
 
 	&.negative {
-		background: $background-negative;
 		color: #BDCFD8;
 
 		.title-text__title {
@@ -431,6 +430,10 @@
 
 	@include media-up(sm) {
 		padding: var(--p80) 0 var(--p120) 0;
+
+		&.negative {
+			padding: var(--p120) 0;
+		}
 	}
 
 	@include media-down(xs) {
@@ -463,6 +466,10 @@
 		@extend .extrasmall;
 		max-width: 320px;
 	}
+}
+
+.negative .card--icon__title {
+	color: $foreground-negative;
 }
 
 .card--numbers {
