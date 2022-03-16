@@ -124,10 +124,12 @@ main {
   min-height: 100vh; }
 
 @media (min-width: 1024px) {
-  main > div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary) + div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary):not(.borders),
+  main > div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary) + div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary),
   main > div.negative + div.negative,
   main > div.secondary + div.secondary {
-    padding-top: 0; } }
+    padding-top: 0; }
+  main > .borders + .borders {
+    padding-top: var(--p80) !important; } }
 
 .hidden {
   display: none; }
@@ -4961,7 +4963,7 @@ h6 {
   line-height: 1.2;
   margin-bottom: 0.16666em; }
 
-.h2, .generic-hero__title, .news-hero__title, .news-detail-hero__title, .certifications-hero__title, .careers-hero__title, .card--main-hero__title, .profile-proposition__title, .area-proposition__title, .sustainability-proposition__title, .innovation-proposition__title, .news-proposition__title, .location-hero__title, .location-detail-hero__title, .title-hero__title, .media-text__title, .media-text-primary__title, .text-media-secondary__title, .title-text__title, .title-hero-02__title, .research-proposition__title, .secondary-hero__title, .history-hero__title, .card--history__year, .case-studies-hero__title, .contacts-hero__title, .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title, .page--location-detail .global-capabilities__title {
+.h2, .generic-hero__title, .news-hero__title, .news-detail-hero__title, .certifications-hero__title, .careers-hero__title, .card--main-hero__title, .profile-proposition__title, .area-proposition__title, .sustainability-proposition__title, .innovation-proposition__title, .news-proposition__title, .location-hero__title, .location-detail-hero__title, .title-hero__title, .media-text__title, .media-text-primary__title, .text-media-secondary__title, .title-text__title, .title-hero-02__title, .research-proposition__title, .secondary-hero__title, .history-hero__title, .card--history__year, .case-studies-hero__title, .contacts-hero__title, .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title, .page--location-detail .global-capabilities__title, .page--location-country .global-capabilities__title {
   font-weight: bold;
   font-size: Max(30px, Min(72px, 3.75vw));
   line-height: 1.2;
@@ -4973,12 +4975,13 @@ h6 {
   line-height: 1.2;
   margin-bottom: 0.4em; }
 
-.h4, .generic-hero__title-small, .news-detail-hero__title-small, .location-proposition__title, .certification__title, .product-proposition__title, .toolkit-proposition__title, .quote__title, .history-listing__title, .news-listing__title, .case-studies-listing__title, .report__title, .contact-modal__title, .page--product .product-proposition__title-small, .page--product-bfc .product-proposition__title-small, .page--product-ntf .product-proposition__title-small, .page--product-polymers .product-proposition__title-small, .page--location-detail .product-proposition__title-small,
+.h4, .generic-hero__title-small, .news-detail-hero__title-small, .location-proposition__title, .certification__title, .product-proposition__title, .toolkit-proposition__title, .quote__title, .history-listing__title, .news-listing__title, .case-studies-listing__title, .report__title, .contact-modal__title, .page--product .product-proposition__title-small, .page--product-bfc .product-proposition__title-small, .page--product-ntf .product-proposition__title-small, .page--product-polymers .product-proposition__title-small, .page--location-detail .product-proposition__title-small, .page--location-country .product-proposition__title-small,
 .page--product #applications.title-text__title-small,
 .page--product-bfc #applications.title-text__title-small,
 .page--product-ntf #applications.title-text__title-small,
 .page--product-polymers #applications.title-text__title-small,
-.page--location-detail #applications.title-text__title-small {
+.page--location-detail #applications.title-text__title-small,
+.page--location-country #applications.title-text__title-small {
   font-weight: bold;
   font-size: Max(18px, Min(40px, 2.0833vw));
   line-height: 1.36;
@@ -5789,11 +5792,11 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  height: var(--p60); }
+  min-height: var(--p60); }
   .btn--certification > span, .page--investors__downloads-item .btn--investor > span, .page--investors__downloads-item .page--investors .header .btn--back > span, .page--investors .header .page--investors__downloads-item .btn--back > span {
     display: flex;
     align-items: center;
-    padding: 0 var(--p20); }
+    padding: var(--p10) var(--p20); }
   .btn--certification > .icon, .page--investors__downloads-item .btn--investor > .icon, .page--investors__downloads-item .page--investors .header .btn--back > .icon, .page--investors .header .page--investors__downloads-item .btn--back > .icon {
     background-color: var(--foreground-primary);
     color: var(--foreground-negative);
@@ -7798,8 +7801,8 @@ input[type="search"]::-webkit-search-results-decoration {
       .nav--horizontal-menu > .nav__item > a:hover, .nav--horizontal-menu > .nav__item > a.active,
       .nav--horizontal-menu > .nav__item > span:hover,
       .nav--horizontal-menu > .nav__item > span.active {
-        color: var(--foreground-negative);
-        background: var(--foreground-primary); }
+        background: var(--foreground-primary);
+        color: var(--foreground-negative); }
   @media (min-width: 768px) {
     .nav--horizontal-menu {
       margin-left: var(--p10); } }
@@ -8495,34 +8498,40 @@ input[type="search"]::-webkit-search-results-decoration {
       display: block;
       margin-bottom: var(--p40); } }
 
-.report-proposition {
+.report-proposition.secondary {
   background: var(--background-quaternary); }
-  .report-proposition .row {
-    align-items: stretch; }
-  .report-proposition__content {
-    padding: var(--p120) 0; }
-  .report-proposition__picture {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; }
-    .report-proposition__picture > img {
-      width: 100%;
-      height: 150%;
-      -o-object-fit: cover;
-         object-fit: cover; }
-  .report-proposition__title {
-    color: var(--foreground); }
-  .report-proposition__cta {
-    padding-top: var(--p60); }
-  @media (max-width: 767.98px) {
-    .report-proposition__picture {
-      margin-left: -15px;
-      margin-right: -15px;
-      width: auto; } }
 
-.innovation-proposition, .page--product .research-proposition, .page--product-bfc .research-proposition, .page--product-ntf .research-proposition, .page--product-polymers .research-proposition, .page--location-detail .research-proposition {
+.report-proposition .row {
+  align-items: stretch; }
+
+.report-proposition__content {
+  padding: var(--p120) 0; }
+
+.report-proposition__picture {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; }
+  .report-proposition__picture > img {
+    width: 100%;
+    height: 150%;
+    -o-object-fit: cover;
+       object-fit: cover; }
+
+.report-proposition__title {
+  color: var(--foreground); }
+
+.report-proposition__cta {
+  padding-top: var(--p60); }
+
+@media (max-width: 767.98px) {
+  .report-proposition__picture {
+    margin-left: -15px;
+    margin-right: -15px;
+    width: auto; } }
+
+.innovation-proposition, .page--product .research-proposition, .page--product-bfc .research-proposition, .page--product-ntf .research-proposition, .page--product-polymers .research-proposition, .page--location-detail .research-proposition, .page--location-country .research-proposition {
   padding: var(--p120) 0;
   background: var(--background); }
   .innovation-proposition__content {
@@ -8583,6 +8592,9 @@ input[type="search"]::-webkit-search-results-decoration {
     background: var(--background-quaternary); }
   .news-proposition__title {
     color: var(--foreground); }
+  .news-proposition__cta {
+    display: flex;
+    justify-content: center; }
 
 .listing--news-proposition {
   display: flex;
@@ -8730,7 +8742,8 @@ input[type="search"]::-webkit-search-results-decoration {
       .listing--location .card--location {
         display: flex;
         flex-direction: column;
-        height: 100%; }
+        height: 100%;
+        margin-bottom: var(--p40); }
         .listing--location .card--location__content {
           flex-grow: 1; } }
   @media (max-width: 767.98px) {
@@ -8741,8 +8754,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .card--location {
   position: relative;
-  cursor: pointer;
-  margin-bottom: var(--p40); }
+  cursor: pointer; }
   .card--location__picture {
     position: relative;
     width: 100%;
@@ -8764,7 +8776,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .card--location__picture > img {
       transition: transform ease-in-out 250ms; }
   .card--location__content {
-    padding: var(--p60) 0; }
+    padding: var(--p60) 0 0 0; }
   .card--location__category {
     color: var(--foreground-primary);
     margin-bottom: var(--p10); }
@@ -8839,7 +8851,8 @@ input[type="search"]::-webkit-search-results-decoration {
     content: '';
     display: none;
     position: absolute;
-    height: 1px; }
+    height: 1px;
+    background: var(--background-quaternary); }
   .borders:before {
     top: 0; }
   .borders:after {
@@ -8857,7 +8870,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%; } }
   .borders.negative:before, .borders.negative:after {
-    border-color: rgba(255, 255, 255, 0.2); }
+    background: rgba(255, 255, 255, 0.2); }
 
 .borders + .borders:before {
   display: block; }
@@ -10255,7 +10268,7 @@ input[type="search"]::-webkit-search-results-decoration {
   transform: none; }
 
 .report {
-  padding: 0 0 var(--p80) 0; }
+  padding: var(--p80) 0; }
   .report__title {
     margin-bottom: var(--p40); }
   .report__divline {
@@ -11072,238 +11085,247 @@ input[type="search"]::-webkit-search-results-decoration {
         -o-object-fit: cover;
            object-fit: cover; } }
 
-.page--product .secondary-hero__title, .page--product-bfc .secondary-hero__title, .page--product-ntf .secondary-hero__title, .page--product-polymers .secondary-hero__title, .page--location-detail .secondary-hero__title {
-  font-size: Max(30px, Min(54px, 3.75vw));
-  margin-bottom: 30px; }
-  @media (min-width: 1024px) {
-    .page--product .secondary-hero__title, .page--product-bfc .secondary-hero__title, .page--product-ntf .secondary-hero__title, .page--product-polymers .secondary-hero__title, .page--location-detail .secondary-hero__title {
-      margin-bottom: 46px; } }
+.page--product, .page--product-bfc, .page--product-ntf, .page--product-polymers, .page--location-detail, .page--location-country {
+  /*
+	.product-proposition {
+		margin-top: 0;
+		padding-top: 0;
+	}
+	*/ }
+  .page--product .secondary-hero__title, .page--product-bfc .secondary-hero__title, .page--product-ntf .secondary-hero__title, .page--product-polymers .secondary-hero__title, .page--location-detail .secondary-hero__title, .page--location-country .secondary-hero__title {
+    font-size: Max(30px, Min(54px, 3.75vw));
+    margin-bottom: 30px; }
+    @media (min-width: 1024px) {
+      .page--product .secondary-hero__title, .page--product-bfc .secondary-hero__title, .page--product-ntf .secondary-hero__title, .page--product-polymers .secondary-hero__title, .page--location-detail .secondary-hero__title, .page--location-country .secondary-hero__title {
+        margin-bottom: 46px; } }
+  .page--product .secondary-hero__abstract, .page--product-bfc .secondary-hero__abstract, .page--product-ntf .secondary-hero__abstract, .page--product-polymers .secondary-hero__abstract, .page--location-detail .secondary-hero__abstract, .page--location-country .secondary-hero__abstract {
+    font-size: Max(16px, Min(18px, 1.09375vw)); }
+  .page--product .media-text-secondary + .media-text-secondary, .page--product-bfc .media-text-secondary + .media-text-secondary, .page--product-ntf .media-text-secondary + .media-text-secondary, .page--product-polymers .media-text-secondary + .media-text-secondary, .page--location-detail .media-text-secondary + .media-text-secondary, .page--location-country .media-text-secondary + .media-text-secondary,
+  .page--product .media-text-secondary + .text-media-secondary,
+  .page--product-bfc .media-text-secondary + .text-media-secondary,
+  .page--product-ntf .media-text-secondary + .text-media-secondary,
+  .page--product-polymers .media-text-secondary + .text-media-secondary,
+  .page--location-detail .media-text-secondary + .text-media-secondary,
+  .page--location-country .media-text-secondary + .text-media-secondary,
+  .page--product .text-media-secondary + .media-text-secondary,
+  .page--product-bfc .text-media-secondary + .media-text-secondary,
+  .page--product-ntf .text-media-secondary + .media-text-secondary,
+  .page--product-polymers .text-media-secondary + .media-text-secondary,
+  .page--location-detail .text-media-secondary + .media-text-secondary,
+  .page--location-country .text-media-secondary + .media-text-secondary,
+  .page--product .text-media-secondary + .text-media-secondary,
+  .page--product-bfc .text-media-secondary + .text-media-secondary,
+  .page--product-ntf .text-media-secondary + .text-media-secondary,
+  .page--product-polymers .text-media-secondary + .text-media-secondary,
+  .page--location-detail .text-media-secondary + .text-media-secondary,
+  .page--location-country .text-media-secondary + .text-media-secondary {
+    padding-top: 0; }
+  .page--product .media-text-secondary__content, .page--product-bfc .media-text-secondary__content, .page--product-ntf .media-text-secondary__content, .page--product-polymers .media-text-secondary__content, .page--location-detail .media-text-secondary__content, .page--location-country .media-text-secondary__content,
+  .page--product .text-media-secondary__content,
+  .page--product-bfc .text-media-secondary__content,
+  .page--product-ntf .text-media-secondary__content,
+  .page--product-polymers .text-media-secondary__content,
+  .page--location-detail .text-media-secondary__content,
+  .page--location-country .text-media-secondary__content {
+    color: var(--foreground); }
+  .page--product .media-text-secondary__title, .page--product-bfc .media-text-secondary__title, .page--product-ntf .media-text-secondary__title, .page--product-polymers .media-text-secondary__title, .page--location-detail .media-text-secondary__title, .page--location-country .media-text-secondary__title,
+  .page--product .text-media-secondary__title,
+  .page--product-bfc .text-media-secondary__title,
+  .page--product-ntf .text-media-secondary__title,
+  .page--product-polymers .text-media-secondary__title,
+  .page--location-detail .text-media-secondary__title,
+  .page--location-country .text-media-secondary__title {
+    font-size: Max(30px, Min(56px, 3.75vw));
+    margin-bottom: 30px; }
+    @media (min-width: 1024px) {
+      .page--product .media-text-secondary__title, .page--product-bfc .media-text-secondary__title, .page--product-ntf .media-text-secondary__title, .page--product-polymers .media-text-secondary__title, .page--location-detail .media-text-secondary__title, .page--location-country .media-text-secondary__title,
+      .page--product .text-media-secondary__title,
+      .page--product-bfc .text-media-secondary__title,
+      .page--product-ntf .text-media-secondary__title,
+      .page--product-polymers .text-media-secondary__title,
+      .page--location-detail .text-media-secondary__title,
+      .page--location-country .text-media-secondary__title {
+        margin-bottom: 40px; } }
+  .page--product .media-text-secondary__abstract, .page--product-bfc .media-text-secondary__abstract, .page--product-ntf .media-text-secondary__abstract, .page--product-polymers .media-text-secondary__abstract, .page--location-detail .media-text-secondary__abstract, .page--location-country .media-text-secondary__abstract,
+  .page--product .text-media-secondary__abstract,
+  .page--product-bfc .text-media-secondary__abstract,
+  .page--product-ntf .text-media-secondary__abstract,
+  .page--product-polymers .text-media-secondary__abstract,
+  .page--location-detail .text-media-secondary__abstract,
+  .page--location-country .text-media-secondary__abstract {
+    font-size: Max(15px, Min(18px, 1.09375vw)); }
+  .page--product .media-text-secondary__cta, .page--product-bfc .media-text-secondary__cta, .page--product-ntf .media-text-secondary__cta, .page--product-polymers .media-text-secondary__cta, .page--location-detail .media-text-secondary__cta, .page--location-country .media-text-secondary__cta,
+  .page--product .text-media-secondary__cta,
+  .page--product-bfc .text-media-secondary__cta,
+  .page--product-ntf .text-media-secondary__cta,
+  .page--product-polymers .text-media-secondary__cta,
+  .page--location-detail .text-media-secondary__cta,
+  .page--location-country .text-media-secondary__cta {
+    margin-top: 40px; }
+    @media (min-width: 1024px) {
+      .page--product .media-text-secondary__cta, .page--product-bfc .media-text-secondary__cta, .page--product-ntf .media-text-secondary__cta, .page--product-polymers .media-text-secondary__cta, .page--location-detail .media-text-secondary__cta, .page--location-country .media-text-secondary__cta,
+      .page--product .text-media-secondary__cta,
+      .page--product-bfc .text-media-secondary__cta,
+      .page--product-ntf .text-media-secondary__cta,
+      .page--product-polymers .text-media-secondary__cta,
+      .page--location-detail .text-media-secondary__cta,
+      .page--location-country .text-media-secondary__cta {
+        margin-top: 60px; } }
+  .page--product .content-slider.borders.negative:before, .page--product-bfc .content-slider.borders.negative:before, .page--product-ntf .content-slider.borders.negative:before, .page--product-polymers .content-slider.borders.negative:before, .page--location-detail .content-slider.borders.negative:before, .page--location-country .content-slider.borders.negative:before {
+    background-color: var(--foreground-negative);
+    opacity: 0.3; }
+  .page--product .horizontal-menu, .page--product-bfc .horizontal-menu, .page--product-ntf .horizontal-menu, .page--product-polymers .horizontal-menu, .page--location-detail .horizontal-menu, .page--location-country .horizontal-menu {
+    padding-top: var(--p50);
+    padding-bottom: var(--p50);
+    border-top: 1px solid #F1F1F1;
+    border-bottom: 1px solid #F1F1F1; }
+  .page--product #applications, .page--product-bfc #applications, .page--product-ntf #applications, .page--product-polymers #applications, .page--location-detail #applications, .page--location-country #applications {
+    margin-bottom: 0;
+    padding-bottom: 0; }
+  .page--product .product-proposition, .page--product-bfc .product-proposition, .page--product-ntf .product-proposition, .page--product-polymers .product-proposition, .page--location-detail .product-proposition, .page--location-country .product-proposition,
+  .page--product #applications.title-text,
+  .page--product-bfc #applications.title-text,
+  .page--product-ntf #applications.title-text,
+  .page--product-polymers #applications.title-text,
+  .page--location-detail #applications.title-text,
+  .page--location-country #applications.title-text {
+    color: var(--foreground); }
+    .page--product .product-proposition__title-small, .page--product-bfc .product-proposition__title-small, .page--product-ntf .product-proposition__title-small, .page--product-polymers .product-proposition__title-small, .page--location-detail .product-proposition__title-small, .page--location-country .product-proposition__title-small,
+    .page--product #applications.title-text__title-small,
+    .page--product-bfc #applications.title-text__title-small,
+    .page--product-ntf #applications.title-text__title-small,
+    .page--product-polymers #applications.title-text__title-small,
+    .page--location-detail #applications.title-text__title-small,
+    .page--location-country #applications.title-text__title-small {
+      margin-top: 40px; }
+      @media (min-width: 1024px) {
+        .page--product .product-proposition__title-small, .page--product-bfc .product-proposition__title-small, .page--product-ntf .product-proposition__title-small, .page--product-polymers .product-proposition__title-small, .page--location-detail .product-proposition__title-small, .page--location-country .product-proposition__title-small,
+        .page--product #applications.title-text__title-small,
+        .page--product-bfc #applications.title-text__title-small,
+        .page--product-ntf #applications.title-text__title-small,
+        .page--product-polymers #applications.title-text__title-small,
+        .page--location-detail #applications.title-text__title-small,
+        .page--location-country #applications.title-text__title-small {
+          margin-top: 80px; } }
+    .page--product .product-proposition__abstract, .page--product-bfc .product-proposition__abstract, .page--product-ntf .product-proposition__abstract, .page--product-polymers .product-proposition__abstract, .page--location-detail .product-proposition__abstract, .page--location-country .product-proposition__abstract,
+    .page--product #applications.title-text__abstract,
+    .page--product-bfc #applications.title-text__abstract,
+    .page--product-ntf #applications.title-text__abstract,
+    .page--product-polymers #applications.title-text__abstract,
+    .page--location-detail #applications.title-text__abstract,
+    .page--location-country #applications.title-text__abstract {
+      font-size: 16px;
+      margin-bottom: 40px; }
+      .page--product .product-proposition__abstract .btn--right, .page--product-bfc .product-proposition__abstract .btn--right, .page--product-ntf .product-proposition__abstract .btn--right, .page--product-polymers .product-proposition__abstract .btn--right, .page--location-detail .product-proposition__abstract .btn--right, .page--location-country .product-proposition__abstract .btn--right,
+      .page--product #applications.title-text__abstract .btn--right,
+      .page--product-bfc #applications.title-text__abstract .btn--right,
+      .page--product-ntf #applications.title-text__abstract .btn--right,
+      .page--product-polymers #applications.title-text__abstract .btn--right,
+      .page--location-detail #applications.title-text__abstract .btn--right,
+      .page--location-country #applications.title-text__abstract .btn--right {
+        margin-top: 20px; }
+      @media (min-width: 1024px) {
+        .page--product .product-proposition__abstract, .page--product-bfc .product-proposition__abstract, .page--product-ntf .product-proposition__abstract, .page--product-polymers .product-proposition__abstract, .page--location-detail .product-proposition__abstract, .page--location-country .product-proposition__abstract,
+        .page--product #applications.title-text__abstract,
+        .page--product-bfc #applications.title-text__abstract,
+        .page--product-ntf #applications.title-text__abstract,
+        .page--product-polymers #applications.title-text__abstract,
+        .page--location-detail #applications.title-text__abstract,
+        .page--location-country #applications.title-text__abstract {
+          font-size: 18px;
+          margin-bottom: 80px; } }
+    @media (min-width: 1024px) {
+      .page--product .product-proposition .listing__item, .page--product-bfc .product-proposition .listing__item, .page--product-ntf .product-proposition .listing__item, .page--product-polymers .product-proposition .listing__item, .page--location-detail .product-proposition .listing__item, .page--location-country .product-proposition .listing__item,
+      .page--product #applications.title-text .listing__item,
+      .page--product-bfc #applications.title-text .listing__item,
+      .page--product-ntf #applications.title-text .listing__item,
+      .page--product-polymers #applications.title-text .listing__item,
+      .page--location-detail #applications.title-text .listing__item,
+      .page--location-country #applications.title-text .listing__item {
+        margin-bottom: 80px; } }
+  .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities, .page--location-detail .global-capabilities, .page--location-country .global-capabilities {
+    padding: 40px 0; }
+    .page--product .global-capabilities.secondary, .page--product-bfc .global-capabilities.secondary, .page--product-ntf .global-capabilities.secondary, .page--product-polymers .global-capabilities.secondary, .page--location-detail .global-capabilities.secondary, .page--location-country .global-capabilities.secondary {
+      background: #F8F8F8; }
+    @media (min-width: 1024px) {
+      .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities, .page--location-detail .global-capabilities, .page--location-country .global-capabilities {
+        padding: 80px 0; } }
+    @media (min-width: 1440px) {
+      .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities, .page--location-detail .global-capabilities, .page--location-country .global-capabilities {
+        padding: 120px 0; } }
+    .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title, .page--location-detail .global-capabilities__title, .page--location-country .global-capabilities__title {
+      color: var(--foreground); }
+    .page--product .global-capabilities__image, .page--product-bfc .global-capabilities__image, .page--product-ntf .global-capabilities__image, .page--product-polymers .global-capabilities__image, .page--location-detail .global-capabilities__image, .page--location-country .global-capabilities__image {
+      margin-top: 20px; }
+      @media (min-width: 1024px) {
+        .page--product .global-capabilities__image, .page--product-bfc .global-capabilities__image, .page--product-ntf .global-capabilities__image, .page--product-polymers .global-capabilities__image, .page--location-detail .global-capabilities__image, .page--location-country .global-capabilities__image {
+          padding: 40px 0; } }
+    .page--product .global-capabilities__contacts, .page--product-bfc .global-capabilities__contacts, .page--product-ntf .global-capabilities__contacts, .page--product-polymers .global-capabilities__contacts, .page--location-detail .global-capabilities__contacts, .page--location-country .global-capabilities__contacts {
+      margin-top: 40px; }
+      @media (min-width: 1024px) {
+        .page--product .global-capabilities__contacts, .page--product-bfc .global-capabilities__contacts, .page--product-ntf .global-capabilities__contacts, .page--product-polymers .global-capabilities__contacts, .page--location-detail .global-capabilities__contacts, .page--location-country .global-capabilities__contacts {
+          margin-top: 80px; } }
+      .page--product .global-capabilities__contacts-item, .page--product-bfc .global-capabilities__contacts-item, .page--product-ntf .global-capabilities__contacts-item, .page--product-polymers .global-capabilities__contacts-item, .page--location-detail .global-capabilities__contacts-item, .page--location-country .global-capabilities__contacts-item {
+        display: flex; }
+      .page--product .global-capabilities__contacts-icon, .page--product-bfc .global-capabilities__contacts-icon, .page--product-ntf .global-capabilities__contacts-icon, .page--product-polymers .global-capabilities__contacts-icon, .page--location-detail .global-capabilities__contacts-icon, .page--location-country .global-capabilities__contacts-icon {
+        padding-top: 4px; }
+        .page--product .global-capabilities__contacts-icon svg, .page--product-bfc .global-capabilities__contacts-icon svg, .page--product-ntf .global-capabilities__contacts-icon svg, .page--product-polymers .global-capabilities__contacts-icon svg, .page--location-detail .global-capabilities__contacts-icon svg, .page--location-country .global-capabilities__contacts-icon svg {
+          width: 20px;
+          height: 30px; }
+      .page--product .global-capabilities__contacts-block, .page--product-bfc .global-capabilities__contacts-block, .page--product-ntf .global-capabilities__contacts-block, .page--product-polymers .global-capabilities__contacts-block, .page--location-detail .global-capabilities__contacts-block, .page--location-country .global-capabilities__contacts-block {
+        flex: 1;
+        padding-left: 20px; }
+      .page--product .global-capabilities__contacts-title, .page--product-bfc .global-capabilities__contacts-title, .page--product-ntf .global-capabilities__contacts-title, .page--product-polymers .global-capabilities__contacts-title, .page--location-detail .global-capabilities__contacts-title, .page--location-country .global-capabilities__contacts-title {
+        margin-top: 0;
+        color: var(--foreground);
+        font-weight: var(--font-semibold);
+        font-size: 20px; }
+        @media (min-width: 1024px) {
+          .page--product .global-capabilities__contacts-title, .page--product-bfc .global-capabilities__contacts-title, .page--product-ntf .global-capabilities__contacts-title, .page--product-polymers .global-capabilities__contacts-title, .page--location-detail .global-capabilities__contacts-title, .page--location-country .global-capabilities__contacts-title {
+            font-size: 24px; } }
+      .page--product .global-capabilities__contacts-text, .page--product-bfc .global-capabilities__contacts-text, .page--product-ntf .global-capabilities__contacts-text, .page--product-polymers .global-capabilities__contacts-text, .page--location-detail .global-capabilities__contacts-text, .page--location-country .global-capabilities__contacts-text {
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 16px; }
+        @media (min-width: 1024px) {
+          .page--product .global-capabilities__contacts-text, .page--product-bfc .global-capabilities__contacts-text, .page--product-ntf .global-capabilities__contacts-text, .page--product-polymers .global-capabilities__contacts-text, .page--location-detail .global-capabilities__contacts-text, .page--location-country .global-capabilities__contacts-text {
+            font-size: 18px; } }
+      .page--product .global-capabilities__contacts > div:nth-child(1) svg, .page--product-bfc .global-capabilities__contacts > div:nth-child(1) svg, .page--product-ntf .global-capabilities__contacts > div:nth-child(1) svg, .page--product-polymers .global-capabilities__contacts > div:nth-child(1) svg, .page--location-detail .global-capabilities__contacts > div:nth-child(1) svg, .page--location-country .global-capabilities__contacts > div:nth-child(1) svg {
+        fill: var(--foreground); }
+      .page--product .global-capabilities__contacts > div:nth-child(2) svg, .page--product-bfc .global-capabilities__contacts > div:nth-child(2) svg, .page--product-ntf .global-capabilities__contacts > div:nth-child(2) svg, .page--product-polymers .global-capabilities__contacts > div:nth-child(2) svg, .page--location-detail .global-capabilities__contacts > div:nth-child(2) svg, .page--location-country .global-capabilities__contacts > div:nth-child(2) svg {
+        fill: #00ACED; }
+      .page--product .global-capabilities__contacts > div:nth-child(3) svg, .page--product-bfc .global-capabilities__contacts > div:nth-child(3) svg, .page--product-ntf .global-capabilities__contacts > div:nth-child(3) svg, .page--product-polymers .global-capabilities__contacts > div:nth-child(3) svg, .page--location-detail .global-capabilities__contacts > div:nth-child(3) svg, .page--location-country .global-capabilities__contacts > div:nth-child(3) svg {
+        fill: #9d9d9d; }
+  .page--product .research-proposition__abstract .btn--right, .page--product-bfc .research-proposition__abstract .btn--right, .page--product-ntf .research-proposition__abstract .btn--right, .page--product-polymers .research-proposition__abstract .btn--right, .page--location-detail .research-proposition__abstract .btn--right, .page--location-country .research-proposition__abstract .btn--right {
+    margin-top: 20px; }
+    @media (min-width: 1024px) {
+      .page--product .research-proposition__abstract .btn--right, .page--product-bfc .research-proposition__abstract .btn--right, .page--product-ntf .research-proposition__abstract .btn--right, .page--product-polymers .research-proposition__abstract .btn--right, .page--location-detail .research-proposition__abstract .btn--right, .page--location-country .research-proposition__abstract .btn--right {
+        margin-top: 40px; } }
+    @media (min-width: 1440px) {
+      .page--product .research-proposition__abstract .btn--right, .page--product-bfc .research-proposition__abstract .btn--right, .page--product-ntf .research-proposition__abstract .btn--right, .page--product-polymers .research-proposition__abstract .btn--right, .page--location-detail .research-proposition__abstract .btn--right, .page--location-country .research-proposition__abstract .btn--right {
+        margin-top: 80px; } }
+  .page--product .research-proposition .card--innovation, .page--product-bfc .research-proposition .card--innovation, .page--product-ntf .research-proposition .card--innovation, .page--product-polymers .research-proposition .card--innovation, .page--location-detail .research-proposition .card--innovation, .page--location-country .research-proposition .card--innovation {
+    height: 100%;
+    display: flex;
+    flex-direction: column; }
+    .page--product .research-proposition .card--innovation__content, .page--product-bfc .research-proposition .card--innovation__content, .page--product-ntf .research-proposition .card--innovation__content, .page--product-polymers .research-proposition .card--innovation__content, .page--location-detail .research-proposition .card--innovation__content, .page--location-country .research-proposition .card--innovation__content {
+      flex: 1; }
+  .page--product .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--location-country .research-proposition .row > div:nth-child(3n+1) .card--innovation {
+    background: var(--foreground);
+    color: var(--foreground-negative); }
+  .page--product .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--location-country .research-proposition .row > div:nth-child(3n+2) .card--innovation {
+    background: var(--foreground-negative); }
+    .page--product .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product-bfc .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product-ntf .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product-polymers .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--location-detail .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--location-country .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--product-bfc .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--product-ntf .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--product-polymers .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--location-detail .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--location-country .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract {
+      color: var(--foreground); }
+  .page--product .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--location-country .research-proposition .row > div:nth-child(3n+3) .card--innovation {
+    background: #4D4D4D;
+    color: var(--foreground-negative); }
 
-.page--product .secondary-hero__abstract, .page--product-bfc .secondary-hero__abstract, .page--product-ntf .secondary-hero__abstract, .page--product-polymers .secondary-hero__abstract, .page--location-detail .secondary-hero__abstract {
-  font-size: Max(16px, Min(18px, 1.09375vw)); }
-
-.page--product .media-text-secondary + .media-text-secondary, .page--product-bfc .media-text-secondary + .media-text-secondary, .page--product-ntf .media-text-secondary + .media-text-secondary, .page--product-polymers .media-text-secondary + .media-text-secondary, .page--location-detail .media-text-secondary + .media-text-secondary,
-.page--product .media-text-secondary + .text-media-secondary,
-.page--product-bfc .media-text-secondary + .text-media-secondary,
-.page--product-ntf .media-text-secondary + .text-media-secondary,
-.page--product-polymers .media-text-secondary + .text-media-secondary,
-.page--location-detail .media-text-secondary + .text-media-secondary,
-.page--product .text-media-secondary + .media-text-secondary,
-.page--product-bfc .text-media-secondary + .media-text-secondary,
-.page--product-ntf .text-media-secondary + .media-text-secondary,
-.page--product-polymers .text-media-secondary + .media-text-secondary,
-.page--location-detail .text-media-secondary + .media-text-secondary,
-.page--product .text-media-secondary + .text-media-secondary,
-.page--product-bfc .text-media-secondary + .text-media-secondary,
-.page--product-ntf .text-media-secondary + .text-media-secondary,
-.page--product-polymers .text-media-secondary + .text-media-secondary,
-.page--location-detail .text-media-secondary + .text-media-secondary {
-  padding-top: 0; }
-
-.page--product .media-text-secondary__content, .page--product-bfc .media-text-secondary__content, .page--product-ntf .media-text-secondary__content, .page--product-polymers .media-text-secondary__content, .page--location-detail .media-text-secondary__content,
-.page--product .text-media-secondary__content,
-.page--product-bfc .text-media-secondary__content,
-.page--product-ntf .text-media-secondary__content,
-.page--product-polymers .text-media-secondary__content,
-.page--location-detail .text-media-secondary__content {
-  color: var(--foreground); }
-
-.page--product .media-text-secondary__title, .page--product-bfc .media-text-secondary__title, .page--product-ntf .media-text-secondary__title, .page--product-polymers .media-text-secondary__title, .page--location-detail .media-text-secondary__title,
-.page--product .text-media-secondary__title,
-.page--product-bfc .text-media-secondary__title,
-.page--product-ntf .text-media-secondary__title,
-.page--product-polymers .text-media-secondary__title,
-.page--location-detail .text-media-secondary__title {
-  font-size: Max(30px, Min(56px, 3.75vw));
-  margin-bottom: 30px; }
-  @media (min-width: 1024px) {
-    .page--product .media-text-secondary__title, .page--product-bfc .media-text-secondary__title, .page--product-ntf .media-text-secondary__title, .page--product-polymers .media-text-secondary__title, .page--location-detail .media-text-secondary__title,
-    .page--product .text-media-secondary__title,
-    .page--product-bfc .text-media-secondary__title,
-    .page--product-ntf .text-media-secondary__title,
-    .page--product-polymers .text-media-secondary__title,
-    .page--location-detail .text-media-secondary__title {
-      margin-bottom: 40px; } }
-
-.page--product .media-text-secondary__abstract, .page--product-bfc .media-text-secondary__abstract, .page--product-ntf .media-text-secondary__abstract, .page--product-polymers .media-text-secondary__abstract, .page--location-detail .media-text-secondary__abstract,
-.page--product .text-media-secondary__abstract,
-.page--product-bfc .text-media-secondary__abstract,
-.page--product-ntf .text-media-secondary__abstract,
-.page--product-polymers .text-media-secondary__abstract,
-.page--location-detail .text-media-secondary__abstract {
-  font-size: Max(15px, Min(18px, 1.09375vw)); }
-
-.page--product .media-text-secondary__cta, .page--product-bfc .media-text-secondary__cta, .page--product-ntf .media-text-secondary__cta, .page--product-polymers .media-text-secondary__cta, .page--location-detail .media-text-secondary__cta,
-.page--product .text-media-secondary__cta,
-.page--product-bfc .text-media-secondary__cta,
-.page--product-ntf .text-media-secondary__cta,
-.page--product-polymers .text-media-secondary__cta,
-.page--location-detail .text-media-secondary__cta {
-  margin-top: 40px; }
-  @media (min-width: 1024px) {
-    .page--product .media-text-secondary__cta, .page--product-bfc .media-text-secondary__cta, .page--product-ntf .media-text-secondary__cta, .page--product-polymers .media-text-secondary__cta, .page--location-detail .media-text-secondary__cta,
-    .page--product .text-media-secondary__cta,
-    .page--product-bfc .text-media-secondary__cta,
-    .page--product-ntf .text-media-secondary__cta,
-    .page--product-polymers .text-media-secondary__cta,
-    .page--location-detail .text-media-secondary__cta {
-      margin-top: 60px; } }
-
-.page--product .content-slider.borders.negative:before, .page--product-bfc .content-slider.borders.negative:before, .page--product-ntf .content-slider.borders.negative:before, .page--product-polymers .content-slider.borders.negative:before, .page--location-detail .content-slider.borders.negative:before {
-  background-color: var(--foreground-negative);
-  opacity: 0.3; }
-
-.page--product .horizontal-menu, .page--product-bfc .horizontal-menu, .page--product-ntf .horizontal-menu, .page--product-polymers .horizontal-menu, .page--location-detail .horizontal-menu {
+.page--location-country .horizontal-menu {
   padding-top: var(--p50);
   padding-bottom: var(--p50);
   border-top: 1px solid #F1F1F1;
   border-bottom: 1px solid #F1F1F1; }
-
-.page--product #applications, .page--product-bfc #applications, .page--product-ntf #applications, .page--product-polymers #applications, .page--location-detail #applications {
-  margin-bottom: 0;
-  padding-bottom: 0; }
-
-.page--product .product-proposition, .page--product-bfc .product-proposition, .page--product-ntf .product-proposition, .page--product-polymers .product-proposition, .page--location-detail .product-proposition,
-.page--product #applications.title-text,
-.page--product-bfc #applications.title-text,
-.page--product-ntf #applications.title-text,
-.page--product-polymers #applications.title-text,
-.page--location-detail #applications.title-text {
-  color: var(--foreground); }
-  .page--product .product-proposition__title-small, .page--product-bfc .product-proposition__title-small, .page--product-ntf .product-proposition__title-small, .page--product-polymers .product-proposition__title-small, .page--location-detail .product-proposition__title-small,
-  .page--product #applications.title-text__title-small,
-  .page--product-bfc #applications.title-text__title-small,
-  .page--product-ntf #applications.title-text__title-small,
-  .page--product-polymers #applications.title-text__title-small,
-  .page--location-detail #applications.title-text__title-small {
-    margin-top: 40px; }
-    @media (min-width: 1024px) {
-      .page--product .product-proposition__title-small, .page--product-bfc .product-proposition__title-small, .page--product-ntf .product-proposition__title-small, .page--product-polymers .product-proposition__title-small, .page--location-detail .product-proposition__title-small,
-      .page--product #applications.title-text__title-small,
-      .page--product-bfc #applications.title-text__title-small,
-      .page--product-ntf #applications.title-text__title-small,
-      .page--product-polymers #applications.title-text__title-small,
-      .page--location-detail #applications.title-text__title-small {
-        margin-top: 80px; } }
-  .page--product .product-proposition__abstract, .page--product-bfc .product-proposition__abstract, .page--product-ntf .product-proposition__abstract, .page--product-polymers .product-proposition__abstract, .page--location-detail .product-proposition__abstract,
-  .page--product #applications.title-text__abstract,
-  .page--product-bfc #applications.title-text__abstract,
-  .page--product-ntf #applications.title-text__abstract,
-  .page--product-polymers #applications.title-text__abstract,
-  .page--location-detail #applications.title-text__abstract {
-    font-size: 16px;
-    margin-bottom: 40px; }
-    .page--product .product-proposition__abstract .btn--right, .page--product-bfc .product-proposition__abstract .btn--right, .page--product-ntf .product-proposition__abstract .btn--right, .page--product-polymers .product-proposition__abstract .btn--right, .page--location-detail .product-proposition__abstract .btn--right,
-    .page--product #applications.title-text__abstract .btn--right,
-    .page--product-bfc #applications.title-text__abstract .btn--right,
-    .page--product-ntf #applications.title-text__abstract .btn--right,
-    .page--product-polymers #applications.title-text__abstract .btn--right,
-    .page--location-detail #applications.title-text__abstract .btn--right {
-      margin-top: 20px; }
-    @media (min-width: 1024px) {
-      .page--product .product-proposition__abstract, .page--product-bfc .product-proposition__abstract, .page--product-ntf .product-proposition__abstract, .page--product-polymers .product-proposition__abstract, .page--location-detail .product-proposition__abstract,
-      .page--product #applications.title-text__abstract,
-      .page--product-bfc #applications.title-text__abstract,
-      .page--product-ntf #applications.title-text__abstract,
-      .page--product-polymers #applications.title-text__abstract,
-      .page--location-detail #applications.title-text__abstract {
-        font-size: 18px;
-        margin-bottom: 80px; } }
-  @media (min-width: 1024px) {
-    .page--product .product-proposition .listing__item, .page--product-bfc .product-proposition .listing__item, .page--product-ntf .product-proposition .listing__item, .page--product-polymers .product-proposition .listing__item, .page--location-detail .product-proposition .listing__item,
-    .page--product #applications.title-text .listing__item,
-    .page--product-bfc #applications.title-text .listing__item,
-    .page--product-ntf #applications.title-text .listing__item,
-    .page--product-polymers #applications.title-text .listing__item,
-    .page--location-detail #applications.title-text .listing__item {
-      margin-bottom: 80px; } }
-
-.page--product .product-proposition, .page--product-bfc .product-proposition, .page--product-ntf .product-proposition, .page--product-polymers .product-proposition, .page--location-detail .product-proposition {
-  margin-top: 0;
-  padding-top: 0; }
-
-.page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities, .page--location-detail .global-capabilities {
-  padding: 40px 0; }
-  .page--product .global-capabilities.secondary, .page--product-bfc .global-capabilities.secondary, .page--product-ntf .global-capabilities.secondary, .page--product-polymers .global-capabilities.secondary, .page--location-detail .global-capabilities.secondary {
-    background: #F8F8F8; }
-  @media (min-width: 1024px) {
-    .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities, .page--location-detail .global-capabilities {
-      padding: 80px 0; } }
-  @media (min-width: 1440px) {
-    .page--product .global-capabilities, .page--product-bfc .global-capabilities, .page--product-ntf .global-capabilities, .page--product-polymers .global-capabilities, .page--location-detail .global-capabilities {
-      padding: 120px 0; } }
-  .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title, .page--location-detail .global-capabilities__title {
-    color: var(--foreground); }
-  .page--product .global-capabilities__image, .page--product-bfc .global-capabilities__image, .page--product-ntf .global-capabilities__image, .page--product-polymers .global-capabilities__image, .page--location-detail .global-capabilities__image {
-    margin-top: 20px; }
-    @media (min-width: 1024px) {
-      .page--product .global-capabilities__image, .page--product-bfc .global-capabilities__image, .page--product-ntf .global-capabilities__image, .page--product-polymers .global-capabilities__image, .page--location-detail .global-capabilities__image {
-        padding: 40px 0; } }
-  .page--product .global-capabilities__contacts, .page--product-bfc .global-capabilities__contacts, .page--product-ntf .global-capabilities__contacts, .page--product-polymers .global-capabilities__contacts, .page--location-detail .global-capabilities__contacts {
-    margin-top: 40px; }
-    @media (min-width: 1024px) {
-      .page--product .global-capabilities__contacts, .page--product-bfc .global-capabilities__contacts, .page--product-ntf .global-capabilities__contacts, .page--product-polymers .global-capabilities__contacts, .page--location-detail .global-capabilities__contacts {
-        margin-top: 80px; } }
-    .page--product .global-capabilities__contacts-item, .page--product-bfc .global-capabilities__contacts-item, .page--product-ntf .global-capabilities__contacts-item, .page--product-polymers .global-capabilities__contacts-item, .page--location-detail .global-capabilities__contacts-item {
-      display: flex; }
-    .page--product .global-capabilities__contacts-icon, .page--product-bfc .global-capabilities__contacts-icon, .page--product-ntf .global-capabilities__contacts-icon, .page--product-polymers .global-capabilities__contacts-icon, .page--location-detail .global-capabilities__contacts-icon {
-      padding-top: 4px; }
-      .page--product .global-capabilities__contacts-icon svg, .page--product-bfc .global-capabilities__contacts-icon svg, .page--product-ntf .global-capabilities__contacts-icon svg, .page--product-polymers .global-capabilities__contacts-icon svg, .page--location-detail .global-capabilities__contacts-icon svg {
-        width: 20px;
-        height: 30px; }
-    .page--product .global-capabilities__contacts-block, .page--product-bfc .global-capabilities__contacts-block, .page--product-ntf .global-capabilities__contacts-block, .page--product-polymers .global-capabilities__contacts-block, .page--location-detail .global-capabilities__contacts-block {
-      flex: 1;
-      padding-left: 20px; }
-    .page--product .global-capabilities__contacts-title, .page--product-bfc .global-capabilities__contacts-title, .page--product-ntf .global-capabilities__contacts-title, .page--product-polymers .global-capabilities__contacts-title, .page--location-detail .global-capabilities__contacts-title {
-      margin-top: 0;
-      color: var(--foreground);
-      font-weight: var(--font-semibold);
-      font-size: 20px; }
-      @media (min-width: 1024px) {
-        .page--product .global-capabilities__contacts-title, .page--product-bfc .global-capabilities__contacts-title, .page--product-ntf .global-capabilities__contacts-title, .page--product-polymers .global-capabilities__contacts-title, .page--location-detail .global-capabilities__contacts-title {
-          font-size: 24px; } }
-    .page--product .global-capabilities__contacts-text, .page--product-bfc .global-capabilities__contacts-text, .page--product-ntf .global-capabilities__contacts-text, .page--product-polymers .global-capabilities__contacts-text, .page--location-detail .global-capabilities__contacts-text {
-      margin-top: 20px;
-      font-weight: 400;
-      font-size: 16px; }
-      @media (min-width: 1024px) {
-        .page--product .global-capabilities__contacts-text, .page--product-bfc .global-capabilities__contacts-text, .page--product-ntf .global-capabilities__contacts-text, .page--product-polymers .global-capabilities__contacts-text, .page--location-detail .global-capabilities__contacts-text {
-          font-size: 18px; } }
-    .page--product .global-capabilities__contacts > div:nth-child(1) svg, .page--product-bfc .global-capabilities__contacts > div:nth-child(1) svg, .page--product-ntf .global-capabilities__contacts > div:nth-child(1) svg, .page--product-polymers .global-capabilities__contacts > div:nth-child(1) svg, .page--location-detail .global-capabilities__contacts > div:nth-child(1) svg {
-      fill: var(--foreground); }
-    .page--product .global-capabilities__contacts > div:nth-child(2) svg, .page--product-bfc .global-capabilities__contacts > div:nth-child(2) svg, .page--product-ntf .global-capabilities__contacts > div:nth-child(2) svg, .page--product-polymers .global-capabilities__contacts > div:nth-child(2) svg, .page--location-detail .global-capabilities__contacts > div:nth-child(2) svg {
-      fill: #00ACED; }
-    .page--product .global-capabilities__contacts > div:nth-child(3) svg, .page--product-bfc .global-capabilities__contacts > div:nth-child(3) svg, .page--product-ntf .global-capabilities__contacts > div:nth-child(3) svg, .page--product-polymers .global-capabilities__contacts > div:nth-child(3) svg, .page--location-detail .global-capabilities__contacts > div:nth-child(3) svg {
-      fill: #9d9d9d; }
-
-.page--product .research-proposition__abstract .btn--right, .page--product-bfc .research-proposition__abstract .btn--right, .page--product-ntf .research-proposition__abstract .btn--right, .page--product-polymers .research-proposition__abstract .btn--right, .page--location-detail .research-proposition__abstract .btn--right {
-  margin-top: 20px; }
-  @media (min-width: 1024px) {
-    .page--product .research-proposition__abstract .btn--right, .page--product-bfc .research-proposition__abstract .btn--right, .page--product-ntf .research-proposition__abstract .btn--right, .page--product-polymers .research-proposition__abstract .btn--right, .page--location-detail .research-proposition__abstract .btn--right {
-      margin-top: 40px; } }
-  @media (min-width: 1440px) {
-    .page--product .research-proposition__abstract .btn--right, .page--product-bfc .research-proposition__abstract .btn--right, .page--product-ntf .research-proposition__abstract .btn--right, .page--product-polymers .research-proposition__abstract .btn--right, .page--location-detail .research-proposition__abstract .btn--right {
-      margin-top: 80px; } }
-
-.page--product .research-proposition .card--innovation, .page--product-bfc .research-proposition .card--innovation, .page--product-ntf .research-proposition .card--innovation, .page--product-polymers .research-proposition .card--innovation, .page--location-detail .research-proposition .card--innovation {
-  height: 100%;
-  display: flex;
-  flex-direction: column; }
-  .page--product .research-proposition .card--innovation__content, .page--product-bfc .research-proposition .card--innovation__content, .page--product-ntf .research-proposition .card--innovation__content, .page--product-polymers .research-proposition .card--innovation__content, .page--location-detail .research-proposition .card--innovation__content {
-    flex: 1; }
-
-.page--product .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+1) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+1) .card--innovation {
-  background: var(--foreground);
-  color: var(--foreground-negative); }
-
-.page--product .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+2) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+2) .card--innovation {
-  background: var(--foreground-negative); }
-  .page--product .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product-bfc .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product-ntf .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product-polymers .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--location-detail .research-proposition .row > div:nth-child(3n+2) .card--innovation__title, .page--product .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--product-bfc .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--product-ntf .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--product-polymers .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract, .page--location-detail .research-proposition .row > div:nth-child(3n+2) .card--innovation__abstract {
-    color: var(--foreground); }
-
-.page--product .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+3) .card--innovation {
-  background: #4D4D4D;
-  color: var(--foreground-negative); }
 
 @media (min-width: 1024px) {
   .section-generic {

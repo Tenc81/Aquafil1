@@ -47,10 +47,14 @@ main {
 main {
 	@include media-up(md) {
 
-		&>div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary)+div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary):not(.borders),
+		&>div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary)+div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary),
 		&>div.negative+div.negative,
 		&>div.secondary+div.secondary {
 			padding-top: 0;
+		}
+
+		&>.borders+.borders {
+			padding-top: var(--p80) !important;
 		}
 	}
 }

@@ -48,6 +48,7 @@
 			display: flex;
 			flex-direction: column;
 			height: 100%;
+			margin-bottom: var(--p40);
 
 			&__content {
 				flex-grow: 1;
@@ -67,7 +68,6 @@
 .card--location {
 	position: relative;
 	cursor: pointer;
-	margin-bottom: var(--p40);
 
 	&__picture {
 		@include aspect-clip(72, 60);
@@ -78,7 +78,7 @@
 	}
 
 	&__content {
-		padding: var(--p60) 0;
+		padding: var(--p60) 0 0 0;
 	}
 
 	&__category {

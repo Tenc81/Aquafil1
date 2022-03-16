@@ -111,10 +111,12 @@
 		}
 	}
 
+	/*
 	.product-proposition {
 		margin-top: 0;
 		padding-top: 0;
 	}
+	*/
 
 	.global-capabilities {
 		padding: 40px 0;
@@ -262,4 +264,16 @@
 
 .page--location-detail {
 	@extend .page--product;
+}
+
+.page--location-country {
+	@extend .page--product;
+
+	.horizontal-menu {
+		padding-top: var(--p50);
+		padding-bottom: var(--p50);
+		border-top: 1px solid #F1F1F1;
+		border-bottom: 1px solid #F1F1F1;
+	}
+
 }

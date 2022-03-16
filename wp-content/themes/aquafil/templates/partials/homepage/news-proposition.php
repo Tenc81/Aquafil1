@@ -28,7 +28,6 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 		</div>
 		<div class="row">
 			<div class="col-sm-9 offset-sm-2 col-md-8 offset-md-3">
-
 				<a href="<?=get_permalink($_args['section']['news_cards'][0])?>" class="card--news">
 					<div class="card--news__picture">
 						<img loading="lazy" src="<?=esc_url(get_the_post_thumbnail_url($_args['section']['news_cards'][0],'full'));?>" alt="<?=get_the_title($_args['section']['news_cards'][0])?>" />
@@ -67,6 +66,11 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 						}
 					}
 					?>
+				</div>
+			</div>			
+			<div class="col-sm-18 offset-sm-3">
+				<div class="news-proposition__cta">
+					<a href="#" class="btn--primary">Leggi tutte</a>
 				</div>
 			</div>
 		</div>

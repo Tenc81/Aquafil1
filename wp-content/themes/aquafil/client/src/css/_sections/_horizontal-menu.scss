@@ -53,8 +53,8 @@
 
 			&:hover,
 			&.active {
-				color: $foreground-negative;
 				background: $foreground-primary;
+				color: $foreground-negative;
 			}
 		}
 	}

@@ -31,6 +31,8 @@ if(!empty($_args['section'])) :
 				$filters[$filter] += 1;
 			}
 		}
+		echo '
+			</div>';			
 		if(!empty($filters)) {
 			echo '
 				<div class="horizontal-menu borders">
@@ -40,10 +42,10 @@ if(!empty($_args['section'])) :
 								<div class="horizontal-menu__content">
 									<div class="horizontal-menu__title">'.__("Filtra per", "wstheme").'</div>
 									<ul class="nav--horizontal-menu">
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all" style="color:inherit"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['prodotti_correlati']).')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['prodotti_correlati']).')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.sanitize_title($filter).'" style="color:inherit"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.sanitize_title($filter).'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
 			}
 			echo '
 									</ul>
@@ -67,8 +69,6 @@ if(!empty($_args['section'])) :
 				})(jQuery);
 				</script>';
 		}
-		echo '
-			</div>';
 	}
 ?>
 <div class="product-proposition">

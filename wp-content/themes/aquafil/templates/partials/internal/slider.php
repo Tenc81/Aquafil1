@@ -15,9 +15,7 @@ if(!empty($_args['section'])) :
 				<div class="swiper-container" swiper-content>
 					<div class="content-slider__index"><span class="page" [innerHTML]="slideIndex"></span> of <span [innerHTML]="slideTotal"></span></div>
 					<div class="swiper-wrapper">
-
 						<?php foreach($_args['section']['internal_slides'] as $k => $slide) { ?>
-
 							<!-- slide -->
 							<div class="swiper-slide">
 								<div class="card--content">
@@ -62,10 +60,8 @@ if(!empty($_args['section'])) :
 										?>
 									</div>
 								</div>
-							</div>							
-
+							</div>
 						<?php }?>
-
 					</div>
 					<div class="content-slider__nav">
 						<!-- prev button -->
