@@ -41,7 +41,7 @@ if(!empty($_args['section'])) :
 						<div class="row">
 							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 								<div class="horizontal-menu__content">
-									<div class="horizontal-menu__title">'.__("Filtra per", "wstheme").' '.($type=="countries" ? __("nazione", "wstheme") : __("categoria", "wstheme")).'</div>
+									<div class="horizontal-menu__title">'.($type=="countries" ? __("Filtra per nazione", "wstheme") : __("Filtra per categoria", "wstheme")).'</div>
 									<ul class="nav--horizontal-menu certs--filters">
 										<li class="nav__item"><a href="javascript:void(0);" class="active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.$total.')</span></a></li>';
 			foreach($filters as $filter=>$count) {

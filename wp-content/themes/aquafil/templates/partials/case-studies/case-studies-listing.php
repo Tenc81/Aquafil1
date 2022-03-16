@@ -23,7 +23,7 @@ if(!empty($_args['section'])) :
 						<div class="row">
 							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 								<div class="horizontal-menu__content">
-									<div class="horizontal-menu__title">'.__("Filtra per", "wstheme").'</div>
+									<div class="horizontal-menu__title">'.__("Filtra per categoria", "wstheme").'</div>
 									<ul class="nav--horizontal-menu">';
 			foreach($filters as $filter) {
 				echo '

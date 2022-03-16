@@ -9,7 +9,8 @@ $cposts = get_posts(array(
 	"post_type" => array("investor-relations", "corporate-governance"),
 	"posts_per_page" => -1,
 	"post_status" => "publish",
-	"orderby" => array("post_type" => "DESC", "menu_order" => "ASC", "post_name" => "ASC")
+	"orderby" => array("post_type" => "DESC", "menu_order" => "ASC", "post_name" => "ASC"),
+	"suppress_filters" => false
 ));
 
 if(!empty($cposts)) {

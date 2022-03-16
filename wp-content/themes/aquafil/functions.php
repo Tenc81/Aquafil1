@@ -903,6 +903,7 @@ function ir_user_caps() {
 			$role->add_cap('delete_others_investor_relations');
 			$role->add_cap('edit_private_investor_relations');
 			$role->add_cap('edit_published_investor_relations');
+			$role->add_cap('unfiltered_html');
 			//file_put_contents(ABSPATH.'error_log.txt', date('d-m-Y h:m:s').print_r($role, true).PHP_EOL, FILE_APPEND | LOCK_EX);
 		}
 		if($role instanceof WP_Role && !$role->has_cap('edit_corporate_governance')) {
@@ -919,6 +920,7 @@ function ir_user_caps() {
 			$role->add_cap('delete_others_corporate_governances');
 			$role->add_cap('edit_private_corporate_governances');
 			$role->add_cap('edit_published_corporate_governances');
+			$role->add_cap('unfiltered_html');
 		}
 	}
 }
@@ -1001,3 +1003,33 @@ function count_published_posts_for_terms($term, $name) {
 	$wpdb->update( $wpdb->term_taxonomy, compact( 'count' ), array( 'term_taxonomy_id' => $term ) );
 }
 add_action('edited_term_taxonomy', 'count_published_posts_for_terms', 10, 2);
+
+
+function set_cfield_readonly_attribute($field) {
+  //if(!is_null($field['value']) && $field['value'] !== '') {
+    $field['readonly'] = true;
+  //}
+  return $field;
+}
+add_filter('acf/prepare_field/name=data_creazione', 'set_cfield_readonly_attribute');
+
+
+function set_cfield_copyvalue($value, $post_id, $field, $original) {
+	if($value=="[replace-with-post-modified-date]") {
+		$v = get_field(str_replace("pretitolo_contenuto", "data_creazione", $field['name']), $post_id);
+		if(!is_null($v)) {
+			$value = $v;
+		}
+	}
+  return $value;
+}
+add_filter('acf/update_value/name=pretitolo_contenuto', 'set_cfield_copyvalue', 10, 4);
+
+
+function set_cfield_value($value, $post_id, $field, $original) {
+	if($value === '') {
+		$value = get_the_modified_date("d.m.Y - H:i", $post_id);
+	}
+  return $value;
+}
+add_filter('acf/update_value/name=data_creazione', 'set_cfield_value', 10, 4);
