@@ -25,7 +25,12 @@ if(!empty($_args['section'])) :
 					if(!empty($_args['section']['indirizzo_cnt_hero'])) {
 						echo '
 							<a href="//www.google.it/maps/search/'.str_replace(' ', '+', trim($_args['section']['indirizzo_cnt_hero'])).'" target="_blank">
-								<img loading="lazy" src="//maps.googleapis.com/maps/api/staticmap?style=feature:all|saturation:-100&style=feature:poi|visibility:off&zoom=12&scale=2&size=460x260&maptype=roadmap&markers=color:blue%7Csize:small%7C'.str_replace(' ', '+', trim($_args['section']['indirizzo_cnt_hero'])).'&format=jpg&key='.GOOGLE_API_KEY.'" />
+								<img loading="lazy" src="//maps.googleapis.com/maps/api/staticmap?
+                style=feature%3Alandscape%7Celement%3Alabels%7Cvisibility%3Aoff%7C&amp;style=feature%3Atransit%7Celement%3Alabels%7Cvisibility%3Aoff%7C&amp;style=feature%3Apoi%7Celement%3Alabels%7Cvisibility%3Aoff%7C&amp;style=feature%3Awater%7Celement%3Alabels%7Cvisibility%3Aoff%7C&amp;style=feature%3Aroad%7Celement%3Alabels.icon%7Cvisibility%3Aoff%7C&amp;style=feature%3Aall%7Celement%3Aall%7Chue%3A0x00aaff%7Csaturation%3A-100%7Cgamma%3A2.15%7Clightness%3A12%7C&amp;style=feature%3Aroad%7Celement%3Alabels.text.fill%7Cvisibility%3Aon%7Clightness%3A24%7C&amp;style=feature%3Aroad%7Celement%3Ageometry%7Clightness%3A57%7C
+                &style=feature:poi|visibility:off
+                &zoom=14&scale=1&size=800x600&maptype=roadmap
+                &markers=color:0xffffff00%7Csize:small%7C'.str_replace(' ', '+', trim($_args['section']['indirizzo_cnt_hero'])).'
+                &format=jpg&key='.GOOGLE_API_KEY.'" />
 							</a>';
 					}
 					?>

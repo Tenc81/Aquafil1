@@ -20,7 +20,7 @@ if(is_tax("nazione-sedi")) {
 if(!empty($filters)) {
 	$total = array_sum(array_column($filters, 'count'));
 	echo '
-		<div class="horizontal-menu borders">
+		<div class="horizontal-menu">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
@@ -51,7 +51,7 @@ if(!empty($filters)) {
 //if(!empty($filters)) {
 //  $total = array_sum(array_column($filters, 'count'));
 //  echo '
-//    <div class="horizontal-menu borders">
+//    <div class="horizontal-menu">
 //      <div class="container-fluid">
 //        <div class="row">
 //          <div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">

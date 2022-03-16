@@ -388,12 +388,12 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;
-	height: var(--p60);
+	min-height: var(--p60);
 
 	&>span {
 		display: flex;
 		align-items: center;
-		padding: 0 var(--p20);
+		padding: var(--p10) var(--p20);
 	}
 
 	&>.icon {

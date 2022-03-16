@@ -17,17 +17,17 @@ if(!empty($_args['section'])) :
 		}
 		if(!empty($filters)) {
 			echo '
-				<div class="horizontal-menu borders">
+				<div class="horizontal-menu">
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 								<div class="horizontal-menu__content">
 									<div class="horizontal-menu__title">'.__("Filtra per", "wstheme").'</div>
 									<ul class="nav--horizontal-menu">
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all" style="color:inherit"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['histories']).')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['histories']).')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.$filter.'" style="color:inherit"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.$filter.'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
 			}
 			echo '
 									</ul>
@@ -39,11 +39,11 @@ if(!empty($_args['section'])) :
 				<script>
 				(function($) {
 					$(".history-filter").on("click", function() {
-						$(".card--history").show();
+						$(".listing__item").show();
 						$(".history-filter").removeClass("active");
 						$(this).addClass("active");
 						if($(this).attr("data-filter")!="all" && $(this).not(".active")) {
-							$(".card--history").not("."+$(this).attr("data-filter")).hide();
+							$(".card--history").not("."+$(this).attr("data-filter")).parent().hide();
 						}
 					});
 				})(jQuery);

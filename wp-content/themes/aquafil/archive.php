@@ -53,7 +53,7 @@ $q = get_queried_object();
 	}
 	foreach(array($terms, $nations) as $i=>$terms_group) :
 	?>
-	<div class="horizontal-menu borders">
+	<div class="horizontal-menu">
 		<!-- taxonomy filter -->
 		<div class="container-fluid">
 			<div class="row">

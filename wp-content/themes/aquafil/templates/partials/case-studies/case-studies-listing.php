@@ -18,7 +18,7 @@ if(!empty($_args['section'])) :
 		$filters = $wpdb->get_results(sprintf($query, implode(',', $_args['section']['case_studies'])));
 		if(!empty($filters)) {
 			echo '
-				<div class="horizontal-menu borders">
+				<div class="horizontal-menu">
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">

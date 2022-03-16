@@ -9,6 +9,11 @@
 		@extend .h2;
 		color: $foreground;
 	}
+
+	&__cta {
+		display: flex;
+		justify-content: center;
+	}
 }
 
 .listing--news-proposition {
