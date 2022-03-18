@@ -18,7 +18,7 @@
 									</div>
 									<div class="card--location__content">
 										<div class="card--location__category">'.get_field("pretitle").'</div>
-										<div class="card--location__title">'.get_the_title().'</div>
+										<div class="card--location__title">'.get_field("title").'</div>
 										<div class="card--location__abstract">'.get_field("abstract").'</div>
 										<div class="card--location__cta">
 											<button type="button" class="btn--more"><span>'.__("Scopri di più", "wstheme").'</span> <svg><use xlink:href="#arrow-next"></use></svg></button>

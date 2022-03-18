@@ -27,7 +27,7 @@ if(!empty($_args['section'])) :
 									<div class="card--main-hero__title"><?=$s['hero_titolo'] ?></div>
 									<div class="card--main-hero__abstract"><?=$s['hero_sottotitolo'] ?></div>
 									<div class="card--main-hero__cta">
-										<a href="<?=$s['hero_link_cta']?>" target="<?=$s['hero_target_cta']?>" class="btn--primary"><?=($s['hero_testo_cta'] != '' ? $s['hero_testo_cta'] : __('Read more'))?></a>
+										<a href="<?=$s['hero_link_cta']?>" target="<?=$s['hero_target_cta']?>" class="btn--primary"><?=($s['hero_testo_cta'] != '' ? $s['hero_testo_cta'] : __('Read more', "wstheme"))?></a>
 									</div>
 								</div>
 							</div>

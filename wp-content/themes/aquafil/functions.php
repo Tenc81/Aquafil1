@@ -71,7 +71,10 @@ function aquafil_enqueue_scripts() {
 			'messaggio' => __("Messaggio", "wstheme"),
 			'privacy' => __("Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato", "wstheme"),
 			'invia' => __("Invia", "wstheme"),
-			'inviato' => __("Inviato!", "wstheme")
+			'inviato' => __("Inviato!", "wstheme"),
+			'seleziona' => __("Seleziona", "wstheme"),
+			'required' => __("campo obbligatorio", "wstheme"),
+			'seleziona_file' => __("Seleziona un file (max 15 mb)", "wstheme")
 		)
   ));
   wp_localize_script('websolute_helper', 'environment', array(
@@ -483,18 +486,22 @@ function locate_template_part($relativePaths) {
 		return $template;
 }
 
-function acf_link_target($value, $post_id, $field) {
-  if($field["type"] == "link" && is_array($value)) {
+
+function my_acf_format_value($value, $post_id, $field) {
+	if($field["type"] == "link" && is_array($value)) {
     if($value["target"] == '') {
       $value["target"] = "_self";
 		}
     if($value["url"] == '#') {
       $value["url"] = "javascript:void();";
 		}
+	} elseif($field['type'] == "url" && ($value == '' || $value == '#')) {
+		$value = 'javascript:void(0);';
 	}
-    return $value;
+	return $value;
 }
-add_filter( "acf/format_value", "acf_link_target", 10, 3);
+add_filter('acf/format_value/type=link', 'my_acf_format_value', 10, 3);
+add_filter('acf/format_value/type=url', 'my_acf_format_value', 10, 3);
 
 
 /*
@@ -757,18 +764,18 @@ function frm_create_custom_contact() {
 			//  'name' => $params['firstName'].' '.$params['lastName'],
 			//  'last_contacted' => date('Y-m-d H:i:sP'),
 			//));
-			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
 		} else {
-			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+			wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
 		}
 	} elseif(strpos(current_filter(), "save_agent_contact") !== false) {
 		$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
 		$form = WPCF7_ContactForm::get_instance($id);
 		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
-			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
 		} else {
-			wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+			wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
 		}
 	} elseif(strpos(current_filter(), "save_career") !== false) {
 		$upload_dir = wp_upload_dir();
@@ -802,9 +809,9 @@ function frm_create_custom_contact() {
 			$form = WPCF7_ContactForm::get_instance($id);
 			$result = $form->submit();
 			if($result['status'] == "mail_failed") {
-				wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+				wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
 			} else {
-				wp_send_json_success(array('message' => $result['message'], 'response' => __("Richiesta inviata", "wstheme")));
+				wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
 			}
 		} else {
 			wp_send_json_error(array('message' => __("Errore durante il salvataggio del file", "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
@@ -814,10 +821,10 @@ function frm_create_custom_contact() {
 		$form = WPCF7_ContactForm::get_instance($id);
 		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
-			wp_send_json_error(array('message' => $result['message'], 'response' => __("Errore durante l'invio", "wstheme")));
+			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
 		} else {
 			$download = isset($_POST['download']) && !empty($_POST['download']) ? sprintf('<br /><br />'.__('Clicca su %s per scaricare il documento.', 'wstheme'), '<a href="'.$_POST['download'].'" target="_blank">download</a>') : '';
-			wp_send_json_success(array('message' => $result['message'].$download, 'response' => __("Richiesta inviata", "wstheme")));
+			wp_send_json_success(array('message' => __($result['message'], "wstheme").$download, 'response' => __("Richiesta inviata", "wstheme")));
 		}
 	}
   wp_die();
@@ -1033,3 +1040,79 @@ function set_cfield_value($value, $post_id, $field, $original) {
   return $value;
 }
 add_filter('acf/update_value/name=data_creazione', 'set_cfield_value', 10, 4);
+
+
+if(!function_exists('wp_is_block_theme')) {
+	function wp_is_block_theme() {
+		return false;
+	}
+}
+
+ 
+function wpml_wpseo_title($title, $presentation) {
+  switch($presentation->model->object_type) {
+    case 'post-type-archive':
+      $key = 'title-ptarchive-' . $presentation->model->object_sub_type;
+      break;
+    case 'system-page':
+      $key = 'title-' . $presentation->model->object_sub_type . '-wpseo';
+      break;
+    default:
+      $key = false;
+  }
+ 
+  if($key) {
+    $option = get_option('wpseo_titles');
+    if(isset($option[$key])) {
+			if($key=='title-ptarchive-sedi') {
+				$e = __('Archivi %%pt_plural%% %%page%% %%sep%% %%sitename%%', 'admin_texts_wpseo_titles');
+				$f = __($option[$key], 'admin_texts_wpseo_titles');
+			}
+      $title = wpseo_replace_vars(__($option[$key], 'admin_texts_wpseo_titles'), $presentation);
+    }
+  }
+ 
+  return $title;
+}
+
+function wpml_wpseo_desc($title, $presentation) {
+  switch($presentation->model->object_type) {
+    case 'post-type-archive':
+      $key = 'metadesc-ptarchive-' . $presentation->model->object_sub_type;
+      break;
+    case 'system-page':
+      $key = 'metadesc-' . $presentation->model->object_sub_type . '-wpseo';
+      break;
+    default:
+      $key = false;
+  }
+ 
+  if($key) {
+    $option = get_option('wpseo_titles');
+    if(isset($option[$key])) {
+        $title = wpseo_replace_vars(__($option[$key], 'admin_texts_wpseo_titles'), $presentation);
+    }
+  }
+ 
+  return $title;
+}
+ 
+add_filter('wpseo_save_indexable', function($indexable) {
+  $args = [
+    'element_id' => $indexable->object_id,
+    'element_type' => $indexable->object_type,
+  ];
+ 
+  $language_code = apply_filters('wpml_element_language_code', false, $args);
+  $indexable->permalink = apply_filters('wpml_permalink', $indexable->permalink, $language_code, true);
+ 
+  return $indexable;
+});
+
+//if(!is_admin()) {
+  add_filter('wpseo_title', 'wpml_wpseo_title', 10, 2);
+  add_filter('wpseo_opengraph_title', 'wpml_wpseo_title', 10, 2);
+  add_filter('wpseo_metadesc', 'wpml_wpseo_desc', 10, 2);
+  add_filter('wpseo_opengraph_desc', 'wpml_wpseo_desc', 10, 2);
+//}
+ 

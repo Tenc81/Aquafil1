@@ -70,7 +70,7 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 			</div>			
 			<div class="col-sm-18 offset-sm-3">
 				<div class="news-proposition__cta">
-					<a href="#" class="btn--primary">Leggi tutte</a>
+					<a href="javascript:void(0);" class="btn--primary"><?= __("Leggi tutte", "wstheme"); ?></a>
 				</div>
 			</div>
 		</div>

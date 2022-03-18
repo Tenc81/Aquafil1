@@ -5,7 +5,7 @@ namespace Roots\WStheme\Setup;
 function register_cposts_taxonomies() {
 	$args = array(
 		'labels'    => array(
-			'name'           => 'Articoli localizzati',
+			'name'           => __('Articoli localizzati', "wstheme"),
 			'singular_name'  => 'Articolo localizzato',
 			'menu_name'      => 'Local News',
 			'add_new'        => 'Aggiungi Local News',
@@ -138,7 +138,7 @@ function register_cposts_taxonomies() {
 
 	$args = array(
 		'labels'    => array(
-			'name'           => 'Sedi',
+			'name'           => __('Sedi', "wstheme"),
 			'singular_name'  => 'Sede',
 			'menu_name'      => 'Sedi',
 			'add_new'        => 'Aggiungi sede',
@@ -171,7 +171,7 @@ function register_cposts_taxonomies() {
 
 	$args = array(
 		'labels' => array(
-			'name' => 'Categorie Local News',
+			'name' => __('Categorie Local News', "wstheme"),
 			'singular_name' => 'Categoria Local News',
 			'menu_name' => 'Categorie Local News',
 			'all_items' => 'Tutti le Categorie Local News',
@@ -202,7 +202,7 @@ function register_cposts_taxonomies() {
 
 	$args = array(
 		'labels' => array(
-			'name' => 'Settori',
+			'name' => __('Settori', "wstheme"),
 			'singular_name' => 'Settore',
 			'menu_name' => 'Settori',
 			'all_items' => 'Tutti i settori',
@@ -233,7 +233,7 @@ function register_cposts_taxonomies() {
 
 	$args = array(
 		'labels' => array(
-			'name' => 'Nazioni',
+			'name' => __('Nazioni', "wstheme"),
 			'singular_name' => 'Nazione',
 			'menu_name' => 'Nazioni',
 			'all_items' => 'Tutte le nazioni',

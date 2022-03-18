@@ -7,7 +7,7 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['section'])) :
 ?>
-<div class="content-slider borders">
+<div class="content-slider borders<?= $_args['section']['content_slider_bg'] == "blu" ? " negative" : ''; ?>">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">

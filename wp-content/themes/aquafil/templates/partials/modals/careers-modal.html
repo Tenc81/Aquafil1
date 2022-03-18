@@ -52,7 +52,7 @@
 					<div class="row">
 						<div class="col-sm-22 offset-sm-1">
 							<test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
-							<div class="full" control-checkbox [control]="controls.privacy" label="Ho letto l&amp;#39;&amp;lt;a href=&amp;quot;/it/it/privacy-policy&amp;quot; target=&amp;quot;_blank&amp;quot;&gt;informativa&amp;lt;/a&gt; e do il consenso al trattamento del dato"></div>
+							<div class="full" control-checkbox [control]="controls.privacy" [label]="ws_vars.labels.privacy"></div>
 							<div class="form__error" *if="error">
 								<span class="status-code" [innerHTML]="error.statusCode"></span>
 								<span class="status-message" [innerHTML]="error.statusMessage"></span>
