@@ -40,7 +40,11 @@
 
 	@include media-down(sm) {
 		&__content {
-			padding: var(--p140) var(--p40) var(--p60);
+			padding: var(--p140) var(--p40);
+		}
+
+		&__cta {
+			margin: 20px;
 		}
 	}
 }
@@ -72,5 +76,10 @@
 
 	@include media-up(md) {
 		width: 40.625vw;
+	}
+
+	@include media-down(sm) {
+		width: 100%;
+		max-width: 600px;
 	}
 }
