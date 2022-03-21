@@ -58,38 +58,38 @@ if (is_array($video) && count($video)> 0) {
 	$hero = !empty(get_field("news_detail_hero")) ? get_field("news_detail_hero")["url"] : esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full'));
 	?>
 	<section class="news-detail-content">
-		<div class="news-detail-content__row" appear>
-			<div class="news-detail-content__thumbnail" style="background-image:url(<?= $hero; ?>)"></div>
-		</div>
-		<div class="row news-detail-content__row" appear>
-			<div class="col-sm-20 offset-sm-2 col-md-10 offset-md-7">
-				<div class="news-detail-content__text">
-					<?php
-					$placed = [];
-					$content = get_the_content_with_formatting();
-					foreach($rendervideo as $k => $v){
-						if (strstr($content, '[insertVideo_')) {
-							$content = str_replace('[insertVideo_'.$k.']', $v, $content);
-							$placed[$k] = true;
-						} else {
-							$placed[$k] = false;
+		<div class="container-fluid">
+			<div class="news-detail-content__row" appear>
+				<div class="news-detail-content__thumbnail" style="background-image:url(<?= $hero; ?>)"></div>
+			</div>
+			<div class="row news-detail-content__row" appear>
+				<div class="col-sm-20 offset-sm-2 col-md-10 offset-md-7">
+					<div class="news-detail-content__text">
+						<?php
+						$placed = [];
+						$content = get_the_content_with_formatting();
+						foreach($rendervideo as $k => $v){
+							if (strstr($content, '[insertVideo_')) {
+								$content = str_replace('[insertVideo_'.$k.']', $v, $content);
+								$placed[$k] = true;
+							} else {
+								$placed[$k] = false;
+							}
 						}
-					}
-					echo $content;
+						echo $content;
 
-					foreach ($rendervideo as $k => $v) {
-						if(!$placed[$k]){
-							echo $v;
+						foreach ($rendervideo as $k => $v) {
+							if(!$placed[$k]){
+								echo $v;
+							}
 						}
-					}
 
 
-                    ?>
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
-
-
 		<?php
 		$carousel = get_field('photogallery');
 		if (is_array($carousel) && count($carousel)> 0) {
