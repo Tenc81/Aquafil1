@@ -22,7 +22,7 @@ if(!empty($_args['section'])) :
 						</div>';
 				}
 				echo '<div class="card--numbers__cta">';
-				if($cta['multicol_three_link_cta'] != '') {
+				if($cta['multicol_three_link_cta'] != 'javascript:void(0);') {
 					if($cta['multicol_three_stile_cta'] == 'testo') {
 						echo '<a href="'.$cta['multicol_three_link_cta'].'" target="'.$cta['multicol_three_target_cta'].'" class="btn--category"><span>'.($cta['multicol_three_titolo_cta'] != '' ? $cta['multicol_three_titolo_cta'] : __("Leggi di più", "wstheme")).'</span><svg><use xlink:href="#arrow-next-md"></use></svg></a>';
 					} else {
@@ -47,7 +47,7 @@ if(!empty($_args['section'])) :
 							<p>'.$cta['multicol_three_abstract'].'</p>
 						</div>';
 				}
-				if($cta['multicol_three_link_cta'] != '') {
+				if($cta['multicol_three_link_cta'] != 'javascript:void(0);') {
 					if($cta['multicol_three_stile_cta'] == 'testo') {
 						echo '<a href="'.$cta['multicol_three_link_cta'].'" target="'.$cta['multicol_three_target_cta'].'" class="btn--category"><span>'.($cta['multicol_three_titolo_cta'] != '' ? $cta['multicol_three_titolo_cta'] : __("Leggi di più", "wstheme")).'</span><svg><use xlink:href="#arrow-next-md"></use></svg></a>';
 					} else {

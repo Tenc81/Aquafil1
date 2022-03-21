@@ -6,13 +6,25 @@ $_args = wp_parse_args(
     'index' => 0
   ));
 
-if((!isset($_args['section']['news_cards']) || empty($_args['section']['news_cards'])) && is_singular('post')) {
-	$cat = get_the_category(get_the_ID());
-	$cids = [];
-	foreach($cat as $c){
-		array_push($cids, $c->term_id);
+if(!isset($_args['section']['news_cards']) || empty($_args['section']['news_cards'])) {
+	if(is_singular('post')) {
+		$cat = get_the_category(get_the_ID());
+		$cids = [];
+		foreach($cat as $c){
+			array_push($cids, $c->term_id);
+		}
+		$_args['section']['news_cards'] = at_more_by_cat($cids,5);
+	} else {
+		$_args['section']['news_cards'] = get_posts(array(
+			'posts_per_page'  => 5,
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'suppress_filters' => false,
+			'fields' => 'ids'
+		));
 	}
-	$_args['section']['news_cards'] = at_more_by_cat($cids,5);
 }
 if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_cards'])) :
 ?>
@@ -70,7 +82,17 @@ if(isset($_args['section']['news_cards']) && !empty($_args['section']['news_card
 			</div>			
 			<div class="col-sm-18 offset-sm-3">
 				<div class="news-proposition__cta">
-					<a href="javascript:void(0);" class="btn--primary"><?= __("Leggi tutte", "wstheme"); ?></a>
+					<?php
+					$all = $_args['section']['link_news_cards'];
+					if(!empty($all)) {
+						echo '
+							<a href="'.$all["url"].'" class="btn--primary">'.$all["title"].'</a>';
+					} else {
+						$id = get_option('page_for_posts');
+						echo '
+							<a href="'.get_permalink($id).'" class="btn--primary">'.__("Leggi tutte", "wstheme").'</a>';
+					}
+					?>
 				</div>
 			</div>
 		</div>

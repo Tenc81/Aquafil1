@@ -22,6 +22,7 @@ if(!empty($_args['section'])) :
 		<div class="listing--sustainability">
 			<?php foreach($_args['section']['sustainability_cards'] as $s) { ?>
 				<div class="listing__item">
+					<?php if($s['sustainability_cards_link_cta'] != 'javascript:void(0);') : ?>
 					<a href="<?=$s['sustainability_cards_link_cta']?>" target="<?=$s['sustainability_cards_target_cta']?>" class="card--sustainability">
 						<div class="card--sustainability__picture">
 							<img loading="lazy" src="<?=$s['sustainability_cards_image']?>" />
@@ -34,6 +35,17 @@ if(!empty($_args['section'])) :
 							</div>
 						</div>
 					</a>
+					<?php else : ?>
+					<div class="card--sustainability">
+						<div class="card--sustainability__picture">
+							<img loading="lazy" src="<?=$s['sustainability_cards_image']?>" />
+						</div>
+						<div class="card--sustainability__content" appear>
+							<div class="card--sustainability__title"><?=$s['sustainability_cards_titolo']?></div>
+							<div class="card--sustainability__abstract" ellipsis><?=$s['sustainability_cards_sottotitolo']?></div>
+						</div>
+					</div>
+					<?php endif; ?>
 				</div>
 			<?php } ?>
 		</div>

@@ -304,8 +304,8 @@ function at_more_by_cat($cat_id = '', $limit = 3, $exclusions = null){
 	if ($cat_id != '') {
 		$args = array(
 				'posts_per_page'   => $limit,
-				'orderby'          => 'rand',
-				'order'            => 'ASC',
+				'orderby'          => 'date',
+				'order'            => 'DESC',
 				'include'          => '',
 				'exclude'          => $exclusions == null ? [] : $exclusions,
 				'meta_key'         => '',

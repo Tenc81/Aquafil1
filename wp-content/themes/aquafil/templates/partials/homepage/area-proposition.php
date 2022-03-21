@@ -32,9 +32,14 @@ if(!empty($_args['section'])) :
 						<img loading="lazy" src="<?=$s['area_cards_image']?>" />
 					</div>
 					<div class="card--area__abstract"><?=$s['area_cards_sottotitolo']?></div>
-					<div class="card--area__cta">
-						<a href="<?=$s['area_cards_link_cta']?>" target="<?=$s['area_cards_target_cta']?>" class="btn--primary"><?=($s['area_cards_testo_cta'] != '' ? $s['area_cards_testo_cta'] : __('Read more'))?></a>
-					</div>
+					<?php
+					if($s['area_cards_link_cta'] != 'javascript:void(0);') {
+						echo '
+						<div class="card--area__cta">
+							<a href="'.$s['area_cards_link_cta'].'" target="'.$s['area_cards_target_cta'].'" class="btn--primary">'.($s['area_cards_testo_cta'] != '' ? $s['area_cards_testo_cta'] : __('Read more')).'</a>
+						</div>';
+					}
+					?>
 				</div>
 			</div>
 		<?php } ?>

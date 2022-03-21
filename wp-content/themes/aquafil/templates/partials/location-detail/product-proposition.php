@@ -139,8 +139,9 @@ if(!empty($_args['section'])) :
 												<div class="card--side-modal__abstract">'.$product['descrizione_estesa_prodotto'].'</div>
 											</div>
 											<div class="card--side-modal__cta">
-												'.(!empty($link) ? '<a href="'.$link["url"].'" class="btn--more-md"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>' : '').'
-												<button type="button" class="btn--more-md" (click)="onRequestInfo()"><span>'.__("Maggiori informazioni", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg></button>
+												'.(!empty($link) ? '<a href="'.$link["url"].'" class="btn--more-md"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>' : '').
+												($product['inserisci_bottone_contatti_prodotto'] ? '
+												<button type="button" class="btn--more-md" (click)="onRequestInfo()"><span>'.__("Maggiori informazioni", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg></button>' : '').'
 											</div>
 										</div>
 									</div>';
