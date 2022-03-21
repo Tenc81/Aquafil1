@@ -54,8 +54,25 @@ function aquafil_enqueue_scripts() {
   wp_enqueue_script('websolute_helper');
   wp_localize_script('websolute_helper', 'ws_vars', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
-    'docsDir' => DOCS_DIR,
-		'post_id' => is_singular() ? get_the_ID() : 0,
+		'docsDir' => DOCS_DIR,
+		'post_id' => is_singular() ? get_the_ID() : 0
+  ));
+  wp_localize_script('websolute_helper', 'environment', array(
+		'flags' => array(
+			'production' => true,
+		),
+		'api' => '',
+		'assets' => DOCS_DIR,
+		'template' => array(
+			'modal' => array(
+				'genericModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/generic-modal.html',
+				'sideModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/side-modal.html',
+				'contactModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/contact-modal.html',
+				'salesModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/sales-modal.html',
+				'galleryModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/gallery-modal.html',
+				'userModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/user-modal.html',
+			)
+		),
 		'labels' => array(
 			'titolo_contatti' => __("Contatti", "wstheme"),
 			'sottotitolo_contatti' => __("Per ulteriori informazioni, contattaci compilando il form sottostante:", "wstheme"),
@@ -75,23 +92,6 @@ function aquafil_enqueue_scripts() {
 			'seleziona' => __("Seleziona", "wstheme"),
 			'required' => __("campo obbligatorio", "wstheme"),
 			'seleziona_file' => __("Seleziona un file (max 15 mb)", "wstheme")
-		)
-  ));
-  wp_localize_script('websolute_helper', 'environment', array(
-		'flags' => array(
-			'production' => true,
-		),
-		'api' => '',
-		'assets' => DOCS_DIR,
-		'template' => array(
-			'modal' => array(
-				'genericModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/generic-modal.html',
-				'sideModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/side-modal.html',
-				'contactModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/contact-modal.html',
-				'salesModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/sales-modal.html',
-				'galleryModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/gallery-modal.html',
-				'userModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/user-modal.html',
-			)
 		)
   ));
 }
