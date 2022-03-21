@@ -387,7 +387,7 @@ function icl_post_languages() {
         <ul class="nav--language">
 					<li class="nav__item">';
       $items .= '
-						<span (click)="onMenu(5)">
+						<span (click)="onMenu(100)">
 							<span>'.$current["code"].'</span>
 							<svg class="down">
 								<use xlink:href="#arrow-down"></use>

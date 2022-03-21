@@ -5122,6 +5122,12 @@ _defineProperty(HeaderService, "header$_", new rxjs.BehaviorSubject(-1));var Hea
   };
 
   _proto.onMenu = function onMenu(id) {
+    var headerMenu = document.querySelector('.header__menu');
+
+    if (headerMenu) {
+      headerMenu.scrollTo(0, 0);
+    }
+
     MenuService.setMenu(id);
   };
 

@@ -44,8 +44,9 @@
 										foreach($item['children'] as $subitem) {
 											echo '
 												<li class="nav__item"><a href="'.$subitem["url"].'" target="'.$subitem["target"].'" '.($subitem["rel"] != '' ? 'rel="'.$subitem["rel"].'"' : '').'><span>'.$subitem["label"].'</span></a></li>';
-										}
+										}										
 										echo '
+												<li class="nav__item back"><span (click)="onBack()"><svg class="back"><use xlink:href="#arrow-back"></use></svg><span>'.__("Indietro", "wstheme").'</span></span></li>
 											</ul>';
 									} else {
 										echo '

@@ -422,11 +422,6 @@ a {
 		padding: 0 var(--p10);
 	}
 
-	svg {
-		width: 33px;
-		height: 29px;
-	}
-
 	&,
 	&:active,
 	&:focus,
@@ -438,6 +433,21 @@ a {
 	&:hover {
 		background-color: $background-primary;
 		color: $foreground-negative;
+	}
+
+	@include media-up(md) {
+		svg {
+			width: 33px;
+			height: 29px;
+		}
+	}
+
+	@include media-down(sm) {
+		svg {
+			width: 24px;
+			height: 24px;
+			margin: 5px;
+		}
 	}
 }
 
