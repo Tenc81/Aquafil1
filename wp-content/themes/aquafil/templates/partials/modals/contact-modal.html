@@ -15,40 +15,40 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-22 offset-sm-1">
-							<p class="contact-modal__text-top" [innerHTML]="ws_vars.labels.sottotitolo_contatti"></p>
+							<p class="contact-modal__text-top" [innerHTML]="'sottotitolo_contatti' | label"></p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-10 offset-sm-1">
 							<input name="checkField" [formControl]="controls.checkField" value="" type="text" style="display:none !important;" />
-							<div control-text [control]="controls.firstName" [label]="ws_vars.labels.nome"></div>
+							<div control-text [control]="controls.firstName" [label]="'nome' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.lastName" [label]="ws_vars.labels.cognome"></div>
+							<div control-text [control]="controls.lastName" [label]="'cognome' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.company" [label]="ws_vars.labels.azienda"></div>
+							<div control-text [control]="controls.company" [label]="'azienda' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.email" [label]="ws_vars.labels.email"></div>
+							<div control-text [control]="controls.email" [label]="'email' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.address" [label]="ws_vars.labels.indirizzo"></div>
+							<div control-text [control]="controls.address" [label]="'indirizzo' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.city" [label]="ws_vars.labels.citta"></div>
+							<div control-text [control]="controls.city" [label]="'citta' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-text [control]="controls.zip" [label]="ws_vars.labels.cap"></div>
+							<div control-text [control]="controls.zip" [label]="'cap' | label"></div>
 						</div>
 						<div class="col-sm-10 offset-sm-1">
-							<div control-custom-select [control]="controls.country" [label]="ws_vars.labels.nazione"></div>
+							<div control-custom-select [control]="controls.country" [label]="'nazione' | label"></div>
 						</div>
 						<div class="col-sm-21 offset-sm-1">
-							<div control-text [control]="controls.subject" [label]="ws_vars.labels.soggetto"></div>
+							<div control-text [control]="controls.subject" [label]="'soggetto' | label"></div>
 						</div>
 						<div class="col-sm-21 offset-sm-1">
-							<div control-textarea [control]="controls.message" [label]="ws_vars.labels.messaggio"></div>
+							<div control-textarea [control]="controls.message" [label]="'messaggio' | label"></div>
 						</div>
 					</div>
 
@@ -72,7 +72,7 @@
 							</div>
 							-->
 							<test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
-							<div class="full" control-checkbox [control]="controls.privacy" [label]="ws_vars.labels.privacy"></div>
+							<div class="full" control-checkbox [control]="controls.privacy" [label]="'privacy' | label"></div>
 							<div class="form__error" *if="error">
 								<span class="status-code" [innerHTML]="error.statusCode"></span>
 								<span class="status-message" [innerHTML]="error.statusMessage"></span>
@@ -84,10 +84,10 @@
 					<div class="row">
 						<div class="col-sm-22 offset-sm-1">
 							<button type="submit" class="btn--submit" data-title="Invia" *if="!form.submitted">
-								<span [innerHTML]="ws_vars.labels.invia"></span>
+								<span [innerHTML]="'invia' | label"></span>
 							</button>
 							<button type="submit" class="btn--submit" data-title="Inviato!" *if="form.submitted">
-								<span [innerHTML]="ws_vars.labels.inviato"></span>
+								<span [innerHTML]="'inviato' | label"></span>
 							</button>
 						</div>
 					</div>

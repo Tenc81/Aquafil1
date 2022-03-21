@@ -10597,7 +10597,6 @@ input[type="search"]::-webkit-search-results-decoration {
          object-fit: cover; }
   .card--side-modal__content {
     flex: 1 1 auto;
-    padding: var(--p60) var(--p40);
     overflow-x: hidden;
     overflow-y: auto; }
     .card--side-modal__content::-webkit-scrollbar {
@@ -10626,6 +10625,12 @@ input[type="search"]::-webkit-search-results-decoration {
   .card--side-modal__cta {
     display: flex;
     justify-content: space-between; }
+  @media (min-width: 1024px) {
+    .card--side-modal__content {
+      padding: var(--p60) var(--p40); } }
+  @media (max-width: 1023.98px) {
+    .card--side-modal__content {
+      padding: var(--p140) var(--p40) var(--p60); } }
 
 .side-modal {
   position: fixed;
