@@ -9148,20 +9148,33 @@ input[type="search"]::-webkit-search-results-decoration {
   .toolkit-proposition__title {
     margin-bottom: var(--p80); }
 
-.card--toolkit {
-  display: flex;
-  align-items: stretch;
-  margin-bottom: var(--p80); }
-  .card--toolkit__picture, .card--toolkit__content {
-    flex: 0 0 50%;
-    max-width: 50%; }
-  .card--toolkit__content {
-    background: var(--background-quaternary);
-    padding: var(--p80) var(--p70); }
-  .card--toolkit__title {
+.card--toolkit__content {
+  background: var(--background-quaternary); }
+
+@media (min-width: 768px) {
+  .card--toolkit {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: var(--p80); }
+    .card--toolkit__picture, .card--toolkit__content {
+      flex: 0 0 50%;
+      max-width: 50%; }
+    .card--toolkit__content {
+      padding: var(--p80) var(--p70); }
+    .card--toolkit__title {
+      margin-bottom: var(--p40); }
+    .card--toolkit__cta {
+      margin-top: var(--p40); } }
+
+@media (max-width: 767.98px) {
+  .card--toolkit {
     margin-bottom: var(--p40); }
-  .card--toolkit__cta {
-    margin-top: var(--p40); }
+    .card--toolkit__content {
+      padding: var(--p40) var(--p30); }
+    .card--toolkit__title {
+      margin-bottom: var(--p20); }
+    .card--toolkit__cta {
+      margin-top: var(--p20); } }
 
 [swiper-toolkit] {
   overflow: visible; }
