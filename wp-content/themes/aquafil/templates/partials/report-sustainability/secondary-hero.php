@@ -7,7 +7,7 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['section'])) :
 ?>
-<div class="secondary-hero">
+<div class="secondary-hero" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-6 offset-sm-2 col-md-6 offset-md-2 order-2 order-sm-1">
@@ -28,6 +28,14 @@ if(!empty($_args['section'])) :
 				</div>
 				<?php endif; ?>
 			</div>
+			<?php
+			if(!empty($_args['section']['link_sec_hero'])) {
+				echo '
+				<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-2 order-1 order-sm-2">
+					<a href="'.$_args['section']['link_sec_hero']["url"].'" class="btn--more-md"><span>'.$_args['section']['link_sec_hero']["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>
+				</div>';
+			}
+			?>
 		</div>
 	</div>
 </div>

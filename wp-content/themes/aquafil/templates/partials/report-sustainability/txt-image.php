@@ -54,7 +54,7 @@ if(!empty($_args['section'])) :
 		$txt_container .= '
 			</div>';
 ?>
-<div class="media-text-secondary">
+<div class="media-text-secondary" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<?php
