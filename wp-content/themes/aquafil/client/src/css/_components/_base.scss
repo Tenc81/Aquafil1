@@ -57,6 +57,23 @@ main {
 			padding-top: var(--p80) !important;
 		}
 	}
+
+	@include media-down(sm) {
+
+		&>div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary)+div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary),
+		&>div.negative+div.negative,
+		&>div.secondary+div.secondary {
+			padding-top: 0;
+		}
+
+		&>.borders+.borders {
+			padding-top: var(--p40) !important;
+		}
+
+		&>div {
+			overflow-x: hidden;
+		}
+	}
 }
 
 .hidden {

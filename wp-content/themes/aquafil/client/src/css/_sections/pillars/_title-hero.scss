@@ -99,12 +99,9 @@
 
 	&__title {
 		@extend .h2;
-		color: $foreground-negative;
 	}
 
-	&__abstract {
-		color: $foreground-negative;
-	}
+	&__abstract {}
 
 	@include media-up(sm) {
 		&:before {
@@ -116,6 +113,14 @@
 			width: 100% / 24 * 21;
 			bottom: 0;
 			background: $background-negative;
+		}
+
+		&__title {
+			color: $foreground-negative;
+		}
+
+		&__abstract {
+			color: $foreground-negative;
 		}
 	}
 
