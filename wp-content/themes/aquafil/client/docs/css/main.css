@@ -10385,13 +10385,6 @@ input[type="search"]::-webkit-search-results-decoration {
   height: calc(100vh - 90px);
   transform: translateX(-100%);
   padding-bottom: 80px; }
-  @media (max-width: 767.98px) {
-    .page--investor__menu {
-      padding-bottom: 0px;
-      position: fixed;
-      top: 90px;
-      z-index: 1;
-      background: var(--foreground-negative); } }
   .page--investor__menu-title {
     color: var(--foreground);
     margin-top: 40px; }
@@ -10409,6 +10402,13 @@ input[type="search"]::-webkit-search-results-decoration {
     @media (min-width: 1024px) {
       .page--investor__menu-link {
         margin-bottom: 10px; } }
+  @media (max-width: 767.98px) {
+    .page--investor__menu {
+      padding-bottom: 0px;
+      position: fixed;
+      top: 90px;
+      z-index: 1;
+      background: var(--foreground-negative); } }
 
 @media (min-width: 1024px) {
   .page--investor__menu-toggle {
@@ -10419,6 +10419,21 @@ input[type="search"]::-webkit-search-results-decoration {
     transform: none;
     padding-top: 90px;
     padding-right: 40px; } }
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .page--investor__menu {
+    position: fixed;
+    margin: 0;
+    left: 0;
+    z-index: 1;
+    background: white;
+    padding: 0 20px;
+    max-width: 30%;
+    flex: 0 0 30%; }
+  .page--investors__content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 9vw; } }
 
 .investor-menu-open .page--investor__menu-toggle {
   left: auto;
