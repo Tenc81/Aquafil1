@@ -71,7 +71,7 @@ if(!empty($_args['section'])) :
 		}
 	}
 ?>
-<div class="product-proposition">
+<div class="product-proposition" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 			<?php
 			if($_args['section']['aggiungi_filtri']) {
@@ -116,7 +116,7 @@ if(!empty($_args['section'])) :
 				}, $filters);
 				echo '
 									<div class="listing__item '.($_args['section']['aggiungi_filtri'] ? implode(' ', $filters) : '').'" appear>
-										<div class="card--product" open-modally="#detail-'.($i+1).'">
+										<div class="card--product" open-modally="#'.sanitize_title($_args['section']['titolo_prodotti_correlati']).'-detail-'.($i+1).'">
 											<div class="card--product__picture">
 												'.(!empty($thumb) ? '<img loading="lazy" src="'.$thumb["url"].'" alt="'.$product['titolo_prodotto'].'" />' : '').'
 											</div>
@@ -129,7 +129,7 @@ if(!empty($_args['section'])) :
 											</div>
 										</div>
 										<!-- in page detail - 1 -->
-										<div class="card--side-modal" card-product-detail id="detail-'.($i+1).'">
+										<div class="card--side-modal" card-product-detail id="'.sanitize_title($_args['section']['titolo_prodotti_correlati']).'-detail-'.($i+1).'">
 											'.(!empty($img) ? '
 											<div class="card--side-modal__picture">
 												<img loading="lazy" src="'.$img["url"].'" alt="'.$product['titolo_prodotto'].'" />
