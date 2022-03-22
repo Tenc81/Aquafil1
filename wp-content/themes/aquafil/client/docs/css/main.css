@@ -131,15 +131,18 @@ main {
   main > .borders + .borders {
     padding-top: var(--p80) !important; } }
 
+@media (max-width: 1439.98px) {
+  main > div,
+  main > section {
+    overflow-x: hidden; } }
+
 @media (max-width: 1023.98px) {
   main > div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary) + div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary),
   main > div.negative + div.negative,
   main > div.secondary + div.secondary {
     padding-top: 0; }
   main > .borders + .borders {
-    padding-top: var(--p40) !important; }
-  main > div {
-    overflow-x: hidden; } }
+    padding-top: var(--p40) !important; } }
 
 .hidden {
   display: none; }

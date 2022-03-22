@@ -58,6 +58,14 @@ main {
 		}
 	}
 
+	@include media-down(md) {
+
+		&>div,
+		&>section {
+			overflow-x: hidden;
+		}
+	}
+
 	@include media-down(sm) {
 
 		&>div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary)+div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary),
@@ -68,10 +76,6 @@ main {
 
 		&>.borders+.borders {
 			padding-top: var(--p40) !important;
-		}
-
-		&>div {
-			overflow-x: hidden;
 		}
 	}
 }
