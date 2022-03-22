@@ -50,14 +50,14 @@ add_theme_support('post-thumbnails');
 function aquafil_enqueue_scripts() {
 	wp_enqueue_style('aquafil-style', get_stylesheet_uri(), array());
 
-  wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
-  wp_enqueue_script('websolute_helper');
-  wp_localize_script('websolute_helper', 'ws_vars', array(
+	//wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
+	//wp_enqueue_script('websolute_helper');
+  wp_localize_script('jquery', 'ws_vars', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'docsDir' => DOCS_DIR,
 		'post_id' => is_singular() ? get_the_ID() : 0
   ));
-  wp_localize_script('websolute_helper', 'environment', array(
+  wp_localize_script('jquery', 'environment', array(
 		'flags' => array(
 			'production' => true,
 		),
@@ -89,9 +89,9 @@ function aquafil_enqueue_scripts() {
 			'privacy' => __("Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato", "wstheme"),
 			'invia' => __("Invia", "wstheme"),
 			'inviato' => __("Inviato!", "wstheme"),
-			'seleziona' => __("Seleziona", "wstheme"),
-			'required' => __("campo obbligatorio", "wstheme"),
-			'seleziona_file' => __("Seleziona un file (max 15 mb)", "wstheme")
+			'select' => __("Seleziona", "wstheme"),
+			'error_required' => __("campo obbligatorio", "wstheme"),
+			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme")
 		)
   ));
 }
