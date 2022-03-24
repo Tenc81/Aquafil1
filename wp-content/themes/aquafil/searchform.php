@@ -1,4 +1,4 @@
-<form id="searchform" method="get" role="search" class="search-form" novalidate="novalidate">
+<form id="searchform" method="get" role="search" class="search-form" novalidate="novalidate" action="<?= home_url(); ?>">
 	<input type="search" placeholder="<?= __("Cerca", "wstheme"); ?>" name="s" />
 	<button type="submit" class="btn--search">
 		<svg x="0px" y="0px" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">

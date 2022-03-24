@@ -74,7 +74,7 @@ if(!empty($_args['section'])) :
 		}
 	}
 ?>
-<div class="certification borders">
+<div class="certification borders" <?=setAnchor($_args['section']);?>>
 	<?= $list_html; ?>
 </div>
 <?php endif; ?>
