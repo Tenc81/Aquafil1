@@ -3677,11 +3677,13 @@ ControlsModule.meta = {
 
   var _proto = CardProductDetailComponent.prototype;
 
-  _proto.onRequestInfo = function onRequestInfo() {
+  _proto.onRequestInfo = function onRequestInfo(id, product) {
     ModalService.open$({
-      src: environment.template.modal.contactModal,
+      src: environment.template.modal.productRequestModal,
       data: {
-        id: this.id
+        id: id,
+        productName: product,
+        download: ''
       }
     }).pipe(operators.first()).subscribe(function (event) {
       console.log('CardProductDetailComponent.open$', event);

@@ -71,6 +71,7 @@ function aquafil_enqueue_scripts() {
 				'salesModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/sales-modal.html',
 				'galleryModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/gallery-modal.html',
 				'userModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/user-modal.html',
+				'productRequestModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal.html'
 			)
 		),
 		'labels' => array(

@@ -39,15 +39,8 @@ if(!empty($_args['section'])) :
 		} else {
 			if(!empty($_args['section']['modal_label_txt_image'])) {
 				$txt_container .= '
-					<div class="text-media-secondary__cta">
-						<button type="button" class="btn--right" open-modally="#product-request"><span>'.$_args['section']['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></button>
-						<div class="card--side-modal" product-request productName="'.$_args['section']['modal_label_txt_image'].'" download="'.$_args['section']['modal_download_txt_image'].'" id="product-request">';
-				ob_start();
-				include(locate_template('templates/partials/modals/product-request-modal.html'));
-				$txt_container .= ob_get_contents();
-				ob_get_clean();
-				$txt_container .= '
-						</div>
+					<div class="text-media-secondary__cta" card-product-detail>
+						<button type="button" class="btn--right" (click)="onRequestInfo(\'product-request\', \''.$_args['section']['modal_label_txt_image'].'\')"><span>'.$_args['section']['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></button>
 					</div>';
 			}
 		}
