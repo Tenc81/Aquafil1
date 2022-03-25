@@ -756,8 +756,7 @@ function frm_create_custom_contact() {
     wp_send_json_error(array("result"=>__("C'è stato un problema durante la registrazione della richiesta", "wstheme")));
 	}
 	if(strpos(current_filter(), "save_contact") !== false) {
-		$id = wpml_object_id_filter(22640, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-		$form = WPCF7_ContactForm::get_instance($id);
+		$form = WPCF7_ContactForm::get_instance(22640);
 		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
 			//$flamingo_contact = Flamingo_Contact::add(array(
@@ -770,8 +769,7 @@ function frm_create_custom_contact() {
 			wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
 		}
 	} elseif(strpos(current_filter(), "save_agent_contact") !== false) {
-		$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-		$form = WPCF7_ContactForm::get_instance($id);
+		$form = WPCF7_ContactForm::get_instance(22465);
 		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
 			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
@@ -806,8 +804,7 @@ function frm_create_custom_contact() {
 		if ($attach_id) {
 			file_put_contents(ABSPATH.'error_log.txt', get_the_date("d F Y H:i:s") .PHP_EOL. $attach_id.PHP_EOL. print_r($attachment, true).PHP_EOL , FILE_APPEND | LOCK_EX);
 			$_POST['curriculum'] = $upload_dir["url"].'/'.$_POST['file']['name'];
-			$id = wpml_object_id_filter(22509, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-			$form = WPCF7_ContactForm::get_instance($id);
+			$form = WPCF7_ContactForm::get_instance(22509);
 			$result = $form->submit();
 			if($result['status'] == "mail_failed") {
 				wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
@@ -818,8 +815,7 @@ function frm_create_custom_contact() {
 			wp_send_json_error(array('message' => __("Errore durante il salvataggio del file", "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
 		}
 	} elseif(strpos(current_filter(), "save_product_request") !== false) {
-		$id = wpml_object_id_filter(23293, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-		$form = WPCF7_ContactForm::get_instance($id);
+		$form = WPCF7_ContactForm::get_instance(23293);
 		$result = $form->submit();
 		if($result['status'] == "mail_failed") {
 			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
@@ -841,9 +837,10 @@ add_action('wp_ajax_nopriv_save_product_request', 'frm_create_custom_contact');
 
 
 function set_agent_recipient($components, $form, $mailer) {
-	$id = wpml_object_id_filter(22465, 'wpcf7_contact_form', true, ICL_LANGUAGE_CODE);
-	if($form->id == $id && sanitize_email($_POST["agent"])) {
+	if($form->id == 22465 && sanitize_email($_POST["agent"])) {
 		$components['recipient'] = $_POST["agent"];
+	} elseif($form->id == 23293 && sanitize_email($_POST["recipient"])) {
+		$components['recipient'] = $_POST["recipient"];
 	}
 	return $components;
 }

@@ -3677,13 +3677,14 @@ ControlsModule.meta = {
 
   var _proto = CardProductDetailComponent.prototype;
 
-  _proto.onRequestInfo = function onRequestInfo(id, product) {
+  _proto.onRequestInfo = function onRequestInfo(id, product, recipient) {
     ModalService.open$({
       src: environment.template.modal.productRequestModal,
       data: {
         id: id,
         productName: product,
-        download: ''
+        download: '',
+        recipient: recipient
       }
     }).pipe(operators.first()).subscribe(function (event) {
       console.log('CardProductDetailComponent.open$', event);
@@ -4570,6 +4571,8 @@ OpenModallyDirective.meta = {
       var id = data.id;
       var productName = data.productName;
       this.productName = productName ? productName : this.productName;
+      var recipient = data.recipient;
+      this.recipient = recipient ? recipient : this.recipient;
       console.log('ProductRequestComponent.onInit', id, productName);
     }
 
@@ -4579,6 +4582,7 @@ OpenModallyDirective.meta = {
     this.message = '';
     var form = this.form = new rxcompForm.FormGroup({
       productName: this.productName,
+      recipient: this.recipient,
       download: this.download,
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),

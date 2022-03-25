@@ -23,7 +23,7 @@ if(!empty($_args['section'])) :
 		$filterstypes["countries"][$download["nazione_downloads"]] += count($download['lista_downloads']);
 		$filterstypes["categories"][$category] += count($download['lista_downloads']);
 		ob_start();
-		get_template_part("templates/partials/shared/cards-certification", null, array("section" => $download, "class" => strtolower($download['nazione_downloads']). ' '.strtolower($category)));
+		get_template_part("templates/partials/shared/cards-certification", null, array("section" => $download, "class" => strtolower($download['nazione_downloads']). ' '.sanitize_title($category)));
 		$list_html .= ob_get_contents();
 		ob_end_clean();
 	}
@@ -46,7 +46,7 @@ if(!empty($_args['section'])) :
 										<li class="nav__item"><a href="javascript:void(0);" class="active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.$total.')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
-										<li class="nav__item"><a href="javascript:void(0);" data-filter="'.strtolower($filter).'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" data-filter="'.sanitize_title($filter).'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
 			}
 			echo '
 									</ul>

@@ -15,6 +15,8 @@ export class ProductRequestComponent extends Component {
 			const id = data.id;
 			const productName = data.productName;
 			this.productName = productName ? productName : this.productName;
+			const recipient = data.recipient;
+			this.recipient = recipient ? recipient : this.recipient;
 			console.log('ProductRequestComponent.onInit', id, productName);
 		}
 		this.error = null;
@@ -23,6 +25,7 @@ export class ProductRequestComponent extends Component {
 		this.message = '';
 		const form = this.form = new FormGroup({
 			productName: this.productName,
+			recipient: this.recipient,
 			download: this.download,
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),

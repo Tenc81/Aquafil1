@@ -35,6 +35,7 @@
 		<link rel="stylesheet" href="css/vendors.min.css" />
 		<link rel="stylesheet" href="css/main.min.css" />
 		<?php wp_head() ?>
+		<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="33aabc39-1f1a-4433-8a07-23df0f5c4270" data-blockingmode="auto" type="text/javascript"></script>
 	</head>
 
 	<body <?php body_class(); ?>>

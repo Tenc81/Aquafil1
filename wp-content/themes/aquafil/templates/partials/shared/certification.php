@@ -8,7 +8,7 @@ $_args = wp_parse_args(
 if(!empty($_args['section'])) :
 	$class_prefix = $_args['section']['padding_downloads'];
 ?>
-<div class="<?= $class_prefix; ?> borders">
+<div class="<?= $class_prefix; ?> borders" <?=setAnchor($_args['section']);?>>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
