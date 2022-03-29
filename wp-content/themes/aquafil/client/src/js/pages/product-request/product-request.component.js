@@ -17,6 +17,8 @@ export class ProductRequestComponent extends Component {
 			this.productName = productName ? productName : this.productName;
 			const recipient = data.recipient;
 			this.recipient = recipient ? recipient : this.recipient;
+			const download = data.download;
+			this.download = download ? download : this.download;
 			console.log('ProductRequestComponent.onInit', id, productName);
 		}
 		this.error = null;

@@ -752,29 +752,88 @@ add_action('save_post', 'on_save_delete_transient', 10, 3);
 
 
 function frm_create_custom_contact() {
+	global $wpdb;
+	$query = "
+		SELECT st.value 
+		FROM wp_icl_strings s JOIN wp_icl_string_translations st 
+		ON st.string_id=s.id 
+		WHERE s.context='wstheme' AND s.value=%s AND st.language='".$_COOKIE["wp-wpml_current_language"]."'";
+
 	if(empty($_POST)) {
-    wp_send_json_error(array("result"=>__("C'è stato un problema durante la registrazione della richiesta", "wstheme")));
+		$s0 = $wpdb->get_col($wpdb->prepare($query, "C'è stato un problema durante la registrazione della richiesta"));
+		$values = array_filter(array(
+			'msgerror' => is_null($s0) ? '' : $s0,
+			), function($s) {
+			return $s != '';
+		});
+		$strings = wp_parse_args(
+			$values,
+			array('msgerror' => "C'è stato un problema durante la registrazione della richiesta")
+		);
+    wp_send_json_error(array("result"=> $strings['msgerror']));
 	}
 	if(strpos(current_filter(), "save_contact") !== false) {
 		$form = WPCF7_ContactForm::get_instance(22640);
 		$result = $form->submit();
+
+		$default = array(
+			'msg' => $result['message'],
+			'error' => "Errore durante l'invio",
+			'sent' => "Richiesta inviata"
+		);
+		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
+		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
+		$values = array_filter(array(
+				'msg' => is_null($s1) ? '' : $s1, 
+				'error' => is_null($s2) ? '' : $s2, 
+				'sent' => is_null($s3) ? '' : $s3
+			), function($s) {
+			return $s != '';
+		});
+		$strings = wp_parse_args(
+			$values,
+			$default
+		);
+
 		if($result['status'] == "mail_failed") {
 			//$flamingo_contact = Flamingo_Contact::add(array(
 			//  'email' => $params['email'],
 			//  'name' => $params['firstName'].' '.$params['lastName'],
 			//  'last_contacted' => date('Y-m-d H:i:sP'),
 			//));
-			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
+			wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
 		} else {
-			wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
+			wp_send_json_success(array('message' => $strings['msg'], 'response' => $strings['sent']));
 		}
 	} elseif(strpos(current_filter(), "save_agent_contact") !== false) {
 		$form = WPCF7_ContactForm::get_instance(22465);
 		$result = $form->submit();
+
+		$default = array(
+			'msg' => $result['message'],
+			'error' => "Errore durante l'invio",
+			'sent' => "Richiesta inviata"
+		);
+		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
+		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
+		$values = array_filter(array(
+				'msg' => is_null($s1) ? '' : $s1, 
+				'error' => is_null($s2) ? '' : $s2, 
+				'sent' => is_null($s3) ? '' : $s3
+			), function($s) {
+			return $s != '';
+		});
+		$strings = wp_parse_args(
+			$values,
+			$default
+		);
+
 		if($result['status'] == "mail_failed") {
-			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
+			wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
 		} else {
-			wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
+			wp_send_json_success(array('message' => $strings['msg'], 'response' => $strings['sent']));
 		}
 	} elseif(strpos(current_filter(), "save_career") !== false) {
 		$upload_dir = wp_upload_dir();
@@ -806,22 +865,85 @@ function frm_create_custom_contact() {
 			$_POST['curriculum'] = $upload_dir["url"].'/'.$_POST['file']['name'];
 			$form = WPCF7_ContactForm::get_instance(22509);
 			$result = $form->submit();
+			
+			$default = array(
+				'msg' => $result['message'],
+				'error' => "Errore durante l'invio",
+				'sent' => "Richiesta inviata"
+			);
+			$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
+			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+			$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
+			$values = array_filter(array(
+					'msg' => is_null($s1) ? '' : $s1, 
+					'error' => is_null($s2) ? '' : $s2, 
+					'sent' => is_null($s3) ? '' : $s3
+				), function($s) {
+				return $s != '';
+			});
+			$strings = wp_parse_args(
+				$values,
+				$default
+			);
+
 			if($result['status'] == "mail_failed") {
-				wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
+				wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
 			} else {
-				wp_send_json_success(array('message' => __($result['message'], "wstheme"), 'response' => __("Richiesta inviata", "wstheme")));
+				wp_send_json_success(array('message' => $strings['msg'], 'response' => $strings['sent']));
 			}
 		} else {
-			wp_send_json_error(array('message' => __("Errore durante il salvataggio del file", "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
+
+			$default = array(
+				'error' => "Errore durante l'invio",
+				'errorsave' => "Errore durante il salvataggio del file"
+			);
+			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+			$s4 = $wpdb->get_var($wpdb->prepare($query, "Errore durante il salvataggio del file"));
+			$values = array_filter(array(
+					'error' => is_null($s2) ? '' : $s2,
+					'errorsave' => is_null($s4) ? '' : $s4
+				), function($s) {
+				return $s != '';
+			});
+			$strings = wp_parse_args(
+				$values,
+				$default
+			);
+
+			wp_send_json_error(array('message' => $strings['errorsave'], 'response' => $strings['error']));
 		}
 	} elseif(strpos(current_filter(), "save_product_request") !== false) {
 		$form = WPCF7_ContactForm::get_instance(23293);
 		$result = $form->submit();
+
+		$default = array(
+			'msg' => $result['message'],
+			'error' => "Errore durante l'invio",
+			'sent' => "Richiesta inviata",
+			'download' => "Clicca su %s per scaricare il documento."
+		);
+		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
+		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
+		$s4 = $wpdb->get_var($wpdb->prepare($query, "Clicca su %s per scaricare il documento."));
+		$values = array_filter(array(
+				'msg' => is_null($s1) ? '' : $s1, 
+				'error' => is_null($s2) ? '' : $s2, 
+				'sent' => is_null($s3) ? '' : $s3, 
+				'download' => is_null($s4) ? '' : $s4
+			), function($s) {
+			return $s != '';
+		});
+		$strings = wp_parse_args(
+			$values,
+			$default
+		);
+
 		if($result['status'] == "mail_failed") {
-			wp_send_json_error(array('message' => __($result['message'], "wstheme"), 'response' => __("Errore durante l'invio", "wstheme")));
+			wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
 		} else {
-			$download = isset($_POST['download']) && !empty($_POST['download']) ? sprintf('<br /><br />'.__('Clicca su %s per scaricare il documento.', 'wstheme'), '<a href="'.$_POST['download'].'" target="_blank">download</a>') : '';
-			wp_send_json_success(array('message' => __($result['message'], "wstheme").$download, 'response' => __("Richiesta inviata", "wstheme")));
+			$download = isset($_POST['download']) && !empty($_POST['download']) ? sprintf('<br /><br />'.$strings['download'], '<a href="'.$_POST['download'].'" target="_blank">download</a>') : '';
+			wp_send_json_success(array('message' => $strings['msg'].$download, 'response' => $strings['sent']));
 		}
 	}
   wp_die();

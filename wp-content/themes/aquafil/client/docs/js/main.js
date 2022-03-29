@@ -3677,13 +3677,13 @@ ControlsModule.meta = {
 
   var _proto = CardProductDetailComponent.prototype;
 
-  _proto.onRequestInfo = function onRequestInfo(id, product, recipient) {
+  _proto.onRequestInfo = function onRequestInfo(id, product, download, recipient) {
     ModalService.open$({
       src: environment.template.modal.productRequestModal,
       data: {
         id: id,
         productName: product,
-        download: '',
+        download: download,
         recipient: recipient
       }
     }).pipe(operators.first()).subscribe(function (event) {
@@ -4573,6 +4573,8 @@ OpenModallyDirective.meta = {
       this.productName = productName ? productName : this.productName;
       var recipient = data.recipient;
       this.recipient = recipient ? recipient : this.recipient;
+      var download = data.download;
+      this.download = download ? download : this.download;
       console.log('ProductRequestComponent.onInit', id, productName);
     }
 

@@ -40,7 +40,9 @@ if(!empty($_args['section'])) :
 			if(!empty($_args['section']['modal_label_txt_image'])) {
 				$txt_container .= '
 					<div class="text-media-secondary__cta" card-product-detail>
-						<button type="button" class="btn--right" (click)="onRequestInfo(\'product-request\', \''.$_args['section']['modal_label_txt_image'].'\', \''.$product["email_destinatario_prodotto"].'\')"><span>'.$_args['section']['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></button>
+						<button type="button" class="btn--right" (click)="onRequestInfo(\'product-request\', \''.$_args['section']['modal_label_txt_image'].'\', \''.$_args['section']['modal_download_txt_image'].'\', \''.$product["email_destinatario_prodotto"].'\')">
+							<span>'.$_args['section']['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg>
+						</button>
 					</div>';
 			}
 		}

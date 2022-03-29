@@ -4,8 +4,8 @@ import { ModalService } from '../../common/modal/modal.service';
 import { environment } from '../../environment';
 
 export class CardProductDetailComponent extends Component {
-	onRequestInfo(id, product, recipient) {
-		ModalService.open$({ src: environment.template.modal.productRequestModal, data: { id: id, productName: product, download: '', recipient: recipient } }).pipe(
+	onRequestInfo(id, product, download, recipient) {
+		ModalService.open$({ src: environment.template.modal.productRequestModal, data: { id: id, productName: product, download: download, recipient: recipient } }).pipe(
 			first(),
 		).subscribe(event => {
 			console.log('CardProductDetailComponent.open$', event);
