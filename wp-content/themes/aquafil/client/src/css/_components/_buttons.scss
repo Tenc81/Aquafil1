@@ -1,34 +1,6 @@
 a {
 	color: inherit;
 	text-decoration: none;
-
-	&:not([class]) {
-		color: $foreground-primary;
-		transition: color ease-in-out $fast;
-		display: inline-block;
-		position: relative;
-
-		&:after {
-			content: '';
-			position: absolute;
-			width: 100%;
-			height: 1px;
-			left: 0;
-			bottom: 2px;
-			background: currentColor;
-			transform-origin: left;
-			transform: scaleX(0);
-			transition: transform cubic-bezier(0.65, 0.05, 0.36, 1) 350ms;
-		}
-
-		&:hover {
-			color: $foreground-primary;
-
-			&:after {
-				transform: scaleX(1);
-			}
-		}
-	}
 }
 
 %btn-reset {
@@ -453,6 +425,18 @@ a {
 
 .btn--certification {
 	@extend %btn-certification;
+}
+
+.btn--press {
+	@extend %btn-certification;
+	word-break: break-all;
+	max-width: calc(100% - 40px);
+	white-space: normal;
+	margin: 0;
+
+	.icon {
+		padding: 0 var(--p10);
+	}
 }
 
 %btn-plus {

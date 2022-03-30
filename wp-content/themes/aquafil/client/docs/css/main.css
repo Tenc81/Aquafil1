@@ -4961,6 +4961,27 @@ h6 {
 .primary {
   color: var(--foreground-primary) !important; }
 
+.anchors a:not([class]), .text a:not([class]), .control--text a:not([class]), .control--select a:not([class]), .control--custom-select a:not([class]), .newsletter-proposition__email [control-email] .control--text a:not([class]), .card--content__abstract a:not([class]), .title-text__abstract a:not([class]), .title-text__description a:not([class]), .page--product .media-text-secondary__abstract a:not([class]), .page--product-bfc .media-text-secondary__abstract a:not([class]), .page--product-ntf .media-text-secondary__abstract a:not([class]), .page--product-polymers .media-text-secondary__abstract a:not([class]), .page--location-detail .media-text-secondary__abstract a:not([class]), .page--product .text-media-secondary__abstract a:not([class]), .page--product-bfc .text-media-secondary__abstract a:not([class]), .page--product-ntf .text-media-secondary__abstract a:not([class]), .page--product-polymers .text-media-secondary__abstract a:not([class]), .page--location-detail .text-media-secondary__abstract a:not([class]) {
+  color: var(--foreground-primary);
+  transition: color ease-in-out 250ms;
+  display: inline-block;
+  position: relative; }
+  .anchors a:not([class]):after, .text a:not([class]):after, .control--text a:not([class]):after, .control--select a:not([class]):after, .control--custom-select a:not([class]):after, .newsletter-proposition__email [control-email] .control--text a:not([class]):after, .card--content__abstract a:not([class]):after, .title-text__abstract a:not([class]):after, .title-text__description a:not([class]):after, .page--product .media-text-secondary__abstract a:not([class]):after, .page--product-bfc .media-text-secondary__abstract a:not([class]):after, .page--product-ntf .media-text-secondary__abstract a:not([class]):after, .page--product-polymers .media-text-secondary__abstract a:not([class]):after, .page--location-detail .media-text-secondary__abstract a:not([class]):after, .page--product .text-media-secondary__abstract a:not([class]):after, .page--product-bfc .text-media-secondary__abstract a:not([class]):after, .page--product-ntf .text-media-secondary__abstract a:not([class]):after, .page--product-polymers .text-media-secondary__abstract a:not([class]):after, .page--location-detail .text-media-secondary__abstract a:not([class]):after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 2px;
+    background: currentColor;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform cubic-bezier(0.65, 0.05, 0.36, 1) 350ms; }
+  .anchors a:not([class]):hover, .text a:not([class]):hover, .control--text a:not([class]):hover, .control--select a:not([class]):hover, .control--custom-select a:not([class]):hover, .card--content__abstract a:not([class]):hover, .title-text__abstract a:not([class]):hover, .title-text__description a:not([class]):hover, .page--product .media-text-secondary__abstract a:not([class]):hover, .page--product-bfc .media-text-secondary__abstract a:not([class]):hover, .page--product-ntf .media-text-secondary__abstract a:not([class]):hover, .page--product-polymers .media-text-secondary__abstract a:not([class]):hover, .page--location-detail .media-text-secondary__abstract a:not([class]):hover, .page--product .text-media-secondary__abstract a:not([class]):hover, .page--product-bfc .text-media-secondary__abstract a:not([class]):hover, .page--product-ntf .text-media-secondary__abstract a:not([class]):hover, .page--product-polymers .text-media-secondary__abstract a:not([class]):hover, .page--location-detail .text-media-secondary__abstract a:not([class]):hover {
+    color: var(--foreground-primary); }
+    .anchors a:not([class]):hover:after, .text a:not([class]):hover:after, .control--text a:not([class]):hover:after, .control--select a:not([class]):hover:after, .control--custom-select a:not([class]):hover:after, .card--content__abstract a:not([class]):hover:after, .title-text__abstract a:not([class]):hover:after, .title-text__description a:not([class]):hover:after, .page--product .media-text-secondary__abstract a:not([class]):hover:after, .page--product-bfc .media-text-secondary__abstract a:not([class]):hover:after, .page--product-ntf .media-text-secondary__abstract a:not([class]):hover:after, .page--product-polymers .media-text-secondary__abstract a:not([class]):hover:after, .page--location-detail .media-text-secondary__abstract a:not([class]):hover:after, .page--product .text-media-secondary__abstract a:not([class]):hover:after, .page--product-bfc .text-media-secondary__abstract a:not([class]):hover:after, .page--product-ntf .text-media-secondary__abstract a:not([class]):hover:after, .page--product-polymers .text-media-secondary__abstract a:not([class]):hover:after, .page--location-detail .text-media-secondary__abstract a:not([class]):hover:after {
+      transform: scaleX(1); }
+
 /*
 .h1 {
 	font-weight: bold;
@@ -5045,7 +5066,7 @@ h6 {
   line-height: 1.36;
   margin-bottom: 1.11111em; }
 
-.text, body, .control--text, .control--select, .control--custom-select, .newsletter-proposition__email [control-email] .control--text, .card--content__abstract, .title-text__abstract, .title-text__description {
+.text, .control--text, .control--select, .control--custom-select, .newsletter-proposition__email [control-email] .control--text, .card--content__abstract, .title-text__abstract, .title-text__description {
   font-size: Max(15px, Min(21px, 1.09375vw));
   line-height: 1.5; }
 
@@ -5074,6 +5095,10 @@ h6 {
 .nav--service > .nav__item > span, .card--news__date {
   font-size: Max(10px, Min(14px, 0.72916vw));
   line-height: 1.2; }
+
+body {
+  font-size: Max(15px, Min(21px, 1.09375vw));
+  line-height: 1.5; }
 
 p {
   margin: 0 0 0.75em 0; }
@@ -5573,26 +5598,6 @@ p {
 a {
   color: inherit;
   text-decoration: none; }
-  a:not([class]) {
-    color: var(--foreground-primary);
-    transition: color ease-in-out 250ms;
-    display: inline-block;
-    position: relative; }
-    a:not([class]):after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      left: 0;
-      bottom: 2px;
-      background: currentColor;
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform cubic-bezier(0.65, 0.05, 0.36, 1) 350ms; }
-    a:not([class]):hover {
-      color: var(--foreground-primary); }
-      a:not([class]):hover:after {
-        transform: scaleX(1); }
 
 .nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
 .nav--main > li > button,
@@ -5607,7 +5612,7 @@ a {
 .nav--footer ul > li > button,
 .nav--dropdown > li > button,
 .nav--options > li > button,
-.nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .page--investors__downloads-item .btn--investor, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
+.nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .btn--press, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
 .btn--next, .btn--up,
 .btn--down, .btn--gallery-prev,
 .btn--gallery-next, .section--index .title, .nav--index > .nav__item > a,
@@ -5635,7 +5640,7 @@ a {
   .nav--footer ul > li > button,
   .nav--dropdown > li > button,
   .nav--options > li > button,
-  .nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .page--investors__downloads-item .btn--investor, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
+  .nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .btn--press, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
   .btn--next, .btn--up,
   .btn--down, .btn--gallery-prev,
   .btn--gallery-next, .section--index .title, .nav--index > .nav__item > a,
@@ -5652,7 +5657,7 @@ a {
   .nav--footer ul > li > button:active,
   .nav--dropdown > li > button:active,
   .nav--options > li > button:active,
-  .nav--index > li > button:active, .btn:active, .modal-outlet .btn--close:active, .btn--link:active, .group--form--checkbox label > span > a:active, .group--form--privacy label > span > a:active, .btn--primary:active, .btn--more:active, .btn--download:active, .btn--right:active, .btn--certification:active, .btn--plus:active, .zoom-button:active, .btn--more-md:active, .btn--category:active, .btn--submit:active, .btn--search:active, .btn--logo:active, .btn--menu:active, .btn--investor:active, .page--investors .header .btn--back:active, .btn--websolute:active, .btn--prev:active,
+  .nav--index > li > button:active, .btn:active, .modal-outlet .btn--close:active, .btn--link:active, .group--form--checkbox label > span > a:active, .group--form--privacy label > span > a:active, .btn--primary:active, .btn--more:active, .btn--download:active, .btn--right:active, .btn--certification:active, .btn--press:active, .btn--plus:active, .zoom-button:active, .btn--more-md:active, .btn--category:active, .btn--submit:active, .btn--search:active, .btn--logo:active, .btn--menu:active, .btn--investor:active, .page--investors .header .btn--back:active, .btn--websolute:active, .btn--prev:active,
   .btn--next:active, .btn--up:active,
   .btn--down:active, .btn--gallery-prev:active,
   .btn--gallery-next:active, .section--index .title:active, .nav--index > .nav__item > a:active,
@@ -5669,7 +5674,7 @@ a {
   .nav--footer ul > li > button:focus,
   .nav--dropdown > li > button:focus,
   .nav--options > li > button:focus,
-  .nav--index > li > button:focus, .btn:focus, .modal-outlet .btn--close:focus, .btn--link:focus, .group--form--checkbox label > span > a:focus, .group--form--privacy label > span > a:focus, .btn--primary:focus, .btn--more:focus, .btn--download:focus, .btn--right:focus, .btn--certification:focus, .btn--plus:focus, .zoom-button:focus, .btn--more-md:focus, .btn--category:focus, .btn--submit:focus, .btn--search:focus, .btn--logo:focus, .btn--menu:focus, .btn--investor:focus, .page--investors .header .btn--back:focus, .btn--websolute:focus, .btn--prev:focus,
+  .nav--index > li > button:focus, .btn:focus, .modal-outlet .btn--close:focus, .btn--link:focus, .group--form--checkbox label > span > a:focus, .group--form--privacy label > span > a:focus, .btn--primary:focus, .btn--more:focus, .btn--download:focus, .btn--right:focus, .btn--certification:focus, .btn--press:focus, .btn--plus:focus, .zoom-button:focus, .btn--more-md:focus, .btn--category:focus, .btn--submit:focus, .btn--search:focus, .btn--logo:focus, .btn--menu:focus, .btn--investor:focus, .page--investors .header .btn--back:focus, .btn--websolute:focus, .btn--prev:focus,
   .btn--next:focus, .btn--up:focus,
   .btn--down:focus, .btn--gallery-prev:focus,
   .btn--gallery-next:focus, .section--index .title:focus, .nav--index > .nav__item > a:focus,
@@ -5686,7 +5691,7 @@ a {
   .nav--footer ul > li > button:hover,
   .nav--dropdown > li > button:hover,
   .nav--options > li > button:hover,
-  .nav--index > li > button:hover, .btn:hover, .modal-outlet .btn--close:hover, .btn--link:hover, .group--form--checkbox label > span > a:hover, .group--form--privacy label > span > a:hover, .btn--primary:hover, .btn--more:hover, .btn--download:hover, .btn--right:hover, .btn--certification:hover, .btn--plus:hover, .zoom-button:hover, .btn--more-md:hover, .btn--category:hover, .btn--submit:hover, .btn--search:hover, .btn--logo:hover, .btn--menu:hover, .btn--investor:hover, .page--investors .header .btn--back:hover, .btn--websolute:hover, .btn--prev:hover,
+  .nav--index > li > button:hover, .btn:hover, .modal-outlet .btn--close:hover, .btn--link:hover, .group--form--checkbox label > span > a:hover, .group--form--privacy label > span > a:hover, .btn--primary:hover, .btn--more:hover, .btn--download:hover, .btn--right:hover, .btn--certification:hover, .btn--press:hover, .btn--plus:hover, .zoom-button:hover, .btn--more-md:hover, .btn--category:hover, .btn--submit:hover, .btn--search:hover, .btn--logo:hover, .btn--menu:hover, .btn--investor:hover, .page--investors .header .btn--back:hover, .btn--websolute:hover, .btn--prev:hover,
   .btn--next:hover, .btn--up:hover,
   .btn--down:hover, .btn--gallery-prev:hover,
   .btn--gallery-next:hover, .section--index .title:hover, .nav--index > .nav__item > a:hover,
@@ -5703,7 +5708,7 @@ a {
   .nav--footer ul > li > button:visited,
   .nav--dropdown > li > button:visited,
   .nav--options > li > button:visited,
-  .nav--index > li > button:visited, .btn:visited, .modal-outlet .btn--close:visited, .btn--link:visited, .group--form--checkbox label > span > a:visited, .group--form--privacy label > span > a:visited, .btn--primary:visited, .btn--more:visited, .btn--download:visited, .btn--right:visited, .btn--certification:visited, .btn--plus:visited, .zoom-button:visited, .btn--more-md:visited, .btn--category:visited, .btn--submit:visited, .btn--search:visited, .btn--logo:visited, .btn--menu:visited, .btn--investor:visited, .page--investors .header .btn--back:visited, .btn--websolute:visited, .btn--prev:visited,
+  .nav--index > li > button:visited, .btn:visited, .modal-outlet .btn--close:visited, .btn--link:visited, .group--form--checkbox label > span > a:visited, .group--form--privacy label > span > a:visited, .btn--primary:visited, .btn--more:visited, .btn--download:visited, .btn--right:visited, .btn--certification:visited, .btn--press:visited, .btn--plus:visited, .zoom-button:visited, .btn--more-md:visited, .btn--category:visited, .btn--submit:visited, .btn--search:visited, .btn--logo:visited, .btn--menu:visited, .btn--investor:visited, .page--investors .header .btn--back:visited, .btn--websolute:visited, .btn--prev:visited,
   .btn--next:visited, .btn--up:visited,
   .btn--down:visited, .btn--gallery-prev:visited,
   .btn--gallery-next:visited, .section--index .title:visited, .nav--index > .nav__item > a:visited,
@@ -5711,7 +5716,7 @@ a {
     color: inherit;
     text-decoration: none;
     outline: none; }
-  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .page--investors__downloads-item .btn--investor svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
+  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .btn--press svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
     fill: currentColor; }
 
 .nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
@@ -5727,14 +5732,14 @@ a {
 .nav--footer ul > li > button,
 .nav--dropdown > li > button,
 .nav--options > li > button,
-.nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .page--investors__downloads-item .btn--investor, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
+.nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .btn--press, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
 .btn--next, .btn--up,
 .btn--down, .btn--gallery-prev,
 .btn--gallery-next, .section--index .title, .nav--index > .nav__item > a,
 .nav--index > .nav__item > span {
   transition: ease-in-out 250ms;
   transition-property: background-color, color, border, opacity; }
-  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .page--investors__downloads-item .btn--investor svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
+  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .btn--press svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
     fill: currentColor;
     transition: ease-in-out 250ms;
     transition-property: fill, opacity; }
@@ -5751,7 +5756,7 @@ a {
   .nav--footer ul > li > button[disabled],
   .nav--dropdown > li > button[disabled],
   .nav--options > li > button[disabled],
-  .nav--index > li > button[disabled], .btn[disabled], .modal-outlet .btn--close[disabled], .btn--link[disabled], .group--form--checkbox label > span > a[disabled], .group--form--privacy label > span > a[disabled], .btn--primary[disabled], .btn--more[disabled], .btn--download[disabled], .btn--right[disabled], .btn--certification[disabled], .btn--plus[disabled], .zoom-button[disabled], .btn--more-md[disabled], .btn--category[disabled], .btn--submit[disabled], .btn--search[disabled], .btn--logo[disabled], .btn--menu[disabled], .btn--investor[disabled], .page--investors .header .btn--back[disabled], .btn--websolute[disabled], .btn--prev[disabled],
+  .nav--index > li > button[disabled], .btn[disabled], .modal-outlet .btn--close[disabled], .btn--link[disabled], .group--form--checkbox label > span > a[disabled], .group--form--privacy label > span > a[disabled], .btn--primary[disabled], .btn--more[disabled], .btn--download[disabled], .btn--right[disabled], .btn--certification[disabled], .btn--press[disabled], .btn--plus[disabled], .zoom-button[disabled], .btn--more-md[disabled], .btn--category[disabled], .btn--submit[disabled], .btn--search[disabled], .btn--logo[disabled], .btn--menu[disabled], .btn--investor[disabled], .page--investors .header .btn--back[disabled], .btn--websolute[disabled], .btn--prev[disabled],
   .btn--next[disabled], .btn--up[disabled],
   .btn--down[disabled], .btn--gallery-prev[disabled],
   .btn--gallery-next[disabled], .section--index .title[disabled], .nav--index > .nav__item > a[disabled],
@@ -5854,36 +5859,44 @@ a {
   .btn--right {
     min-width: 20vw; } }
 
-.btn--certification, .page--investors__downloads-item .btn--investor, .page--investors__downloads-item .page--investors .header .btn--back, .page--investors .header .page--investors__downloads-item .btn--back {
+.btn--certification, .btn--press {
   font-size: Max(11px, Min(18px, 0.9375vw));
   line-height: 1.38;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   min-height: var(--p60); }
-  .btn--certification > span, .page--investors__downloads-item .btn--investor > span, .page--investors__downloads-item .page--investors .header .btn--back > span, .page--investors .header .page--investors__downloads-item .btn--back > span {
+  .btn--certification > span, .btn--press > span {
     display: flex;
     align-items: center;
     padding: var(--p10) var(--p20); }
-  .btn--certification > .icon, .page--investors__downloads-item .btn--investor > .icon, .page--investors__downloads-item .page--investors .header .btn--back > .icon, .page--investors .header .page--investors__downloads-item .btn--back > .icon {
+  .btn--certification > .icon, .btn--press > .icon {
     background-color: var(--foreground-primary);
     color: var(--foreground-negative);
     padding: 0 var(--p10); }
-  .btn--certification, .page--investors__downloads-item .btn--investor, .page--investors__downloads-item .page--investors .header .btn--back, .page--investors .header .page--investors__downloads-item .btn--back, .btn--certification:active, .page--investors__downloads-item .btn--investor:active, .page--investors__downloads-item .page--investors .header .btn--back:active, .page--investors .header .page--investors__downloads-item .btn--back:active, .btn--certification:focus, .page--investors__downloads-item .btn--investor:focus, .page--investors__downloads-item .page--investors .header .btn--back:focus, .page--investors .header .page--investors__downloads-item .btn--back:focus, .btn--certification:visited, .page--investors__downloads-item .btn--investor:visited, .page--investors__downloads-item .page--investors .header .btn--back:visited, .page--investors .header .page--investors__downloads-item .btn--back:visited {
+  .btn--certification, .btn--press, .btn--certification:active, .btn--press:active, .btn--certification:focus, .btn--press:focus, .btn--certification:visited, .btn--press:visited {
     background-color: var(--background-quaternary);
     color: var(--foreground); }
-  .btn--certification:hover, .page--investors__downloads-item .btn--investor:hover, .page--investors__downloads-item .page--investors .header .btn--back:hover, .page--investors .header .page--investors__downloads-item .btn--back:hover {
+  .btn--certification:hover, .btn--press:hover {
     background-color: var(--background-primary);
     color: var(--foreground-negative); }
   @media (min-width: 1024px) {
-    .btn--certification svg, .page--investors__downloads-item .btn--investor svg, .page--investors__downloads-item .page--investors .header .btn--back svg, .page--investors .header .page--investors__downloads-item .btn--back svg {
+    .btn--certification svg, .btn--press svg {
       width: 33px;
       height: 29px; } }
   @media (max-width: 1023.98px) {
-    .btn--certification svg, .page--investors__downloads-item .btn--investor svg, .page--investors__downloads-item .page--investors .header .btn--back svg, .page--investors .header .page--investors__downloads-item .btn--back svg {
+    .btn--certification svg, .btn--press svg {
       width: 24px;
       height: 24px;
       margin: 5px; } }
+
+.btn--press {
+  word-break: break-all;
+  max-width: calc(100% - 40px);
+  white-space: normal;
+  margin: 0; }
+  .btn--press .icon {
+    padding: 0 var(--p10); }
 
 .btn--plus, .zoom-button {
   padding: var(--p20);
@@ -9398,7 +9411,9 @@ input[type="search"]::-webkit-search-results-decoration {
     .text-media-secondary {
       padding: var(--p80) 0; }
       .text-media-secondary__picture {
-        margin-bottom: var(--p80); } }
+        margin-bottom: var(--p80); }
+      .text-media-secondary__cta {
+        margin-bottom: 40px; } }
 
 .quote {
   position: relative;
@@ -10186,9 +10201,9 @@ input[type="search"]::-webkit-search-results-decoration {
       font-size: 18px;
       margin-bottom: 40px; } }
 
-.page--investors .btn--certification, .page--investors .page--investors__downloads-item .btn--investor, .page--investors__downloads-item .page--investors .btn--investor, .page--investors__downloads-item .page--investors .header .btn--back, .page--investors .header .page--investors__downloads-item .btn--back {
+.page--investors .btn--certification {
   color: #3D5D6C; }
-  .page--investors .btn--certification:hover, .page--investors .page--investors__downloads-item .btn--investor:hover, .page--investors__downloads-item .page--investors .btn--investor:hover, .page--investors__downloads-item .page--investors .header .btn--back:hover, .page--investors .header .page--investors__downloads-item .btn--back:hover {
+  .page--investors .btn--certification:hover {
     color: var(--foreground-negative); }
 
 .page--investors__downloads {
@@ -10199,10 +10214,6 @@ input[type="search"]::-webkit-search-results-decoration {
   flex: 100%;
   width: 100%;
   margin-bottom: 30px; }
-  .page--investors__downloads-item .btn--investor, .page--investors__downloads-item .page--investors .header .btn--back, .page--investors .header .page--investors__downloads-item .btn--back {
-    margin: 0; }
-    .page--investors__downloads-item .btn--investor .icon, .page--investors__downloads-item .page--investors .header .btn--back .icon, .page--investors .header .page--investors__downloads-item .btn--back .icon {
-      padding: 0 var(--p10); }
   @media (min-width: 1024px) {
     .page--investors__downloads-item {
       max-width: 50%;
@@ -10220,40 +10231,6 @@ input[type="search"]::-webkit-search-results-decoration {
       .page--investors__downloads-item:nth-child(2n) {
         padding-left: 40px;
         padding-right: 0; } }
-
-.page--investors .btn--calendar {
-  min-height: var(--p60);
-  background-color: #F1F1F1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px; }
-  .page--investors .btn--calendar .left {
-    min-height: var(--p60);
-    flex: 100%;
-    color: var(--foreground-negative);
-    background: var(--foreground);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: inherit;
-    padding: 0 40px; }
-    @media (min-width: 1024px) {
-      .page--investors .btn--calendar .left {
-        flex: initial;
-        font-size: 28px;
-        font-weight: var(--font-semibold); } }
-  .page--investors .btn--calendar .right {
-    background-color: #F1F1F1;
-    flex: 100%;
-    padding: 20px; }
-    @media (min-width: 1024px) {
-      .page--investors .btn--calendar .right {
-        flex: 1; } }
-  @media (min-width: 1024px) {
-    .page--investors .btn--calendar {
-      margin-bottom: 40px; } }
 
 .page--investors__accordion {
   margin-top: 30px; }
@@ -10355,8 +10332,93 @@ input[type="search"]::-webkit-search-results-decoration {
   .page--investors .gray-card__name {
     font-weight: var(--font-semibold); }
 
-.page--investors .page--investors__content .btn--certification, .page--investors .page--investors__content .page--investors__downloads-item .btn--investor, .page--investors__downloads-item .page--investors .page--investors__content .btn--investor, .page--investors__downloads-item .page--investors .page--investors__content .header .btn--back, .page--investors__downloads-item .page--investors .header .page--investors__content .btn--back, .page--investors .page--investors__content .header .page--investors__downloads-item .btn--back, .page--investors .header .page--investors__downloads-item .page--investors__content .btn--back {
+.page--investors .page--investors__content .btn--certification {
   max-width: 600px; }
+
+.card--calendar__date {
+  padding: 7px 13px;
+  font-size: 18px;
+  background: var(--background-negative);
+  color: var(--foreground-negative); }
+
+@media (min-width: 1024px) {
+  .card--calendar {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #F1F1F1; }
+    .card--calendar__left {
+      flex: 0 0 130px;
+      padding: 20px 0; }
+    .card--calendar__right {
+      flex: 1 0 calc(100% - 130px);
+      padding: 20px; }
+    .card--calendar__date {
+      display: block; }
+    .card--calendar__description {
+      display: block; } }
+
+@media (max-width: 1023.98px) {
+  .card--calendar {
+    margin-bottom: 20px; }
+    .card--calendar__left {
+      margin-bottom: 10px; } }
+
+.table {
+  margin: 20px 0;
+  padding: 5px 15px;
+  font-size: 0.8em;
+  background: #f4f4f4; }
+  @media (min-width: 1024px) {
+    .table {
+      display: flex;
+      flex-direction: column; }
+      .table__row {
+        display: flex; }
+        .table__row--head, .table__row--foot {
+          text-transform: uppercase;
+          font-size: 0.8em;
+          font-weight: 600; }
+        .table__row--head {
+          border-bottom: 1px solid #c1c1c1; }
+        .table__row--foot {
+          border-top: 1px solid #c1c1c1; }
+      .table__cell {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 4px 0; }
+        .table__cell[data-align="right"] {
+          justify-content: flex-end;
+          text-align: right; }
+      .table .table__cell + .table__cell {
+        margin-left: 5px; } }
+  @media (max-width: 1023.98px) {
+    .table__row--head {
+      display: none; }
+    .table__row--foot {
+      display: flex;
+      text-transform: uppercase;
+      font-size: 0.8em;
+      font-weight: 600; }
+      .table__row--foot .table__cell {
+        flex: 1;
+        align-items: center; }
+    .table__row:not(:last-child) {
+      margin-bottom: 7px;
+      padding: 7px 0;
+      border-bottom: 1px solid #c1c1c1;
+      line-height: 1.2; }
+    .table__cell {
+      display: flex;
+      padding: 4px 0; }
+      .table__cell[data-title]:before {
+        content: attr(data-title);
+        text-transform: uppercase;
+        font-size: 0.8em;
+        font-weight: 600; }
+      .table__cell[data-title]:before,
+      .table__cell[data-title] .table__value {
+        flex: 1; } }
 
 .page--investor__menu-toggle {
   position: absolute;

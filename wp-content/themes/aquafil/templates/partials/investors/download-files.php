@@ -19,7 +19,7 @@ if(!empty($_args['section'])) :
 			echo '
 				<div class="page--investors__downloads-item">
 					<p class="page--investors__downloads-item-label">'.$download['etichetta_download_file'].'</p>
-					<a href="'.$download['download_file']['url'].'" download="'.$download['download_file']['filename'].'" class="btn--investor"><span>'.strtoupper($download['download_file']['subtype']).' - '.$filesize.'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
+					<a href="'.$download['download_file']['url'].'" download="'.$download['download_file']['filename'].'" class="btn--press"><span>'.strtoupper($download['download_file']['subtype']).' - '.$filesize.'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
 				</div>';
 		}
 		echo '
