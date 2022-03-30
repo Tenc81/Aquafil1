@@ -26,7 +26,7 @@ if(!empty($_args['section'])) :
                 <strong>'.$content['pretitolo_contenuto'].'</strong><br>
                 '.$content['titolo_contenuto'].'
               </p>
-              <a href="'.$download['download_file']['url'].'" download="'.$content['contenuto']['filename'].'" class="btn--press"><span>'.strtoupper($content['contenuto']['subtype']).' - '.$filesize.'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
+              <a href="'.$content['contenuto']['url'].'" download="'.$content['contenuto']['filename'].'" class="btn--press"><span>'.strtoupper($content['contenuto']['subtype']).' - '.$filesize.'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>
 						</div>';
 				}
 				?>

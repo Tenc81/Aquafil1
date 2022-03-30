@@ -1097,6 +1097,8 @@ function custom_query($query) {
       $query->set('posts_per_page', 12);
 		} elseif(is_tax("localnews_category")) {
       $query->set('posts_per_page', 12);
+		} elseif(is_post_type_archive('sedi')) {
+      $query->set('posts_per_page', -1);
 		}
   }
 }
