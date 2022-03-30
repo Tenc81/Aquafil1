@@ -7,8 +7,10 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['section'])) :
 ?>
-<section <?= setAnchor($_args['section']); ?>>
+<section <?= setAnchor($_args['section']); ?>>  
+  <?php if(!empty($_args['section']['titolo_highlighted_date'])) { ?>				
   <h2 class="page--investors__section-title"><?= $_args['section']['titolo_highlighted_date']; ?></h2>
+  <?php } ?>
   <div class="card--calendar">    
 		<div class="card--calendar__left">
       <span class="card--calendar__date"><?= $_args['section']['data_highlighted_date']; ?></span>

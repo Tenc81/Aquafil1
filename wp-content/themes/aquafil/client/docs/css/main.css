@@ -10152,12 +10152,7 @@ input[type="search"]::-webkit-search-results-decoration {
     color: var(--foreground-negative) !important; }
 
 .page--investors .main {
-  color: #3D5D6C;
-  font-size: 14px; }
-  .page--investors .main section {
-    padding-bottom: 20px; }
-    .page--investors .main section:last-child {
-      padding-bottom: 80px; }
+  color: #3D5D6C; }
   @media (min-width: 1024px) {
     .page--investors .main {
       font-size: 16px; }
@@ -10165,6 +10160,13 @@ input[type="search"]::-webkit-search-results-decoration {
         padding-bottom: 40px; }
         .page--investors .main section:last-child {
           padding-bottom: 160px; } }
+  @media (max-width: 1023.98px) {
+    .page--investors .main {
+      font-size: 14px; }
+      .page--investors .main section {
+        padding-bottom: 20px; }
+        .page--investors .main section:last-child {
+          padding-bottom: 80px; } }
 
 .page--investors .sticky-menu .nav__item {
   margin: 20px 10px; }
@@ -10344,13 +10346,12 @@ input[type="search"]::-webkit-search-results-decoration {
 @media (min-width: 1024px) {
   .card--calendar {
     display: flex;
-    margin-bottom: 20px;
     background-color: #F1F1F1; }
     .card--calendar__left {
-      flex: 0 0 130px;
-      padding: 20px 0; }
+      flex: 0 0 150px;
+      padding: 20px 0 20px 20px; }
     .card--calendar__right {
-      flex: 1 0 calc(100% - 130px);
+      flex: 1 0 calc(100% - 150px);
       padding: 20px; }
     .card--calendar__date {
       display: block; }
@@ -10359,9 +10360,17 @@ input[type="search"]::-webkit-search-results-decoration {
 
 @media (max-width: 1023.98px) {
   .card--calendar {
-    margin-bottom: 20px; }
+    padding: 15px;
+    background-color: #F1F1F1; }
     .card--calendar__left {
-      margin-bottom: 10px; } }
+      margin-bottom: 10px; }
+    .card--calendar__date {
+      display: inline-block; }
+    .card--calendar__description {
+      display: inline-block; } }
+
+.card--calendar + .card--calendar {
+  margin-top: 20px; }
 
 .table {
   margin: 20px 0;
