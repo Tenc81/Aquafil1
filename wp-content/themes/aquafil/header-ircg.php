@@ -62,15 +62,15 @@
 								<div class="header__main">
 									<div class="header__logo">
 										<?php
-										$cposts = get_posts(array(
-											"post_type" => get_post_type(),
-											"posts_per_page" => 1,
-											"post_status" => "publish",
-											"orderby" => array("menu_order" => "ASC", "post_name" => "ASC")
-										));
-										$hurl = !empty($cposts) ? get_permalink($cposts[0]) : home_url();
+										//$cposts = get_posts(array(
+										//  "post_type" => get_post_type(),
+										//  "posts_per_page" => 1,
+										//  "post_status" => "publish",
+										//  "orderby" => array("menu_order" => "ASC", "post_name" => "ASC")
+										//));
+										//$hurl = !empty($cposts) ? get_permalink($cposts[0]) : home_url();
 										?>
-										<a href="<?= $hurl; ?>" class="btn--logo">
+										<a href="<?= home_url();//$hurl; ?>" class="btn--logo">
 											<svg>
 												<use xlink:href="#aquafil"></use>
 											</svg>

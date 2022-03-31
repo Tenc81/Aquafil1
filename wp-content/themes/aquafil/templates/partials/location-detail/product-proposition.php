@@ -35,6 +35,21 @@ if(!empty($_args['section'])) :
 			</div>';			
 		if(!empty($filters)) {
 			echo '
+				<script>
+				(function($) {
+					$(".history-filter").on("click", function() {
+						var $container = $(this).closest(".horizontal-menu").next(".product-proposition");
+						$container.find(".listing__item").show();
+						$("[class$=-details]").hide();
+						$(".history-filter").removeClass("active");
+						$(this).addClass("active");
+						if($(this).attr("data-filter")!="all" && $(this).not(".active")) {
+							$container.find(".listing__item").not("."+$(this).attr("data-filter")).hide();
+							$("."+$(this).attr("data-filter")+"-details").show();
+						}
+					});
+				})(jQuery);
+				</script>
 				<div class="horizontal-menu">
 					<div class="container-fluid">
 						<div class="row">
@@ -53,21 +68,7 @@ if(!empty($_args['section'])) :
 							</div>
 						</div>
 					</div>
-				</div>
-				<script>
-				(function($) {
-					$(".history-filter").on("click", function() {
-						$(".listing__item").show();
-						$("[class$=-details]").hide();
-						$(".history-filter").removeClass("active");
-						$(this).addClass("active");
-						if($(this).attr("data-filter")!="all" && $(this).not(".active")) {
-							$(".listing__item").not("."+$(this).attr("data-filter")).hide();
-							$("."+$(this).attr("data-filter")+"-details").show();
-						}
-					});
-				})(jQuery);
-				</script>';
+				</div>';
 		}
 	}
 ?>
