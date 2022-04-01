@@ -28,7 +28,7 @@
 
 @include make-padding-vars();
 
-@include media-between(md, lg) {
+@include media-only(md) {
 	@for $i from 1 through 20 {
 		.o-md-#{$i} {
 			order: $i;
@@ -36,7 +36,7 @@
 	}
 }
 
-@include media-between(sm, md) {
+@include media-only(sm) {
 	@for $i from 1 through 20 {
 		.o-sm-#{$i} {
 			order: $i;
@@ -44,7 +44,7 @@
 	}
 }
 
-@include media-down(sm) {
+@include media-down(xs) {
 	@for $i from 1 through 20 {
 		.o-#{$i} {
 			order: $i;
