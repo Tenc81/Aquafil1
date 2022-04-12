@@ -1,4 +1,6 @@
 <?php
+return; // provvisorio
+
 if(is_singular()) {
 	$action = get_permalink();
 } elseif(is_home()) {

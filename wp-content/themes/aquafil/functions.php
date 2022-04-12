@@ -1237,4 +1237,100 @@ add_filter('wpseo_save_indexable', function($indexable) {
   add_filter('wpseo_metadesc', 'wpml_wpseo_desc', 10, 2);
   add_filter('wpseo_opengraph_desc', 'wpml_wpseo_desc', 10, 2);
 //}
- 
+
+
+function fwps_term_link_filter( $url, $term, $taxonomy ) {
+    // change the industry to the name of your taxonomy
+    if ( 'industry' === $taxonomy ) {
+        $url = home_url() . '?fwp_industries_dropdown=' . $term->slug;
+    }
+    return $url;
+}
+//add_filter('term_link', 'fwps_term_link_filter', 10, 3);
+
+
+function product_page_link($permalink, $post_id) {
+  if (empty($post_id)) return $permalink;
+	if(is_page_template("page-product.php")) {
+		$permalink = preg_replace('@('.get_post_field("post_name", $post_id).'/?)@', 'products/$1', $permalink);
+	}
+  return $permalink;
+}
+add_filter('page_link', 'product_page_link', 10, 2);
+
+
+function redirect_product_page_url() {
+	if(is_page_template("page-product.php") && strpos($_SERVER["REQUEST_URI"], "products") === false) {
+		wp_redirect("/products".$_SERVER["REQUEST_URI"]);
+    exit();
+	}
+}
+add_action('template_redirect', 'redirect_product_page_url');
+
+
+function mytheme_do_not_redirect_city_post_type( $redirect, $post_id, $query ) {
+	if(get_page_template_slug($post_id) == "page-product.php") {
+		if(strpos($_SERVER["REQUEST_URI"], "products") !== false) {
+      return false;
+    }
+	}
+  return $redirect;
+};
+add_filter( 'wpml_is_redirected', 'mytheme_do_not_redirect_city_post_type', 10, 3 );
+
+
+function filter_rewrite_rules_array($rules) {
+  $new_rules = array();
+	$terms = get_terms(array(
+		'taxonomy' => 'local_news',
+		'hide_empty' => false,
+		'fields' => 'slugs'
+	));
+	foreach($terms as $term) {
+		$new_rules['('.$term.')/?$'] = 'index.php?category_name=$matches[1]'; // categorie local news
+	}
+	$slug = get_post_field("post_name", get_option("page_for_posts"));
+	if($slug) {
+	$rules['('.$slug.')/?$'] = 'index.php?pagename=$matches[1]'; // sovrascrittura categoria magazine con pagina blog magazine
+	}
+	$new_rules['^products/(.+)/?$'] = 'index.php?pagename=$matches[1]'; // pagine di prodotto
+  return $new_rules + $rules;
+};
+add_filter('rewrite_rules_array', 'filter_rewrite_rules_array', 10, 1);
+
+
+
+
+
+function debug_page_request() {
+    if(!is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
+        global $wp, $template;
+        echo '<!--'.PHP_EOL;
+        echo 'Request: '. esc_html($wp->request) .PHP_EOL;
+        echo 'Matched Rewrite Rules: '. esc_html($wp->matched_rule) .PHP_EOL;
+        echo 'Matched Query: '. esc_html($wp->matched_query).PHP_EOL;
+        echo 'Loaded Template: '. esc_html(basename($template)) .PHP_EOL;
+        preg_match('/'.str_replace('/', '\/', $wp->matched_rule).'/', $wp->request, $matches);
+        if(!empty($matches))
+            print_r($matches);
+        echo '-->'.PHP_EOL;
+    }
+}
+add_action('wp_footer', 'debug_page_request');
+
+function debug_scripts_queued() {
+    if(!is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
+        global $wp_scripts;
+        echo '<!--- SCRIPTS TROVATI'."\r\n";
+        foreach ( $wp_scripts->queue as $script ) {
+            echo "\r\nSCRIPT: ".$script."\r\n";
+            $deps = $wp_scripts->registered[$script]->deps;
+            if ($deps) {
+                echo "DIPENDENZE: ";
+                print_r($deps);
+            }
+        }
+        echo "\r\n--->";
+	}
+}
+add_action('wp_footer', 'debug_scripts_queued');

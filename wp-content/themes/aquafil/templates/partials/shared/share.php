@@ -8,17 +8,17 @@ $sharecontent = htmlentities(get_the_excerpt());
 			<div class="news-detail-content__text">
 				<div class="share">
 					<p class="share__text"><?= __("Condividi", "wstheme"); ?></p>
-					<a class="share__link" target="_blank" rel="nofollow" href="//www.facebook.com/sharer/sharer.php?u=<?= $sharelink; ?>&amp;src=sdkpreparse">
+					<a class="share__link" target="_blank" rel="noindex,nofollow" href="//www.facebook.com/sharer/sharer.php?u=<?= $sharelink; ?>&amp;src=sdkpreparse">
 						<svg class="facebook">
 							<use xlink:href="#facebook"></use>
 						</svg>
 					</a>
-					<a class="share__link" target="_blank" rel="nofollow" href="//twitter.com/intent/tweet?text=<?= wp_trim_words($sharecontent, 30)."@AquafilSpa"; ?>&url=<?= $sharelink; ?>">
+					<a class="share__link" target="_blank" rel="noindex,nofollow" href="//twitter.com/intent/tweet?text=<?= wp_trim_words($sharecontent, 30)."@AquafilSpa"; ?>&url=<?= $sharelink; ?>">
 						<svg class="twitter">
 							<use xlink:href="#twitter"></use>
 						</svg>
 					</a>
-					<a class="share__link" target="_blank" rel="nofollow" href="//www.linkedin.com/shareArticle?mini=true&url=<?= str_replace('http:', 'https:', $sharelink); ?>&title=<?= get_the_title(); ?>&summary=<?= $sharecontent; ?>&source=<?= get_bloginfo('name'); ?>">
+					<a class="share__link" target="_blank" rel="noindex,nofollow" href="//www.linkedin.com/shareArticle?mini=true&url=<?= str_replace('http:', 'https:', $sharelink); ?>&title=<?= get_the_title(); ?>&summary=<?= $sharecontent; ?>&source=<?= get_bloginfo('name'); ?>">
 						<svg class="linkedin">
 							<use xlink:href="#linkedin"></use>
 						</svg>

@@ -4,8 +4,8 @@
 			</div>
 		</div>
 		<?php wp_footer(); ?>
-		<script src="js/vendors.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="js/vendors.min.js?v=<?= filemtime(get_theme_file_path('/client/docs/js/vendors.min.js')) ?>"></script>
+		<script src="js/main.js?v=<?= filemtime(get_theme_file_path('/client/docs/js/main.js')) ?>"></script>
 		<?php if((is_tax("settori-sedi") && get_queried_object_id() == $filter->term_id) || is_tax("nazione-sedi")) : ?>
 		<script>
 			jQuery('.nav--horizontal-menu .nav__item a').on('click', function () {

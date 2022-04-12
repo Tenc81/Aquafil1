@@ -37,7 +37,7 @@ if(!empty($_args['section'])) :
 			echo '
 				<script>
 				(function($) {
-					$(".history-filter").on("click", function() {
+					$("body").on("click", ".history-filter", function() {
 						var $container = $(this).closest(".horizontal-menu").next(".product-proposition");
 						$container.find(".listing__item").show();
 						$("[class$=-details]").hide();

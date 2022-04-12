@@ -32,8 +32,8 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<!--<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">-->
-		<link rel="stylesheet" href="css/vendors.min.css" />
-		<link rel="stylesheet" href="css/main.min.css" />
+		<link rel="stylesheet" href="css/vendors.min.css?v=<?= filemtime(get_theme_file_path('/client/docs/css/vendors.min.css')) ?>" />
+		<link rel="stylesheet" href="css/main.min.css?v=<?= filemtime(get_theme_file_path('/client/docs/css/main.min.css')) ?>" />
 		<?php wp_head() ?>
 		<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="33aabc39-1f1a-4433-8a07-23df0f5c4270" data-blockingmode="auto" type="text/javascript"></script>
 	</head>

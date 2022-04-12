@@ -46,7 +46,7 @@
 			if(is_active_sidebar("social-widget")) {
 				dynamic_sidebar("social-widget");
 			}
-				?>
+			?>
 		</div>
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2">

@@ -38,7 +38,7 @@ if(!empty($_args['section'])) :
 				</div>
 				<script>
 				(function($) {
-					$(".history-filter").on("click", function() {
+					$("body").on("click", ".history-filter", function() {
 						$(".listing__item").show();
 						$(".history-filter").removeClass("active");
 						$(this).addClass("active");

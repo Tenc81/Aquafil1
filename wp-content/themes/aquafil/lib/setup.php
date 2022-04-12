@@ -192,6 +192,9 @@ function register_cposts_taxonomies() {
 		'show_in_rest' => true, // necessario per WP5
 		//'rest_base' => 'trasporti',
 		//'rest_controller_class' => 'WP_REST_Terms_Controller',
+		'rewrite' => array(
+			'slug' => 'magazine'
+		),
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true,
