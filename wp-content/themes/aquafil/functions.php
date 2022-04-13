@@ -1251,7 +1251,7 @@ function fwps_term_link_filter( $url, $term, $taxonomy ) {
 
 function product_page_link($permalink, $post_id) {
   if (empty($post_id)) return $permalink;
-	if(is_page_template("page-product.php")) {
+	if(get_page_template_slug($post_id) == "page-product.php") {
 		$permalink = preg_replace('@('.get_post_field("post_name", $post_id).'/?)@', 'products/$1', $permalink);
 	}
   return $permalink;
@@ -1260,7 +1260,8 @@ add_filter('page_link', 'product_page_link', 10, 2);
 
 
 function redirect_product_page_url() {
-	if(is_page_template("page-product.php") && strpos($_SERVER["REQUEST_URI"], "products") === false) {
+	global $post;
+	if($post && get_page_template_slug($post->ID) == "page-product.php" && strpos($_SERVER["REQUEST_URI"], "products") === false) {
 		wp_redirect("/products".$_SERVER["REQUEST_URI"]);
     exit();
 	}
@@ -1293,7 +1294,16 @@ function filter_rewrite_rules_array($rules) {
 	if($slug) {
 	$rules['('.$slug.')/?$'] = 'index.php?pagename=$matches[1]'; // sovrascrittura categoria magazine con pagina blog magazine
 	}
-	$new_rules['^products/(.+)/?$'] = 'index.php?pagename=$matches[1]'; // pagine di prodotto
+	$products = get_posts(array(
+		'post_type' => 'page',
+		'posts_per_page' => -1,
+		'meta_key' => '_wp_page_template',
+    'meta_value' => 'page-product.php',
+		'fields' => 'ids'
+	));
+	foreach($products as $product) {
+		$new_rules['^products/('.get_post_field('post_name', $product).')/?$'] = 'index.php?pagename=$matches[1]'; // pagine di prodotto
+	}
   return $new_rules + $rules;
 };
 add_filter('rewrite_rules_array', 'filter_rewrite_rules_array', 10, 1);
