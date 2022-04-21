@@ -362,6 +362,16 @@
 			align-items: center;
 		}
 
+		input {
+			padding: 7px;
+			margin-right: 10px;
+			border: 1px solid transparent;
+
+			@include media-up(md) {
+				border-radius: 5px;
+			}
+		}
+
 		input,
 		input::placeholder,
 		input:focus {
@@ -370,6 +380,14 @@
 			outline-color: rgb(0, 58, 86);
 			outline: none;
 			box-shadow: none;
+		}
+
+		input:focus {
+			border: 1px solid rgba(255, 255, 255, 0.4);
+		}
+
+		input:focus::placeholder {
+			opacity: 0.3;
 		}
 
 		@include media-up(md) {
@@ -390,7 +408,7 @@
 
 			input,
 			input:focus {
-				padding: 0 8px;
+				padding: 7px;
 			}
 
 			span {
@@ -405,6 +423,12 @@
 		}
 
 		@include media-down(sm) {
+
+			input,
+			input:focus {
+				padding: 7px;
+			}
+
 			svg {
 				width: 24px;
 			}
@@ -440,6 +464,29 @@
 		}
 	}
 
+	@include media-down(sm) {
+		.search {
+			&>span {
+				display: inline-block;
+				width: 100%;
+			}
+
+			form {
+				width: 100%;
+			}
+
+			input {
+				flex: 1;
+				border: 1px solid rgba(255, 255, 255, 0.4);
+			}
+
+			input:focus {
+				border: 1px solid rgba(255, 255, 255, 0.9);
+			}
+		}
+	}
+
+
 	@include media-only(sm) {
 		flex-direction: column;
 
@@ -467,6 +514,20 @@
 				line-height: 1.2;
 				padding: var(--p20) var(--cw2);
 				text-transform: none;
+			}
+		}
+	}
+}
+
+@include media-up(md) {
+
+	.page:not(.page--homepage),
+	.header.scrolled {
+		.nav--service {
+			.search {
+				input:focus {
+					border: 1px solid rgba(0, 58, 86, 0.4);
+				}
 			}
 		}
 	}
