@@ -27,7 +27,7 @@ if(!empty($_args['section'])) :
 										<li class="nav__item"><a href="javascript:void(0);" class="history-filter active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.count($_args['section']['histories']).')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
-										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.$filter.'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" class="history-filter" data-filter="'.sanitize_title($filter).'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
 			}
 			echo '
 									</ul>

@@ -22,7 +22,6 @@
 		<!--<link rel="manifest" href="<?=DOCS_DIR; ?>img/icon/site.webmanifest">-->
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
-		<meta name="description" content="">
 		<meta name="keywords" content="aquafil">
 		<meta name="application-name" content="Aquafil">
 		<meta name="apple-mobile-web-app-title" content="Aquafil">
