@@ -63,10 +63,10 @@ if(!empty($_args['section'])) :
 					</div>';
 			} else {
 				echo '
-					<div class="col-sm-8 offset-sm-2 col-md-7 offset-md-3">
+					<div class="col-sm-8 offset-sm-2 col-md-7 offset-md-3 o-2">
 					'.$txt_container.'
 					</div>
-					<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-3">
+					<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-3 o-1">
 					'.$img_container.'
 					</div>';
 			}

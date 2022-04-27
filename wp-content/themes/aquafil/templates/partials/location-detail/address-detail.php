@@ -15,11 +15,11 @@ if(!empty($_args['section'])) :
 				switch($i%4) {
 					case 0:
 						echo '
-							<div class="col-12 col-sm-4 offset-sm-2 col-md-3 offset-md-3">';
+							<div class="col-24 col-sm-8 offset-sm-2 col-md-3 offset-md-3">';
 						break;
 					default:
 						echo '
-							<div class="col-12 col-sm-4 offset-sm-1 col-md-3 offset-md-2">';
+							<div class="col-24 col-sm-8 offset-sm-2 col-md-3 offset-md-2">';
 				}
 				echo '
 								<div class="card--address">

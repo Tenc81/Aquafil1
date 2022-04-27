@@ -7610,16 +7610,18 @@ input[type="search"]::-webkit-search-results-decoration {
       margin: 0 var(--p10); } }
 
 @media (max-width: 1023.98px) {
-  .nav--service .search > span {
-    display: inline-block;
-    width: 100%; }
-  .nav--service .search form {
-    width: 100%; }
-  .nav--service .search input {
-    flex: 1;
-    border: 1px solid rgba(255, 255, 255, 0.4); }
-  .nav--service .search input:focus {
-    border: 1px solid rgba(255, 255, 255, 0.9); } }
+  .nav--service .search {
+    order: 10; }
+    .nav--service .search > span {
+      display: inline-block;
+      width: 100%; }
+    .nav--service .search form {
+      width: 100%; }
+    .nav--service .search input {
+      flex: 1;
+      border: 1px solid rgba(255, 255, 255, 0.4); }
+    .nav--service .search input:focus {
+      border: 1px solid rgba(255, 255, 255, 0.9); } }
 
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .nav--service {
@@ -8025,6 +8027,8 @@ input[type="search"]::-webkit-search-results-decoration {
       .nav--horizontal-menu > .nav__item > span.active {
         background: var(--foreground-primary);
         color: var(--foreground-negative); }
+  .nav--horizontal-menu.certs--filters [data-filter="all"] .count {
+    display: none; }
   @media (min-width: 768px) {
     .nav--horizontal-menu {
       margin-left: var(--p10); } }
@@ -8530,9 +8534,9 @@ input[type="search"]::-webkit-search-results-decoration {
         .listing--area > .listing__item:nth-child(2) {
           order: 1; }
         .listing--area > .listing__item:nth-child(3) {
-          order: 3; }
+          order: 4; }
         .listing--area > .listing__item:nth-child(4) {
-          order: 4; } }
+          order: 3; } }
 
 .card--area {
   position: relative; }
@@ -9534,17 +9538,17 @@ input[type="search"]::-webkit-search-results-decoration {
   .image-full__picture img {
     width: 100%; }
   @media (max-width: 767.98px) {
-    .image-full__picture {
+    .image-full.bleed .image-full__picture {
       position: relative;
       width: 100%;
       padding-top: 100%;
       overflow: hidden; }
-      .image-full__picture > img,
-      .image-full__picture > svg,
-      .image-full__picture > video,
-      .image-full__picture > canvas,
-      .image-full__picture > .video,
-      .image-full__picture > iframe {
+      .image-full.bleed .image-full__picture > img,
+      .image-full.bleed .image-full__picture > svg,
+      .image-full.bleed .image-full__picture > video,
+      .image-full.bleed .image-full__picture > canvas,
+      .image-full.bleed .image-full__picture > .video,
+      .image-full.bleed .image-full__picture > iframe {
         position: absolute;
         top: 0;
         left: 0;
@@ -9920,13 +9924,13 @@ input[type="search"]::-webkit-search-results-decoration {
     padding: var(--p10) var(--p20);
     border-radius: var(--p30);
     border: 1px solid #FFFFFF;
-    margin-left: var(--p40); }
-  .card--history:not(.sustainability) .card--history__category {
+    margin-left: var(--p20); }
+  .card--history:not(.sustainability):not(.Sostenibilità) .card--history__category {
     display: none; }
   .card--history__cta {
     position: absolute;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     bottom: 0; }
@@ -9961,7 +9965,7 @@ input[type="search"]::-webkit-search-results-decoration {
     border-radius: var(--p30);
     border: 1px solid #FFFFFF;
     color: var(--foreground-negative); }
-  .card--history-detail:not(.sustainability) .card--history-detail__cta {
+  .card--history-detail:not(.sustainability):not(.Sostenibilità) .card--history-detail__cta {
     display: none; }
   @media (min-width: 1024px) {
     .card--history-detail {
@@ -10633,8 +10637,7 @@ input[type="search"]::-webkit-search-results-decoration {
   align-items: flex-start; }
 
 .careers-list {
-  padding: 40px 0;
-  border-bottom: 1px solid rgba(157, 157, 156, 0.5); }
+  padding: 40px 0; }
   @media (min-width: 1024px) {
     .careers-list {
       padding: 60px 0; } }
@@ -10678,8 +10681,7 @@ input[type="search"]::-webkit-search-results-decoration {
           margin-left: 40px; } }
 
 .sales-list {
-  padding: 40px 0;
-  border-bottom: 1px solid rgba(157, 157, 156, 0.5); }
+  padding: 40px 0; }
   @media (min-width: 1024px) {
     .sales-list {
       padding: 60px 0; } }

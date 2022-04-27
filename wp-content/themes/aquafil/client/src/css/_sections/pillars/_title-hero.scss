@@ -398,8 +398,10 @@
 	}
 
 	@include media-down(xs) {
-		&__picture {
-			@include aspect-clip(1, 1);
+		&.bleed {
+			.image-full__picture {
+				@include aspect-clip(1, 1);
+			}
 		}
 	}
 }

@@ -466,6 +466,8 @@
 
 	@include media-down(sm) {
 		.search {
+			order: 10;
+
 			&>span {
 				display: inline-block;
 				width: 100%;

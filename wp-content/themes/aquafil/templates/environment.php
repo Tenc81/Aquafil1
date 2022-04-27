@@ -211,7 +211,7 @@
 	<div class="text-media-secondary">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-8 offset-sm-2 col-md-7 offset-md-2">
+				<div class="col-sm-8 offset-sm-2 col-md-7 offset-md-2 o-2">
 					<div class="text-media-secondary__content" appear>
 						<div class="text-media-secondary__abstract">
 							<p>GRI 302-1:2016; SDG 7, 8, 12, 13)</p>
@@ -221,7 +221,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-10 offset-sm-1 col-md-9 offset-md-1">
+				<div class="col-sm-10 offset-sm-1 col-md-9 offset-md-1 o-1">
 					<div class="text-media-secondary__offset">
 						<div class="text-media-secondary__picture" gallery="/aquafil/img/environment/08-01.jpg" scroll scrollSpeed="1">
 							<img loading="lazy" src="/aquafil/img/environment/08-01.jpg" />
@@ -355,14 +355,14 @@
 	<div class="text-media-secondary">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-8 offset-sm-2 col-md-7 offset-md-2">
+				<div class="col-sm-8 offset-sm-2 col-md-7 offset-md-2 o-2">
 					<div class="text-media-secondary__content" appear>
 						<div class="text-media-secondary__abstract">
 							<p>Table 24 shows the composition of waste produced by the Group and its end-of-life destination, broken down into recovery (recycling or energy recovery) and disposal (landfill).</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-10 offset-sm-1 col-md-9 offset-md-1">
+				<div class="col-sm-10 offset-sm-1 col-md-9 offset-md-1 o-1">
 					<div class="text-media-secondary__offset">
 						<div class="text-media-secondary__picture" gallery="/aquafil/img/environment/13-01.jpg" scroll scrollSpeed="1">
 							<img loading="lazy" src="/aquafil/img/environment/13-01.jpg" />

@@ -68,6 +68,14 @@
 		}
 	}
 
+	&.certs--filters {
+		[data-filter="all"] {
+			.count {
+				display: none;
+			}
+		}
+	}
+
 	@include media-up(sm) {
 		margin-left: var(--p10);
 	}

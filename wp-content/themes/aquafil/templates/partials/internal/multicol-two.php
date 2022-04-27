@@ -30,12 +30,14 @@ if(!empty($_args['section'])) :
 									<p>'.$cta['multicol_two_testo_cta'].'</p>
 								</div>';
 						}
-						if($cta['multicol_two_link_cta'] != 'javascript:void(0);') {
+						if($cta['multicol_two_link_cta'] != 'javascript:void(0);') {							
+							echo '<div class="title-text__cta">';
 							if($cta['multicol_two_stile_cta'] == 'testo') {
 								echo '<a href="'.$cta['multicol_two_link_cta'].'" target="'.$cta['multicol_two_target_cta'].'" class="btn--category"><span>'.($cta['multicol_two_titolo_cta'] != '' ? $cta['multicol_two_titolo_cta'] : __("Leggi di più", "wstheme")).'</span><svg><use xlink:href="#arrow-next-md"></use></svg></a>';
 							} else {
 								echo '<a href="'.$cta['multicol_two_link_cta'].'" target="'.$cta['multicol_two_target_cta'].'" class="btn--primary"> <span>'.($cta['multicol_two_titolo_cta'] != '' ? $cta['multicol_two_titolo_cta'] : __("Leggi di più", "wstheme")).'</span></a>';
 							}
+							echo '</div>';
 						}
 						?>
 					</div>

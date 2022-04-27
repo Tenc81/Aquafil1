@@ -136,10 +136,10 @@
 		padding: var(--p10) var(--p20);
 		border-radius: var(--p30);
 		border: 1px solid #FFFFFF;
-		margin-left: var(--p40);
+		margin-left: var(--p20);
 	}
 
-	&:not(.sustainability) {
+	&:not(.sustainability):not(.Sostenibilità) {
 		.card--history__category {
 			display: none;
 		}
@@ -148,7 +148,7 @@
 	&__cta {
 		position: absolute;
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-start;
 		align-items: center;
 		width: 100%;
 		bottom: 0;
@@ -229,7 +229,7 @@
 		@extend .small;
 	}
 
-	&:not(.sustainability) {
+	&:not(.sustainability):not(.Sostenibilità) {
 		.card--history-detail__cta {
 			display: none;
 		}

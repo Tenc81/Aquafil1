@@ -30,8 +30,8 @@ if(!empty($_args['section']) && !empty($_args['section']['location_related'])) :
 						<div class="global-capabilities__contacts-block">
 							<div class="global-capabilities__contacts-title">'.get_the_title($location).'</div>
 							<div class="global-capabilities__contacts-text">
-								<p>'.$loc_fields['abstract'].'</p>
-								<p>'.$loc_fields['pretitle'].'</p>';
+								<p>'.$loc_fields['abstract'].'</p>';
+								/* <p>'.$loc_fields['pretitle'].'</p>';*/
 				$infos = array_filter($loc_fields['sezioni'], function($section) {
 					return $section['acf_fc_layout']=='location-detail-address-detail';
 				});

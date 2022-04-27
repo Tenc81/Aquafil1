@@ -15,10 +15,10 @@ if(!empty($_args['history'])) :
 		<div class="card--history__title"><?= $_args['history']['titolo_hi']; ?></div>
 	</div>
 	<div class="card--history__cta">
+		<button type="button" class="btn--plus"><svg><use xlink:href="#plus"></use></svg></button>
 		<?php if($_args['history']['evidenzia_categoria_hi']) : ?>
 		<div class="card--history__category"><?= $_args['history']['categoria_hi']; ?></div>
 		<?php endif; ?>
-		<button type="button" class="btn--plus"><svg><use xlink:href="#plus"></use></svg></button>
 	</div>
 </div>
 <div class="card--history-detail <?= $_args['history']['categoria_hi']; ?>">
