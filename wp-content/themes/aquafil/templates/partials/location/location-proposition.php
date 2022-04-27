@@ -1,11 +1,15 @@
-<?php if(have_posts()) : ?>
+<?php 
+global $wp_query;
+
+
+if(have_posts()) : ?>
 <div class="location-proposition">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 				<div class="listing--location">
 					<?php
-					global $post, $wp_query;
+					//global $post, $wp_query;
 					while(have_posts()) {
 						the_post();
 						$thumb = get_the_post_thumbnail_url();

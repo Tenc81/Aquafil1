@@ -20,7 +20,7 @@ if(!empty($_args['section'])) :
 							<div class="swiper-slide">
 								<div class="card--content">
 									<div class="card--content__left">
-										<div class="card--content__title"><?=$slide['slide_titolo']?></div>
+										<h3 class="card--content__title"><?=$slide['slide_titolo']?></h3>
 										<div class="card--content__abstract"><?=$slide['slide_abstract']?></div>
 										<?php
 										$link = $slide['slide_link'];

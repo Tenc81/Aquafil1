@@ -2,15 +2,11 @@
 if(is_tax("nazione-sedi")) {
 	global $wp_query, $wpdb;
 	$query =
-		'SELECT t.term_id FROM wp_terms t JOIN wp_term_relationships tr JOIN wp_term_taxonomy tt
+		'SELECT t.*, tt.count FROM wp_terms t JOIN wp_term_relationships tr JOIN wp_term_taxonomy tt
 			ON t.term_id=tr.term_taxonomy_id AND tr.term_taxonomy_id=tt.term_taxonomy_id
-			WHERE tt.taxonomy = "settori-sedi" AND object_id IN ('.implode(',', array_column($wp_query->posts, 'ID')).')';
-	$ids = $wpdb->get_row($query, ARRAY_N);
-	$filters = get_terms(array(
-		'taxonomy' => 'settori-sedi',
-		'hide_empty' => true,
-		'include' => $ids
-	));
+			WHERE tt.taxonomy = "settori-sedi" AND object_id IN ('.implode(',', array_column($wp_query->posts, 'ID')).')
+			GROUP BY t.term_id';
+	$filters = $wpdb->get_results($query);
 } else {
 	$filters = get_terms(array(
 		'taxonomy' => 'settori-sedi',

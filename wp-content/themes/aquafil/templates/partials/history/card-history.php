@@ -6,7 +6,7 @@ $_args = wp_parse_args(
   ));
 if(!empty($_args['history'])) :
 ?>
-<div class="card--history <?= $_args['history']['categoria_hi']; ?>" toggle=".card--history">
+<div class="card--history <?= sanitize_title($_args['history']['categoria_hi']); ?>" toggle=".card--history">
 	<div class="card--history__picture">
 		<?= !empty($_args['history']['immagine_hi']) ? '<img loading="lazy" src="'.$_args['history']['immagine_hi']['url'].'" />' : ''; ?>
 	</div>
@@ -21,7 +21,7 @@ if(!empty($_args['history'])) :
 		<?php endif; ?>
 	</div>
 </div>
-<div class="card--history-detail <?= $_args['history']['categoria_hi']; ?>">
+<div class="card--history-detail <?= sanitize_title($_args['history']['categoria_hi']); ?>">
 	<div class="card--history-detail__col">
 		<div class="card--history-detail__title"><?= $_args['history']['titolo_hi']; ?></div>
 		<div class="card--history-detail__year"><?= $_args['history']['anno_hi']; ?></div>

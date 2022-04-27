@@ -11,19 +11,27 @@ if(!empty($_args['section'])) :
 			<div class="row">
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 					<div class="listing--downloads">';
-	$filterstypes = array("countries" => array(), "categories" => array());
+	$filterstypes = array("categories" => array(), "countries" => array());
 	foreach($_args['section']['downloads'] as $download) {
-		if(!isset($filterstypes["countries"][$download["nazione_downloads"]])) {
-			$filterstypes["countries"][$download["nazione_downloads"]] = 0;
+		$countries = '';
+		foreach($download["nazione_multiselect_downloads"] as $nazione) {
+			$countries .= ' '.sanitize_title($nazione);
+			if(!isset($filterstypes["countries"][$nazione])) {
+				$filterstypes["countries"][$nazione] = 0;
+			}
+			$filterstypes["countries"][$nazione] += count($download['lista_downloads']);
 		}
-		$category = get_term_field('name', $download['categoria_downloads']);
-		if(!isset($filterstypes["categories"][$category])) {
-			$filterstypes["categories"][$category] = 0;
+		$categories = '';
+		foreach($download["categoria_multiselect_downloads"] as $categoria) {
+			$category = get_term_field('name', $categoria);
+			$categories .= ' '.sanitize_title($category);
+			if(!isset($filterstypes["categories"][$category])) {
+				$filterstypes["categories"][$category] = 0;
+			}
+			$filterstypes["categories"][$category] += count($download['lista_downloads']);
 		}
-		$filterstypes["countries"][$download["nazione_downloads"]] += count($download['lista_downloads']);
-		$filterstypes["categories"][$category] += count($download['lista_downloads']);
 		ob_start();
-		get_template_part("templates/partials/shared/cards-certification", null, array("section" => $download, "class" => strtolower($download['nazione_downloads']). ' '.sanitize_title($category)));
+		get_template_part("templates/partials/shared/cards-certification", null, array("section" => $download, "class" => $countries.$categories));
 		$list_html .= ob_get_contents();
 		ob_end_clean();
 	}
