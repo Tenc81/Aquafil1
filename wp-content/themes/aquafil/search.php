@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
 <main class="main">
-	<?php
-	get_template_part('templates/partials/shared/breadcrumb');
+<?php
+get_template_part('templates/partials/shared/breadcrumb');
 
-	get_template_part('templates/partials/shared/generic-hero', null, array("section" => array("title" => __("Ricerca", "wstheme"), "text" => sprintf('%1$s: "%2$s"', __("Risultati per", "wstheme"), get_query_var('s'))), "index" => 0));
+get_template_part('templates/partials/shared/generic-hero', null, array("section" => array("title" => __("Ricerca", "wstheme"), "text" => sprintf('%1$s: "%2$s"', __("Risultati per", "wstheme"), get_query_var('s'))), "index" => 0));
 
 echo '
 	<div class="section-generic search">

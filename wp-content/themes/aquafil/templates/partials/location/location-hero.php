@@ -22,7 +22,7 @@ $img = get_field("location_hero_image", $ref);
 			<div class="col-sm-6 offset-sm-2 col-md-6 offset-md-2 order-2 order-sm-1">
 				<div class="location-hero__content" appear>
 					<div class="location-hero__category"><?= get_field("location_hero_pretitolo", $ref); ?></div>
-					<div class="location-hero__title"><?= get_field("location_hero_titolo", $ref); ?></div>
+					<h1 class="location-hero__title"><?= get_field("location_hero_titolo", $ref); ?></h1>
 					<div class="location-hero__abstract"><?= get_field("location_hero_abstract", $ref); ?></div>
 				</div>
 			</div>

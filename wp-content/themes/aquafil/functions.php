@@ -1097,13 +1097,26 @@ function custom_query($query) {
       $query->set('posts_per_page', 12);
 		} elseif(is_tax("localnews_category")) {
       $query->set('posts_per_page', 12);
-		} elseif(is_post_type_archive('sedi')) {
+		} elseif(is_post_type_archive('sedi') || is_search()) {
       $query->set('posts_per_page', -1);
 		}
   }
 }
 add_action('pre_get_posts', 'custom_query');
 
+
+function edit_posts_orderby($orderby_statement) {
+	global $wp_query;
+    if(!is_admin() && $wp_query->is_main_query() && is_search()) {
+        if (!empty($wp_query->query_vars['s'])) {
+            global $wpdb;
+            $orderby_statement = "FIELD(wp_posts.post_type, 'page', 'post', 'localnews'), " . $wpdb->posts . ".post_title LIKE '%".$wp_query->get('s')."%' DESC, " . $wpdb->posts . ".post_date DESC";
+						$orderby_statement = $wpdb->prepare($orderby_statement);
+        }
+    }
+	return $orderby_statement;
+}
+add_filter('posts_orderby', 'edit_posts_orderby');
 
 function formatSizeUnits($bytes) {
     if ($bytes >= 1073741824) {
@@ -1240,7 +1253,7 @@ add_filter('wpseo_save_indexable', function($indexable) {
 
 
 function news_page_link($permalink, $post_id) {
-  if (empty($post_id)) return $permalink;
+  if (empty($post_id) || get_post_status($post_id) != "publish") return $permalink;
 	$permalink = preg_replace('@('.get_post_field("post_name", $post_id).'/?)@', 'magazine/$1', $permalink);
   return $permalink;
 }
@@ -1248,7 +1261,7 @@ add_filter('post_link', 'news_page_link', 10, 2);
 
 
 function localnews_page_link($permalink, $post_id) {
-  if (empty($post_id)) return $permalink;
+  if (empty($post_id) || get_post_status($post_id) != "publish") return $permalink;
 	if (get_post_type($post_id) == 'localnews') {
 		$permalink = str_replace('localnews/', 'magazine/localnews/', $permalink);
 	}
@@ -1258,7 +1271,7 @@ add_filter('post_type_link', 'localnews_page_link', 10, 2);
 
 
 function product_page_link($permalink, $post_id) {
-  if (empty($post_id)) return $permalink;
+  if (empty($post_id) || get_post_status($post_id) != "publish") return $permalink;
 	if(get_page_template_slug($post_id) == "page-product.php") {
 		$permalink = preg_replace('@('.get_post_field("post_name", $post_id).'/?)@', 'products/$1', $permalink);
 	}
@@ -1298,7 +1311,17 @@ function filter_rewrite_rules_array($rules) {
 		WHERE tt.taxonomy='localnews_category'";
 	$terms = $wpdb->get_col($query);
 	foreach($terms as $term) {
-	  $new_rules['magazine/('.$term.')/?$'] = 'index.php?localnews_category=$matches[1]'; // categorie local news
+	  $new_rules['magazine/('.$term.')/page/?([0-9]{1,})/?$'] = 'index.php?localnews_category=$matches[1]&paged=$matches[2]';
+	  $new_rules['magazine/('.$term.')/?$'] = 'index.php?localnews_category=$matches[1]';
+	}
+	$query = "
+		SELECT t.slug FROM wp_terms t JOIN wp_term_taxonomy tt 
+		ON t.term_id=tt.term_taxonomy_id 
+		WHERE tt.taxonomy='category'";
+	$terms = $wpdb->get_col($query);
+	foreach($terms as $term) {
+	  $new_rules['magazine/('.$term.')/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&paged=$matches[2]';
+	  $new_rules['magazine/('.$term.')/?$'] = 'index.php?category_name=$matches[1]';
 	}
 	$slug = get_post_field("post_name", get_option("page_for_posts"));
 	if($slug) {

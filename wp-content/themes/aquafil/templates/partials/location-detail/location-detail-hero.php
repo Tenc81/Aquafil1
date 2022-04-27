@@ -13,7 +13,7 @@ if(!empty($_args['section'])) :
 		<div class="row">
 			<div class="col-sm-9 offset-sm-2 col-md-8 offset-md-3 order-2 order-sm-1">
 				<div class="location-detail-hero__content" appear>
-					<div class="location-detail-hero__title"><?= get_the_title(); ?></div>
+					<h1 class="location-detail-hero__title"><?= get_the_title(); ?></h1>
 					<div class="location-detail-hero__abstract"><?= $_args['section']['hero_text']; ?></div>
 				</div>
 			</div>

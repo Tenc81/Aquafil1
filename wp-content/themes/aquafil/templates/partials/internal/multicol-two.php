@@ -15,7 +15,7 @@ if(!empty($_args['section'])) :
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 				<div class="title-text__content" appear>
-					<div class="title-text__title"><?= $_args['section']['internal_multicol_two_titolo']?></div>
+					<h2 class="title-text__title"><?= $_args['section']['internal_multicol_two_titolo']?></h2>
 					<div class="title-text__abstract"><?= $_args['section']['internal_multicol_two_abstract']?></div>
 				</div>
 			</div>
