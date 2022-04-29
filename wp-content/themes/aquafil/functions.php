@@ -30,6 +30,17 @@
  *
  */
 
+function __custom($text, $domain) {
+	global $wpdb;
+	$query = "
+		SELECT st.value FROM wp_icl_string_translations st JOIN wp_icl_strings s
+		ON st.string_id=s.id
+		AND s.value='".$text."' AND s.context='".$domain."' AND st.language='".ICL_LANGUAGE_CODE."' LIMIT 1";
+	$label = $wpdb->get_var($query);
+	$label = $label == '' ? $text : $label;
+	return $label;
+}
+
 /*--------------------------------------------------
 Path uploads
 --------------------------------------------------*/

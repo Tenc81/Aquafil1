@@ -50,7 +50,7 @@ if(!empty($_args['section'])) :
 							<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 								<div class="horizontal-menu__content">
 									<div class="horizontal-menu__title">'.($type=="countries" ? __("Filtra per nazione", "wstheme") : __("Filtra per categoria", "wstheme")).'</div>
-									<ul class="nav--horizontal-menu certs--filters">
+									<ul class="nav--horizontal-menu certs--filters '.$type.'">
 										<li class="nav__item"><a href="javascript:void(0);" class="active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.$total.')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
@@ -62,25 +62,33 @@ if(!empty($_args['section'])) :
 							</div>
 						</div>
 					</div>
-				</div>
-				<script>
-				(function($) {
-					$(".certs--filters a").on("click", function() {
-						$(".listing__item").hide();
-						$(this).closest(".certs--filters").find("a").removeClass("active");
-						$(this).addClass("active");
-
-						var flclasses = [".listing__item"];
-						$(".certs--filters a.active").each(function(index, f) {
-							if($(f).attr("data-filter")!="all")
-								flclasses.push($(f).attr("data-filter"));
-						});
-						$(flclasses.join(".")).show();
-					});
-				})(jQuery)
-				</script>';
+				</div>';
 		}
 	}
+	echo '
+		<script>
+			(function($) {
+				$(".certs--filters a").on("click", function() {
+					$(".listing__item").hide();
+					$(this).closest(".certs--filters").find("a").removeClass("active");
+					$(this).addClass("active");
+
+					var flclasses = [".listing__item"];
+					$(".certs--filters a").each(function(index, f) {
+						if($(f).is(".active") && $(f).attr("data-filter")!="all") {
+							flclasses.push($(f).attr("data-filter"));
+						}
+					});
+					$(flclasses.join(".")).show();
+					var a = "";
+					$(".listing__item:visible").each(function(i,f) {
+							a += " "+$(f).attr("class")
+					})
+					a = a.split(" ").filter(function(ff) { return ff != "" && ff != "listing__item" });
+					console.log(a);
+				});
+			})(jQuery)
+		</script>';
 ?>
 <div class="certification borders" <?=setAnchor($_args['section']);?>>
 	<?= $list_html; ?>

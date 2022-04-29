@@ -22,7 +22,7 @@ if(!empty($_args['section'])) :
 						<?php
 						foreach($_args['section']['toolkits_correlati'] as $i=>$toolkit) {
 							$img = $toolkit['immagine_toolkit'];
-							$link = $toolkit['link_toolkit'];
+							$html = $toolkit['html_toolkit'];
 							echo '
 								<!-- slide -->
 								<div class="swiper-slide">
@@ -34,7 +34,7 @@ if(!empty($_args['section'])) :
 											<div class="card--toolkit__title">'.$toolkit['titolo_toolkit'].'</div>
 											<div class="card--toolkit__abstract">'.$toolkit['descrizione_breve_toolkit'].'</div>
 											<div class="card--toolkit__cta">
-												'.(!empty($link) ? '<a href="'.$link["url"].'" class="btn--primary">'.$link["title"].'</a>' : '').'
+												'.$html.'
 											</div>
 										</div>
 									</div>

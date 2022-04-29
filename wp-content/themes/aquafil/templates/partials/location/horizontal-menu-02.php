@@ -2,7 +2,7 @@
 if(is_tax("nazione-sedi")) {
 	global $wp_query, $wpdb;
 	$query =
-		'SELECT t.*, tt.count FROM wp_terms t JOIN wp_term_relationships tr JOIN wp_term_taxonomy tt
+		'SELECT t.*, count(t.term_id) AS count FROM wp_terms t JOIN wp_term_relationships tr JOIN wp_term_taxonomy tt
 			ON t.term_id=tr.term_taxonomy_id AND tr.term_taxonomy_id=tt.term_taxonomy_id
 			WHERE tt.taxonomy = "settori-sedi" AND object_id IN ('.implode(',', array_column($wp_query->posts, 'ID')).')
 			GROUP BY t.term_id';
@@ -15,6 +15,13 @@ if(is_tax("nazione-sedi")) {
 }
 if(!empty($filters)) {
 	$total = array_sum(array_column($filters, 'count'));
+	if(is_post_type_archive("sedi")) {
+		$href = 'href="javascript:void(0);" class="active"';
+	} elseif(is_tax("nazione-sedi")) {
+		$href = get_term_link(get_queried_object_id());
+	} elseif(is_tax("settori-sedi")) {
+		$href = 'href="'.get_post_type_archive_link('sedi').'"';
+	}
 	echo '
 		<div class="horizontal-menu">
 			<div class="container-fluid">
@@ -23,7 +30,7 @@ if(!empty($filters)) {
 						<div class="horizontal-menu__content">
 							<div class="horizontal-menu__title">'.__("Filter by category", "wstheme").'</div>
 							<ul class="nav--horizontal-menu">
-								<li class="nav__item"><a '.(is_post_type_archive("sedi") ? 'href="javascript:void(0);" class="active"' : 'href="'.get_post_type_archive_link('sedi').'"').'><span class="name">'.__("All", "wstheme").'</span> <span class="count">('.$total.')</span></a></li>';
+								<li class="nav__item"><a '.$href.'><span class="name">'.__("All", "wstheme").'</span> <span class="count">('.$total.')</span></a></li>';
 	foreach($filters as $filter) {
 		if((is_tax("settori-sedi") && get_queried_object_id() == $filter->term_id) || is_tax("nazione-sedi")) {
 			echo '<li class="nav__item"><a href="javascript:void(0);" class="'.$filter->slug.(is_tax("settori-sedi") && get_queried_object_id() == $filter->term_id ? ' active' : '').'"><span class="name">'.$filter->name.'</span> <span class="count">('.$filter->count.')</span></a></li>';
