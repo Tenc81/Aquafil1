@@ -27,6 +27,7 @@
 
 	&__text {
 		font-size: 18px;
+		@extend .anchors;
 	}
 
 	&__text-larger {
