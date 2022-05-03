@@ -54,7 +54,7 @@ if(!empty($_args['section'])) :
 										<li class="nav__item"><a href="javascript:void(0);" class="active" data-filter="all"><span class="name">'.__("Tutte", "wstheme").'</span> <span class="count">('.$total.')</span></a></li>';
 			foreach($filters as $filter=>$count) {
 				echo '
-										<li class="nav__item"><a href="javascript:void(0);" data-filter="'.sanitize_title($filter).'"><span class="name">'.$filter.'</span> <span class="count">('.$count.')</span></a></li>';
+										<li class="nav__item"><a href="javascript:void(0);" data-filter="'.sanitize_title($filter).'"><span class="name">'.__($filter, "wstheme").'</span> <span class="count">('.$count.')</span></a></li>';
 			}
 			echo '
 									</ul>

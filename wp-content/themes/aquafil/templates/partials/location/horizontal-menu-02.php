@@ -18,7 +18,7 @@ if(!empty($filters)) {
 	if(is_post_type_archive("sedi")) {
 		$href = 'href="javascript:void(0);" class="active"';
 	} elseif(is_tax("nazione-sedi")) {
-		$href = get_term_link(get_queried_object_id());
+		$href = 'href="'.get_term_link(get_queried_object_id()).'"';;
 	} elseif(is_tax("settori-sedi")) {
 		$href = 'href="'.get_post_type_archive_link('sedi').'"';
 	}
