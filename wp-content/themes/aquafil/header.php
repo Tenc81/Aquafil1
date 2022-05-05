@@ -7,7 +7,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 		<meta name="Content-Language" content="it" />
-		<meta name="robots" content="noindex,nofollow" />
 		<title><?= wp_title(''); ?></title>
 		<link rel="icon" href="img/icon/favicon-32x32.png" type="image/x-icon" />
 		<link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
