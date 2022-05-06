@@ -30,7 +30,7 @@ if(!empty($_args['section'])) :
 											<div class="card--content__abstract">'.$slide['testo_slide'].'</div>
 											'.(!empty($link) ? 
 											'<div class="card--content__cta">
-												<a href="'.$link["url"].'" class="btn--more"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next"></use></svg></a>
+												<a href="'.$link["url"].'" target="'.$link["target"].'" class="btn--more"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next"></use></svg></a>
 											</div>' : '').'
 										</div>
 									</div>

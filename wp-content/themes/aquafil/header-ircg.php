@@ -76,21 +76,14 @@
 									</div>
 									<div class="header__menu" [class]="{ active: header == 'menu' }">
 										<a href="<?= home_url(); ?>" class="btn--investor"><?= __("Torna al sito web", "wstheme"); ?></a>
-										<?php
-										$locations = get_nav_menu_locations();
-										foreach ($locations as $key => $menu_id) {
-											$location = apply_filters('wpml_object_id', $menu_id, 'nav_menu', TRUE);
-											switch ($key) {
-												case "secondary_menu":
-													$secMenu = menuParse($location);
-													break;
-												default:;
-											}
-										}
-										if(isset($secMenu)) {
-											get_template_part('templates/partials/shared/navigation', 'top', array("menu" => $secMenu));
-										}
-										?>
+										<ul class="nav--service">
+											<li class="nav__item search">
+												<span>
+													<?= get_search_form(); ?>
+												</span>
+											</li>
+										</ul>
+										<?= icl_post_languages(); ?>
 									</div>
 									<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
 										<svg class="menu"><use xlink:href="#menu"></use></svg>

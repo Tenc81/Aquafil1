@@ -19,7 +19,7 @@ if(!empty($_args['section'])) :
 			<div class="col-sm-8 offset-sm-6 col-md-7 offset-md-6">
 				<div class="profile-proposition__content" appear>
 					<div class="profile-proposition__category"><?= $_args['section']['profile_abstract']?></div>
-					<div class="profile-proposition__title"><?= $_args['section']['profile_titolo']?></div>
+					<h2 class="profile-proposition__title"><?= $_args['section']['profile_titolo']?></h2>
 					<div class="profile-proposition__abstract"><?= $_args['section']['profile_sottotitolo']?></div>
 					<div class="profile-proposition__cta">
 						<a href="<?= $_args['section']['profile_link_cta']?>" class="btn--primary" target="<?= $_args['section']['profile_target_cta']?>"><?=( $_args['section']['profile_testo_cta'] != '' ? $_args['section']['profile_testo_cta'] : __('Read more'))?></a>

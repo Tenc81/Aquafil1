@@ -32,7 +32,7 @@ if(!empty($_args['section'])) :
 			if(!empty($_args['section']['link_sec_hero'])) {
 				echo '
 				<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-2 order-1 order-sm-2">
-					<a href="'.$_args['section']['link_sec_hero']["url"].'" class="btn--more-md"><span>'.$_args['section']['link_sec_hero']["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>
+					<a href="'.$_args['section']['link_sec_hero']["url"].'" target="'.$_args['section']['link_sec_hero']["target"].'" class="btn--more-md"><span>'.$_args['section']['link_sec_hero']["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>
 				</div>';
 			}
 			?>

@@ -14,7 +14,7 @@ if(!empty($_args['section'])) :
 			<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">
 				<div class="sustainability-proposition__content" appear>
 					<div class="sustainability-proposition__category"><?= $_args['section']['sustainability_abstract']?></div>
-					<div class="sustainability-proposition__title"><?= $_args['section']['sustainability_titolo']?></div>
+					<h2 class="sustainability-proposition__title"><?= $_args['section']['sustainability_titolo']?></h2>
 					<div class="sustainability-proposition__abstract"><?= $_args['section']['sustainability_sottotitolo']?></div>
 				</div>
 			</div>

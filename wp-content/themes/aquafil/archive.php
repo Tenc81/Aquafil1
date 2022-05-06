@@ -126,10 +126,10 @@ $q = get_queried_object();
 					</div>
 					<?php
 					if ($paged > 1) {
-						previous_posts_link('&laquo; Precedente');
+						previous_posts_link('&laquo; '.__("Precedente", "wstheme"));
 						echo ' | ';
 					}
-					next_posts_link('Prossimo &raquo;');
+					next_posts_link(__("Prossimo", "wstheme").' &raquo;');
 
 					wp_reset_postdata();
           ?>

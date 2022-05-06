@@ -13,7 +13,7 @@ if(!empty($_args['section'])) :
 		<div class="swiper-wrapper">
 
 		<!-- slide -->
-		<?php foreach($_args['section']['carousel'] as $s) { ?>
+		<?php foreach($_args['section']['carousel'] as $index=>$s) { ?>
 			<div class="swiper-slide">
 				<div class="card--main-hero">
 					<div class="card--main-hero__background">
@@ -24,7 +24,7 @@ if(!empty($_args['section'])) :
 							<div class="col-20 col-sm-9 offset-sm-2">
 								<div class="card--main-hero__content">
 									<div class="card--main-hero__category"><?=$s['hero_abstract'] ?></div>
-									<div class="card--main-hero__title"><?=$s['hero_titolo'] ?></div>
+									<h1 class="card--main-hero__title"><?= $s['hero_titolo'] ?></h1>
 									<div class="card--main-hero__abstract"><?=$s['hero_sottotitolo'] ?></div>
 									<div class="card--main-hero__cta">
 										<a href="<?=$s['hero_link_cta']?>" target="<?=$s['hero_target_cta']?>" class="btn--primary"><?=($s['hero_testo_cta'] != '' ? $s['hero_testo_cta'] : __('Read more', "wstheme"))?></a>

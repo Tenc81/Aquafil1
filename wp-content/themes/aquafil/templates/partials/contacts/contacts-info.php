@@ -29,7 +29,7 @@ if(!empty($_args['section'])) :
             <div class="contacts-info__text-block">';
 					if(!empty($info['approfondimento_informazione_contatto'])) {
 						echo '
-              <a href="'.$info['approfondimento_informazione_contatto']['url'].'" class="contacts-info__title">
+              <a href="'.$info['approfondimento_informazione_contatto']['url'].'" target="'.$info['approfondimento_informazione_contatto']['target'].'" class="contacts-info__title">
                 '.$info['approfondimento_informazione_contatto']['title'].' <svg class="contacts-info__arrow"><use xlink:href="#arrow-next-md"></use></svg>
               </a>';
 					}
