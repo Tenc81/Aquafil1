@@ -39,7 +39,7 @@ if(!empty($_args['section'])) :
 		}
 	}
 ?>
-<div class="case-studies-listing borders">
+<div class="case-studies-listing">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">

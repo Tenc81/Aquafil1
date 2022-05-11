@@ -196,7 +196,7 @@
 		</div>
 	</div>
 
-	<div class="research-proposition">
+	<div class="research-proposition secondary">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">

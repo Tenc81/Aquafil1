@@ -145,6 +145,10 @@
 		&:not(.active) {
 			display: none;
 		}
+
+		&>.btn--investor {
+			display: none;
+		}
 	}
 }
 
@@ -391,10 +395,16 @@
 		}
 
 		@include media-up(md) {
-			padding-right: var(--p10);
-			margin-right: 5px;
-			border-right: 1px solid $border;
 			justify-content: flex-end;
+
+			&+li {
+				padding-left: var(--p10);
+				margin-left: 5px;
+				border-left: 1px solid $border;
+				min-height: 20px;
+				display: flex;
+				align-items: center;
+			}
 
 			svg {
 				width: 12px;
@@ -461,6 +471,10 @@
 			&>span {
 				margin: 0 var(--p10);
 			}
+
+			&.investor {
+				display: none;
+			}
 		}
 	}
 
@@ -479,6 +493,7 @@
 
 			input {
 				flex: 1;
+				min-width: 0;
 				border: 1px solid rgba(255, 255, 255, 0.4);
 			}
 
@@ -656,50 +671,6 @@
 	}
 }
 
-.btn--investor {
-	@extend %btn;
-	padding: var(--p10) var(--p20);
-	white-space: nowrap;
-	font-size: 14px;
-	font-weight: bold;
-
-	&,
-	&:active,
-	&:focus,
-	&:visited {
-		background-color: transparent;
-		color: currentColor;
-		border: 1px solid currentColor;
-	}
-
-	@include media-up(md) {
-		font-size: Max(12px, Min(16px, 1vw));
-	}
-
-	@include media-only(sm) {
-		display: block;
-		font-size: 24px;
-		margin: var(--p50) var(--cw2);
-		border: 1px solid white;
-		padding: 10px 30px;
-	}
-
-	@include media-down(xs) {
-		display: block;
-		font-size: 22px;
-		font-weight: normal;
-		line-height: 1.2;
-		margin: var(--p20) var(--cw2);
-		border: 1px solid white;
-		padding: 10px 20px;
-	}
-
-	&:hover {
-		color: $foreground-negative;
-		background-color: $text;
-	}
-}
-
 .nav--submenu {
 	@extend %nav-vertical;
 
@@ -819,6 +790,50 @@
 				}
 			}
 		}
+	}
+}
+
+.btn--investor {
+	@extend %btn;
+	padding: var(--p10) var(--p20);
+	white-space: nowrap;
+	font-size: 14px;
+	font-weight: bold;
+
+	&,
+	&:active,
+	&:focus,
+	&:visited {
+		background-color: transparent;
+		color: currentColor;
+		border: 1px solid currentColor;
+	}
+
+	@include media-up(md) {
+		font-size: Max(12px, Min(16px, 1vw));
+	}
+
+	@include media-only(sm) {
+		display: block;
+		font-size: 24px;
+		margin: var(--p50) var(--cw2);
+		border: 1px solid white;
+		padding: 10px 30px;
+	}
+
+	@include media-down(xs) {
+		display: block;
+		font-size: 22px;
+		font-weight: normal;
+		line-height: 1.2;
+		margin: var(--p20) var(--cw2);
+		border: 1px solid white!important;
+		padding: 10px 20px;
+	}
+
+	&:hover {
+		color: $foreground-negative;
+		background-color: $text;
 	}
 }
 

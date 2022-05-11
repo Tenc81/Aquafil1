@@ -1,5 +1,8 @@
 .research-proposition {
-	background: $background-quaternary;
+
+	&.secondary {
+		background: $background-quaternary;
+	}
 
 	&__category {
 		@extend .small;
