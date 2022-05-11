@@ -13,7 +13,7 @@ if(!empty($_args['section'])) :
 				<div class="col-sm-14 offset-sm-2 col-md-14 offset-md-2 order-2 order-sm-1">
 					<div class="primary-hero__content" appear>
 						<div class="primary-hero__category"><?= $_args['section']['internal_hero_abstract'] ?></div>
-						<div class="primary-hero__title"><?= $_args['section']['internal_hero_titolo'] ?></div>
+						<h1 class="primary-hero__title"><?= $_args['section']['internal_hero_titolo'] ?></h1>
 					</div>
 				</div>
 				<div class="col-sm-15 col-md-17 order-1 order-sm-2">

@@ -12,7 +12,7 @@ if(!empty($_args['section'])) :
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 				<div class="careers-hero__content" appear>
-					<div class="careers-hero__title"><?= $_args['section']['careers_title_titolo'] ?></div>
+					<h1 class="careers-hero__title"><?= $_args['section']['careers_title_titolo'] ?></h1>
 				</div>
 			</div>
 		</div>

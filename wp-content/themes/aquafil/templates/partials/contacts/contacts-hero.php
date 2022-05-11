@@ -11,7 +11,7 @@ if(!empty($_args['section'])) :
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-10 offset-sm-2 col-md-9 offset-md-3">
-        <div class="contacts-hero__title"><?= $_args['section']['titolo_cnt_hero']; ?></div>
+        <h1 class="contacts-hero__title"><?= $_args['section']['titolo_cnt_hero']; ?></h1>
         <div class="contacts-hero__text">
           <div class="contacts-hero__paragraph-title"><?= $_args['section']['sottotitolo_cnt_hero']; ?></div>
           <div class="contacts-hero__paragraph-text">

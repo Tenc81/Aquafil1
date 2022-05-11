@@ -45,7 +45,7 @@ if (is_array($video) && count($video)> 0) {
 					<div class="news-detail-hero__content" appear>
 						<div class="news-detail-hero__category"><?= get_the_date("d.m.Y"); ?></div>
 						<div class="news-detail-hero__title-small">
-							<?=get_the_title()?>
+							<h1><?= get_the_title(); ?></h1>
 						</div>
 					</div>
 				</div>

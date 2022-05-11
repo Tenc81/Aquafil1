@@ -23,7 +23,7 @@ $q = get_queried_object();
 				<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 					<div class="news-hero__content" appear>
 						<div class="news-hero__title">
-							<?= get_the_title(get_option("page_for_posts")); ?>
+							<h1><?= get_the_title(get_option("page_for_posts")); ?></h1>
 						</div>
 					</div>
 				</div>

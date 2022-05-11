@@ -12,7 +12,7 @@ if(!empty($_args['section'])) :
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-3">
 				<div class="generic-hero__content" appear>
-					<div class="generic-hero__title"><?= $_args['section']["title"]; ?></div>
+					<h1 class="generic-hero__title"><?= $_args['section']["title"]; ?></h1>
 				</div>
 			</div>
 		</div>

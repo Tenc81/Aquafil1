@@ -23,18 +23,4 @@ if($_args['ID']!=0) :
 		</div>
 	</a>
 </div>
-<!-- in page detail -->
-<div class="card--side-modal" card-product-detail id="detail-<!--@@var=id-->">
-	<div class="card--side-modal__picture">
-		<img loading="lazy" src="<!--@@var=img-->">
-	</div>
-	<div class="card--side-modal__content">
-		<div class="card--side-modal__title">
-			<!--@@var=title-->
-		</div>
-		<div class="card--side-modal__abstract">
-			<!--@@var=abstract-->
-		</div>
-	</div>
-</div>
 <?php endif; ?>
