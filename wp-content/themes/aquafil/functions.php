@@ -289,11 +289,11 @@ $wstheme_includes = [
 ];
 
 foreach ($wstheme_includes as $file) {
-	if (!$filepath = locate_template($file)) {
-		trigger_error(sprintf(__('Error locating %s for inclusion', 'WStheme'), $file), E_USER_ERROR);
-	}
+  if (!$filepath = locate_template($file)) {
+    trigger_error(sprintf(__('Error locating %s for inclusion', 'WStheme'), $file), E_USER_ERROR);
+  }
 
-	require_once $filepath;
+  require_once $filepath;
 }
 unset($file, $filepath);
 
@@ -765,9 +765,9 @@ add_action('save_post', 'on_save_delete_transient', 10, 3);
 function frm_create_custom_contact() {
 	global $wpdb;
 	$query = "
-		SELECT st.value 
-		FROM wp_icl_strings s JOIN wp_icl_string_translations st 
-		ON st.string_id=s.id 
+		SELECT st.value
+		FROM wp_icl_strings s JOIN wp_icl_string_translations st
+		ON st.string_id=s.id
 		WHERE s.context='wstheme' AND s.value=%s AND st.language='".$_COOKIE["wp-wpml_current_language"]."'";
 
 	if(empty($_POST)) {
@@ -796,8 +796,8 @@ function frm_create_custom_contact() {
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1, 
-				'error' => is_null($s2) ? '' : $s2, 
+				'msg' => is_null($s1) ? '' : $s1,
+				'error' => is_null($s2) ? '' : $s2,
 				'sent' => is_null($s3) ? '' : $s3
 			), function($s) {
 			return $s != '';
@@ -830,8 +830,8 @@ function frm_create_custom_contact() {
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1, 
-				'error' => is_null($s2) ? '' : $s2, 
+				'msg' => is_null($s1) ? '' : $s1,
+				'error' => is_null($s2) ? '' : $s2,
 				'sent' => is_null($s3) ? '' : $s3
 			), function($s) {
 			return $s != '';
@@ -872,11 +872,11 @@ function frm_create_custom_contact() {
 		$attach_data = wp_generate_attachment_metadata($attach_id, $file);
 		wp_update_attachment_metadata($attach_id, $attach_data);
 		if ($attach_id) {
-			file_put_contents(ABSPATH.'error_log.txt', get_the_date("d F Y H:i:s") .PHP_EOL. $attach_id.PHP_EOL. print_r($attachment, true).PHP_EOL , FILE_APPEND | LOCK_EX);
+			//file_put_contents(ABSPATH.'error_log.txt', get_the_date("d F Y H:i:s") .PHP_EOL. $attach_id.PHP_EOL. print_r($attachment, true).PHP_EOL , FILE_APPEND | LOCK_EX);
 			$_POST['curriculum'] = $upload_dir["url"].'/'.$_POST['file']['name'];
 			$form = WPCF7_ContactForm::get_instance(22509);
 			$result = $form->submit();
-			
+
 			$default = array(
 				'msg' => $result['message'],
 				'error' => "Errore durante l'invio",
@@ -886,8 +886,8 @@ function frm_create_custom_contact() {
 			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 			$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 			$values = array_filter(array(
-					'msg' => is_null($s1) ? '' : $s1, 
-					'error' => is_null($s2) ? '' : $s2, 
+					'msg' => is_null($s1) ? '' : $s1,
+					'error' => is_null($s2) ? '' : $s2,
 					'sent' => is_null($s3) ? '' : $s3
 				), function($s) {
 				return $s != '';
@@ -938,9 +938,9 @@ function frm_create_custom_contact() {
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$s4 = $wpdb->get_var($wpdb->prepare($query, "Clicca su %s per scaricare il documento."));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1, 
-				'error' => is_null($s2) ? '' : $s2, 
-				'sent' => is_null($s3) ? '' : $s3, 
+				'msg' => is_null($s1) ? '' : $s1,
+				'error' => is_null($s2) ? '' : $s2,
+				'sent' => is_null($s3) ? '' : $s3,
 				'download' => is_null($s4) ? '' : $s4
 			), function($s) {
 			return $s != '';
@@ -988,7 +988,7 @@ function wpcf7_save_address_book($value, $field, $form) {
 				$value = $_POST["email"];
 				break;
 			case "[your-name]":
-				$value = $_POST["firstName"].' '.$_POST["lastName"];
+				$value = isset($_POST["your-name"]) ? $_POST["your-name"] : $_POST["firstName"].' '.$_POST["lastName"];
 				break;
 			case "[your-subject]":
 				$value = isset($_POST["subject"]) ? $_POST["subject"] : __($form->title, "wstheme");
@@ -1194,7 +1194,7 @@ if(!function_exists('wp_is_block_theme')) {
 	}
 }
 
- 
+
 function wpml_wpseo_title($title, $presentation) {
   switch($presentation->model->object_type) {
     case 'post-type-archive':
@@ -1206,7 +1206,7 @@ function wpml_wpseo_title($title, $presentation) {
     default:
       $key = false;
   }
- 
+
   if($key) {
     $option = get_option('wpseo_titles');
     if(isset($option[$key])) {
@@ -1217,7 +1217,7 @@ function wpml_wpseo_title($title, $presentation) {
       $title = wpseo_replace_vars(__($option[$key], 'admin_texts_wpseo_titles'), $presentation);
     }
   }
- 
+
   return $title;
 }
 
@@ -1232,26 +1232,26 @@ function wpml_wpseo_desc($title, $presentation) {
     default:
       $key = false;
   }
- 
+
   if($key) {
     $option = get_option('wpseo_titles');
     if(isset($option[$key])) {
         $title = wpseo_replace_vars(__($option[$key], 'admin_texts_wpseo_titles'), $presentation);
     }
   }
- 
+
   return $title;
 }
- 
+
 add_filter('wpseo_save_indexable', function($indexable) {
   $args = [
     'element_id' => $indexable->object_id,
     'element_type' => $indexable->object_type,
   ];
- 
+
   $language_code = apply_filters('wpml_element_language_code', false, $args);
   $indexable->permalink = apply_filters('wpml_permalink', $indexable->permalink, $language_code, true);
- 
+
   return $indexable;
 });
 
@@ -1317,8 +1317,8 @@ function filter_rewrite_rules_array($rules) {
 	$new_rules['magazine/localnews/(.+)/?$'] = 'index.php?localnews=$matches[1]';
 	global $wpdb;
 	$query = "
-		SELECT t.slug FROM wp_terms t JOIN wp_term_taxonomy tt 
-		ON t.term_id=tt.term_taxonomy_id 
+		SELECT t.slug FROM wp_terms t JOIN wp_term_taxonomy tt
+		ON t.term_id=tt.term_taxonomy_id
 		WHERE tt.taxonomy='localnews_category'";
 	$terms = $wpdb->get_col($query);
 	foreach($terms as $term) {
@@ -1326,8 +1326,8 @@ function filter_rewrite_rules_array($rules) {
 	  $new_rules['magazine/('.$term.')/?$'] = 'index.php?localnews_category=$matches[1]';
 	}
 	$query = "
-		SELECT t.slug FROM wp_terms t JOIN wp_term_taxonomy tt 
-		ON t.term_id=tt.term_taxonomy_id 
+		SELECT t.slug FROM wp_terms t JOIN wp_term_taxonomy tt
+		ON t.term_id=tt.term_taxonomy_id
 		WHERE tt.taxonomy='category'";
 	$terms = $wpdb->get_col($query);
 	foreach($terms as $term) {

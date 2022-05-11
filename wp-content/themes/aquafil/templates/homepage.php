@@ -23,6 +23,8 @@ get_header();
 			get_template_part($part, null, array("section" => $section, "index" => $i+1));
 		}
 	}
+
+	echo do_shortcode('[contact-form-7 id="4227" title="Careers"]');
 	?>
 </main>
 

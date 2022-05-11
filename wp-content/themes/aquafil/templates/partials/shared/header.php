@@ -26,10 +26,10 @@
 								default:;
 							}
 						}
+						$hlItems = array();
 						if(!empty($mainMenu)) {
 							echo '
 									<ul class="nav--main">';
-							$hlItems = array();
 							foreach ($mainMenu as $i=>$item) {
 								if($item["label"] != "Highlighted Item") {
 									echo '
@@ -69,7 +69,7 @@
 							}
 						}
 						if(isset($secMenu)) {
-							get_template_part('templates/partials/shared/navigation', 'top', array("menu" => $secMenu));
+							get_template_part('templates/partials/shared/navigation', 'top', array("menu" => $secMenu, "hlmenu" => $hlItems));
 						}
 						?>
 					</div>

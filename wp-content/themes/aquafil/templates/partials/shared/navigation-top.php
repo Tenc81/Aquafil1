@@ -2,7 +2,8 @@
 $_args = wp_parse_args(
   $args,
   array(
-    'menu' => array()
+    'menu' => array(),
+		'hlmenu' => array()
   ));
 ?>
 <ul class="nav--service">
@@ -20,9 +21,14 @@ $_args = wp_parse_args(
 				</a>
 			</li>';
 	}
+	foreach($_args["hlmenu"] as $item) {
+		echo '
+			<li class="nav__item investor">
+				<a href="'.$item["url"].'" target="'.$item["target"].'" '.($item["rel"] != '' ? 'rel="'.$item["rel"].'"' : '').' class="btn--investor">
+					'.$item["label"].'
+				</a>
+			</li>';
+	}
 	?>
-	<li class="nav__item investor">
-		<a href="/investor-relations/homepage/" target="_self" class="btn--investor">Investors</a>
-	</li>
 </ul>
 <?= icl_post_languages(); ?>
