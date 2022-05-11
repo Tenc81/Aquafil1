@@ -21,5 +21,8 @@ $_args = wp_parse_args(
 			</li>';
 	}
 	?>
+	<li class="nav__item investor">
+		<a href="/investor-relations/homepage/" target="_self" class="btn--investor">Investors</a>
+	</li>
 </ul>
 <?= icl_post_languages(); ?>
