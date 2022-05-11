@@ -106,42 +106,48 @@ h6 {
 }
 */
 
-.h1 {
+.h1,
+.headings h1 {
 	font-weight: bold;
 	font-size: Max(34px, Min(90px, 4.6875vw));
 	line-height: 1.2;
 	margin-bottom: 0.16666em;
 }
 
-.h2 {
+.h2,
+.headings h2 {
 	font-weight: bold;
 	font-size: Max(30px, Min(72px, 3.75vw));
 	line-height: 1.2;
 	margin-bottom: 0.4em; //1em;
 }
 
-.h3 {
+.h3,
+.headings h3 {
 	font-weight: bold;
 	font-size: Max(28px, Min(60px, 3.125vw));
 	line-height: 1.2;
 	margin-bottom: 0.4em; //1em;
 }
 
-.h4 {
+.h4,
+.headings h4 {
 	font-weight: bold;
 	font-size: Max(18px, Min(40px, 2.0833vw));
 	line-height: 1.36;
 	margin-bottom: 1.11111em;
 }
 
-.h5 {
+.h5,
+.headings h5 {
 	font-weight: bold;
 	font-size: Max(16px, Min(36px, 1.875vw));
 	line-height: 1.36;
 	margin-bottom: 1.11111em;
 }
 
-.h6 {
+.h6,
+.headings h6 {
 	font-weight: bold;
 	font-size: Max(15px, Min(24px, 1.25vw));
 	line-height: 1.36;
@@ -153,6 +159,7 @@ h6 {
 	font-size: Max(15px, Min(21px, 1.09375vw));
 	line-height: 1.5;
 	@extend .anchors;
+	@extend .headings;
 }
 
 .small {

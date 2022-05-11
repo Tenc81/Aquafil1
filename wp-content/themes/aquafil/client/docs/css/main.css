@@ -5025,19 +5025,85 @@ h6 {
 	margin-bottom: 1.11111em;
 }
 */
-.h1, .primary-hero__title, .card--numbers__title {
+.h1, .primary-hero__title, .card--numbers__title,
+.headings h1,
+.text h1,
+.control--text h1,
+.control--select h1,
+.control--custom-select h1,
+.newsletter-proposition__email [control-email] .control--text h1,
+.card--content__abstract h1,
+.title-text__abstract h1,
+.title-text__description h1,
+.news-detail-content__text h1,
+.page--product .media-text-secondary__abstract h1,
+.page--product-bfc .media-text-secondary__abstract h1,
+.page--product-ntf .media-text-secondary__abstract h1,
+.page--product-polymers .media-text-secondary__abstract h1,
+.page--location-country .media-text-secondary__abstract h1,
+.page--location-detail .media-text-secondary__abstract h1,
+.page--product .text-media-secondary__abstract h1,
+.page--product-bfc .text-media-secondary__abstract h1,
+.page--product-ntf .text-media-secondary__abstract h1,
+.page--product-polymers .text-media-secondary__abstract h1,
+.page--location-country .text-media-secondary__abstract h1,
+.page--location-detail .text-media-secondary__abstract h1 {
   font-weight: bold;
   font-size: Max(34px, Min(90px, 4.6875vw));
   line-height: 1.2;
   margin-bottom: 0.16666em; }
 
-.h2, .generic-hero__title, .news-hero__title, .news-detail-hero__title, .certifications-hero__title, .careers-hero__title, .card--main-hero__title, .profile-proposition__title, .area-proposition__title, .sustainability-proposition__title, .innovation-proposition__title, .news-proposition__title, .location-hero__title, .title-hero__title, .media-text__title, .media-text-primary__title, .text-media-secondary__title, .title-text__title, .title-hero-02__title, .research-proposition__title, .secondary-hero__title, .history-hero__title, .card--history__year, .case-studies-hero__title, .contacts-hero__title, .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title, .page--location-country .global-capabilities__title, .page--location-detail .global-capabilities__title {
+.h2, .generic-hero__title, .news-hero__title, .news-detail-hero__title, .certifications-hero__title, .careers-hero__title, .card--main-hero__title, .profile-proposition__title, .area-proposition__title, .sustainability-proposition__title, .innovation-proposition__title, .news-proposition__title, .location-hero__title, .title-hero__title, .media-text__title, .media-text-primary__title, .text-media-secondary__title, .title-text__title, .title-hero-02__title, .research-proposition__title, .secondary-hero__title, .history-hero__title, .card--history__year, .case-studies-hero__title, .contacts-hero__title, .page--product .global-capabilities__title, .page--product-bfc .global-capabilities__title, .page--product-ntf .global-capabilities__title, .page--product-polymers .global-capabilities__title, .page--location-country .global-capabilities__title, .page--location-detail .global-capabilities__title,
+.headings h2,
+.text h2,
+.control--text h2,
+.control--select h2,
+.control--custom-select h2,
+.newsletter-proposition__email [control-email] .control--text h2,
+.card--content__abstract h2,
+.title-text__abstract h2,
+.title-text__description h2,
+.news-detail-content__text h2,
+.page--product .media-text-secondary__abstract h2,
+.page--product-bfc .media-text-secondary__abstract h2,
+.page--product-ntf .media-text-secondary__abstract h2,
+.page--product-polymers .media-text-secondary__abstract h2,
+.page--location-country .media-text-secondary__abstract h2,
+.page--location-detail .media-text-secondary__abstract h2,
+.page--product .text-media-secondary__abstract h2,
+.page--product-bfc .text-media-secondary__abstract h2,
+.page--product-ntf .text-media-secondary__abstract h2,
+.page--product-polymers .text-media-secondary__abstract h2,
+.page--location-country .text-media-secondary__abstract h2,
+.page--location-detail .text-media-secondary__abstract h2 {
   font-weight: bold;
   font-size: Max(30px, Min(72px, 3.75vw));
   line-height: 1.2;
   margin-bottom: 0.4em; }
 
-.h3, .report-proposition__title, .page--investors__page-title, .card--side-modal__title, .card--gallery-modal__title {
+.h3, .report-proposition__title, .page--investors__page-title, .card--side-modal__title, .card--gallery-modal__title,
+.headings h3,
+.text h3,
+.control--text h3,
+.control--select h3,
+.control--custom-select h3,
+.newsletter-proposition__email [control-email] .control--text h3,
+.card--content__abstract h3,
+.title-text__abstract h3,
+.title-text__description h3,
+.news-detail-content__text h3,
+.page--product .media-text-secondary__abstract h3,
+.page--product-bfc .media-text-secondary__abstract h3,
+.page--product-ntf .media-text-secondary__abstract h3,
+.page--product-polymers .media-text-secondary__abstract h3,
+.page--location-country .media-text-secondary__abstract h3,
+.page--location-detail .media-text-secondary__abstract h3,
+.page--product .text-media-secondary__abstract h3,
+.page--product-bfc .text-media-secondary__abstract h3,
+.page--product-ntf .text-media-secondary__abstract h3,
+.page--product-polymers .text-media-secondary__abstract h3,
+.page--location-country .text-media-secondary__abstract h3,
+.page--location-detail .text-media-secondary__abstract h3 {
   font-weight: bold;
   font-size: Max(28px, Min(60px, 3.125vw));
   line-height: 1.2;
@@ -5049,19 +5115,85 @@ h6 {
 .page--product-ntf #applications.title-text__title-small,
 .page--product-polymers #applications.title-text__title-small,
 .page--location-country #applications.title-text__title-small,
-.page--location-detail #applications.title-text__title-small {
+.page--location-detail #applications.title-text__title-small,
+.headings h4,
+.text h4,
+.control--text h4,
+.control--select h4,
+.control--custom-select h4,
+.newsletter-proposition__email [control-email] .control--text h4,
+.card--content__abstract h4,
+.title-text__abstract h4,
+.title-text__description h4,
+.news-detail-content__text h4,
+.page--product .media-text-secondary__abstract h4,
+.page--product-bfc .media-text-secondary__abstract h4,
+.page--product-ntf .media-text-secondary__abstract h4,
+.page--product-polymers .media-text-secondary__abstract h4,
+.page--location-country .media-text-secondary__abstract h4,
+.page--location-detail .media-text-secondary__abstract h4,
+.page--product .text-media-secondary__abstract h4,
+.page--product-bfc .text-media-secondary__abstract h4,
+.page--product-ntf .text-media-secondary__abstract h4,
+.page--product-polymers .text-media-secondary__abstract h4,
+.page--location-country .text-media-secondary__abstract h4,
+.page--location-detail .text-media-secondary__abstract h4 {
   font-weight: bold;
   font-size: Max(18px, Min(40px, 2.0833vw));
   line-height: 1.36;
   margin-bottom: 1.11111em; }
 
-.h5, .card--content__title, .card--area__title, .card--sustainability__title, .newsletter-proposition__title, .card--toolkit__title, .media-text-secondary__title, .card--icon__title, .card--numbers__abstract, .card--history__title, .card--history-detail__title, .page--investors__section-title, .page--investor__menu-title, .contacts-hero__paragraph-title, .contacts-info__title, .contacts-form__title, .sales-country__title {
+.h5, .card--content__title, .card--area__title, .card--sustainability__title, .newsletter-proposition__title, .card--toolkit__title, .media-text-secondary__title, .card--icon__title, .card--numbers__abstract, .card--history__title, .card--history-detail__title, .page--investors__section-title, .page--investor__menu-title, .contacts-hero__paragraph-title, .contacts-info__title, .contacts-form__title, .sales-country__title,
+.headings h5,
+.text h5,
+.control--text h5,
+.control--select h5,
+.control--custom-select h5,
+.newsletter-proposition__email [control-email] .control--text h5,
+.card--content__abstract h5,
+.title-text__abstract h5,
+.title-text__description h5,
+.news-detail-content__text h5,
+.page--product .media-text-secondary__abstract h5,
+.page--product-bfc .media-text-secondary__abstract h5,
+.page--product-ntf .media-text-secondary__abstract h5,
+.page--product-polymers .media-text-secondary__abstract h5,
+.page--location-country .media-text-secondary__abstract h5,
+.page--location-detail .media-text-secondary__abstract h5,
+.page--product .text-media-secondary__abstract h5,
+.page--product-bfc .text-media-secondary__abstract h5,
+.page--product-ntf .text-media-secondary__abstract h5,
+.page--product-polymers .text-media-secondary__abstract h5,
+.page--location-country .text-media-secondary__abstract h5,
+.page--location-detail .text-media-secondary__abstract h5 {
   font-weight: bold;
   font-size: Max(16px, Min(36px, 1.875vw));
   line-height: 1.36;
   margin-bottom: 1.11111em; }
 
-.h6, .card--location__title, .card--product__title, .careers-list__item-name, .careers-list__item-links, .search__title {
+.h6, .card--location__title, .card--product__title, .careers-list__item-name, .careers-list__item-links, .search__title,
+.headings h6,
+.text h6,
+.control--text h6,
+.control--select h6,
+.control--custom-select h6,
+.newsletter-proposition__email [control-email] .control--text h6,
+.card--content__abstract h6,
+.title-text__abstract h6,
+.title-text__description h6,
+.news-detail-content__text h6,
+.page--product .media-text-secondary__abstract h6,
+.page--product-bfc .media-text-secondary__abstract h6,
+.page--product-ntf .media-text-secondary__abstract h6,
+.page--product-polymers .media-text-secondary__abstract h6,
+.page--location-country .media-text-secondary__abstract h6,
+.page--location-detail .media-text-secondary__abstract h6,
+.page--product .text-media-secondary__abstract h6,
+.page--product-bfc .text-media-secondary__abstract h6,
+.page--product-ntf .text-media-secondary__abstract h6,
+.page--product-polymers .text-media-secondary__abstract h6,
+.page--location-country .text-media-secondary__abstract h6,
+.page--location-detail .text-media-secondary__abstract h6 {
   font-weight: bold;
   font-size: Max(15px, Min(24px, 1.25vw));
   line-height: 1.36;

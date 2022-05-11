@@ -41,6 +41,7 @@
 		&__abstract {
 			font-size: Max(15px, Min(18px, 1.09375vw));
 			@extend .anchors;
+			@extend .headings;
 		}
 
 		&__cta {
