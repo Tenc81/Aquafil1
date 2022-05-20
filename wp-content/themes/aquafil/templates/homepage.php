@@ -24,7 +24,6 @@ get_header();
 		}
 	}
 
-	echo do_shortcode('[contact-form-7 id="4227" title="Careers"]');
 	?>
 </main>
 
