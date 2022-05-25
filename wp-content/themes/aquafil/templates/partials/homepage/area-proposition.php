@@ -12,7 +12,7 @@ if(!empty($_args['section'])) :
 	<div class="area-proposition__head">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-12 offset-sm-2 col-md-11 offset-md-3">
+				<div class="col-sm-10 offset-sm-2 col-md-9 offset-md-3">
 					<div class="area-proposition__content" appear>
 						<div class="area-proposition__category"><?= $_args['section']['area_abstract']?></div>
 						<h2 class="area-proposition__title"><?= $_args['section']['area_titolo']?></h2>
@@ -26,7 +26,7 @@ if(!empty($_args['section'])) :
 		<div class="listing--area">
 		<?php foreach($_args['section']['area_cards'] as $s) { ?>
 			<div class="listing__item" appear>
-				<div class="card--area" scroll scrollSpeed="2">
+				<div class="card--area">
 					<h3 class="card--area__title"><?=$s['area_cards_titolo']?></h3>
 					<div class="card--area__picture">
 						<img loading="lazy" src="<?=$s['area_cards_image']?>" />

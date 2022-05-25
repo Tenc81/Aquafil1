@@ -15,11 +15,13 @@ if(!empty($_args['section'])) :
 					<div class="title-hero-02__title"><?= $_args['section']['internal_title_titolo'] ?></div>
 				</div>
 			</div>
+			<?php if(!empty($_args['section']['internal_title_abstract'])) : ?>
 			<div class="col-sm-10 offset-sm-2 col-md-9 offset-md-3">
 				<div class="title-hero-02__content" appear>
 					<div class="title-hero-02__abstract"><?= $_args['section']['internal_title_abstract'] ?></div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>
