@@ -1,8 +1,12 @@
 .area-proposition {
 
 	&__head {
-		padding: var(--p120) 0 var(--cw4) 0;
+		padding: var(--p120) 0 var(--p80) 0;
 		background: $background-quaternary;
+	}
+
+	&__content {
+		padding-right: 20px;
 	}
 
 	&__category {
@@ -29,6 +33,12 @@
 			background: $background-quaternary;
 		}
 	}
+
+	@include media-down(sm) {
+		&__head {
+			background: $background-quaternary;
+		}
+	}
 }
 
 .listing--area {
@@ -41,11 +51,7 @@
 			max-width: 50%;
 
 			&:nth-child(even) {
-				margin-top: -12.5vw;
-				/*
-				&>.card--area {
-				}
-				*/
+				margin-top: -14vw;
 			}
 		}
 	}
