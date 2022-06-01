@@ -13,7 +13,7 @@ if(!empty($_args['section'])) :
 	<?php
 	echo !empty($_args['section']['immagine_download_file']) ? '<img src="'.$_args['section']['immagine_download_file']['url'].'">' : '';
 	echo !empty($_args['section']['descrizione_download_file']) ? '<p>'.$_args['section']['descrizione_download_file'].'</p>' : '';
-	echo '<a href="'.$download['download_file']['url'].'" download="'.$_args['section']['download_file']['filename'].'" class="btn--certification"><span>'.$_args['section']['etichetta_download_file'].'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>';
+	echo '<a href="'.$_args['section']['download_file']['url'].'" download="'.$_args['section']['download_file']['filename'].'" class="btn--certification"><span>'.$_args['section']['etichetta_download_file'].'</span> <span class="icon"><svg><use xlink:href="#download"></use></svg></span></a>';
 	?>
   
 </section>
