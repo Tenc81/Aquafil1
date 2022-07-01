@@ -180,20 +180,26 @@ class Websolute_Gdpr {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		add_shortcode('wp-gdpr', array($plugin_public, 'informative_render'));
 		$this->loader->add_action( 'template_redirect', $plugin_public, 'informative_render' );
+		$this->loader->add_action( 'user_register', $plugin_public, 'userToIubenda');
 		if ( is_plugin_active( 'formidable/formidable.php' ) ) {
 			$this->loader->add_action( 'frm_after_create_entry', $plugin_public, 'formidableToIubenda');
 		}
-        if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
-            $this->loader->add_action( 'wpcf7_before_send_mail', $plugin_public, 'cf7ToIubenda');
-        }
+    if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
+        $this->loader->add_action( 'wpcf7_before_send_mail', $plugin_public, 'cf7ToIubenda');
+    }
 		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-            $this->loader->add_action( 'woocommerce_checkout_fields', $plugin_public, 'custom_override_checkout_fields');
+			$this->loader->add_filter( 'woocommerce_checkout_show_terms', $plugin_public, 'hide_default_terms');
+            $this->loader->add_action( 'woocommerce_register_form', $plugin_public, 'custom_override_checkout_fields');
+            $this->loader->add_action( 'woocommerce_edit_account_form', $plugin_public, 'custom_override_checkout_fields');
+            $this->loader->add_action( 'user_register', $plugin_public, 'clientToIubenda');
+			$this->loader->add_action( 'woocommerce_save_account_details', $plugin_public, 'clientToIubenda');
+            $this->loader->add_action( 'woocommerce_review_order_before_submit', $plugin_public, 'custom_override_checkout_fields');
             $this->loader->add_action( 'woocommerce_checkout_update_order_meta', $plugin_public, 'woocommerceGdprMeta' );
             $this->loader->add_action( 'woocommerce_after_order_notes', $plugin_public, 'woocommerceGdprOptions' );
-            //$this->loader->add_action( 'woocommerce_new_order', $plugin_public, 'woocommerceToIubenda' );
-		}else{
-            $this->loader->add_action( 'user_register', $plugin_public, 'userToIubenda');
-        }
+						$this->loader->add_filter( 'woocommerce_registration_errors', $plugin_public, 'woocommerceValdateRegistrPrefs', 10, 3);
+						$this->loader->add_filter( 'woocommerce_save_account_details_errors', $plugin_public, 'woocommerceValdateEditPrefs', 10, 2);
+			$this->loader->add_action( 'woocommerce_after_checkout_validation', $plugin_public, 'woocommerceValdatePrefs', 10, 2);
+		}
 	}
 
 	/**

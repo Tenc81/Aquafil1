@@ -110,3 +110,5 @@ dist
 error_log.txt
 node_modules
 package-lock.json
+.vscode
+*.csv

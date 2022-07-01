@@ -28,5 +28,19 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
-
+	if (typeof jQuery.fn.tipTip === "function") {
+		$(window).on("load", function () {
+			$('#tiptip_holder').removeAttr('style');
+			$('#tiptip_arrow').removeAttr('style');
+			if ($('.woocommerce-help-tip').length > 0) {
+				$('.woocommerce-help-tip').tipTip({
+					'attribute': 'data-tip',
+					'fadeIn': 50,
+					'fadeOut': 50,
+					'delay': 200,
+					'maxWidth': '300px'
+				});
+			}
+		});
+	}
 })( jQuery );

@@ -57,8 +57,10 @@ class Websolute_Gdpr_Admin {
 	function informative_register() {  
 	    $args = array(  
 	        'label' => __('Informative Trattamento dati'),  
-	        'singular_label' => __('Informativa'),  
-	        'public' => true,  
+	        'singular_label' => __('Informativa'),   
+	        'public' => false,
+			    'public_queryable' => true,
+			    'exclude_from_search' => true,  
 	        'show_ui' => true,  
 	        'capability_type' => 'post',  
 	        'hierarchical' => false,  
@@ -350,7 +352,7 @@ function informative_settings_init()
         add_settings_field(
             'informative_iubenda_to_fieldsinprefs', // as of WP 4.6 this value is used only internally
             // use $args' label_for to populate the id inside the callback
-            __('selezionare i campi da inviare nella prefernza a iubenda:', 'informative'),
+            __('selezionare i campi da inviare nella preferenza a iubenda:', 'informative'),
             array($this,'informative_iubenda_to_fieldsinprefs'),
             'informative',
             'informative_section_developers',
@@ -395,7 +397,7 @@ function informative_settings_init()
         add_settings_field(
                 'prefs_iubenda_to_woocommerce', // as of WP 4.6 this value is used only internally
                 // use $args' label_for to populate the id inside the callback
-                __('gestione GDPR prefs woocommerce:', 'informative'),
+                __('gestione GDPR prefs woocommerce:', 'informative').wc_help_tip(esc_html(__('quando è installato wpml includere il testo in tag con il language code corrispondente.', 'informative')), true),
                 array($this,'prefs_iubenda_to_woocommerce'),
                 'informative',
                 'informative_section_developers',
@@ -477,7 +479,7 @@ function informative_iubenda_to_hidefields ($args)
 {
     $options = get_option('informative_options');
     $ffInForms = array('first_name', 'last_name', 'email');
-    $postmeta = maybe_unserialize( $options[esc_attr($args['label_for'])] );
+    $postmeta = isset($options[esc_attr($args['label_for'])]) ? maybe_unserialize( $options[esc_attr($args['label_for'])] ) : array();
     foreach ( $ffInForms as $ffInForm ) {
         if ( is_array( $postmeta ) && in_array( $ffInForm, $postmeta ) ) {
             $checked = 'checked="checked"';
@@ -485,39 +487,41 @@ function informative_iubenda_to_hidefields ($args)
             $checked = null;
         }
 ?>
-            <input type="checkbox" data-custom="<?= esc_attr($args['informative_custom_data']); ?>" name="informative_options[<?= esc_attr($args['label_for']); ?>][]" value="<?php echo $ffInForm;?>" <?php echo $checked; ?> />
-        <?php echo $ffInForm.'<br>';
+        <input type="checkbox" data-custom="<?= esc_attr($args['informative_custom_data']); ?>" name="informative_options[<?= esc_attr($args['label_for']); ?>][]" value="<?php echo $ffInForm;?>" <?php echo $checked; ?> />
+<?php 
+        echo $ffInForm.'<br>';
     }
 }
 
 
 function informative_iubenda_to_registration_users ($args)
 {
-    global $wpdb;
-    $options = get_option('informative_options');
+	global $wpdb;
+	$options = get_option('informative_options');
 
-        $ffInForms = $wpdb->get_results(
-            "
-	        SELECT ID, post_title
-	        FROM ".$wpdb->prefix."posts
-	        WHERE post_type = 'informative' AND post_status = 'publish'
-	        "
-        );
+	$ffInForms = $wpdb->get_results(
+			"
+		SELECT ID, post_title
+		FROM ".$wpdb->prefix."posts
+		WHERE post_type = 'informative' AND post_status = 'publish'
+		"
+	);
+	if(!empty($ffInForms)) :
+		$postmeta = maybe_unserialize( $options[esc_attr($args['label_for'])] );
 
-        $postmeta = maybe_unserialize( $options[esc_attr($args['label_for'])] );
+		foreach ( $ffInForms as $ffInForm ) {
 
-        foreach ( $ffInForms as $ffInForm ) {
-
-            if ( is_array( $postmeta ) && in_array( $ffInForm->ID, $postmeta ) ) {
-	            $checked = 'checked="checked"';
-	        } else {
-	            $checked = null;
-	        }
+			if ( is_array( $postmeta ) && in_array( $ffInForm->ID, $postmeta ) ) {
+				$checked = 'checked="checked"';
+			} else {
+				$checked = null;
+			}
 ?>
-                <input type="checkbox"  data-custom="<?= esc_attr($args['informative_custom_data']); ?>" name="informative_options[<?= esc_attr($args['label_for']); ?>][]" value="<?php echo $ffInForm->ID;?>" <?php echo $checked; ?> />
-                <?php echo $ffInForm->post_title.'<br>';
-        }
-
+	<input type="checkbox"  data-custom="<?= esc_attr($args['informative_custom_data']); ?>" name="informative_options[<?= esc_attr($args['label_for']); ?>][]" value="<?php echo $ffInForm->ID;?>" <?php echo $checked; ?> />
+	<?php echo $ffInForm->post_title.'<br>';
+		}
+	else : echo 'ancora non ci sono informative da associare, clicca <a href="'.get_option("siteurl").'/wp-admin/post-new.php?post_type=informative">qui</a> per crearne una.';
+	endif;
 }
 
 
@@ -563,18 +567,18 @@ function prefs_iubenda_to_woocommerce ($args)
         var scntDiv = jQuery('#p_scents');
         var i = <?php echo $i; ?>
 
-        jQuery('#addScnt').live('click', function () {
+        jQuery('#addScnt').on('click', function () {
             jQuery('<p><label for="nome_preferenza">Nome preferenza: <input style="width:100%" type="text" id="nome_preferenza" name="informative_options[<?= esc_attr($args['label_for']); ?>][' + i + '][<?= esc_attr('nome_preferenza'); ?>]" value="" placeholder="Nome Preferenza ' + i + '" />' +
                 '</label><br><label for="obb_preferenza">Selezione Obbligatoria: <select id="obb_preferenza" style="width:100%" name="informative_options[<?= esc_attr($args['label_for']); ?>][' + i + '][<?= esc_attr('obb_preferenza'); ?>]">' +
                 '<option value="true">Si</option><option value="false">No</option></select></label><br><label for="sendOnFalse">Invia quando falso: <select id="sendOnFalse" style="width:100%" name="informative_options[<?= esc_attr($args['label_for']); ?>][' + i + '][<?= esc_attr('sendOnFalse'); ?>]">' +
                 '<option value="true">Si</option><option value="false">No</option></select></label><br><label for="testo_preferenza">Testo preferenza: '+
                 '<textarea id="testo_preferenza" style="width:100%" rows="5"  name="informative_options[<?= esc_attr($args['label_for']); ?>][' + i + '][<?= esc_attr('testo_preferenza'); ?>]">Testo Preferenza</textarea></label>' +
-                '<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+                '<a href="#" class="remPref">Remove</a></p>').appendTo(scntDiv);
             i++;
             return false;
         });
 
-        jQuery('#remScnt').live('click', function () {
+        jQuery('body').on('click', '.remPref', function () {
             if (i > 1) {
                 jQuery(this).parents('p').remove();
                 i--;
@@ -595,7 +599,7 @@ function prefs_iubenda_to_woocommerce ($args)
             '<option value="true" '. ($pref['sendOnFalse'] == 'true' ? 'selected' : '') .'>Si</option><option '. ($pref['sendOnFalse'] == 'false' ? 'selected' : '') .' value="false">No</option></select></label><br>
 <label for="testo_preferenza">Testo preferenza: '.
             '<textarea style="width:100%" rows="5" id="testo_preferenza" name="informative_options['.esc_attr($args['label_for']).'][' . $k . ']['.esc_attr('testo_preferenza').']">'.$pref['testo_preferenza'].'</textarea></label>' .
-            '<a href="#" id="remScnt">Remove</a></p>';
+            '<a href="#" class="remPref">Remove</a></p>';
         }
     }
     ?>
@@ -726,7 +730,9 @@ function save_informative( $post_id, $post ) {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+            wp_enqueue_script('tooltip', WP_CONTENT_URL . '/plugins/woocommerce/assets/js/jquery-tiptip/jquery.tipTip.min.js', array('jquery'), null, false);
+		}
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/websolute-gdpr-admin.js', array( 'jquery' ), $this->version, false );
 
 	}

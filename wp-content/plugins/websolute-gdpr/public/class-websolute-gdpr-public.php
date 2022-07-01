@@ -238,6 +238,9 @@ class Websolute_Gdpr_Public {
                     $s = explode('__', $v);
                     switch($s[0]){
                         case 'pref':
+							if(class_exists('SitePress')) {
+								$s[1] = preg_replace('@_\w{2}$@', '_'.ICL_LANGUAGE_CODE, $s[1]);
+							}
                             switch($s[2]){
                                 case 'hideonfalse':
                                     if ($var[$k] != '') {
@@ -325,7 +328,18 @@ class Websolute_Gdpr_Public {
 				$ln = new stdClass();
 				$ln->identifier =  $i->meta_value;
 				$ln->timestamp =  "0001-01-01T00:00:00";
-				array_push($output, $ln);
+				if(class_exists('SitePress')) {
+					preg_match('@_\w{2}$@', $i->meta_value, $matches);
+					if(!empty($matches)) {
+						foreach($matches as $match) {
+							if($match == '_'.ICL_LANGUAGE_CODE) {
+								array_push($output, $ln);
+							}
+						}
+					}
+				} else {
+					array_push($output, $ln);
+				}
 			}
 
 		}
@@ -337,7 +351,6 @@ class Websolute_Gdpr_Public {
 
 
 	public function toIubenda($key, $obj, $action = 'consent', $post = 1) {
-
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,            "http://consent.iubenda.com/".$action );
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -345,6 +358,7 @@ class Websolute_Gdpr_Public {
 		if ($post == 1) curl_setopt($ch, CURLOPT_POSTFIELDS,     $obj );
 		curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json', 'ApiKey: '.$key));
 		$result=curl_exec ($ch);
+		curl_close($ch);
 		return $result;
 
 	}
@@ -362,13 +376,13 @@ class Websolute_Gdpr_Public {
         global $wpdb;
 
         // get_contact_form
-        $submission = WPCF7_Submission::get_instance(); 
+        $submission = WPCF7_Submission::get_instance();
         if ( $submission ) {
 
-            $posted_data = $submission->get_posted_data(); 
-			$contact_form = WPCF7_ContactForm::get_current();
-			$contact_form_id = $contact_form -> id; //ID
-			$contact_form_unit_tag = $contact_form -> unit_tag; //unit_tag			
+            $posted_data = $submission->get_posted_data();
+						$contact_form = WPCF7_ContactForm::get_current();
+						$contact_form_id = $contact_form -> id; //ID
+						$contact_form_unit_tag = $contact_form -> unit_tag; //unit_tag
 
             $f = $wpdb->get_row("SELECT post_content FROM ".$wpdb->prefix."posts WHERE ID = '".$contact_form_id."'");
             $form = $f->post_content;
@@ -435,65 +449,85 @@ class Websolute_Gdpr_Public {
 
 	}
 
-    public function woocommerceToIubenda() {
-        global $wpdb;
+	public function woocommerceToIubenda() {
+		global $wpdb;
 
-        $data = $this->IubendaObject;
-        $options = json_decode($data['gdprOpt']);
-        //$ok = explode('_',$data['_order_key']);
+		$data = $this->IubendaObject;
+		$options = json_decode($data['gdprOpt']);
+		//$ok = explode('_',$data['_order_key']);
 
 		$iubendaObj = new stdClass();
 		$iubendaObj->id = strtolower($this->GUID());
-        $iubendaObj->timestamp = substr_replace(date('c'), substr(microtime(), 1, 8), 19, 0);
+		$iubendaObj->timestamp = substr_replace(date('c'), substr(microtime(), 1, 8), 19, 0);
 
-        $sbj = [];
-        foreach($options->informative_iubenda_to_fieldsinprefs_list as $item){
+		$sbj = [];
+		foreach($options->informative_iubenda_to_fieldsinprefs_list as $item){
 
-            if(in_array($item, $options->informative_iubenda_to_hidefields_list)){
-                $sbj[$item] = 'xxxxxxxxxxxxxxxx';
-            }else{
-                $sbj[$item] = $data['_billing_'.$item];
-            }
-        }
-        $sbj['id'] = md5($data['_billing_email']);
-        $iubendaObj->subject = new stdClass();
-        $iubendaObj->subject = json_decode(json_encode($sbj));
-        $iubendaObj->subject->verified = false;
-        $prf = [];
-        foreach($data as $k => $v){
-            if(strstr($k, '_gdpr-pref')){
-                $pr = explode('__', $k);
-                if ( function_exists('icl_object_id') ) {
-                    $pre = str_replace('lang', ICL_LANGUAGE_CODE, $pr[1]);
-                    $prf[$pre] = 'true';
-                }
-            }
-        }
-        foreach($options->prefs_iubenda_to_woocommerce_list as $preferenza) {
-            if(!$preferenza->obb_preferenza){
-                if($preferenza->sendOnFalse){
-                    if ( function_exists('icl_object_id') ) {
-                        $pre = str_replace('lang', ICL_LANGUAGE_CODE, $preferenza->nome_preferenza);
-                        $prf[$pre] = 'false';
-                    }
-                }
-            }
-        }
-        $iubendaObj->preferences = new stdClass();
-        $iubendaObj->preferences = json_decode(json_encode($prf));
+			if(in_array($item, $options->informative_iubenda_to_hidefields_list)){
+				$sbj[$item] = 'xxxxxxxxxxxxxxxx';
+			}else{
+				$sbj[$item] = $data['_billing_'.$item];
+			}
+		}
+		$sbj['id'] = md5($data['_billing_email']);
+		$iubendaObj->subject = new stdClass();
+		$iubendaObj->subject = json_decode(json_encode($sbj));
+		$iubendaObj->subject->verified = false;
+		$prf = [];
+		foreach($data as $k => $v){
+			if(strstr($k, '_gdpr-pref')) {
+				$pr = explode('__', $k);
+				if(class_exists('SitePress')) {
+					$pre = str_replace('lang', ICL_LANGUAGE_CODE, $pr[1]);
+				} else {
+					$pre = $pr[1];
+				}
+				switch($pr[2]) {
+					case 'hideonfalse':
+						if(is_array($v)) {
+							if ($this->valid_field($v[0])) {
+								$prf[$pre] = true;
+							}
+						} else {
+							if ($this->valid_field($v)) {
+								$prf[$pre] = true;
+							}
+						}
+						break;
+					case 'sendonfalse':
+						if(is_array($v)) {
+							if ($this->valid_field($v[0])) {
+								$prf[$pre] = true;
+							} else {
+								$prf[$pre] = false;
+							}
+						} else {
+							if ($this->valid_field($v)) {
+								$prf[$pre] = true;
+							} else {
+								$prf[$pre] = false;
+							}
+						}
+						break;
+					default: ;
+				}
+			}
+		}
+		$iubendaObj->preferences = new stdClass();
+		$iubendaObj->preferences = json_decode(json_encode($prf));
 
-        $legNot = [];
-        foreach($options->informative_iubenda_to_woocommerce_list as $legalNotice) {
-            $i = $wpdb->get_row("SELECT meta_value FROM ".$wpdb->prefix."postmeta WHERE post_id = '".$legalNotice."' AND meta_key = 'ws-informative-rif-iubenda'");
-            if($i->meta_value) {
-                $ln = new stdClass();
-                $ln->identifier =  $i->meta_value;
-                $ln->timestamp =  "0001-01-01T00:00:00";
-                array_push($legNot, $ln);
-            }
-        }
-        $iubendaObj->legal_notices = new stdClass();
-        $iubendaObj->legal_notices = json_decode(json_encode($legNot));
+		$legNot = [];
+		foreach($options->informative_iubenda_to_woocommerce_list as $legalNotice) {
+			$i = $wpdb->get_row("SELECT meta_value FROM ".$wpdb->prefix."postmeta WHERE post_id = '".$legalNotice."' AND meta_key = 'ws-informative-rif-iubenda'");
+			if($i->meta_value) {
+				$ln = new stdClass();
+				$ln->identifier =  $i->meta_value;
+				$ln->timestamp =  "0001-01-01T00:00:00";
+				array_push($legNot, $ln);
+			}
+		}
+		$iubendaObj->legal_notices = new stdClass();
+		$iubendaObj->legal_notices = json_decode(json_encode($legNot));
 
 		$proofs = [];
 		$serverProof = array(
@@ -508,26 +542,26 @@ class Websolute_Gdpr_Public {
 		array_push($proofs, $spt);
 		$formProof = [];
 
-        foreach($data as $k => $v){
-            if($k != 'gdprOpt'){
-                if(in_array(str_replace('_billing_','',$k),$options->informative_iubenda_to_hidefields_list)){
-                    $formProof[$k] = 'xxxxxxxxxxxxxxxx';
-                }else{
-                    $formProof[$k] = $v;
-                }
-            }
-        }
+		foreach($data as $k => $v){
+			if($k != 'gdprOpt'){
+				if(in_array(str_replace('_billing_','',$k),$options->informative_iubenda_to_hidefields_list)){
+					$formProof[$k] = 'xxxxxxxxxxxxxxxx';
+				}else{
+					$formProof[$k] = $v;
+				}
+			}
+		}
 
-        $formProof = json_encode($formProof);
+		$formProof = json_encode($formProof);
 		$fpt = new stdClass();
 		$fpt->content = $formProof;
 		array_push($proofs, $fpt);
 
-        $iubendaObj->proofs = new stdClass();
-        $iubendaObj->proofs = $proofs;
+		$iubendaObj->proofs = new stdClass();
+		$iubendaObj->proofs = $proofs;
 
 
-        //print_r($iubendaObj); die();
+		//print_r($iubendaObj); die();
 
 		//preparo l'invio dell'oggetto
 		$refIubenda = get_option('informative_options'); //informative_iubenda_toggle
@@ -578,9 +612,9 @@ class Websolute_Gdpr_Public {
 
 
 
-    }
+	}
 
-    public function woocommerceGdprMeta($order_id, $posted = null ){
+  public function woocommerceGdprMeta($order_id, $posted = null ){
 
         global $wpdb;
 
@@ -588,8 +622,8 @@ class Websolute_Gdpr_Public {
 
         if(count($options['prefs_iubenda_to_woocommerce_list']) > 0){
             foreach($options['prefs_iubenda_to_woocommerce_list'] as $k => $pref){
-                if( isset( $_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '')] ) ) {
-                    update_post_meta( $order_id, '_gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : ''),  $_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '')] );
+                if( isset( $_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')] ) ) {
+                    update_post_meta( $order_id, '_gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse'),  $_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')] );
                 }
             }
         }
@@ -615,34 +649,67 @@ class Websolute_Gdpr_Public {
         $this->woocommerceToIubenda();
     }
 
-	public function userToIubenda() {
+	public function userToIubenda($user_id) {
+		if((isset($_POST['form_id']) && isset($_POST['item_meta']))) // skip ff
+			return;
 
 		global $wpdb;
 
+		$user = get_user_by("id", $user_id);
 
+		$sbj = array(
+			"id" => md5($user->user_email),
+			"first_name" => $user->first_name,
+			"last_name" => $user->last_name,
+			"email" => $user->user_email,
+			"verified" => false
+		);
 
-        //print_r($_POST); die();
-
-        //echo json_encode($_POST); die();
-
-		$iubendaObj = new stdClass();
-        $iubendaObj->subject = new stdClass();
-
-		$iubendaObj->id = strtolower($this->GUID());
-		$iubendaObj->subject->id = $_POST['frm_submit_entry_'.$_POST['form_id']];
-		$iubendaObj->subject = $this->iubSubject($_POST);
-		$iubendaObj->subject->verified = false;
-		$iubendaObj->legal_notices = $this->getLegal($_POST['form_id']);
-		$iubendaObj->proofs = $this->makeProofs($_POST['item_values']);
-		$iubendaObj->preferences = $this->iubPreferences($_POST['item_values']);
-		$iubendaObj->timestamp = substr_replace(date('c'), substr(microtime(), 1, 8), 19, 0);
-
-		//preparo l'invio dell'oggetto
 		$refIubenda = get_option('informative_options'); //informative_iubenda_toggle
 
-        //print_r($_POST); die('!');
+		$iubendaObj = new stdClass();
+		$iubendaObj->id = strtolower($this->GUID());
+		$iubendaObj->timestamp = substr_replace(date('c'), substr(microtime(), 1, 8), 19, 0);
 
+		$iubendaObj->subject = $sbj;
 
+		$output = [];
+		$prefs = [];
+    foreach($refIubenda["informative_iubenda_to_registration_users_list"] as $inf) {
+			$i = $wpdb->get_row("SELECT meta_value FROM ".$wpdb->prefix."postmeta WHERE post_id = '".$inf."' AND meta_key = 'ws-informative-rif-iubenda'");
+			if($i->meta_value) {
+				if((class_exists('SitePress') && $i->meta_value=="privacy_policy_".ICL_LANGUAGE_CODE) || $i->meta_value=="privacy_policy") {
+					$ln = new stdClass();
+					$ln->identifier =  $i->meta_value;
+					$ln->timestamp =  "0001-01-01T00:00:00";
+					array_push($output, $ln);
+					$prefs[$i->meta_value] = true;
+				}
+			}
+		}
+		$iubendaObj->legal_notices = $output;
+
+		$output = [];
+		$serverProof = array(
+			'HTTP_REFERER' => $_SERVER['HTTP_REFERER'],
+			'HTTP_USER_AGENT' => $_SERVER['HTTP_USER_AGENT'],
+			'REMOTE_ADDR' => $_SERVER['REMOTE_ADDR'],
+			'LOGGED' => (is_user_logged_in() ? true : false)
+		);
+		$serverProof = json_encode($serverProof);
+		$spt = new stdClass();
+		$spt->content = $serverProof;
+		array_push($output, $spt);
+		$formProof = $sbj;
+		unset($formProof["id"], $formProof["verified"]);
+		$formProof = json_encode($formProof);
+		$fpt = new stdClass();
+		$fpt->content = $formProof;
+		array_push($output, $fpt);
+		$iubendaObj->proofs = $output;
+		$iubendaObj->preferences = $prefs;
+
+		//preparo l'invio dell'oggetto
 		if($refIubenda['informative_iubenda_toggle'] == 'abilitato') {
 
 
@@ -689,9 +756,161 @@ class Websolute_Gdpr_Public {
 		}
 	}
 
+	public function clientToIubenda() {
+		$refIubenda = get_option('informative_options');
+		if(!is_checkout() && $refIubenda['informative_iubenda_toggle'] == 'abilitato') {
+			global $wpdb;
+
+			$iubendaObj = new stdClass();
+			$iubendaObj->id = strtolower($this->GUID());
+			$iubendaObj->timestamp = substr_replace(date('c'), substr(microtime(), 1, 8), 19, 0);
+
+			$sbj = [];
+			foreach($refIubenda['informative_iubenda_to_fieldsinprefs_list'] as $item) {
+				if(in_array($item, $refIubenda['informative_iubenda_to_hidefields_list'])) {
+					$sbj[$item] = 'xxxxxxxxxxxxxxxx';
+				} elseif(isset($_POST[$item])) {
+					$sbj[$item] = $_POST[$item];
+				} elseif(isset($_POST['account_'.$item])) {
+					$sbj[$item] = $_POST['account_'.$item];
+				}
+			}
+			$sbj['id'] = md5($_POST['email']);
+			$iubendaObj->subject = new stdClass();
+			$iubendaObj->subject = json_decode(json_encode($sbj));
+			$iubendaObj->subject->verified = false;
+			$prf = [];
+			foreach($_POST as $k => $v){
+				if(strstr($k, 'gdpr-pref')) {
+					$pr = explode('__', $k);
+					if(class_exists('SitePress')) {
+						$pre = str_replace('lang', ICL_LANGUAGE_CODE, $pr[1]);
+					} else {
+						$pre = $pr[1];
+					}
+					switch($pr[2]) {
+						case 'hideonfalse':
+							if(is_array($v)) {
+								if ($this->valid_field($v[0])) {
+									$prf[$pre] = true;
+								}
+							} else {
+								if ($this->valid_field($v)) {
+									$prf[$pre] = true;
+								}
+							}
+							break;
+						case 'sendonfalse':
+							if(is_array($v)) {
+								if ($this->valid_field($v[0])) {
+									$prf[$pre] = true;
+								} else {
+									$prf[$pre] = false;
+								}
+							} else {
+								if ($this->valid_field($v)) {
+									$prf[$pre] = true;
+								} else {
+									$prf[$pre] = false;
+								}
+							}
+							break;
+						default: ;
+					}
+				}
+			}
+
+			$iubendaObj->preferences = new stdClass();
+			$iubendaObj->preferences = json_decode(json_encode($prf));
+
+			$legNot = [];
+			foreach($refIubenda['informative_iubenda_to_woocommerce_list'] as $legalNotice) {
+				$i = $wpdb->get_row("SELECT meta_value FROM ".$wpdb->prefix."postmeta WHERE post_id = '".$legalNotice."' AND meta_key = 'ws-informative-rif-iubenda'");
+				if($i->meta_value) {
+					$ln = new stdClass();
+					$ln->identifier =  $i->meta_value;
+					$ln->timestamp =  "0001-01-01T00:00:00";
+					array_push($legNot, $ln);
+				}
+			}
+			$iubendaObj->legal_notices = new stdClass();
+			$iubendaObj->legal_notices = json_decode(json_encode($legNot));
+
+			$proofs = [];
+			$serverProof = array(
+				'HTTP_REFERER' => $_SERVER['HTTP_REFERER'],
+				'HTTP_USER_AGENT' => $_SERVER['HTTP_USER_AGENT'],
+				'REMOTE_ADDR' => $_SERVER['REMOTE_ADDR'],
+				'LOGGED' => (is_user_logged_in() ? true : false)
+			);
+			$serverProof = json_encode($serverProof);
+			$spt = new stdClass();
+			$spt->content = $serverProof;
+			array_push($proofs, $spt);
+			$formProof = [];
+
+			foreach($_POST as $k => $v){
+				if(strpos($k, 'gdpr-pref') === false) {
+					$k = str_replace('account_', '', $k);
+					if(in_array($k, $refIubenda['informative_iubenda_to_hidefields_list']) || strpos($k, 'password') !== false) {
+						$formProof[$k] = 'xxxxxxxxxxxxxxxx';
+					}else{
+						$formProof[$k] = $v.'';
+					}
+				}
+			}
+
+			$formProof = json_encode($formProof);
+			$fpt = new stdClass();
+			$fpt->content = $formProof;
+			array_push($proofs, $fpt);
+
+			$iubendaObj->proofs = new stdClass();
+			$iubendaObj->proofs = $proofs;
 
 
+			//chiamata iubenda
+			$pk = $refIubenda['informative_iubenda_private_key'];
+			$iPostCall = $this->toIubenda($pk, json_encode($iubendaObj));
+			$iPostCall = json_decode($iPostCall);
+			$iPostCall->email = $iubendaObj->subject->email;
 
+			$wpdb->insert(
+				$wpdb->prefix . 'gdpr_iubenda_resp',
+				array(
+					'Id' 			=> $iPostCall->id,
+					'Subject_id' 	=> $iPostCall->subject_id,
+					'Subject_email' => $iPostCall->email,
+					'Timestamp' 	=> $iPostCall->timestamp,
+					'Consent_url' 	=> 'http://consent.iubenda.com/consent/'.$iPostCall->id,
+					'Subject_url' 	=> 'http://consent.iubenda.com/subjects/'.$iPostCall->subject_id
+				),
+				array(
+					'%s',
+					'%s',
+					'%s',
+					'%s',
+					'%s',
+					'%s'
+				)
+			);
+
+			$wpdb->insert(
+				$wpdb->prefix . 'gdpr_consent',
+				array(
+					'Id' 			=> $iubendaObj->id,
+					'Mail' 			=> $iubendaObj->subject->email,
+					'Subject_id' 	=> $iubendaObj->subject->id,
+					'Subject' 		=> json_encode($iubendaObj->subject),
+					'Legal_notices' => json_encode($iubendaObj->legal_notices),
+					'Context' 		=> json_encode($iubendaObj->proofs[0]),
+					'Data' 			=> json_encode($iubendaObj->proofs[1]),
+					'Preferences' 	=> json_encode($iubendaObj->preferences),
+					'Timestamp' 	=> $iubendaObj->timestamp
+				)
+			);
+		}
+	}
 
 	/**
      * Invia il consenso a Iubenda da un form Formidable.
@@ -703,20 +922,20 @@ class Websolute_Gdpr_Public {
 
 		global $wpdb;
 
-        $c = 0;
-        $im=[];
-        foreach($_POST['item_meta'] as $k => $v){
-            if($c > 0) $im[$k] = $v;
-            $c++;
-        }
-        $_POST['item_meta'] = $im;
+    $c = 0;
+    $im=[];
+    foreach($_POST['item_meta'] as $k => $v){
+      if($c > 0) $im[$k] = $v;
+      $c++;
+    }
+    $_POST['item_meta'] = $im;
 
 
-	    foreach($_POST['item_meta'] as $k => $v){
+	  foreach($_POST['item_meta'] as $k => $v){
 			$i = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix."frm_fields WHERE id = '".$k."'");
 			$_POST['item_values'][$i->name]['value'] = $v;
 			$_POST['item_values'][$i->name]['key'] = $i->field_key;
-	    }
+	  }
 		$form = FrmForm::getOne($_POST['form_id']);
 		$iubendaObj = new stdClass();
         $iubendaObj->subject = new stdClass();
@@ -811,30 +1030,154 @@ class Websolute_Gdpr_Public {
 
     }
 
+	public function hide_default_terms() {
+		add_filter('woocommerce_checkout_show_terms', '__return_false');
+	}
 
-    public function custom_override_checkout_fields( $fields ) {
-
+    public function custom_override_checkout_fields() {
+		$fields = '';
         $options = get_option('informative_options');
 
-        if(count($options['prefs_iubenda_to_woocommerce_list']) > 0){
+        if(isset($options['prefs_iubenda_to_woocommerce_list']) && count($options['prefs_iubenda_to_woocommerce_list']) > 0){
 
             foreach($options['prefs_iubenda_to_woocommerce_list'] as $k => $pref){
-
-                preg_match('/<'.ICL_LANGUAGE_CODE.'>(.*?)<\/'.ICL_LANGUAGE_CODE.'>/s', $pref['testo_preferenza'], $matches);
-                $fields['billing']['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '')] = array(
-               'label'     => $matches[1],
-               'type' => 'checkbox',
-               'required'  => ($pref['obb_preferenza'] == 'true' ? true : false),
-               'class'     => array('form-row-wide'),
-               'clear'     => true
-                );
-
+				$field = '';
+				if(defined("ICL_LANGUAGE_CODE")) {
+					preg_match('/<'.ICL_LANGUAGE_CODE.'>(.*?)<\/'.ICL_LANGUAGE_CODE.'>/s', $pref['testo_preferenza'], $matches);
+					if(!empty($matches)) {
+						$field_id = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+						$field_attrs = array(
+							'type'          => 'checkbox',
+							'class'         => array('form-row terms wc-terms-and-conditions', 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')), // CSS Class
+							'label_class'   => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
+							'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
+							'required'      => $pref['obb_preferenza'] == 'true' ? true : false,
+							'label'         => $matches[1],
+							'return'		=> true // return or echo
+						);
+						$field = woocommerce_form_field($field_id, $field_attrs);
+					}
+				} else {
+					$field_id = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+					$field_attrs = array(
+						'type'          => 'checkbox',
+						'class'         => array('form-row terms wc-terms-and-conditions', 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')), // CSS Class
+						'label_class'   => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
+						'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
+						'required'      => $pref['obb_preferenza'] == 'true' ? true : false,
+						'label'         => $pref['testo_preferenza'],
+						'return'		=> true // return or echo
+					);
+					$field = woocommerce_form_field($field_id, $field_attrs);
+				}
+				$field = apply_filters('iubenda_preference_field_html', $field, $field_id, $field_attrs);
+				$fields .= $field;
             }
 
         }
-        return $fields;
+        echo $fields;
     }
 
+	public function woocommerceValdateRegistrPrefs($errors, $username, $email) {
+		$options = get_option('informative_options');
+		$error_data = array();
+        if(isset($options['prefs_iubenda_to_woocommerce_list']) && count($options['prefs_iubenda_to_woocommerce_list']) > 0) {
+            foreach($options['prefs_iubenda_to_woocommerce_list'] as $pref) {
+				if(defined("ICL_LANGUAGE_CODE")) {
+					preg_match('/<'.ICL_LANGUAGE_CODE.'>(.*?)<\/'.ICL_LANGUAGE_CODE.'>/s', $pref['testo_preferenza'], $matches);
+					if(!empty($matches)) {
+						if($pref['obb_preferenza'] == 'true') {
+							if(!isset($_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')])) {
+								$msg = apply_filters('iubenda_pref_error_message', __('<b>'.ucfirst(str_replace('_', ' ', $pref["nome_preferenza"])).'</b> &egrave; un campo obbligatorio.'), $pref["nome_preferenza"]);
+								$errors->add('validation', $msg);
+								$error_data[] = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+							}
+						}
+					}
+				} else {
+					if($pref['obb_preferenza'] == 'true') {
+						if(!isset($_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')])) {
+							$msg = apply_filters('iubenda_pref_error_message', __('<b>'.ucfirst(str_replace('_', ' ', $pref["nome_preferenza"])).'</b>  &egrave; un campo obbligatorio.'), $pref["nome_preferenza"]);
+							$errors->add('validation', $msg);
+							$error_data[] = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+						}
+					}
+				}
+			}
+		}
+		if(!empty($error_data)) {
+			$errors->add_data($error_data, 'validation');
+		}
+		return $errors;
+	}
+
+	public function woocommerceValdateEditPrefs($errors, $username) {
+		$options = get_option('informative_options');
+		$error_data = array();
+		if(isset($options['prefs_iubenda_to_woocommerce_list']) && count($options['prefs_iubenda_to_woocommerce_list']) > 0) {
+			foreach($options['prefs_iubenda_to_woocommerce_list'] as $pref) {
+				if(defined("ICL_LANGUAGE_CODE")) {
+					preg_match('/<'.ICL_LANGUAGE_CODE.'>(.*?)<\/'.ICL_LANGUAGE_CODE.'>/s', $pref['testo_preferenza'], $matches);
+					if(!empty($matches)) {
+						if($pref['obb_preferenza'] == 'true') {
+							if(!isset($_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')])) {
+								$msg = apply_filters('iubenda_pref_error_message', __('<b>'.ucfirst(str_replace('_', ' ', $pref["nome_preferenza"])).'</b> &egrave; un campo obbligatorio.'), $pref["nome_preferenza"]);
+								$errors->add('validation', $msg);
+								$error_data[] = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+							}
+						}
+					}
+				} else {
+					if($pref['obb_preferenza'] == 'true') {
+						if(!isset($_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')])) {
+							$msg = apply_filters('iubenda_pref_error_message', __('<b>'.ucfirst(str_replace('_', ' ', $pref["nome_preferenza"])).'</b>  &egrave; un campo obbligatorio.'), $pref["nome_preferenza"]);
+							$errors->add('validation', $msg);
+							$error_data[] = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+						}
+					}
+				}
+			}
+		}
+		if(!empty($error_data)) {
+			$errors->add_data($error_data, 'validation');
+		}
+		return $errors;
+	}
+
+	public function woocommerceValdatePrefs($data, $errors) {
+		if(get_class($errors) !== "WP_Error") {
+			$errors = new \WP_Error();
+		}
+		$options = get_option('informative_options');
+		$error_data = array();
+        if(isset($options['prefs_iubenda_to_woocommerce_list']) && count($options['prefs_iubenda_to_woocommerce_list']) > 0) {
+            foreach($options['prefs_iubenda_to_woocommerce_list'] as $pref) {
+				if(defined("ICL_LANGUAGE_CODE")) {
+					preg_match('/<'.ICL_LANGUAGE_CODE.'>(.*?)<\/'.ICL_LANGUAGE_CODE.'>/s', $pref['testo_preferenza'], $matches);
+					if(!empty($matches)) {
+						if($pref['obb_preferenza'] == 'true') {
+							if(!isset($_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')])) {
+								$msg = apply_filters('iubenda_pref_error_message', __('<b>'.ucfirst(str_replace('_', ' ', $pref["nome_preferenza"])).'</b> &egrave; un campo obbligatorio.'), $pref["nome_preferenza"]);
+								$errors->add('validation', $msg);
+								$error_data[] = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+							}
+						}
+					}
+				} else {
+					if($pref['obb_preferenza'] == 'true') {
+						if(!isset($_POST['gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse')])) {
+							$msg = apply_filters('iubenda_pref_error_message', __('<b>'.ucfirst(str_replace('_', ' ', $pref["nome_preferenza"])).'</b>  &egrave; un campo obbligatorio.'), $pref["nome_preferenza"]);
+							$errors->add('validation', $msg);
+							$error_data[] = 'gdpr-pref__'.$pref['nome_preferenza'].($pref['sendOnFalse'] == 'true' ? '__sendonfalse' : '__hideonfalse');
+						}
+					}
+				}
+			}
+		}
+		if(!empty($error_data)) {
+			$errors->add_data($error_data, 'validation');
+		}
+	}
 
 	public function do_theme_redirect($url) {
 	    global $post, $wp_query;
