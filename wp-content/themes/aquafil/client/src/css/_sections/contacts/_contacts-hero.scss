@@ -22,6 +22,10 @@
 		margin-bottom: 20px;
 	}
 
+	&__paragraph-text {
+		@extend .text;
+	}
+
 	&__map {
 		img {
 			width: 100%;
