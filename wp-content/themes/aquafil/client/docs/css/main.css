@@ -4961,12 +4961,12 @@ h6 {
 .primary {
   color: var(--foreground-primary) !important; }
 
-.anchors a:not([class]), .text a:not([class]), .control--text a:not([class]), .control--select a:not([class]), .control--custom-select a:not([class]), .newsletter-proposition__email [control-email] .control--text a:not([class]), .card--content__abstract a:not([class]), .title-text__abstract a:not([class]), .title-text__description a:not([class]), .news-detail-content__text a:not([class]), .page--product .media-text-secondary__abstract a:not([class]), .page--product-bfc .media-text-secondary__abstract a:not([class]), .page--product-ntf .media-text-secondary__abstract a:not([class]), .page--product-polymers .media-text-secondary__abstract a:not([class]), .page--location-country .media-text-secondary__abstract a:not([class]), .page--location-detail .media-text-secondary__abstract a:not([class]), .page--product .text-media-secondary__abstract a:not([class]), .page--product-bfc .text-media-secondary__abstract a:not([class]), .page--product-ntf .text-media-secondary__abstract a:not([class]), .page--product-polymers .text-media-secondary__abstract a:not([class]), .page--location-country .text-media-secondary__abstract a:not([class]), .page--location-detail .text-media-secondary__abstract a:not([class]) {
+.anchors a:not([class]), .text a:not([class]), .control--text a:not([class]), .control--select a:not([class]), .control--custom-select a:not([class]), .newsletter-proposition__email [control-email] .control--text a:not([class]), .card--content__abstract a:not([class]), .title-text__abstract a:not([class]), .title-text__description a:not([class]), .contacts-hero__paragraph-text a:not([class]), .section-generic p a:not([class]), .news-detail-content__text a:not([class]), .page--product .media-text-secondary__abstract a:not([class]), .page--product-bfc .media-text-secondary__abstract a:not([class]), .page--product-ntf .media-text-secondary__abstract a:not([class]), .page--product-polymers .media-text-secondary__abstract a:not([class]), .page--location-country .media-text-secondary__abstract a:not([class]), .page--location-detail .media-text-secondary__abstract a:not([class]), .page--product .text-media-secondary__abstract a:not([class]), .page--product-bfc .text-media-secondary__abstract a:not([class]), .page--product-ntf .text-media-secondary__abstract a:not([class]), .page--product-polymers .text-media-secondary__abstract a:not([class]), .page--location-country .text-media-secondary__abstract a:not([class]), .page--location-detail .text-media-secondary__abstract a:not([class]) {
   color: var(--foreground-primary);
   transition: color ease-in-out 250ms;
   display: inline-block;
   position: relative; }
-  .anchors a:not([class]):after, .text a:not([class]):after, .control--text a:not([class]):after, .control--select a:not([class]):after, .control--custom-select a:not([class]):after, .newsletter-proposition__email [control-email] .control--text a:not([class]):after, .card--content__abstract a:not([class]):after, .title-text__abstract a:not([class]):after, .title-text__description a:not([class]):after, .news-detail-content__text a:not([class]):after, .page--product .media-text-secondary__abstract a:not([class]):after, .page--product-bfc .media-text-secondary__abstract a:not([class]):after, .page--product-ntf .media-text-secondary__abstract a:not([class]):after, .page--product-polymers .media-text-secondary__abstract a:not([class]):after, .page--location-country .media-text-secondary__abstract a:not([class]):after, .page--location-detail .media-text-secondary__abstract a:not([class]):after, .page--product .text-media-secondary__abstract a:not([class]):after, .page--product-bfc .text-media-secondary__abstract a:not([class]):after, .page--product-ntf .text-media-secondary__abstract a:not([class]):after, .page--product-polymers .text-media-secondary__abstract a:not([class]):after, .page--location-country .text-media-secondary__abstract a:not([class]):after, .page--location-detail .text-media-secondary__abstract a:not([class]):after {
+  .anchors a:not([class]):after, .text a:not([class]):after, .control--text a:not([class]):after, .control--select a:not([class]):after, .control--custom-select a:not([class]):after, .newsletter-proposition__email [control-email] .control--text a:not([class]):after, .card--content__abstract a:not([class]):after, .title-text__abstract a:not([class]):after, .title-text__description a:not([class]):after, .contacts-hero__paragraph-text a:not([class]):after, .section-generic p a:not([class]):after, .news-detail-content__text a:not([class]):after, .page--product .media-text-secondary__abstract a:not([class]):after, .page--product-bfc .media-text-secondary__abstract a:not([class]):after, .page--product-ntf .media-text-secondary__abstract a:not([class]):after, .page--product-polymers .media-text-secondary__abstract a:not([class]):after, .page--location-country .media-text-secondary__abstract a:not([class]):after, .page--location-detail .media-text-secondary__abstract a:not([class]):after, .page--product .text-media-secondary__abstract a:not([class]):after, .page--product-bfc .text-media-secondary__abstract a:not([class]):after, .page--product-ntf .text-media-secondary__abstract a:not([class]):after, .page--product-polymers .text-media-secondary__abstract a:not([class]):after, .page--location-country .text-media-secondary__abstract a:not([class]):after, .page--location-detail .text-media-secondary__abstract a:not([class]):after {
     content: '';
     position: absolute;
     width: 100%;
@@ -4977,9 +4977,9 @@ h6 {
     transform-origin: left;
     transform: scaleX(0);
     transition: transform cubic-bezier(0.65, 0.05, 0.36, 1) 350ms; }
-  .anchors a:not([class]):hover, .text a:not([class]):hover, .control--text a:not([class]):hover, .control--select a:not([class]):hover, .control--custom-select a:not([class]):hover, .card--content__abstract a:not([class]):hover, .title-text__abstract a:not([class]):hover, .title-text__description a:not([class]):hover, .news-detail-content__text a:not([class]):hover, .page--product .media-text-secondary__abstract a:not([class]):hover, .page--product-bfc .media-text-secondary__abstract a:not([class]):hover, .page--product-ntf .media-text-secondary__abstract a:not([class]):hover, .page--product-polymers .media-text-secondary__abstract a:not([class]):hover, .page--location-country .media-text-secondary__abstract a:not([class]):hover, .page--location-detail .media-text-secondary__abstract a:not([class]):hover, .page--product .text-media-secondary__abstract a:not([class]):hover, .page--product-bfc .text-media-secondary__abstract a:not([class]):hover, .page--product-ntf .text-media-secondary__abstract a:not([class]):hover, .page--product-polymers .text-media-secondary__abstract a:not([class]):hover, .page--location-country .text-media-secondary__abstract a:not([class]):hover, .page--location-detail .text-media-secondary__abstract a:not([class]):hover {
+  .anchors a:not([class]):hover, .text a:not([class]):hover, .control--text a:not([class]):hover, .control--select a:not([class]):hover, .control--custom-select a:not([class]):hover, .card--content__abstract a:not([class]):hover, .title-text__abstract a:not([class]):hover, .title-text__description a:not([class]):hover, .contacts-hero__paragraph-text a:not([class]):hover, .section-generic p a:not([class]):hover, .news-detail-content__text a:not([class]):hover, .page--product .media-text-secondary__abstract a:not([class]):hover, .page--product-bfc .media-text-secondary__abstract a:not([class]):hover, .page--product-ntf .media-text-secondary__abstract a:not([class]):hover, .page--product-polymers .media-text-secondary__abstract a:not([class]):hover, .page--location-country .media-text-secondary__abstract a:not([class]):hover, .page--location-detail .media-text-secondary__abstract a:not([class]):hover, .page--product .text-media-secondary__abstract a:not([class]):hover, .page--product-bfc .text-media-secondary__abstract a:not([class]):hover, .page--product-ntf .text-media-secondary__abstract a:not([class]):hover, .page--product-polymers .text-media-secondary__abstract a:not([class]):hover, .page--location-country .text-media-secondary__abstract a:not([class]):hover, .page--location-detail .text-media-secondary__abstract a:not([class]):hover {
     color: var(--foreground-primary); }
-    .anchors a:not([class]):hover:after, .text a:not([class]):hover:after, .control--text a:not([class]):hover:after, .control--select a:not([class]):hover:after, .control--custom-select a:not([class]):hover:after, .card--content__abstract a:not([class]):hover:after, .title-text__abstract a:not([class]):hover:after, .title-text__description a:not([class]):hover:after, .news-detail-content__text a:not([class]):hover:after, .page--product .media-text-secondary__abstract a:not([class]):hover:after, .page--product-bfc .media-text-secondary__abstract a:not([class]):hover:after, .page--product-ntf .media-text-secondary__abstract a:not([class]):hover:after, .page--product-polymers .media-text-secondary__abstract a:not([class]):hover:after, .page--location-country .media-text-secondary__abstract a:not([class]):hover:after, .page--location-detail .media-text-secondary__abstract a:not([class]):hover:after, .page--product .text-media-secondary__abstract a:not([class]):hover:after, .page--product-bfc .text-media-secondary__abstract a:not([class]):hover:after, .page--product-ntf .text-media-secondary__abstract a:not([class]):hover:after, .page--product-polymers .text-media-secondary__abstract a:not([class]):hover:after, .page--location-country .text-media-secondary__abstract a:not([class]):hover:after, .page--location-detail .text-media-secondary__abstract a:not([class]):hover:after {
+    .anchors a:not([class]):hover:after, .text a:not([class]):hover:after, .control--text a:not([class]):hover:after, .control--select a:not([class]):hover:after, .control--custom-select a:not([class]):hover:after, .card--content__abstract a:not([class]):hover:after, .title-text__abstract a:not([class]):hover:after, .title-text__description a:not([class]):hover:after, .contacts-hero__paragraph-text a:not([class]):hover:after, .section-generic p a:not([class]):hover:after, .news-detail-content__text a:not([class]):hover:after, .page--product .media-text-secondary__abstract a:not([class]):hover:after, .page--product-bfc .media-text-secondary__abstract a:not([class]):hover:after, .page--product-ntf .media-text-secondary__abstract a:not([class]):hover:after, .page--product-polymers .media-text-secondary__abstract a:not([class]):hover:after, .page--location-country .media-text-secondary__abstract a:not([class]):hover:after, .page--location-detail .media-text-secondary__abstract a:not([class]):hover:after, .page--product .text-media-secondary__abstract a:not([class]):hover:after, .page--product-bfc .text-media-secondary__abstract a:not([class]):hover:after, .page--product-ntf .text-media-secondary__abstract a:not([class]):hover:after, .page--product-polymers .text-media-secondary__abstract a:not([class]):hover:after, .page--location-country .text-media-secondary__abstract a:not([class]):hover:after, .page--location-detail .text-media-secondary__abstract a:not([class]):hover:after {
       transform: scaleX(1); }
 
 /*
@@ -5035,6 +5035,8 @@ h6 {
 .card--content__abstract h1,
 .title-text__abstract h1,
 .title-text__description h1,
+.contacts-hero__paragraph-text h1,
+.section-generic p h1,
 .news-detail-content__text h1,
 .page--product .media-text-secondary__abstract h1,
 .page--product-bfc .media-text-secondary__abstract h1,
@@ -5063,6 +5065,8 @@ h6 {
 .card--content__abstract h2,
 .title-text__abstract h2,
 .title-text__description h2,
+.contacts-hero__paragraph-text h2,
+.section-generic p h2,
 .news-detail-content__text h2,
 .page--product .media-text-secondary__abstract h2,
 .page--product-bfc .media-text-secondary__abstract h2,
@@ -5091,6 +5095,8 @@ h6 {
 .card--content__abstract h3,
 .title-text__abstract h3,
 .title-text__description h3,
+.contacts-hero__paragraph-text h3,
+.section-generic p h3,
 .news-detail-content__text h3,
 .page--product .media-text-secondary__abstract h3,
 .page--product-bfc .media-text-secondary__abstract h3,
@@ -5125,6 +5131,8 @@ h6 {
 .card--content__abstract h4,
 .title-text__abstract h4,
 .title-text__description h4,
+.contacts-hero__paragraph-text h4,
+.section-generic p h4,
 .news-detail-content__text h4,
 .page--product .media-text-secondary__abstract h4,
 .page--product-bfc .media-text-secondary__abstract h4,
@@ -5153,6 +5161,8 @@ h6 {
 .card--content__abstract h5,
 .title-text__abstract h5,
 .title-text__description h5,
+.contacts-hero__paragraph-text h5,
+.section-generic p h5,
 .news-detail-content__text h5,
 .page--product .media-text-secondary__abstract h5,
 .page--product-bfc .media-text-secondary__abstract h5,
@@ -5181,6 +5191,8 @@ h6 {
 .card--content__abstract h6,
 .title-text__abstract h6,
 .title-text__description h6,
+.contacts-hero__paragraph-text h6,
+.section-generic p h6,
 .news-detail-content__text h6,
 .page--product .media-text-secondary__abstract h6,
 .page--product-bfc .media-text-secondary__abstract h6,
@@ -5199,7 +5211,7 @@ h6 {
   line-height: 1.36;
   margin-bottom: 1.11111em; }
 
-.text, .control--text, .control--select, .control--custom-select, .newsletter-proposition__email [control-email] .control--text, .card--content__abstract, .title-text__abstract, .title-text__description {
+.text, .control--text, .control--select, .control--custom-select, .newsletter-proposition__email [control-email] .control--text, .card--content__abstract, .title-text__abstract, .title-text__description, .contacts-hero__paragraph-text, .section-generic p {
   font-size: Max(15px, Min(21px, 1.09375vw));
   line-height: 1.5; }
 

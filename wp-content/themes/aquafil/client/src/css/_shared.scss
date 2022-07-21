@@ -127,6 +127,10 @@
 
 .section-generic {
 
+	p {
+		@extend .text;
+	}
+
 	@include media-up(md) {
 		padding: 60px 0;
 	}
