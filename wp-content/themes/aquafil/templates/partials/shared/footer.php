@@ -17,7 +17,7 @@
 						default:;
 					}
 				}
-				if(!empty($footerMenu)) {
+				if(!is_page_template('templates/landing.php') && !empty($footerMenu)) {
 					echo '
 						<ul class="nav--footer">';
 					foreach ($footerMenu as $item) {
@@ -65,4 +65,5 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </footer>
