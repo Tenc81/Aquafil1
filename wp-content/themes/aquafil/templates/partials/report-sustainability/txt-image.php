@@ -36,15 +36,26 @@ if(!empty($_args['section'])) :
 				$txt_container .= '
 					<a href="'.$_args['section']['link_txt_image']['url'].'" target="'.$_args['section']['link_txt_image']['target'].'" class="btn--right"><span>'.$_args['section']['link_txt_image']['title'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>';
 			}
-		} else {
-			if(!empty($_args['section']['modal_label_txt_image'])) {
+		} elseif($_args['section']['tipo_link_txt_image'] == 'modal') {
+			if(!empty($_args['section']['modal_label_txt_image']) && !empty($_args['section']['modal_download_txt_image'])) {
 				$txt_container .= '
 					<div class="text-media-secondary__cta" card-product-detail>
-						<button type="button" class="btn--right" (click)="onRequestInfo(\'product-request\', \''.$_args['section']['modal_label_txt_image'].'\', \''.$_args['section']['modal_download_txt_image'].'\', \''.$product["email_destinatario_prodotto"].'\')">
+						<button type="button" class="btn--right" (click)="onRequestInfo(\'product-request\', \''.$_args['section']['modal_label_txt_image'].'\', \''.$_args['section']['modal_download_txt_image'].'\', \'\')">
 							<span>'.$_args['section']['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg>
 						</button>
 					</div>';
 			}
+		} elseif($_args['section']['tipo_link_txt_image'] == 'modals') {
+			foreach($_args['section']['bottoni_modali_txt_image'] as $modal) {
+				if(!empty($modal['modal_label_txt_image']) && !empty($modal['modal_download_txt_image'])) {
+					$txt_container .= '
+						<div class="text-media-secondary__cta" card-product-detail>
+							<button type="button" class="btn--right" (click)="onRequestInfo(\'product-request\', \''.$modal['modal_label_txt_image'].'\', \''.$modal['modal_download_txt_image'].'\', \'\')">
+								<span>'.$modal['modal_label_txt_image'].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg>
+							</button>
+						</div>';
+				}
+		 	}
 		}
 		$txt_container .= '
 			</div>';
