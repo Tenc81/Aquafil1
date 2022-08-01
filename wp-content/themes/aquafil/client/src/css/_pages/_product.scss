@@ -46,9 +46,14 @@
 
 		&__cta {
 			margin-top: 40px;
-
+			&+.text-media-secondary__cta {
+				margin-top: 10px;
+			}
 			@include media-up(md) {
 				margin-top: 60px;
+				&+.text-media-secondary__cta {
+					margin-top: 15px;
+				}
 			}
 		}
 	}

@@ -9609,7 +9609,7 @@ input[type="search"]::-webkit-search-results-decoration {
       .text-media-secondary__picture {
         margin-bottom: var(--p80); }
       .text-media-secondary__cta {
-        margin-bottom: 40px; } }
+        margin-bottom: 10px; } }
 
 .quote {
   position: relative;
@@ -11626,6 +11626,14 @@ input[type="search"]::-webkit-search-results-decoration {
   .page--location-country .text-media-secondary__cta,
   .page--location-detail .text-media-secondary__cta {
     margin-top: 40px; }
+    .page--product .media-text-secondary__cta + .text-media-secondary__cta, .page--product-bfc .media-text-secondary__cta + .text-media-secondary__cta, .page--product-ntf .media-text-secondary__cta + .text-media-secondary__cta, .page--product-polymers .media-text-secondary__cta + .text-media-secondary__cta, .page--location-country .media-text-secondary__cta + .text-media-secondary__cta, .page--location-detail .media-text-secondary__cta + .text-media-secondary__cta,
+    .page--product .text-media-secondary__cta + .text-media-secondary__cta,
+    .page--product-bfc .text-media-secondary__cta + .text-media-secondary__cta,
+    .page--product-ntf .text-media-secondary__cta + .text-media-secondary__cta,
+    .page--product-polymers .text-media-secondary__cta + .text-media-secondary__cta,
+    .page--location-country .text-media-secondary__cta + .text-media-secondary__cta,
+    .page--location-detail .text-media-secondary__cta + .text-media-secondary__cta {
+      margin-top: 10px; }
     @media (min-width: 1024px) {
       .page--product .media-text-secondary__cta, .page--product-bfc .media-text-secondary__cta, .page--product-ntf .media-text-secondary__cta, .page--product-polymers .media-text-secondary__cta, .page--location-country .media-text-secondary__cta, .page--location-detail .media-text-secondary__cta,
       .page--product .text-media-secondary__cta,
@@ -11634,7 +11642,15 @@ input[type="search"]::-webkit-search-results-decoration {
       .page--product-polymers .text-media-secondary__cta,
       .page--location-country .text-media-secondary__cta,
       .page--location-detail .text-media-secondary__cta {
-        margin-top: 60px; } }
+        margin-top: 60px; }
+        .page--product .media-text-secondary__cta + .text-media-secondary__cta, .page--product-bfc .media-text-secondary__cta + .text-media-secondary__cta, .page--product-ntf .media-text-secondary__cta + .text-media-secondary__cta, .page--product-polymers .media-text-secondary__cta + .text-media-secondary__cta, .page--location-country .media-text-secondary__cta + .text-media-secondary__cta, .page--location-detail .media-text-secondary__cta + .text-media-secondary__cta,
+        .page--product .text-media-secondary__cta + .text-media-secondary__cta,
+        .page--product-bfc .text-media-secondary__cta + .text-media-secondary__cta,
+        .page--product-ntf .text-media-secondary__cta + .text-media-secondary__cta,
+        .page--product-polymers .text-media-secondary__cta + .text-media-secondary__cta,
+        .page--location-country .text-media-secondary__cta + .text-media-secondary__cta,
+        .page--location-detail .text-media-secondary__cta + .text-media-secondary__cta {
+          margin-top: 15px; } }
   .page--product .content-slider.borders.negative:before, .page--product-bfc .content-slider.borders.negative:before, .page--product-ntf .content-slider.borders.negative:before, .page--product-polymers .content-slider.borders.negative:before, .page--location-country .content-slider.borders.negative:before, .page--location-detail .content-slider.borders.negative:before {
     background-color: var(--foreground-negative);
     opacity: 0.3; }
