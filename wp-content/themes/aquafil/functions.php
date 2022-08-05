@@ -1118,13 +1118,13 @@ add_action('pre_get_posts', 'custom_query');
 
 function edit_posts_orderby($orderby_statement) {
 	global $wp_query;
-    if(!is_admin() && $wp_query->is_main_query() && is_search()) {
-        if (!empty($wp_query->query_vars['s'])) {
-            global $wpdb;
-            $orderby_statement = "FIELD(wp_posts.post_type, 'page', 'post', 'localnews'), " . $wpdb->posts . ".post_title LIKE '%".$wp_query->get('s')."%' DESC, " . $wpdb->posts . ".post_date DESC";
-						$orderby_statement = $wpdb->prepare($orderby_statement);
-        }
-    }
+	if(!is_admin() && $wp_query->is_main_query() && is_search()) {
+		if (!empty($wp_query->query_vars['s'])) {
+			global $wpdb;
+			$orderby_statement = "FIELD(wp_posts.post_type, 'page', 'post', 'localnews'), " . $wpdb->posts . ".post_title LIKE '%".addslashes($wp_query->get('s'))."%' DESC, " . $wpdb->posts . ".post_date DESC";
+			$orderby_statement = $wpdb->prepare($orderby_statement);
+		}
+	}
 	return $orderby_statement;
 }
 add_filter('posts_orderby', 'edit_posts_orderby');
@@ -1386,3 +1386,82 @@ function debug_scripts_queued() {
 	}
 }
 add_action('wp_footer', 'debug_scripts_queued');
+
+function import_flamingo() {
+		$dir = opendir(ABSPATH . 'import');
+		if ($dir) {
+			global $wpdb;
+			while (!empty($entry = readdir($dir))) {
+				if($entry != "." && $entry != "..") {
+					preg_match('@(?<=(aquafil-flamingo-))(.+)(?=(\.csv))@', $entry, $matches);
+					if(!empty($matches)) {
+				if(!get_transient('flamingo_imported-all-'.$matches[0])) {
+						$query = "SELECT ID FROM wp_posts WHERE post_type='wpcf7_contact_form' AND post_title='".$matches[0]."'";
+						$form_id = $wpdb->get_var($query);
+						if($form_id) {
+							$file_path = ABSPATH . 'import/' . $entry;
+							if (($file = fopen($file_path, "r")) !== FALSE) {
+								$start = get_transient('flamingo_imported-'.$matches[0]);
+								$i = 1; $j = $start+0;
+								$keys = array();
+								while (($row = fgetcsv($file, 0, ',')) !== FALSE) {
+									if($i==1 || ($i>$start && $i<=$start+5)) {
+										$values = array();
+										if($i==1) $keys = $row;
+										else $values = $row;
+										if($i>1) {
+											$params = array_combine($keys, $values);
+											$form = wpcf7_contact_form($form_id);
+											if($form) {
+												$_POST = array_merge($_POST, $params);
+												$_POST['_wpcf7'] = $form_id;
+												$_POST['_wpcf7_version'] = WPCF7_VERSION;
+												$_POST['_wpcf7_locale'] = $form->locale();
+												$_POST['_wpcf7_unit_tag'] = sprintf('wpcf7-f%1$d-o%2$d', $form_id, 1);
+												$_POST['_wpcf7_container_post'] = 0;
+												$_POST['_wpcf7_posted_data_hash'] = '';
+										
+												if(strtotime($_POST['Date']) > strtotime('2021-06-29T00:00:00')) {
+													$form->submit(array(
+														'skip_mail' => true
+													));
+												}
+											}
+										}
+										$j++;
+									}
+									$i++;
+								}
+								fclose($file);
+								if($i==$j) {
+									set_transient('flamingo_imported-all-'.$matches[0], true);
+								}
+								set_transient('flamingo_imported-'.$matches[0], $j);
+							}
+						}
+				}
+					}
+				}
+			}
+		}
+  closedir($dir);
+}
+//add_action('init', 'import_flamingo');
+
+function flamingo_inbound_message_timestamp($args) {
+	if(isset($_POST['Date'])) {
+		$time = strtotime($_POST['Date']);
+		if(isset($args['timestamp'])) {
+			$args['meta']['date'] = date("F j, Y", $time);
+			$args['meta']['time'] = date("g:i a", $time);
+			$time = strtotime('-2 hours', $time);
+			$args['timestamp'] = $time;
+		}
+		if(isset($args['last_contacted'])) {
+			$args['last_contacted'] = date("Y-m-d H:i:s", $time);
+		}
+	}
+	return $args;
+}
+add_filter('wpcf7_flamingo_inbound_message_parameters', 'flamingo_inbound_message_timestamp', 10, 1);
+add_filter('flamingo_add_contact', 'flamingo_inbound_message_timestamp', 10, 1);
