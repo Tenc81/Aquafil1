@@ -434,6 +434,21 @@ function icl_post_languages() {
   return '';
 }
 
+
+function blogpage_active_languages($active_languages, $filters) {
+	if(is_home()) {
+		$id = get_queried_object_id();
+		foreach($active_languages as $lang=>$active_language) {
+			$trid = apply_filters('wpml_object_id', $id, 'page', false, $lang);
+			if($trid) {
+				$active_languages[$lang]["url"] = get_permalink($trid);
+			}
+		}
+	}
+	return $active_languages;
+}
+add_filter('wpml_active_languages', 'blogpage_active_languages', 10, 2);
+
 /**
  * Locate template part by relative paths
  * @param array $relativePaths array of relative paths
