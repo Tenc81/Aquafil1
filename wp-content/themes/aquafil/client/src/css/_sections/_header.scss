@@ -12,7 +12,7 @@
 		position: static;
 	}
 
-	height: Min(var(--p130), 136px);
+	// height: Min(var(--p130), 136px);
 
 	&:not(.negative) {
 		position: sticky;
@@ -35,31 +35,51 @@
 		}
 	}
 
-	@include media-up(md) {
-		height: 110px;
-	}
-
-	@include media-up(lg) {
-		height: 160px;
-	}
-
-	@include media-down(sm) {
-		height: 90px;
-	}
-
-	@include media-down(xs) {
-		height: 90px;
-	}
-
-	@include media-up(md) {
-		&>.container-fluid>.row {
-			border-top: 1px solid currentColor;
-			margin-top: 20px;
-			padding-top: 30px;
+	&.has--nav {
+		@include media-up(md) {
+			height: 110px;
 		}
 
-		.nav--main {
-			border-right: 1px solid #CDCDCD;
+		@include media-up(lg) {
+			height: 160px;
+		}
+
+		@include media-down(sm) {
+			height: 90px;
+		}
+
+		@include media-down(xs) {
+			height: 90px;
+		}
+
+		@include media-up(md) {
+			&>.container-fluid>.row {
+				border-top: 1px solid currentColor;
+				margin-top: 20px;
+				padding-top: 30px;
+			}
+
+			.nav--main {
+				border-right: 1px solid #CDCDCD;
+			}
+		}
+	}
+
+	&:not(.has--nav) {
+		@include media-up(md) {
+			height: 80px;
+		}
+
+		@include media-up(lg) {
+			height: 100px;
+		}
+
+		@include media-down(sm) {
+			height: 70px;
+		}
+
+		.btn--menu {
+			display: none;
 		}
 	}
 }
@@ -77,77 +97,79 @@
 }
 
 .header__menu {
+	.has--nav & {
 
-	@include media-up(md) {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		flex: 0 0 75%;
-		flex-wrap: wrap;
+		@include media-up(md) {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			flex: 0 0 75%;
+			flex-wrap: wrap;
 
-		.nav--main {
-			flex: 1 0 70%;
-			order: 3;
+			.nav--main {
+				flex: 1 0 70%;
+				order: 3;
+			}
+
+			.btn--investor {
+				flex: 0 1 auto;
+				order: 4;
+			}
+
+			.nav--service {
+				flex: 1 1 calc(100% - 100px);
+				order: 1;
+				margin-top: -85px;
+			}
+
+			.nav--language {
+				flex: 0 1 auto;
+				order: 2;
+				max-width: 65px;
+				margin-top: -85px;
+			}
+
+			.btn--menu {
+				display: none;
+			}
 		}
 
-		.btn--investor {
-			flex: 0 1 auto;
-			order: 4;
+		@include media-up(lg) {
+			.nav--service {
+				margin-top: -100px;
+			}
+
+			.nav--language {
+				margin-top: -100px;
+			}
 		}
 
-		.nav--service {
-			flex: 1 1 calc(100% - 100px);
-			order: 1;
-			margin-top: -85px;
-		}
+		@include media-down(sm) {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: calc(100% - 90px);
+			margin-top: 90px;
+			overflow-x: hidden;
+			overflow-y: auto;
+			@include scrollbar();
+			z-index: -1;
 
-		.nav--language {
-			flex: 0 1 auto;
-			order: 2;
-			max-width: 65px;
-			margin-top: -85px;
-		}
+			background: $background-primary;
+			color: $foreground-negative;
 
-		.btn--menu {
-			display: none;
-		}
-	}
+			&.active {
+				animation: clip-bottom 500ms 1;
+			}
 
-	@include media-up(lg) {
-		.nav--service {
-			margin-top: -100px;
-		}
+			&:not(.active) {
+				display: none;
+			}
 
-		.nav--language {
-			margin-top: -100px;
-		}
-	}
-
-	@include media-down(sm) {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: calc(100% - 90px);
-		margin-top: 90px;
-		overflow-x: hidden;
-		overflow-y: auto;
-		@include scrollbar();
-		z-index: -1;
-
-		background: $background-primary;
-		color: $foreground-negative;
-
-		&.active {
-			animation: clip-bottom 500ms 1;
-		}
-
-		&:not(.active) {
-			display: none;
-		}
-
-		&>.btn--investor {
-			display: none;
+			&>.btn--investor {
+				display: none;
+			}
 		}
 	}
 }
@@ -798,6 +820,7 @@
 	padding: var(--p10) var(--p20);
 	white-space: nowrap;
 	font-size: 14px;
+	font-size: Max(12px, Min(16px, 1vw));
 	font-weight: bold;
 
 	&,
@@ -809,32 +832,35 @@
 		border: 1px solid currentColor;
 	}
 
-	@include media-up(md) {
-		font-size: Max(12px, Min(16px, 1vw));
-	}
-
-	@include media-only(sm) {
-		display: block;
-		font-size: 24px;
-		margin: var(--p50) var(--cw2);
-		border: 1px solid white;
-		padding: 10px 30px;
-	}
-
-	@include media-down(xs) {
-		display: block;
-		font-size: 22px;
-		font-weight: normal;
-		line-height: 1.2;
-		margin: var(--p20) var(--cw2);
-		border: 1px solid white!important;
-		padding: 10px 20px;
-	}
-
 	&:hover {
 		color: $foreground-negative;
 		background-color: $text;
 	}
+
+	.has--nav & {
+		@include media-up(md) {
+			font-size: Max(12px, Min(16px, 1vw));
+		}
+
+		@include media-only(sm) {
+			display: block;
+			font-size: 24px;
+			margin: var(--p50) var(--cw2);
+			border: 1px solid white;
+			padding: 10px 30px;
+		}
+
+		@include media-down(xs) {
+			display: block;
+			font-size: 22px;
+			font-weight: normal;
+			line-height: 1.2;
+			margin: var(--p20) var(--cw2);
+			border: 1px solid white !important;
+			padding: 10px 20px;
+		}
+	}
+
 }
 
 @include media-down(sm) {

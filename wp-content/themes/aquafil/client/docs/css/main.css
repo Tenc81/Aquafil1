@@ -7422,8 +7422,7 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 100%;
   top: 0;
   transition: all ease-in-out 250ms;
-  z-index: 2000;
-  height: Min(var(--p130), 136px); }
+  z-index: 2000; }
   .header .container,
   .header .container-fluid,
   .header .row > div {
@@ -7445,24 +7444,35 @@ input[type="search"]::-webkit-search-results-decoration {
       color: var(--foreground-negative);
       border-bottom: 1px solid transparent; }
   @media (min-width: 1024px) {
-    .header {
+    .header.has--nav {
       height: 110px; } }
   @media (min-width: 1440px) {
-    .header {
+    .header.has--nav {
       height: 160px; } }
   @media (max-width: 1023.98px) {
-    .header {
+    .header.has--nav {
       height: 90px; } }
   @media (max-width: 767.98px) {
-    .header {
+    .header.has--nav {
       height: 90px; } }
   @media (min-width: 1024px) {
-    .header > .container-fluid > .row {
+    .header.has--nav > .container-fluid > .row {
       border-top: 1px solid currentColor;
       margin-top: 20px;
       padding-top: 30px; }
-    .header .nav--main {
+    .header.has--nav .nav--main {
       border-right: 1px solid #CDCDCD; } }
+  @media (min-width: 1024px) {
+    .header:not(.has--nav) {
+      height: 80px; } }
+  @media (min-width: 1440px) {
+    .header:not(.has--nav) {
+      height: 100px; } }
+  @media (max-width: 1023.98px) {
+    .header:not(.has--nav) {
+      height: 70px; } }
+  .header:not(.has--nav) .btn--menu {
+    display: none; }
 
 .header__logo .btn--logo {
   margin-right: var(--p40); }
@@ -7473,38 +7483,38 @@ input[type="search"]::-webkit-search-results-decoration {
   align-items: center; }
 
 @media (min-width: 1024px) {
-  .header__menu {
+  .has--nav .header__menu {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex: 0 0 75%;
     flex-wrap: wrap; }
-    .header__menu .nav--main {
+    .has--nav .header__menu .nav--main {
       flex: 1 0 70%;
       order: 3; }
-    .header__menu .btn--investor, .header__menu .page--investors .header .btn--back, .page--investors .header .header__menu .btn--back {
+    .has--nav .header__menu .btn--investor, .has--nav .header__menu .page--investors .header .btn--back, .page--investors .header .has--nav .header__menu .btn--back {
       flex: 0 1 auto;
       order: 4; }
-    .header__menu .nav--service {
+    .has--nav .header__menu .nav--service {
       flex: 1 1 calc(100% - 100px);
       order: 1;
       margin-top: -85px; }
-    .header__menu .nav--language {
+    .has--nav .header__menu .nav--language {
       flex: 0 1 auto;
       order: 2;
       max-width: 65px;
       margin-top: -85px; }
-    .header__menu .btn--menu {
+    .has--nav .header__menu .btn--menu {
       display: none; } }
 
 @media (min-width: 1440px) {
-  .header__menu .nav--service {
+  .has--nav .header__menu .nav--service {
     margin-top: -100px; }
-  .header__menu .nav--language {
+  .has--nav .header__menu .nav--language {
     margin-top: -100px; } }
 
 @media (max-width: 1023.98px) {
-  .header__menu {
+  .has--nav .header__menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -7516,30 +7526,30 @@ input[type="search"]::-webkit-search-results-decoration {
     z-index: -1;
     background: var(--background-primary);
     color: var(--foreground-negative); }
-    .header__menu::-webkit-scrollbar {
+    .has--nav .header__menu::-webkit-scrollbar {
       width: 8px;
       height: 8px;
       border-radius: 0px; }
-    .header__menu::-webkit-scrollbar-button {
+    .has--nav .header__menu::-webkit-scrollbar-button {
       display: none; }
-    .header__menu::-webkit-scrollbar-button:hover {
+    .has--nav .header__menu::-webkit-scrollbar-button:hover {
       display: none; }
-    .header__menu::-webkit-scrollbar-thumb {
+    .has--nav .header__menu::-webkit-scrollbar-thumb {
       background-color: var(--background-tertiary);
       box-shadow: none;
       border-radius: 0px; }
-      .header__menu::-webkit-scrollbar-thumb:hover {
+      .has--nav .header__menu::-webkit-scrollbar-thumb:hover {
         background-color: var(--background-tertiary); }
-    .header__menu::-webkit-scrollbar-track {
+    .has--nav .header__menu::-webkit-scrollbar-track {
       background-color: transparent;
       border-radius: 0px; }
-      .header__menu::-webkit-scrollbar-track:hover {
+      .has--nav .header__menu::-webkit-scrollbar-track:hover {
         background-color: transparent; }
-    .header__menu.active {
+    .has--nav .header__menu.active {
       animation: clip-bottom 500ms 1; }
-    .header__menu:not(.active) {
+    .has--nav .header__menu:not(.active) {
       display: none; }
-    .header__menu > .btn--investor, .page--investors .header .header__menu > .btn--back {
+    .has--nav .header__menu > .btn--investor, .has--nav .page--investors .header .header__menu > .btn--back, .page--investors .header .has--nav .header__menu > .btn--back {
       display: none; } }
 
 .btn--logo {
@@ -7967,23 +7977,27 @@ input[type="search"]::-webkit-search-results-decoration {
   padding: var(--p10) var(--p20);
   white-space: nowrap;
   font-size: 14px;
+  font-size: Max(12px, Min(16px, 1vw));
   font-weight: bold; }
   .btn--investor, .page--investors .header .btn--back, .btn--investor:active, .page--investors .header .btn--back:active, .btn--investor:focus, .page--investors .header .btn--back:focus, .btn--investor:visited, .page--investors .header .btn--back:visited {
     background-color: transparent;
     color: currentColor;
     border: 1px solid currentColor; }
+  .btn--investor:hover, .page--investors .header .btn--back:hover {
+    color: var(--foreground-negative);
+    background-color: #3D5D6C; }
   @media (min-width: 1024px) {
-    .btn--investor, .page--investors .header .btn--back {
+    .has--nav .btn--investor, .has--nav .page--investors .header .btn--back, .page--investors .header .has--nav .btn--back {
       font-size: Max(12px, Min(16px, 1vw)); } }
   @media (min-width: 768px) and (max-width: 1023.98px) {
-    .btn--investor, .page--investors .header .btn--back {
+    .has--nav .btn--investor, .has--nav .page--investors .header .btn--back, .page--investors .header .has--nav .btn--back {
       display: block;
       font-size: 24px;
       margin: var(--p50) var(--cw2);
       border: 1px solid white;
       padding: 10px 30px; } }
   @media (max-width: 767.98px) {
-    .btn--investor, .page--investors .header .btn--back {
+    .has--nav .btn--investor, .has--nav .page--investors .header .btn--back, .page--investors .header .has--nav .btn--back {
       display: block;
       font-size: 22px;
       font-weight: normal;
@@ -7991,9 +8005,6 @@ input[type="search"]::-webkit-search-results-decoration {
       margin: var(--p20) var(--cw2);
       border: 1px solid white !important;
       padding: 10px 20px; } }
-  .btn--investor:hover, .page--investors .header .btn--back:hover {
-    color: var(--foreground-negative);
-    background-color: #3D5D6C; }
 
 @media (max-width: 1023.98px) {
   body.menu-active {
@@ -8192,7 +8203,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .sticky-menu {
   position: sticky;
-  min-height: 60px;
   z-index: 2;
   background: white;
   border-bottom: 1px solid var(--border); }
@@ -8200,49 +8210,78 @@ input[type="search"]::-webkit-search-results-decoration {
     font-weight: var(--font-bold);
     color: #4D4D4D;
     white-space: nowrap; }
-  @media (min-width: 1024px) {
-    .sticky-menu {
-      top: 110px; } }
-  @media (min-width: 1440px) {
-    .sticky-menu {
-      top: 160px; } }
-  @media (max-width: 1023.98px) {
-    .sticky-menu {
-      top: 90px; } }
-  @media (max-width: 767.98px) {
-    .sticky-menu {
-      top: 90px; } }
-  @media (min-width: 768px) {
-    .sticky-menu__content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0; }
-    .sticky-menu__title {
-      margin-right: var(--p40); } }
-  @media (max-width: 767.98px) {
-    .sticky-menu {
-      display: none; }
-      .sticky-menu__title {
-        margin-bottom: var(--p40); } }
+
+@media (min-width: 1024px) {
+  .header.has--nav + .wrapper > .main > .sticky-menu {
+    top: 110px; } }
+
+@media (min-width: 1440px) {
+  .header.has--nav + .wrapper > .main > .sticky-menu {
+    top: 160px; } }
+
+@media (max-width: 1023.98px) {
+  .header.has--nav + .wrapper > .main > .sticky-menu {
+    top: 90px; } }
+
+@media (max-width: 767.98px) {
+  .header.has--nav + .wrapper > .main > .sticky-menu {
+    top: 90px; } }
+
+@media (min-width: 768px) {
+  .header.has--nav + .wrapper > .main > .sticky-menu__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0; }
+  .header.has--nav + .wrapper > .main > .sticky-menu__title {
+    margin-right: var(--p40); } }
+
+@media (max-width: 767.98px) {
+  .header.has--nav + .wrapper > .main > .sticky-menu {
+    display: none; }
+    .header.has--nav + .wrapper > .main > .sticky-menu__title {
+      margin-bottom: var(--p40); } }
+
+@media (min-width: 1024px) {
+  .header:not(.has--nav) + .wrapper > .main > .sticky-menu {
+    top: 80px; } }
+
+@media (min-width: 1440px) {
+  .header:not(.has--nav) + .wrapper > .main > .sticky-menu {
+    top: 100px; } }
+
+@media (max-width: 1023.98px) {
+  .header:not(.has--nav) + .wrapper > .main > .sticky-menu {
+    top: 70px; } }
+
+@media (max-width: 767.98px) {
+  .header:not(.has--nav) + .wrapper > .main > .sticky-menu {
+    display: none; } }
 
 .nav--scroll-menu {
   width: 100%;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin: var(--n20);
-  line-height: 1; }
+  line-height: 1;
+  /*
+	margin: var(--n20);
+
+	@include media-down(xs) {
+		margin: var(--n10);
+	}
+	*/ }
   .nav--scroll-menu > .nav__item {
     margin: var(--p20); }
+    .nav--scroll-menu > .nav__item:first-child {
+      margin-left: 0; }
+    .nav--scroll-menu > .nav__item:last-child {
+      margin-right: 0; }
     .nav--scroll-menu > .nav__item > a {
       display: block;
       white-space: nowrap;
       color: var(--foreground-secondary); }
       .nav--scroll-menu > .nav__item > a:hover, .nav--scroll-menu > .nav__item > a.active {
         color: var(--foreground-primary); }
-  @media (max-width: 767.98px) {
-    .nav--scroll-menu {
-      margin: var(--n10); } }
 
 .content-slider {
   padding: var(--p80) 0;

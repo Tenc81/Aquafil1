@@ -1,5 +1,20 @@
 <!-- header -->
-<header class="header" header>
+<?php 
+$locations = get_nav_menu_locations();
+foreach ($locations as $key => $menu_id) {
+	$location = apply_filters('wpml_object_id', $menu_id, 'nav_menu', TRUE);
+	switch ($key) {
+		case "main_menu":
+			$mainMenu = menuParse($location);
+			break;
+		case "secondary_menu":
+			$secMenu = menuParse($location);
+			break;
+		default:;
+	}
+}
+?>
+<header class="header <?php echo isset($secMenu) ? " has--nav" : "" ?>" header>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-20 offset-sm-2">
@@ -13,19 +28,6 @@
 					</div>
 					<div class="header__menu" [class]="{ active: header == 'menu' }">
 						<?php
-						$locations = get_nav_menu_locations();
-						foreach ($locations as $key => $menu_id) {
-							$location = apply_filters('wpml_object_id', $menu_id, 'nav_menu', TRUE);
-							switch ($key) {
-								case "main_menu":
-									$mainMenu = menuParse($location);
-									break;
-								case "secondary_menu":
-									$secMenu = menuParse($location);
-									break;
-								default:;
-							}
-						}
 						$hlItems = array();
 						if(!empty($mainMenu)) {
 							echo '
@@ -73,10 +75,15 @@
 						}
 						?>
 					</div>
-					<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
-						<svg class="menu"><use xlink:href="#menu"></use></svg>
-						<svg class="close"><use xlink:href="#close"></use></svg>
-					</button>
+					<?php if(isset($secMenu)) {					
+						echo '
+						<button type="button" class="btn--menu" [class]="{ active: header == \'menu\' }" (click)="onToggle(\'menu\')">
+							<svg class="menu"><use xlink:href="#menu"></use></svg>
+							<svg class="close"><use xlink:href="#close"></use></svg>
+						</button>			
+						';
+					}
+					?>
 				</div>
 			</div>
 		</div>
