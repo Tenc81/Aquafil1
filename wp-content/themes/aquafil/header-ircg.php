@@ -53,7 +53,7 @@
 		<div class="app hidden" app-component>
 			<div class="page page--investors">
 				<!-- header -->
-				<header class="header" header>
+				<header class="header has--nav" header>
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-20 offset-sm-2">
