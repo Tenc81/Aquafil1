@@ -3,6 +3,14 @@ import { environment } from '../../environment';
 
 export class ProductRequestService {
 
+	static data$() {
+		if (environment.flags.production) {
+			return ApiService.get$('/wp-json/aquafil/v1/countries?page=' + ws_vars.post_id);
+		} else {
+			return ApiService.get$('/contacts/data.json');
+		}
+	}
+
 	static submit$(payload) {
 		if (environment.flags.production) {
 			return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');

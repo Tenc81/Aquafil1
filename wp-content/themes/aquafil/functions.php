@@ -1308,7 +1308,7 @@ add_filter('page_link', 'product_page_link', 10, 2);
 
 function redirect_product_page_url() {
 	global $post;
-	if($post && get_page_template_slug($post->ID) == "page-product.php" && strpos($_SERVER["REQUEST_URI"], "products") === false) {
+	if(is_singular() && $post && get_page_template_slug($post->ID) == "page-product.php" && strpos($_SERVER["REQUEST_URI"], "products") === false) {
 		wp_redirect("/products".$_SERVER["REQUEST_URI"]);
     exit();
 	}
@@ -1480,3 +1480,17 @@ function flamingo_inbound_message_timestamp($args) {
 }
 add_filter('wpcf7_flamingo_inbound_message_parameters', 'flamingo_inbound_message_timestamp', 10, 1);
 add_filter('flamingo_add_contact', 'flamingo_inbound_message_timestamp', 10, 1);
+
+
+
+function landing_labels($translation, $text, $domain) {
+  if(is_page_template("templates/landing.php") && $domain == "wstheme" && get_field("traduci_etichette")) {
+    $labels = get_field("etichette");
+    $index = array_search($translation, array_column($labels, "default_label"), true);
+    if($index !== false) {
+      return $labels[$index]["translated_label"];
+    }
+  }
+  return $translation;
+}
+add_filter('gettext_wstheme', 'landing_labels', 10, 3);

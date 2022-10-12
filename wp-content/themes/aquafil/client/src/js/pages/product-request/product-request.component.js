@@ -1,9 +1,10 @@
 import { Component, getContext } from 'rxcomp';
 import { FormControl, FormGroup, Validators } from 'rxcomp-form';
-import { first, takeUntil } from 'rxjs/operators';
+import { first, takeUntil, tap } from 'rxjs/operators';
 import { GtmService } from '../../common/gtm/gtm.service';
 import { ModalOutletComponent } from '../../common/modal/modal-outlet.component';
 import { ModalService } from '../../common/modal/modal.service';
+import { FormService } from '../../controls/form.service';
 import { ProductRequestService } from './product-request.service';
 
 export class ProductRequestComponent extends Component {
@@ -31,10 +32,11 @@ export class ProductRequestComponent extends Component {
 			download: this.download,
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
-			company: new FormControl(null),
+			// company: new FormControl(null),
+			country: new FormControl(null, [Validators.RequiredValidator()]),
 			email: new FormControl(null, [Validators.RequiredValidator(), Validators.EmailValidator()]),
-			subject: new FormControl(null),
-			message: new FormControl(null),
+			subject: new FormControl(null, [Validators.RequiredValidator()]),
+			message: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
 			checkRequest: window.antiforgery,
 			checkField: '',
@@ -46,6 +48,24 @@ export class ProductRequestComponent extends Component {
 		).subscribe((_) => {
 			this.pushChanges();
 		});
+		this.load$().pipe(
+			first(),
+		).subscribe();
+	}
+
+	load$() {
+		return ProductRequestService.data$().pipe(
+			tap(data => {
+				const controls = this.controls;
+				controls.country.options = FormService.toSelectOptions(data.country.options);
+				//if (this.countryId) {
+				//	this.form.patch({
+				//		country: this.countryId,
+				//	});
+				//}
+				this.pushChanges();
+			})
+		);
 	}
 
 	test() {

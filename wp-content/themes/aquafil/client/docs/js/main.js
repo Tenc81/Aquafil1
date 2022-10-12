@@ -4399,8 +4399,8 @@ CareersModalComponent.meta = {
       zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
-      subject: new rxcompForm.FormControl(null),
-      message: new rxcompForm.FormControl(null),
+      subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       checkRequest: window.antiforgery,
       checkField: '',
@@ -4542,6 +4542,14 @@ OpenModallyDirective.meta = {
 };var ProductRequestService = /*#__PURE__*/function () {
   function ProductRequestService() {}
 
+  ProductRequestService.data$ = function data$() {
+    if (environment.flags.production) {
+      return ApiService.get$('/wp-json/aquafil/v1/countries?page=' + ws_vars.post_id);
+    } else {
+      return ApiService.get$('/contacts/data.json');
+    }
+  };
+
   ProductRequestService.submit$ = function submit$(payload) {
     if (environment.flags.production) {
       return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');
@@ -4588,10 +4596,11 @@ OpenModallyDirective.meta = {
       download: this.download,
       firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
-      company: new rxcompForm.FormControl(null),
+      // company: new FormControl(null),
+      country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
-      subject: new rxcompForm.FormControl(null),
-      message: new rxcompForm.FormControl(null),
+      subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       checkRequest: window.antiforgery,
       checkField: '',
@@ -4601,6 +4610,22 @@ OpenModallyDirective.meta = {
     form.changes$.pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (_) {
       _this.pushChanges();
     });
+    this.load$().pipe(operators.first()).subscribe();
+  };
+
+  _proto.load$ = function load$() {
+    var _this2 = this;
+
+    return ProductRequestService.data$().pipe(operators.tap(function (data) {
+      var controls = _this2.controls;
+      controls.country.options = FormService.toSelectOptions(data.country.options); //if (this.countryId) {
+      //	this.form.patch({
+      //		country: this.countryId,
+      //	});
+      //}
+
+      _this2.pushChanges();
+    }));
   };
 
   _proto.test = function test() {
@@ -4625,7 +4650,7 @@ OpenModallyDirective.meta = {
   };
 
   _proto.onSubmit = function onSubmit(model) {
-    var _this2 = this;
+    var _this3 = this;
 
     var form = this.form;
     console.log('ProductRequestComponent.onSubmit', form.value); // console.log('ProductRequestComponent.onSubmit', 'form.valid', valid);
@@ -4641,15 +4666,15 @@ OpenModallyDirective.meta = {
           });
         }
 
-        _this2.success = true;
+        _this3.success = true;
         form.reset();
-        _this2.response = _.data["response"];
-        _this2.message = _.data["message"];
+        _this3.response = _.data["response"];
+        _this3.message = _.data["message"];
       }, function (error) {
         console.log('ProductRequestComponent.error', error);
-        _this2.error = error;
+        _this3.error = error;
 
-        _this2.pushChanges();
+        _this3.pushChanges();
       });
     } else {
       form.touched = true;
@@ -4705,8 +4730,8 @@ ProductRequestComponent.meta = {
       zip: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
-      subject: new rxcompForm.FormControl(null),
-      message: new rxcompForm.FormControl(null),
+      subject: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
       agent: this.agent,
       checkRequest: window.antiforgery,
