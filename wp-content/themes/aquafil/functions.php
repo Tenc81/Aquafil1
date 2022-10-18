@@ -542,7 +542,7 @@ function custom_rest_route() {
     'args' => array(
 			'page' => array(
         'validate_callback' => function($param, $request, $key) {
-          return is_numeric($param) && 'publish' == get_post_status ($param);
+          return is_numeric($param) && ('publish' == get_post_status ($param) || 'draft' == get_post_status ($param));
         }
       )
 		)
