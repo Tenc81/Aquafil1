@@ -60,6 +60,7 @@
 	}
 
 	&__content {
+		@extend .anchors;
 		padding-top: 20px;
 	}
 
@@ -193,6 +194,7 @@
 	}
 
 	&__accordion-content {
+		@extend .anchors;
 		display: none;
 		padding-top: 40px;
 	}

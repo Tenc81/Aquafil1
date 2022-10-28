@@ -54,6 +54,10 @@
 		@extend .h2;
 	}
 
+	&__abstract {
+		@extend .text;
+	}
+
 	@include media-up(sm) {
 		&:before {
 			content: '';
@@ -101,7 +105,9 @@
 		@extend .h2;
 	}
 
-	&__abstract {}
+	&__abstract {
+		@extend .text;
+	}
 
 	@include media-up(sm) {
 		&:before {
@@ -151,6 +157,10 @@
 	&__title {
 		@extend .h5;
 		margin-bottom: var(--p40);
+	}
+
+	&__abstract {
+		@extend .text;
 	}
 
 	@include media-up(sm) {
@@ -204,6 +214,10 @@
 
 	&__title {
 		@extend .h2;
+	}
+
+	&__abstract {
+		@extend .text;
 	}
 
 	@include media-up(sm) {
