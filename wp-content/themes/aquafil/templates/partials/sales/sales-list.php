@@ -53,7 +53,7 @@ if(!empty($_args['section'])) :
 											<div control-custom-select [control]="controls.country" label="'.__("Country", "wstheme").'"></div>
 											<div class="card--side-modal__agent-name" *if="agent" [innerHTML]="agent.name"></div>
 											<div class="card--side-modal__abstract" *if="agent" [innerHTML]="agent.address"></div>
-											<button type="button" class="btn--more-md" (click)="onRequestInfo()"><span>'.__("Request informations", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg></button>
+											<button type="button" class="btn--more-md" (click)="onRequestInfo()"><span>'.__("Request information", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg></button>
 										</div>
 									</div>
 								</div>';
