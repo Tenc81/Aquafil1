@@ -946,12 +946,12 @@ function frm_create_custom_contact() {
 			'msg' => $result['message'],
 			'error' => "Errore durante l'invio",
 			'sent' => "Richiesta inviata",
-			'download' => "Clicca su %s per scaricare il documento."
+			'download' => "Clicca su <FONT COLOR='#00aced'>%s</FONT> per scaricare il documento."
 		);
 		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
-		$s4 = $wpdb->get_var($wpdb->prepare($query, "Clicca su %s per scaricare il documento."));
+		$s4 = $wpdb->get_var($wpdb->prepare($query, "Clicca su <FONT COLOR='#00aced'>%s</FONT> per scaricare il documento."));
 		$values = array_filter(array(
 				'msg' => is_null($s1) ? '' : $s1,
 				'error' => is_null($s2) ? '' : $s2,
