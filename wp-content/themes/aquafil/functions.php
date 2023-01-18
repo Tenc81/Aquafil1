@@ -946,7 +946,7 @@ function frm_create_custom_contact() {
 			'msg' => $result['message'],
 			'error' => "Errore durante l'invio",
 			'sent' => "Richiesta inviata",
-			'download' => "Clicca su <FONT COLOR='#00aced'>%s</FONT> per scaricare il documento."
+			'download' => __("Clicca su <FONT COLOR='#00aced'>%s</FONT> per scaricare il documento.", "wstheme")
 		);
 		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
