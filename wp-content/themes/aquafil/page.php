@@ -1,5 +1,24 @@
 <?php get_header(); ?>
 
+<?php 
+global $post;
+// If post password required and it doesn't match the cookie.
+if ( post_password_required( $post ) ) {
+  echo '
+    <main class="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-8 offset-sm-6 col-md-7 offset-md-6">'
+          .get_the_password_form( $post ).
+          '</div>
+        </div>
+      </div>
+    </main>';
+  get_footer();
+  return;
+}
+?>
+
 <main class="main">
 	<?php
 	$fields = get_fields(get_queried_object());
