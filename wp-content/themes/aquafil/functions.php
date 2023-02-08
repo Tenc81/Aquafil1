@@ -1494,3 +1494,12 @@ function landing_labels($translation, $text, $domain) {
   return $translation;
 }
 add_filter('gettext_wstheme', 'landing_labels', 10, 3);
+
+
+/**
+ * aggiunge un container html all'output del campo
+ */
+function wysiwyg_html_container( $field ) {
+  return '<div class="wysiwyg">'.$field.'</div>';
+}
+add_action('acf/format_value/type=wysiwyg', 'wysiwyg_html_container');
