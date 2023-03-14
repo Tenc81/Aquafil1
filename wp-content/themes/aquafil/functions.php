@@ -1503,3 +1503,18 @@ function wysiwyg_html_container( $field ) {
   return '<div class="wysiwyg">'.$field.'</div>';
 }
 add_action('acf/format_value/type=wysiwyg', 'wysiwyg_html_container');
+
+
+// Disabilitare il file XML-RPC
+add_filter('xmlrpc_enabled', '__return_false');
+
+/**
+* Remove /wp/v2/users REST API endpoint to prevent user enumeration via API
+*/
+add_filter('rest_endpoints', 'websolute_remove_users_rest_endpoint');
+function websolute_remove_users_rest_endpoint( $endpoints ) {
+    if( isset( $endpoints['/wp/v2/users'] ) ) {
+        unset( $endpoints['/wp/v2/users'] );
+    }
+    return $endpoints;
+}
