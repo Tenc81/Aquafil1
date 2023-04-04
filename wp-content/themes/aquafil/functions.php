@@ -971,6 +971,35 @@ function frm_create_custom_contact() {
 			$download = isset($_POST['download']) && !empty($_POST['download']) ? sprintf('<br /><br />'.$strings['download'], '<a href="'.$_POST['download'].'" target="_blank">download</a>') : '';
 			wp_send_json_success(array('message' => $strings['msg'].$download, 'response' => $strings['sent']));
 		}
+	} elseif(strpos(current_filter(), "subscribe_newsletter") !== false) {
+		$form = WPCF7_ContactForm::get_instance(35220);
+		$result = $form->submit();
+
+		$default = array(
+			'msg' => $result['message'],
+			'error' => "Errore durante l'invio",
+			'sent' => "Richiesta inviata"
+		);
+		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
+		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
+		$values = array_filter(array(
+				'msg' => is_null($s1) ? '' : $s1,
+				'error' => is_null($s2) ? '' : $s2,
+				'sent' => is_null($s3) ? '' : $s3
+			), function($s) {
+			return $s != '';
+		});
+		$strings = wp_parse_args(
+			$values,
+			$default
+		);
+
+		if($result['status'] == "mail_failed") {
+			wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
+		} else {
+			wp_send_json_success(array('message' => $strings['msg'], 'response' => $strings['sent']));
+		}
 	}
   wp_die();
 }
@@ -982,6 +1011,8 @@ add_action('wp_ajax_save_career', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_career', 'frm_create_custom_contact');
 add_action('wp_ajax_save_product_request', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_product_request', 'frm_create_custom_contact');
+add_action('wp_ajax_subscribe_newsletter', 'frm_create_custom_contact');
+add_action('wp_ajax_nopriv_subscribe_newsletter', 'frm_create_custom_contact');
 
 
 function set_agent_recipient($components, $form, $mailer) {
