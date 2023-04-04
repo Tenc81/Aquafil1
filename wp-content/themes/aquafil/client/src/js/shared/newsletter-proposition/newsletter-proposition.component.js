@@ -19,8 +19,8 @@ export class NewsletterPropositionComponent extends Component {
 			email: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
 			newsletter: new FormControl(null, [Validators.RequiredTrueValidator()]),
-      language: new FormControl(null, [Validators.RequiredTrueValidator()]),
-      checkRequest: window.antiforgery,
+			language: new FormControl(null, [Validators.RequiredValidator()]),
+			checkRequest: window.antiforgery,
 			checkField: '',
 			action: 'subscribe_newsletter',
 		});

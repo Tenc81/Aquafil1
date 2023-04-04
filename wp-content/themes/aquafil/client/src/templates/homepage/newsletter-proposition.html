@@ -9,14 +9,21 @@
 				</div>
 			</div>
 			<div class="col-sm-11 offset-sm-1 col-md-9 offset-md-1">
-				<form class="form newsletter-proposition__form" [formGroup]="form" (submit)="onNewsletter($event)" name="form" role="form" novalidate autocomplete="off">
-					<div class="newsletter-proposition__email">
-						<div control-email [control]="controls.email" label="Enter your email"></div>
-						<svg><use xlink:href="#email"></use></svg>
+				<form class="form newsletter-proposition__form" [formGroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate autocomplete="off">
+					<div class="newsletter-proposition__flex">
+						<div class="newsletter-proposition__email">
+							<div control-email [control]="controls.email" label="Enter your email"></div>
+							<svg><use xlink:href="#email"></use></svg>
+						</div>
+						<div class="newsletter-proposition__cta">
+							<button type="submit" class="btn--submit">Sign Up</button>
+						</div>
 					</div>
-					<div class="newsletter-proposition__cta">
-						<button type="submit" class="btn--submit">Sign Up</button>
+					<div class="newsletter-proposition__checkboxes">
+						<div class="full" control-checkbox [control]="controls.privacy" [label]="'privacy' | label"></div>
 					</div>
+					<input name="newsletter" [formControl]="controls.newsletter" value="true" type="hidden" />
+					<input name="language" [formControl]="controls.language" value="<?= ICL_LANGUAGE_CODE; ?>" type="hidden" />
 				</form>
 			</div>
 		</div>

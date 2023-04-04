@@ -9,13 +9,25 @@
 
 	&__form {
 		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		.group--form--checkbox {
+			margin: 0;
+		}
+
+		errors-component {
+			position: absolute;
+			margin: 0;
+		}
+	}
+
+	&__flex {
+		display: flex;
 		justify-content: space-between;
 		align-items: stretch;
 		min-height: 45px;
-
-		.newsletter-proposition__email {
-			margin-right: 20px;
-		}
+		gap: 20px;
 	}
 
 	&__email {

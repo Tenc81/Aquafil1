@@ -9105,11 +9105,19 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-bottom: 0.36em; }
   .newsletter-proposition__form {
     display: flex;
+    flex-direction: column;
+    gap: 20px; }
+    .newsletter-proposition__form .group--form--checkbox {
+      margin: 0; }
+    .newsletter-proposition__form errors-component {
+      position: absolute;
+      margin: 0; }
+  .newsletter-proposition__flex {
+    display: flex;
     justify-content: space-between;
     align-items: stretch;
-    min-height: 45px; }
-    .newsletter-proposition__form .newsletter-proposition__email {
-      margin-right: 20px; }
+    min-height: 45px;
+    gap: 20px; }
   .newsletter-proposition__email {
     position: relative;
     flex: 1 1 auto;

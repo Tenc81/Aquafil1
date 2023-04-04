@@ -9,6 +9,7 @@ import { ControlSearchComponent } from './control-search.component';
 import { ControlTextComponent } from './control-text.component';
 import { ControlTextareaComponent } from './control-textarea.component';
 import { ErrorsComponent } from './errors.component';
+import { FormHiddenDirective } from './form-hidden.directive';
 import { TestComponent } from './test.component';
 
 const factories = [
@@ -26,6 +27,7 @@ const factories = [
 	ErrorsComponent,
 	TestComponent,
 	// ValueDirective,
+	FormHiddenDirective,
 ];
 
 const pipes = [

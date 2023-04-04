@@ -3624,6 +3624,102 @@ ErrorsComponent.meta = {
   template:
   /* html */
   "\n\t<div class=\"inner\" [style]=\"{ display: control.invalid && control.touched ? 'block' : 'none' }\">\n\t\t<div class=\"error\" *for=\"let [key, value] of control.errors\">\n\t\t\t<span [innerHTML]=\"getLabel(key, value)\"></span>\n\t\t\t<!-- <span class=\"key\" [innerHTML]=\"key\"></span> <span class=\"value\" [innerHTML]=\"value | json\"></span> -->\n\t\t</div>\n\t</div>\n\t"
+};var FormHiddenDirective = /*#__PURE__*/function (_Directive) {
+  _inheritsLoose(FormHiddenDirective, _Directive);
+
+  function FormHiddenDirective() {
+    return _Directive.apply(this, arguments) || this;
+  }
+
+  var _proto = FormHiddenDirective.prototype;
+
+  _proto.onInit = function onInit() {
+    var _this = this;
+
+    var node = rxcomp.getContext(this).node;
+    rxjs.fromEvent(node, 'input').pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (event) {
+      return _this.onChange(event);
+    });
+    rxjs.fromEvent(node, 'change').pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (event) {
+      return _this.onChange(event);
+    });
+    rxjs.fromEvent(node, 'blur').pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (event) {
+      return _this.onBlur(event);
+    });
+    this.control.value = this.parseValue();
+  };
+
+  _proto.onChanges = function onChanges() {
+    var node = rxcomp.getContext(this).node;
+
+    if (this.formControlName) {
+      node.name = this.formControlName;
+    }
+
+    var control = this.control;
+    var flags = control.flags;
+    Object.keys(flags).forEach(function (key) {
+      flags[key] ? node.classList.add(key) : node.classList.remove(key);
+    });
+    this.writeValue(control.value);
+  };
+
+  _proto.setDisabledState = function setDisabledState(disabled) {
+    var node = rxcomp.getContext(this).node;
+    node.disabled = disabled;
+  };
+
+  _proto.writeValue = function writeValue(value) {
+    var node = rxcomp.getContext(this).node;
+    node.value = value == null ? '' : value;
+  };
+
+  _proto.parseValue = function parseValue() {
+    var node = rxcomp.getContext(this).node;
+    var value = node.value === '' ? null : node.value;
+    var flag = Boolean(value);
+    var num = parseFloat(value);
+
+    if (String(flag) === value) {
+      value = flag;
+    } else if (String(num) === value) {
+      value = num;
+    }
+
+    return value;
+  };
+
+  _proto.onChange = function onChange() {
+    this.control.value = this.parseValue();
+  };
+
+  _proto.onBlur = function onBlur() {
+    this.control.touched = true;
+  };
+
+  _createClass(FormHiddenDirective, [{
+    key: "control",
+    get: function get() {
+      if (this.formControl) {
+        return this.formControl;
+      } else {
+        if (!this.host) {
+          throw 'missing form collection';
+        }
+
+        return this.host.control.get(this.formControlName);
+      }
+    }
+  }]);
+
+  return FormHiddenDirective;
+}(rxcomp.Directive);
+FormHiddenDirective.meta = {
+  selector: 'input[type=hidden][formControl],input[type=hidden][formControlName]',
+  inputs: ['formControl', 'formControlName'],
+  hosts: {
+    host: rxcompForm.FormAbstractCollectionDirective
+  }
 };var TestComponent = /*#__PURE__*/function (_Component) {
   _inheritsLoose(TestComponent, _Component);
 
@@ -3652,8 +3748,8 @@ TestComponent.meta = {
   "\n\t<div class=\"test-component\" *if=\"!('production' | flag)\">\n\t\t<div class=\"test-component__title\">development mode</div>\n\t\t<code [innerHTML]=\"form.value | json\"></code>\n\t\t<button type=\"button\" class=\"btn--link\" (click)=\"onTest($event)\"><span>test</span></button>\n\t\t<button type=\"button\" class=\"btn--link\" (click)=\"onReset($event)\"><span>reset</span></button>\n\t</div>\n\t"
 };var factories$1 = [ControlCheckboxComponent, ControlCustomSelectComponent, ControlEmailComponent, ControlFileComponent, ControlPasswordComponent, ControlPrivacyComponent, // ControlSelectComponent,
 ControlSearchComponent, ControlTextareaComponent, ControlTextComponent, // DisabledDirective,
-ErrorsComponent, TestComponent // ValueDirective,
-];
+ErrorsComponent, TestComponent, // ValueDirective,
+FormHiddenDirective];
 var pipes$1 = [];
 var ControlsModule = /*#__PURE__*/function (_Module) {
   _inheritsLoose(ControlsModule, _Module);
@@ -5216,26 +5312,78 @@ HeaderComponent.meta = {
   _proto.onInit = function onInit() {
     var _this = this;
 
+    this.error = null;
+    this.success = false;
+    this.response = null;
+    this.message = null;
     var form = this.form = new rxcompForm.FormGroup({
-      email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()])
+      firstName: new rxcompForm.FormControl(null),
+      lastName: new rxcompForm.FormControl(null),
+      company: new rxcompForm.FormControl(null),
+      country: new rxcompForm.FormControl(null),
+      email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
+      newsletter: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
+      language: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      checkRequest: window.antiforgery,
+      checkField: '',
+      action: 'subscribe_newsletter'
     });
     var controls = this.controls = form.controls;
     form.changes$.pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (_) {
       _this.pushChanges();
     });
+    this.load$().pipe(operators.first()).subscribe();
   };
 
-  _proto.onNewsletter = function onNewsletter(event) {
-    console.log('NewsletterPropositionComponent.onNewsletter', this.form.value);
-    var encoded = LocationService.encode('email', this.form.value.email, {});
-    window.location.href = this.action + "?params=" + encoded;
+  _proto.load$ = function load$() {
+    var _this2 = this;
+
+    return ContactsService.data$().pipe(operators.tap(function (data) {
+      var controls = _this2.controls;
+      controls.country.options = FormService.toSelectOptions(data.country.options);
+
+      _this2.pushChanges();
+    }));
+  };
+
+  _proto.reset = function reset() {
+    var form = this.form;
+    form.reset();
+  };
+
+  _proto.onSubmit = function onSubmit(model) {
+    var _this3 = this;
+
+    var form = this.form;
+    console.log('NewsletterPropositionComponent.onSubmit', form.value);
+
+    if (form.valid) {
+      form.submitted = true;
+      ContactsService.submit$(form.value).pipe(operators.first()).subscribe(function (_) {
+        // if (_.success) {
+        // 	GtmService.push({ 'event': "Newsletter", 'form_name': "Newsletter" });
+        // }
+        _this3.success = true;
+        form.reset();
+        _this3.response = _.data["response"];
+        _this3.message = _.data["message"];
+      }, function (error) {
+        console.log('NewsletterPropositionComponent.error', error);
+        _this3.error = error;
+
+        _this3.pushChanges();
+      });
+    } else {
+      form.touched = true;
+    }
   };
 
   return NewsletterPropositionComponent;
 }(rxcomp.Component);
 NewsletterPropositionComponent.meta = {
   selector: '[newsletter-proposition]',
-  inputs: ['action']
+  inputs: []
 };var SwitchComponent = /*#__PURE__*/function (_Component) {
   _inheritsLoose(SwitchComponent, _Component);
 

@@ -29,23 +29,25 @@ if(!is_page_template("templates/landing.php")) {
 			<div class="col-sm-11 offset-sm-1 col-md-9 offset-md-1">
         <div *if="!success">
           <form class="form newsletter-proposition__form" [formGroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate autocomplete="off">
-            <div class="newsletter-proposition__email">
-              <div control-email [control]="controls.email" label="<?= __("Inserisci la tua email", "wstheme"); ?>"></div>
-              <svg><use xlink:href="#email"></use></svg>
+            <div class="newsletter-proposition__flex">
+              <div class="newsletter-proposition__email">
+                <div control-email [control]="controls.email" label="<?= __("Inserisci la tua email", "wstheme"); ?>"></div>
+                <svg><use xlink:href="#email"></use></svg>
+              </div>
+              <div class="newsletter-proposition__cta">
+                <button type="submit" class="btn--submit" data-title="Invia" *if="!form.submitted">
+                  <span><?= __("Iscriviti", "wstheme"); ?></span>
+                </button>
+                <button type="submit" class="btn--submit" data-title="Inviato!" *if="form.submitted">
+                  <span [innerHTML]="'inviato' | label"></span>
+                </button>
+              </div>
             </div>
             <div class="newsletter-proposition__checkboxes">
               <div class="full" control-checkbox [control]="controls.privacy" [label]="'privacy' | label"></div>
             </div>
             <input name="newsletter" [formControl]="controls.newsletter" value="true" type="hidden" />
             <input name="language" [formControl]="controls.language" value="<?= ICL_LANGUAGE_CODE; ?>" type="hidden" />
-            <div class="newsletter-proposition__cta">
-              <button type="submit" class="btn--submit" data-title="Invia" *if="!form.submitted">
-                <span><?= __("Iscriviti", "wstheme"); ?></span>
-              </button>
-              <button type="submit" class="btn--submit" data-title="Inviato!" *if="form.submitted">
-                <span [innerHTML]="'inviato' | label"></span>
-              </button>
-            </div>
           </form>
         </div>
 
