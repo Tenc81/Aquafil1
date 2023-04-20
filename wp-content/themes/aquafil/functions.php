@@ -98,7 +98,7 @@ function aquafil_enqueue_scripts() {
 			'nazione' => __("Nazione", "wstheme"),
 			'soggetto' => __("Soggetto", "wstheme"),
 			'messaggio' => __("Messaggio", "wstheme"),
-			'privacy' => __("Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato", "wstheme"),
+			'privacy' => __("<p>Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato </p>(*) In ottemperanza alla legge 196/03 La informiamo che i dati personali da Lei forniti verranno registrati nel nostro archivio elettronico e/o server sicuro con mezzi manuali, elettronici o telefonici e trattati in modo riservato da Aquafil S.p.A. nel rispetto delle norme in vigore.", "wstheme"),
 			'invia' => __("Invia", "wstheme"),
 			'inviato' => __("Inviato!", "wstheme"),
 			'select' => __("Seleziona", "wstheme"),

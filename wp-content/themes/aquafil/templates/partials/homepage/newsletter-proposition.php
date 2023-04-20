@@ -3,6 +3,11 @@ if(!is_page_template("templates/landing.php")) {
   return; // provvisorio
 }
 
+if(is_page_template("templates/landing.php")) {
+  $lang = "sl";
+} else {
+  $lang = ICL_LANGUAGE_CODE;
+}
 // if(is_singular()) {
 // 	$action = get_permalink();
 // } elseif(is_home()) {
@@ -47,7 +52,7 @@ if(!is_page_template("templates/landing.php")) {
               <div class="full" control-checkbox [control]="controls.privacy" [label]="'privacy' | label"></div>
             </div>
             <input name="newsletter" [formControl]="controls.newsletter" value="true" type="hidden" />
-            <input name="language" [formControl]="controls.language" value="<?= ICL_LANGUAGE_CODE; ?>" type="hidden" />
+            <input name="language" [formControl]="controls.language" value="<?= $lang; ?>" type="hidden" />
           </form>
         </div>
 
