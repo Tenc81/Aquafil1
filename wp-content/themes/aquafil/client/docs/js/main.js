@@ -5317,9 +5317,7 @@ HeaderComponent.meta = {
     this.response = null;
     this.message = null;
     var form = this.form = new rxcompForm.FormGroup({
-      firstName: new rxcompForm.FormControl(null),
-      lastName: new rxcompForm.FormControl(null),
-      company: new rxcompForm.FormControl(null),
+      job: new rxcompForm.FormControl(null),
       country: new rxcompForm.FormControl(null),
       email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
       privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),

@@ -12,9 +12,7 @@ export class NewsletterPropositionComponent extends Component {
 		this.response = null;
 		this.message = null;
 		const form = this.form = new FormGroup({
-			firstName: new FormControl(null),
-			lastName: new FormControl(null),
-			company: new FormControl(null),
+			job: new FormControl(null),
 			country: new FormControl(null),
 			email: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),

@@ -973,6 +973,24 @@ function frm_create_custom_contact() {
 		}
 	} elseif(strpos(current_filter(), "subscribe_newsletter") !== false) {
 		$form = WPCF7_ContactForm::get_instance(35220);
+    foreach($_POST as $key=>$value) {
+      switch($key) {
+        case "email":
+          unset($_POST["email"]);
+          $_POST["EMAIL"] = $value;
+          break;
+        case "job":
+          $_POST["YOUR-PROFESSIONE"] = $value;
+          break;
+        case "language":
+          $_POST["YOUR-LINGUA"] = $value;
+          break;
+        case "privacy":
+          $_POST["YOUR-OPT_IN_1"] = $value;
+          break;
+        default:;
+      }
+    }
 		$result = $form->submit();
 
 		$default = array(
