@@ -39,9 +39,6 @@ if(is_page_template("templates/landing.php")) {
                 <div control-email [control]="controls.email" label="<?= __("Inserisci la tua email", "wstheme"); ?>"></div>
                 <svg><use xlink:href="#email"></use></svg>
               </div>
-              <div class="newsletter-proposition__job">
-                <div control-text [control]="controls.job" label="<?= __("La tua professione", "wstheme"); ?>"></div>
-              </div>
               <div class="newsletter-proposition__cta">
                 <button type="submit" class="btn--submit" data-title="Invia" *if="!form.submitted">
                   <span><?= __("Iscriviti", "wstheme"); ?></span>

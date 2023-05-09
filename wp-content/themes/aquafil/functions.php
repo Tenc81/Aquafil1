@@ -986,7 +986,7 @@ function frm_create_custom_contact() {
           $_POST["YOUR-LINGUA"] = $value;
           break;
         case "privacy":
-          $_POST["YOUR-OPT_IN_1"] = $value;
+          $_POST["YOUR-OPT_IN_1"] = $value == "true" ? "Checked" : '';
           break;
         default:;
       }
