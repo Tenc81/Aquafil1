@@ -788,13 +788,13 @@ function frm_create_custom_contact() {
 	if(empty($_POST)) {
 		$s0 = $wpdb->get_col($wpdb->prepare($query, "C'è stato un problema durante la registrazione della richiesta"));
 		$values = array_filter(array(
-			'msgerror' => is_null($s0) ? '' : $s0,
+			'msgerror' => is_null($s0) ? '' : __($s0, "wstheme"),
 			), function($s) {
 			return $s != '';
 		});
 		$strings = wp_parse_args(
 			$values,
-			array('msgerror' => "C'è stato un problema durante la registrazione della richiesta")
+			array('msgerror' => __("C'è stato un problema durante la registrazione della richiesta", "wstheme"))
 		);
     wp_send_json_error(array("result"=> $strings['msgerror']));
 	}
@@ -803,17 +803,17 @@ function frm_create_custom_contact() {
 		$result = $form->submit();
 
 		$default = array(
-			'msg' => $result['message'],
-			'error' => "Errore durante l'invio",
-			'sent' => "Richiesta inviata"
+			'msg' => __($result['message'], "wstheme"),
+			'error' => __("Errore durante l'invio", "wstheme"),
+			'sent' => __("Richiesta inviata", "wstheme")
 		);
 		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1,
-				'error' => is_null($s2) ? '' : $s2,
-				'sent' => is_null($s3) ? '' : $s3
+				'msg' => is_null($s1) ? '' : __($s1, "wstheme"),
+				'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+				'sent' => is_null($s3) ? '' : __($s3, "wstheme")
 			), function($s) {
 			return $s != '';
 		});
@@ -837,17 +837,17 @@ function frm_create_custom_contact() {
 		$result = $form->submit();
 
 		$default = array(
-			'msg' => $result['message'],
-			'error' => "Errore durante l'invio",
-			'sent' => "Richiesta inviata"
+			'msg' => __($result['message'], "wstheme"),
+			'error' => __("Errore durante l'invio", "wstheme"),
+			'sent' => __("Richiesta inviata", "wstheme")
 		);
 		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1,
-				'error' => is_null($s2) ? '' : $s2,
-				'sent' => is_null($s3) ? '' : $s3
+				'msg' => is_null($s1) ? '' : __($s1, "wstheme"),
+				'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+				'sent' => is_null($s3) ? '' : __($s3, "wstheme")
 			), function($s) {
 			return $s != '';
 		});
@@ -893,17 +893,17 @@ function frm_create_custom_contact() {
 			$result = $form->submit();
 
 			$default = array(
-				'msg' => $result['message'],
-				'error' => "Errore durante l'invio",
-				'sent' => "Richiesta inviata"
+				'msg' => __($result['message'], "wstheme"),
+				'error' => __("Errore durante l'invio", "wstheme"),
+				'sent' => __("Richiesta inviata", "wstheme")
 			);
 			$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
 			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 			$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 			$values = array_filter(array(
-					'msg' => is_null($s1) ? '' : $s1,
-					'error' => is_null($s2) ? '' : $s2,
-					'sent' => is_null($s3) ? '' : $s3
+					'msg' => is_null($s1) ? '' : __($s1, "wstheme"),
+					'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+					'sent' => is_null($s3) ? '' : __($s3, "wstheme")
 				), function($s) {
 				return $s != '';
 			});
@@ -920,14 +920,14 @@ function frm_create_custom_contact() {
 		} else {
 
 			$default = array(
-				'error' => "Errore durante l'invio",
-				'errorsave' => "Errore durante il salvataggio del file"
+				'error' => __("Errore durante l'invio", "wstheme"),
+				'errorsave' => __("Errore durante il salvataggio del file", "wstheme")
 			);
 			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 			$s4 = $wpdb->get_var($wpdb->prepare($query, "Errore durante il salvataggio del file"));
 			$values = array_filter(array(
-					'error' => is_null($s2) ? '' : $s2,
-					'errorsave' => is_null($s4) ? '' : $s4
+					'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+					'errorsave' => is_null($s4) ? '' : __($s4, "wstheme")
 				), function($s) {
 				return $s != '';
 			});
@@ -943,9 +943,9 @@ function frm_create_custom_contact() {
 		$result = $form->submit();
 
 		$default = array(
-			'msg' => $result['message'],
-			'error' => "Errore durante l'invio",
-			'sent' => "Richiesta inviata",
+			'msg' => __($result['message'], "wstheme"),
+			'error' => __("Errore durante l'invio", "wstheme"),
+			'sent' => __("Richiesta inviata", "wstheme"),
 			'download' => __("Clicca su <FONT COLOR='#00aced'>%s</FONT> per scaricare il documento.", "wstheme")
 		);
 		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
@@ -953,10 +953,10 @@ function frm_create_custom_contact() {
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$s4 = $wpdb->get_var($wpdb->prepare($query, "Clicca su <FONT COLOR='#00aced'>%s</FONT> per scaricare il documento."));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1,
-				'error' => is_null($s2) ? '' : $s2,
-				'sent' => is_null($s3) ? '' : $s3,
-				'download' => is_null($s4) ? '' : $s4
+				'msg' => is_null($s1) ? '' : __($s1, "wstheme"),
+				'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+				'sent' => is_null($s3) ? '' : __($s3, "wstheme"),
+				'download' => is_null($s4) ? '' : __($s4, "wstheme")
 			), function($s) {
 			return $s != '';
 		});
@@ -994,17 +994,17 @@ function frm_create_custom_contact() {
 		$result = $form->submit();
 
 		$default = array(
-			'msg' => $result['message'],
-			'error' => "Errore durante l'invio",
-			'sent' => "Richiesta inviata"
+			'msg' => __($result['message'], "wstheme"),
+			'error' => __("Errore durante l'invio", "wstheme"),
+			'sent' => __("Richiesta inviata", "wstheme")
 		);
 		$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
 		$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
 		$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
 		$values = array_filter(array(
-				'msg' => is_null($s1) ? '' : $s1,
-				'error' => is_null($s2) ? '' : $s2,
-				'sent' => is_null($s3) ? '' : $s3
+				'msg' => is_null($s1) ? '' : __($s1, "wstheme"),
+				'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+				'sent' => is_null($s3) ? '' : __($s3, "wstheme")
 			), function($s) {
 			return $s != '';
 		});
