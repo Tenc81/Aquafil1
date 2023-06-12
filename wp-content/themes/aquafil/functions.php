@@ -98,9 +98,10 @@ function aquafil_enqueue_scripts() {
 			'nazione' => __("Nazione", "wstheme"),
 			'soggetto' => __("Soggetto", "wstheme"),
 			'messaggio' => __("Messaggio", "wstheme"),
-			'privacy' => __("<p>Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato </p>(*) In ottemperanza alla legge 196/03 La informiamo che i dati personali da Lei forniti verranno registrati nel nostro archivio elettronico e/o server sicuro con mezzi manuali, elettronici o telefonici e trattati in modo riservato da Aquafil S.p.A. nel rispetto delle norme in vigore.", "wstheme"),
+			'privacy' => get_the_ID() == 31744 || get_the_ID() == 24299 ? "<p>Seznanjen <a href=\"/assets/uploads/01-IZJAVA-O-ZASEBNOSTI-ZA-E-NOVICE.pdf\" target=\"_blank\">sem z načinom upravljanja z mojim e-naslovom</a> in se strinjam s prijavo na prejemanje Novičnika.</p>(*) S posredovanjem naslova elektronske pošte soglašam, da AquafilSLO Proizvodnja poliamidnih filamentov in granulatov d.o.o. in Aquafil S.p.A. moj elektronski naslov uporabljata za namene obveščanja o novostih. Seznanjen sem, da se lahko iz sistema sporočil kadarkoli izpišem, in sicer tako, da v poslanem elektronskem sporočilu kliknem na označeno povezavo." : 
+        __("<p>Ho letto l'<a href=\"/it/privacy-policy\" target=\"_blank\">informativa</a> e do il consenso al trattamento del dato </p>(*) In ottemperanza alla legge 196/03 La informiamo che i dati personali da Lei forniti verranno registrati nel nostro archivio elettronico e/o server sicuro con mezzi manuali, elettronici o telefonici e trattati in modo riservato da Aquafil S.p.A. nel rispetto delle norme in vigore.", "wstheme"),
 			'invia' => __("Invia", "wstheme"),
-			'inviato' => __("Inviato!", "wstheme"),
+			'inviato' => get_the_ID() == 31744 || get_the_ID() == 24299 ? "Zahteva poslana" : __("Richiesta inviata", "wstheme"),
 			'select' => __("Seleziona", "wstheme"),
 			'error_required' => __("campo obbligatorio", "wstheme"),
 			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme")
@@ -1013,6 +1014,14 @@ function frm_create_custom_contact() {
 			$default
 		);
 
+    if($_POST["YOUR-LINGUA"] == "sl") {
+      if($result['status'] == "mail_failed") {
+        
+      } else {
+        $string['sent'] = "Zahteva poslana";
+        $strings['msg'] = "Hvala, prejeli smo vašo zahtevo.";
+      }
+    }
 		if($result['status'] == "mail_failed") {
 			wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
 		} else {
