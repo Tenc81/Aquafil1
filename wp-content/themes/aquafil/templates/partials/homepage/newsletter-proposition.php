@@ -7,14 +7,14 @@ $lang = "sl";
 if(get_the_ID() == 31744 || get_the_ID() == 24299) {
   $labels = array(
     "title" => "Novičnik AquafilSLO",
-    "subtitle" => "Naročite se na naš Novičnik in ostanite obveščeni o vseh novostih.<br />Pred prijavo vas želimo seznaniti, kako bomo upravljali z vašim elektronskim naslovom.",
+    "subtitle" => "Naročite se na naš Novičnik in ostanite obveščeni o vseh novostih.<p>Pred prijavo vas želimo seznaniti, kako bomo upravljali z vašim elektronskim naslovom.</p>",
     "email_label" => "Vnesite svoj email",
     "submit_label" => "Prijava",
   );
 } else {
   $labels = array(
     "title" => __("Newsletter AquafilSLO", "wstheme"),
-    "subtitle" => __("Subscribe to our Newsletter and stay informed about all the news.<br />Before signing up, we would like to inform you how we will manage your email address.", "wstheme"),
+    "subtitle" => __("Subscribe to our Newsletter and stay informed about all the news.<p>Before signing up, we would like to inform you how we will manage your email address.</p>", "wstheme"),
     "email_label" => __("Inserisci la tua email", "wstheme"),
     "submit_label" => __("Iscriviti", "wstheme"),
   );

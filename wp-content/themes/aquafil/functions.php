@@ -1016,7 +1016,8 @@ function frm_create_custom_contact() {
 
     if($_POST["YOUR-LINGUA"] == "sl") {
       if($result['status'] == "mail_failed") {
-        
+        $string['error'] = "Napaka med pošiljanjem.";
+        $strings['msg'] = "Med pošiljanjem je prišlo do napake. Poskusite kasneje.";
       } else {
         $string['sent'] = "Zahteva poslana";
         $strings['msg'] = "Hvala, prejeli smo vašo zahtevo.";
