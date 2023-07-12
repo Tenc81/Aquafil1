@@ -1082,11 +1082,21 @@ function create_new_user_role() {
   global $wp_roles;
   if (!isset($wp_roles)) $wp_roles = new WP_Roles();
 
+  $caps = $wp_roles->get_role("subscriber")->capabilities;  
+  $caps["upload_files"] = 1;
+  
+  /**
+   * per aggiornare le capabilities di un ruolo 
+   * 
+   */
+  // global $wp_roles;
+  // $wp_roles->remove_role('editor-ir');
+
   if(get_role('editor-ir') == null) {
 		add_role(
 			"editor-ir",
 			"Editor IR e CG",
-			$wp_roles->get_role("subscriber")->capabilities
+			$caps
 		);
 	}
 }
@@ -1116,6 +1126,7 @@ function ir_user_caps() {
 			$role->add_cap('edit_private_investor_relations');
 			$role->add_cap('edit_published_investor_relations');
 			$role->add_cap('unfiltered_html');
+			$role->add_cap('upload_files_investor_relations');
 			//file_put_contents(ABSPATH.'error_log.txt', date('d-m-Y h:m:s').print_r($role, true).PHP_EOL, FILE_APPEND | LOCK_EX);
 		}
 		if($role instanceof WP_Role && !$role->has_cap('edit_corporate_governance')) {
@@ -1133,6 +1144,7 @@ function ir_user_caps() {
 			$role->add_cap('edit_private_corporate_governances');
 			$role->add_cap('edit_published_corporate_governances');
 			$role->add_cap('unfiltered_html');
+			$role->add_cap('upload_files_corporate_governances');
 		}
 	}
 }
