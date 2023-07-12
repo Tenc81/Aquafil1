@@ -26,14 +26,6 @@ if (is_array($video) && count($video)> 0) {
 ?>
 <main class="main">
 	<?php
-	$fields = get_fields(get_queried_object());
-	$filtered = array_filter($fields['sezioni'], function($section) {
-		$keys = array_keys($section);
-		$result = preg_grep('@\d+_attiva_sticky_item@', $keys);
-		return !empty($result) && $section[reset($result)];
-	});
-	get_template_part( 'templates/partials/shared/sticky', null, array("all" => $filtered) );
-
 	get_template_part( 'templates/partials/shared/breadcrumb' ); //the breadcrumb
 	?>
 
@@ -84,8 +76,13 @@ if (is_array($video) && count($video)> 0) {
 							}
 						}
 
-
-						?>
+            $downloads = get_field("download");
+            foreach($downloads as $download) :
+            ?>
+              <div class="title-text__cta">
+                <a href="<?= $download["file"]; ?>" class="btn--download" download><span><?= $download["name"]; ?></span> <svg><use xlink:href="#download"></use></svg></a>
+              </div>
+            <?php endforeach; ?>
 					</div>
 				</div>
 			</div>
