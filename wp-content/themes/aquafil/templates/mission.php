@@ -3,7 +3,6 @@
  * Template Name: Mission / Pillars
  */
 get_header(); 
-$fields = get_fields(get_the_ID());
 ?>
 <main class="main">
 
@@ -29,7 +28,7 @@ $fields = get_fields(get_the_ID());
 			$part = substr(strstr($template, 'templates'), 0, strpos(strstr($template, 'templates'), '.php'));
 			get_template_part($part, null, array("section" => $section, "index" => $i+1));
 		}
-	}
+  }
 	?>
 
 

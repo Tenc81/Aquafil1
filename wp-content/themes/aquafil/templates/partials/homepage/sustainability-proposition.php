@@ -20,7 +20,7 @@ if(!empty($_args['section'])) :
 			</div>
 		</div>
 		<div class="listing--sustainability">
-			<?php foreach($_args['section']['sustainability_cards'] as $s) { ?>
+			<?php foreach($_args['section']['sustainability_cards'] as $s) : ?>
 				<div class="listing__item">
 					<?php if($s['sustainability_cards_link_cta'] != 'javascript:void(0);') : ?>
 					<a href="<?=$s['sustainability_cards_link_cta']?>" target="<?=$s['sustainability_cards_target_cta']?>" class="card--sustainability">
@@ -47,7 +47,7 @@ if(!empty($_args['section'])) :
 					</div>
 					<?php endif; ?>
 				</div>
-			<?php } ?>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </div>

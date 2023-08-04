@@ -285,7 +285,7 @@ $wstheme_includes = [
 'lib/theme.php',           // Theme setup
 'lib/custom.php',          // Custom functions
 //'lib/acf.php',             // ACF functions
-'lib/woocommerce.php',     // Woocoommerce functions
+// 'lib/woocommerce.php',     // Woocoommerce functions
 'lib/wpml.php'             // WPML functions
 ];
 
