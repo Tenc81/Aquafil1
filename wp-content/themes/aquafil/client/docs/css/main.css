@@ -4963,24 +4963,15 @@ h6 {
 
 .anchors a:not([class]), .text a:not([class]), .control--text a:not([class]), .control--select a:not([class]), .control--custom-select a:not([class]), .newsletter-proposition__email [control-email] .control--text a:not([class]), .card--content__abstract a:not([class]), .media-text__abstract a:not([class]), .media-text-primary__abstract a:not([class]), .media-text-secondary__abstract a:not([class]), .text-media-secondary__abstract a:not([class]), .title-text__abstract a:not([class]), .title-text__description a:not([class]), .contacts-hero__paragraph-text a:not([class]), .section-generic p a:not([class]), .wysiwyg a:not([class]), .news-detail-content__text a:not([class]), .page--investors__content a:not([class]), .page--investors__accordion-content a:not([class]) {
   color: var(--foreground-primary);
-  transition: color ease-in-out 250ms;
-  display: inline-block;
-  position: relative; }
-  .anchors a:not([class]):after, .text a:not([class]):after, .control--text a:not([class]):after, .control--select a:not([class]):after, .control--custom-select a:not([class]):after, .newsletter-proposition__email [control-email] .control--text a:not([class]):after, .card--content__abstract a:not([class]):after, .media-text__abstract a:not([class]):after, .media-text-primary__abstract a:not([class]):after, .media-text-secondary__abstract a:not([class]):after, .text-media-secondary__abstract a:not([class]):after, .title-text__abstract a:not([class]):after, .title-text__description a:not([class]):after, .contacts-hero__paragraph-text a:not([class]):after, .section-generic p a:not([class]):after, .wysiwyg a:not([class]):after, .news-detail-content__text a:not([class]):after, .page--investors__content a:not([class]):after, .page--investors__accordion-content a:not([class]):after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    left: 0;
-    bottom: 2px;
-    background: currentColor;
-    transform-origin: left;
-    transform: scaleX(0);
-    transition: transform cubic-bezier(0.65, 0.05, 0.36, 1) 350ms; }
+  display: inline;
+  background: linear-gradient(to right, transparent, transparent), linear-gradient(to right, currentColor, currentColor);
+  background-size: 100% 0.1em, 0px 0.1em;
+  background-position: 100% 100%, 0px 100%;
+  background-repeat: no-repeat;
+  transition: all 0.4s cubic-bezier(0.73, 0.01, 0.24, 1); }
   .anchors a:not([class]):hover, .text a:not([class]):hover, .control--text a:not([class]):hover, .control--select a:not([class]):hover, .control--custom-select a:not([class]):hover, .card--content__abstract a:not([class]):hover, .media-text__abstract a:not([class]):hover, .media-text-primary__abstract a:not([class]):hover, .media-text-secondary__abstract a:not([class]):hover, .text-media-secondary__abstract a:not([class]):hover, .title-text__abstract a:not([class]):hover, .title-text__description a:not([class]):hover, .contacts-hero__paragraph-text a:not([class]):hover, .section-generic p a:not([class]):hover, .wysiwyg a:not([class]):hover, .news-detail-content__text a:not([class]):hover, .page--investors__content a:not([class]):hover, .page--investors__accordion-content a:not([class]):hover {
-    color: var(--foreground-primary); }
-    .anchors a:not([class]):hover:after, .text a:not([class]):hover:after, .control--text a:not([class]):hover:after, .control--select a:not([class]):hover:after, .control--custom-select a:not([class]):hover:after, .card--content__abstract a:not([class]):hover:after, .media-text__abstract a:not([class]):hover:after, .media-text-primary__abstract a:not([class]):hover:after, .media-text-secondary__abstract a:not([class]):hover:after, .text-media-secondary__abstract a:not([class]):hover:after, .title-text__abstract a:not([class]):hover:after, .title-text__description a:not([class]):hover:after, .contacts-hero__paragraph-text a:not([class]):hover:after, .section-generic p a:not([class]):hover:after, .wysiwyg a:not([class]):hover:after, .news-detail-content__text a:not([class]):hover:after, .page--investors__content a:not([class]):hover:after, .page--investors__accordion-content a:not([class]):hover:after {
-      transform: scaleX(1); }
+    color: var(--foreground-primary);
+    background-size: 0px 0.1em, 100% 0.1em; }
 
 /*
 .h1 {
