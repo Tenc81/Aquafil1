@@ -8268,7 +8268,33 @@ input[type="search"]::-webkit-search-results-decoration {
 
 @media (max-width: 767.98px) {
   .header.has--nav + .wrapper > .main > .sticky-menu {
-    display: none; }
+    overflow-x: auto;
+    -ms-scroll-chaining: none;
+        overscroll-behavior: none;
+    scroll-behavior: smooth; }
+    .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      border-radius: 0px; }
+    .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar-button {
+      display: none; }
+    .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar-button:hover {
+      display: none; }
+    .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar-thumb {
+      background-color: var(--background-tertiary);
+      box-shadow: none;
+      border-radius: 0px; }
+      .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar-thumb:hover {
+        background-color: var(--background-tertiary); }
+    .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 0px; }
+      .header.has--nav + .wrapper > .main > .sticky-menu::-webkit-scrollbar-track:hover {
+        background-color: transparent; }
+    .header.has--nav + .wrapper > .main > .sticky-menu .nav--scroll-menu {
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap; }
     .header.has--nav + .wrapper > .main > .sticky-menu__title {
       margin-bottom: var(--p40); } }
 
@@ -8286,7 +8312,33 @@ input[type="search"]::-webkit-search-results-decoration {
 
 @media (max-width: 767.98px) {
   .header:not(.has--nav) + .wrapper > .main > .sticky-menu {
-    display: none; } }
+    overflow-x: auto;
+    -ms-scroll-chaining: none;
+        overscroll-behavior: none;
+    scroll-behavior: smooth; }
+    .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      border-radius: 0px; }
+    .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar-button {
+      display: none; }
+    .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar-button:hover {
+      display: none; }
+    .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar-thumb {
+      background-color: var(--background-tertiary);
+      box-shadow: none;
+      border-radius: 0px; }
+      .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar-thumb:hover {
+        background-color: var(--background-tertiary); }
+    .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 0px; }
+      .header:not(.has--nav) + .wrapper > .main > .sticky-menu::-webkit-scrollbar-track:hover {
+        background-color: transparent; }
+    .header:not(.has--nav) + .wrapper > .main > .sticky-menu .nav--scroll-menu {
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap; } }
 
 .nav--scroll-menu {
   width: 100%;

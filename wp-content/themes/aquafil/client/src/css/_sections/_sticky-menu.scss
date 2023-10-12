@@ -47,7 +47,17 @@
 		}
 
 		@include media-down(xs) {
-			display: none;
+			overflow-x: auto;
+			overscroll-behavior: none;
+			scroll-behavior: smooth;
+			@include scrollbar();
+
+			// display: none;
+			.nav--scroll-menu {
+				display: flex;
+				flex-wrap: nowrap;
+				white-space: nowrap;
+			}
 
 			&__title {
 				margin-bottom: var(--p40);
@@ -71,7 +81,17 @@
 		}
 
 		@include media-down(xs) {
-			display: none;
+			overflow-x: auto;
+			overscroll-behavior: none;
+			scroll-behavior: smooth;
+			@include scrollbar();
+
+			// display: none;
+			.nav--scroll-menu {
+				display: flex;
+				flex-wrap: nowrap;
+				white-space: nowrap;
+			}
 		}
 	}
 }
