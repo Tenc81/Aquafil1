@@ -143,12 +143,22 @@ h6 {
 	margin-bottom: 1.11111em;
 }
 
+.youtube {
+	iframe {
+		width: 100%;
+		aspect-ratio: 16/9;
+		display: flex;
+		height: auto;
+	}
+}
+
 .text {
 	// font-size: Max(15px, Min(24px, 1.25vw));
 	font-size: Max(15px, Min(21px, 1.09375vw));
 	line-height: 1.5;
 	@extend .anchors;
 	@extend .headings;
+	@extend .youtube;
 }
 
 .small {
