@@ -139,7 +139,15 @@
 		margin-left: var(--p20);
 	}
 
+	/*
 	&:not(.sustainability):not(.Sostenibilità) {
+		.card--history__category {
+			display: none;
+		}
+	}
+	*/
+
+	&--secondary {
 		.card--history__category {
 			display: none;
 		}
