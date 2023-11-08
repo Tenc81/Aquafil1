@@ -8108,6 +8108,9 @@ input[type="search"]::-webkit-search-results-decoration {
   .nav--social .twitter {
     width: 20px;
     height: 17px; }
+  .nav--social .youtube, .nav--social .text, .nav--social .control--text, .nav--social .control--select, .nav--social .control--custom-select, .nav--social .newsletter-proposition__email [control-email] .control--text, .newsletter-proposition__email [control-email] .nav--social .control--text, .nav--social .card--content__abstract, .nav--social .media-text__abstract, .nav--social .media-text-primary__abstract, .nav--social .media-text-secondary__abstract, .nav--social .text-media-secondary__abstract, .nav--social .title-text__abstract, .nav--social .title-text__description, .nav--social .contacts-hero__paragraph-text, .nav--social .section-generic p, .section-generic .nav--social p, .nav--social .wysiwyg {
+    width: 30px;
+    height: 25px; }
   .nav--social > .nav__item svg {
     fill: currentColor; }
   @media (min-width: 1024px) {
