@@ -40,9 +40,9 @@ if(!empty($_args['section'])) :
 						<div class="card--sustainability__picture">
 							<img loading="lazy" src="<?=$s['sustainability_cards_image']?>" />
 						</div>
-						<div class="card--sustainability__content" appear>
+						<div class="card--sustainability__content">
 							<div class="card--sustainability__title"><?=$s['sustainability_cards_titolo']?></div>
-							<div class="card--sustainability__abstract" ellipsis><?=$s['sustainability_cards_sottotitolo']?></div>
+							<div class="card--sustainability__abstract"><?=$s['sustainability_cards_sottotitolo']?></div>
 						</div>
 					</div>
 					<?php endif; ?>
