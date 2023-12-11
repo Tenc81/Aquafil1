@@ -392,7 +392,7 @@ function fill_array_menu($from, &$to, $search = 0) {
 function icl_post_languages() {
   if(function_exists('wpml_get_capabilities')) {
 		global $sitepress;
-		$languages = apply_filters('wpml_active_languages', NULL, 'skip_missing=0&orderby=code&order=asc&link_empty_to='.get_home_url());
+		$languages = apply_filters('wpml_active_languages', NULL, 'skip_missing=0&orderby=code&order=asc&link_empty_to='.home_url().'/'.ICL_LANGUAGE_CODE.'/');
 		$current = $sitepress->get_language_details(ICL_LANGUAGE_CODE);
     $items = '';
     if($languages && count($languages)>1) {
@@ -441,7 +441,7 @@ function blogpage_active_languages($active_languages, $filters) {
 		$id = get_queried_object_id();
 		foreach($active_languages as $lang=>$active_language) {
 			$trid = apply_filters('wpml_object_id', $id, 'page', false, $lang);
-			if($trid) {
+			if($trid && get_post_status($trid) == "publish") {
 				$active_languages[$lang]["url"] = get_permalink($trid);
 			}
 		}
