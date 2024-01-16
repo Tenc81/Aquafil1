@@ -29,7 +29,7 @@ if(!empty($_args['section'])) :
 					//$product_areas = array_unique($product_areas);
 					foreach($areas as $i=>$area) {
 						$agents = array_filter($_args['section']['agenti_default'], function($agent) use($area) {
-							return $agent['settore_agente'] == $area;
+							return $agent['settore_agente']->term_id == $area->term_id || $agent['settore_agente']->term_id == apply_filters( 'wpml_object_id', $area->term_id, 'settori-sedi', true, 'it');
 						});
 						if(!empty($agents)) {
 							$img = get_field('settori_preview_image', $area);

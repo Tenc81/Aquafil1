@@ -613,6 +613,23 @@ function getCountriesData($request) {
 }
 
 
+/**
+ * Returns the language code for page ID
+ * @param int $element_id the post ID
+ * @param string $element_type the post type
+ * 
+ * @return string the language code
+ */
+function getPageLanguageCode($element_id, $element_type='post_page') {
+  global $wpdb;
+  $query = '
+    SELECT language_code FROM `'.$wpdb->prefix.'icl_translations` 
+    WHERE element_id=%d AND element_type=%s';
+  $language_code = $wpdb->get_var($wpdb->prepare($query, $element_id, $element_type));
+  return $language_code ? $language_code : 'it';
+}
+
+
 function getSalesData($request) {
   if(!isset($_GET["page"]))
     return array(
@@ -620,92 +637,81 @@ function getSalesData($request) {
       "message" => "page ID param is missing",
       "data" => array("status" => 404)
     );
-
-  $data = get_transient("agents-".$request->get_param("page"));
+  $language_code = getPageLanguageCode($_GET["page"]);
+  $current_lang = wpml_get_current_language();
+  do_action('wpml_switch_language', $language_code);
+  $data = get_transient("agents-".$request->get_param("page")."_".$language_code);
   if($data) {
     return $data;
   }
-  $args = array(
-    'posts_per_page' => 1,
-		'post_type' => 'page',
-    'post_status' => 'publish',
-		'include' => $request->get_param("page"),
-		'meta_key' => '_wp_page_template',
-		'meta_value' => 'templates/sales.php',
-		'fields' => 'ids'
-	);
-  $post_ids = get_posts($args);
-  if(empty($post_ids)) {
-		return array();
-	}
   $data = array("area" => array(), "country" => array("label" => __("Paese", "wstheme"), "options" => array()), "agent" => array());
-  foreach($post_ids as $post_id) {
-		$fields = get_fields($post_id);
-		foreach($fields['sezioni'] as $section) {
-			if($section['acf_fc_layout'] == 'sales-sales-list') {
-				$areas = get_terms(array(
-					'taxonomy' => 'settori-sedi',
-					'hide_empty' => false
-				));
-				foreach($areas as $area) {
-					array_push($data["area"], array(
-						"value" => $area->slug,
-						"label" => $area->name
-					));
-				}
-				$countries = get_field_object('field_6203ae839e81a');
-				foreach($countries['choices'] as $label => $country) {
-					array_push($data["country"]["options"], array(
-						"value" => $country,
-						"label" => $label
-					));
-					foreach($areas as $area) {
-						$agents = array_filter($section['agenti'], function($agent) use($country, $area) {
-							return $agent['nazione_agente'] == $country && $agent['settore_agente'] == $area;
-						});
-						if(!empty($agents)) {
-							foreach($agents as $agent) {
-								array_push($data["agent"], array(
-									"name" => $agent["nome_agente"],
-									"area" => array(
-										"value" => $agent["settore_agente"]->slug,
-										"label" => $agent["settore_agente"]->name
-									),
-									"address" => $agent["indirizzo_agente"],
-									"country" => array(
-										"value" => $country,
-										"label" => $label
-									),
-									"email" => $agent["email_agente"]
-								));
-							}
-						} else {
-							$agents = array_filter($section['agenti_default'], function($agent) use($area) {
-								return $agent['settore_agente'] == $area;
-							});
-							foreach($agents as $agent) {
-								array_push($data["agent"], array(
-									"name" => $agent["nome_agente"],
-									"area" => array(
-										"value" => $agent["settore_agente"]->slug,
-										"label" => $agent["settore_agente"]->name
-									),
-									"address" => $agent["indirizzo_agente"],
-									"country" => array(
-										"value" => $country,
-										"label" => $label
-									),
-									"email" => $agent["email_agente"]
-								));
-							}
-						}
-					}
-				}
-				break;
-			}
+  $fields = get_fields($_GET["page"]);
+  $areas = get_terms(array(
+    'taxonomy' => 'settori-sedi',
+    'hide_empty' => false
+  ));
+  foreach($areas as $area) {
+    array_push($data["area"], array(
+      "value" => $area->slug,
+      "label" => $area->name
+    ));
+  }
+  $countries = get_field_object('field_6203ae839e81a');
+  foreach($fields['sezioni'] as $section) {
+    if($section['acf_fc_layout'] == 'sales-sales-list') {
+      
+      foreach($countries['choices'] as $label => $country) {
+        array_push($data["country"]["options"], array(
+          "value" => $country,
+          "label" => $label
+        ));
+        foreach($areas as $area) {
+          $agents = array_filter($section['agenti'], function($agent) use($country, $area) {
+            return $agent['nazione_agente'] == $country && ($agent['settore_agente']->term_id == $area->term_id || $agent['settore_agente']->term_id == apply_filters( 'wpml_object_id', $area->term_id, 'settori-sedi', true, 'it'));
+          });
+          if(!empty($agents)) {
+            foreach($agents as $agent) {
+              array_push($data["agent"], array(
+                "name" => $agent["nome_agente"],
+                "area" => array(
+                  "value" => $agent["settore_agente"]->slug,
+                  "label" => $agent["settore_agente"]->name
+                ),
+                "address" => $agent["indirizzo_agente"],
+                "country" => array(
+                  "value" => $country,
+                  "label" => $label
+                ),
+                "email" => $agent["email_agente"]
+              ));
+            }
+          } else {
+            $agents = array_filter($section['agenti_default'], function($agent) use($area) {
+              return $agent['settore_agente']->term_id == $area->term_id || $agent['settore_agente']->term_id == apply_filters( 'wpml_object_id', $area->term_id, 'settori-sedi', true, 'it');
+            });
+            foreach($agents as $agent) {
+              array_push($data["agent"], array(
+                "name" => $agent["nome_agente"],
+                "area" => array(
+                  "value" => $agent["settore_agente"]->slug,
+                  "label" => $agent["settore_agente"]->name
+                ),
+                "address" => $agent["indirizzo_agente"],
+                "country" => array(
+                  "value" => $country,
+                  "label" => $label
+                ),
+                "email" => $agent["email_agente"]
+              ));
+            }
+          }
+        }
+      }
+      break;
     }
-	}
-  set_transient("agents-".$request->get_param("page"), $data);
+  }
+  do_action('wpml_switch_language', $current_lang);
+  set_transient("agents-".$request->get_param("page")."_".$language_code, $data, 86400);
   return $data;
 }
 
