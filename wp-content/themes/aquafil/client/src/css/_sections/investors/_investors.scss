@@ -292,6 +292,46 @@
 }
 
 .card--calendar {
+	position: relative;
+
+	&.reporting-dates {
+		.card--calendar__date {
+			background-color: #bad1d9;
+			color: var(--background-negative);
+		}
+	}
+
+	&.investor-conference {
+		.card--calendar__date {
+			background-color: var(--background-negative);
+		}
+	}
+
+	&.active {
+		.btn--plus {
+			svg {
+				transform: rotate(45deg);
+			}
+		}
+
+		.card--calendar__extra {
+			display: flex;
+		}
+	}
+
+	.btn--plus {
+		position: absolute;
+		padding: var(--p10);
+		right: 20px;
+		top: 20px;
+
+		svg {
+			width: 26px;
+			height: 26px;
+			transition: .15s ease-in-out;
+		}
+	}
+
 
 	&__date {
 		padding: 7px 13px;
@@ -300,8 +340,61 @@
 		color: $foreground-negative;
 	}
 
+	&__extra {
+		width: 100%;
+		display: none;
+
+		ul {
+			margin: 0;
+			padding: 20px;
+			border-top: 1px solid #fff;
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+			row-gap: 15px;
+
+			&:first-child {
+				padding-left: 150px;
+				margin-left: 20px;
+			}
+
+			&:last-child {
+				padding-right: 0px;
+				margin-right: 20px;
+			}
+
+			li {
+				list-style-type: none;
+
+				a {
+					display: block;
+					display: flex;
+					align-items: center;
+					column-gap: 20px;
+					font-weight: 600;
+					line-height: 20px;
+
+					.icon {
+						display: flex;
+
+						svg {
+							width: 22px;
+							height: 22px;
+							fill: $text;
+						}
+
+					}
+
+
+				}
+
+			}
+		}
+	}
+
 	@include media-up(md) {
 		display: flex;
+		flex-wrap: wrap;
 		background-color: $quaternary;
 
 		&__left {
@@ -310,8 +403,9 @@
 		}
 
 		&__right {
-			flex: 1 0 calc(100% - 150px);
-			padding: 20px;
+			flex: 1 0 calc(100% - 160px);
+			padding: 20px 80px 20px 20px;
+			line-height: 21px;
 		}
 
 		&__date {
@@ -321,14 +415,15 @@
 		&__description {
 			display: block;
 		}
+
 	}
 
 	@include media-down(sm) {
 		padding: 15px;
 		background-color: $quaternary;
 
-		&__left {
-			margin-bottom: 10px;
+		&__left, &__right {
+			margin-bottom: 20px;
 		}
 
 		&__date {
@@ -338,11 +433,46 @@
 		&__description {
 			display: inline-block;
 		}
+
+		&__extra {
+
+			ul {
+
+				&:first-child {
+					padding-left: 0px;
+					margin-left: 0px;
+				}
+
+				&:last-child {
+					padding-right: 0px;
+					margin-right: 0px;
+				}
+
+			}
+		}
+	}
+
+	@include media-down(xs) {
+		&__extra {
+			flex-direction: column;
+
+			ul {
+				width: 100%;
+
+				&:last-child {
+					padding-left: 0;
+					padding-bottom: 0;
+				}
+
+				
+			}
+		}
 	}
 }
 
 .card--calendar+.card--calendar {
 	margin-top: 20px;
+
 }
 
 .table {

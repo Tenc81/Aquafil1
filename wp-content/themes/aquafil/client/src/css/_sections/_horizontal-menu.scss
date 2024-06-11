@@ -39,6 +39,10 @@
 	border-top: none;
 }
 
+.horizontal-menu+.card--calendar {
+	margin-top: var(--p60);
+}
+
 .nav--horizontal-menu {
 	@extend %nav;
 	justify-content: flex-start;
@@ -64,6 +68,10 @@
 			&.active {
 				background: $foreground-primary;
 				color: $foreground-negative;
+			}
+
+			&::after {
+				display: none;
 			}
 		}
 	}

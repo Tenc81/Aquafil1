@@ -4700,8 +4700,7 @@ body {
     display: flex; }
     .expand--right.picture > img {
       width: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; } }
+      object-fit: cover; } }
 
 @media (min-width: 768px) and (min-width: 768px) {
   .expand--left {
@@ -4724,8 +4723,7 @@ body {
     display: flex; }
     .expand--left.picture > img {
       width: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; } }
+      object-fit: cover; } }
 
 @media (max-width: 767.98px) {
   .hidden-xs-down {
@@ -5529,8 +5527,7 @@ p {
     background: none;
     border: none;
     outline: none;
-    -webkit-appearance: none;
-            appearance: none;
+    appearance: none;
     font-family: var(--font-primary);
     font-weight: normal;
     letter-spacing: 0.05em;
@@ -5797,8 +5794,7 @@ a {
   border: none;
   outline: none;
   background: none;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   font: inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -6666,8 +6662,7 @@ body.modal--active {
   background: none;
   border: none;
   outline: none;
-  -webkit-appearance: none;
-          appearance: none; }
+  appearance: none; }
   .control--text:-webkit-autofill, .control--select:-webkit-autofill, .control--custom-select:-webkit-autofill, .newsletter-proposition__email [control-email] .control--text:-webkit-autofill, .control--text:-webkit-autofill:hover, .control--select:-webkit-autofill:hover, .control--custom-select:-webkit-autofill:hover, .control--text:-webkit-autofill:focus, .control--select:-webkit-autofill:focus, .control--custom-select:-webkit-autofill:focus {
     background: transparent;
     color: var(--foreground);
@@ -6827,8 +6822,7 @@ fieldset,
     border-radius: 0;
     outline: 0;
     cursor: pointer;
-    -webkit-appearance: none;
-            appearance: none; }
+    appearance: none; }
     .group--form--checkbox input:checked {
       background: var(--foreground); }
     .group--form--checkbox input[type="checkbox"] {
@@ -6909,8 +6903,7 @@ fieldset,
     border-radius: 0;
     outline: 0;
     cursor: pointer;
-    -webkit-appearance: none;
-            appearance: none; }
+    appearance: none; }
     .group--form--privacy input:checked {
       background: var(--foreground); }
     .group--form--privacy input[type="radio"] {
@@ -8043,19 +8036,15 @@ input[type="search"]::-webkit-search-results-decoration {
 
 @keyframes clip-right {
   0% {
-    -webkit-clip-path: inset(0 100% 0 0);
-            clip-path: inset(0 100% 0 0); }
+    clip-path: inset(0 100% 0 0); }
   100% {
-    -webkit-clip-path: inset(0 0 0 0);
-            clip-path: inset(0 0 0 0); } }
+    clip-path: inset(0 0 0 0); } }
 
 @keyframes clip-bottom {
   0% {
-    -webkit-clip-path: inset(0 0 100% 0);
-            clip-path: inset(0 0 100% 0); }
+    clip-path: inset(0 0 100% 0); }
   100% {
-    -webkit-clip-path: inset(0 0 0 0);
-            clip-path: inset(0 0 0 0); } }
+    clip-path: inset(0 0 0 0); } }
 
 .footer {
   position: relative;
@@ -8204,6 +8193,9 @@ input[type="search"]::-webkit-search-results-decoration {
 .horizontal-menu + .horizontal-menu {
   border-top: none; }
 
+.horizontal-menu + .card--calendar {
+  margin-top: var(--p60); }
+
 .nav--horizontal-menu {
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -8225,6 +8217,9 @@ input[type="search"]::-webkit-search-results-decoration {
       .nav--horizontal-menu > .nav__item > span.active {
         background: var(--foreground-primary);
         color: var(--foreground-negative); }
+      .nav--horizontal-menu > .nav__item > a::after,
+      .nav--horizontal-menu > .nav__item > span::after {
+        display: none; }
   .nav--horizontal-menu.certs--filters [data-filter="all"] .count {
     display: none; }
   @media (min-width: 768px) {
@@ -8411,8 +8406,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .card--content__background > img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover; }
+    object-fit: cover; }
 
 .card--content__content {
   padding: var(--p80) 0; }
@@ -8444,8 +8438,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .card--content__picture video {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover; }
+    object-fit: cover; }
 
 @media (min-width: 768px) {
   .card--content {
@@ -8615,8 +8608,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .card--main-hero__background > img {
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
   .card--main-hero__category {
     color: var(--foreground-primary); }
   .card--main-hero__title {
@@ -8837,8 +8829,7 @@ input[type="search"]::-webkit-search-results-decoration {
           left: 0;
           width: 100%;
           height: 100%;
-          -o-object-fit: cover;
-             object-fit: cover; } }
+          object-fit: cover; } }
 
 .sustainability-proposition {
   background: var(--background); }
@@ -8883,8 +8874,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .card--sustainability__picture > img {
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
   .card--sustainability__content {
     display: flex;
     flex-direction: column;
@@ -8970,8 +8960,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .report-proposition__picture > img {
     width: 100%;
     height: 150%;
-    -o-object-fit: cover;
-       object-fit: cover; }
+    object-fit: cover; }
 
 .report-proposition__title {
   color: var(--foreground); }
@@ -9016,8 +9005,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
     .card--innovation__picture > img {
       transition: transform ease-in-out 250ms; }
   .card--innovation__content {
@@ -9078,8 +9066,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
     .card--news__picture > img {
       transition: transform ease-in-out 250ms; }
   .card--news__date {
@@ -9238,8 +9225,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
     .card--location__picture > img {
       transition: transform ease-in-out 250ms; }
   .card--location__content {
@@ -9400,8 +9386,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
     .card--product__picture > img {
       transition: transform ease-in-out 250ms; }
   @media (min-width: 768px) {
@@ -9791,8 +9776,7 @@ input[type="search"]::-webkit-search-results-decoration {
         left: 0;
         width: 100%;
         height: 100%;
-        -o-object-fit: cover;
-           object-fit: cover; } }
+        object-fit: cover; } }
 
 .title-hero-02 {
   position: relative; }
@@ -9931,8 +9915,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
     .card--research__picture > img {
       transition: transform ease-in-out 250ms; }
   .card--research__content {
@@ -10048,8 +10031,7 @@ input[type="search"]::-webkit-search-results-decoration {
             left: 0;
             width: 100%;
             height: 100%;
-            -o-object-fit: cover;
-               object-fit: cover; }
+            object-fit: cover; }
       .listing--history > .listing__item.double {
         flex: 0 0 50%;
         max-width: 50%; }
@@ -10069,8 +10051,7 @@ input[type="search"]::-webkit-search-results-decoration {
             left: 0;
             width: 100%;
             height: 100%;
-            -o-object-fit: cover;
-               object-fit: cover; }
+            object-fit: cover; }
       .listing--history .card--history {
         display: flex;
         flex-direction: column;
@@ -10104,8 +10085,7 @@ input[type="search"]::-webkit-search-results-decoration {
             left: 0;
             width: 100%;
             height: 100%;
-            -o-object-fit: cover;
-               object-fit: cover; }
+            object-fit: cover; }
       .listing--history .card--history {
         display: flex;
         flex-direction: column;
@@ -10132,8 +10112,7 @@ input[type="search"]::-webkit-search-results-decoration {
           left: 0;
           width: 100%;
           height: 100%;
-          -o-object-fit: cover;
-             object-fit: cover; } }
+          object-fit: cover; } }
 
 .card--history {
   position: relative;
@@ -10622,37 +10601,103 @@ input[type="search"]::-webkit-search-results-decoration {
 .page--investors .page--investors__content .btn--certification {
   max-width: 600px; }
 
-.card--calendar__date {
-  padding: 7px 13px;
-  font-size: 18px;
-  background: var(--background-negative);
-  color: var(--foreground-negative); }
-
-@media (min-width: 1024px) {
-  .card--calendar {
-    display: flex;
-    background-color: #F1F1F1; }
-    .card--calendar__left {
-      flex: 0 0 150px;
-      padding: 20px 0 20px 20px; }
-    .card--calendar__right {
-      flex: 1 0 calc(100% - 150px);
-      padding: 20px; }
-    .card--calendar__date {
-      display: block; }
-    .card--calendar__description {
-      display: block; } }
-
-@media (max-width: 1023.98px) {
-  .card--calendar {
-    padding: 15px;
-    background-color: #F1F1F1; }
-    .card--calendar__left {
-      margin-bottom: 10px; }
-    .card--calendar__date {
-      display: inline-block; }
-    .card--calendar__description {
-      display: inline-block; } }
+.card--calendar {
+  position: relative; }
+  .card--calendar.reporting-dates .card--calendar__date {
+    background-color: #bad1d9;
+    color: var(--background-negative); }
+  .card--calendar.investor-conference .card--calendar__date {
+    background-color: var(--background-negative); }
+  .card--calendar.active .btn--plus svg, .card--calendar.active .zoom-button svg {
+    transform: rotate(45deg); }
+  .card--calendar.active .card--calendar__extra {
+    display: flex; }
+  .card--calendar .btn--plus, .card--calendar .zoom-button {
+    position: absolute;
+    padding: var(--p10);
+    right: 20px;
+    top: 20px; }
+    .card--calendar .btn--plus svg, .card--calendar .zoom-button svg {
+      width: 26px;
+      height: 26px;
+      transition: .15s ease-in-out; }
+  .card--calendar__date {
+    padding: 7px 13px;
+    font-size: 18px;
+    background: var(--background-negative);
+    color: var(--foreground-negative); }
+  .card--calendar__extra {
+    width: 100%;
+    display: none; }
+    .card--calendar__extra ul {
+      margin: 0;
+      padding: 20px;
+      border-top: 1px solid #fff;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px; }
+      .card--calendar__extra ul:first-child {
+        padding-left: 150px;
+        margin-left: 20px; }
+      .card--calendar__extra ul:last-child {
+        padding-right: 0px;
+        margin-right: 20px; }
+      .card--calendar__extra ul li {
+        list-style-type: none; }
+        .card--calendar__extra ul li a {
+          display: block;
+          display: flex;
+          align-items: center;
+          column-gap: 20px;
+          font-weight: 600;
+          line-height: 20px; }
+          .card--calendar__extra ul li a .icon {
+            display: flex; }
+            .card--calendar__extra ul li a .icon svg {
+              width: 22px;
+              height: 22px;
+              fill: #3D5D6C; }
+  @media (min-width: 1024px) {
+    .card--calendar {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #F1F1F1; }
+      .card--calendar__left {
+        flex: 0 0 150px;
+        padding: 20px 0 20px 20px; }
+      .card--calendar__right {
+        flex: 1 0 calc(100% - 160px);
+        padding: 20px 80px 20px 20px;
+        line-height: 21px; }
+      .card--calendar__date {
+        display: block; }
+      .card--calendar__description {
+        display: block; } }
+  @media (max-width: 1023.98px) {
+    .card--calendar {
+      padding: 15px;
+      background-color: #F1F1F1; }
+      .card--calendar__left, .card--calendar__right {
+        margin-bottom: 20px; }
+      .card--calendar__date {
+        display: inline-block; }
+      .card--calendar__description {
+        display: inline-block; }
+      .card--calendar__extra ul:first-child {
+        padding-left: 0px;
+        margin-left: 0px; }
+      .card--calendar__extra ul:last-child {
+        padding-right: 0px;
+        margin-right: 0px; } }
+  @media (max-width: 767.98px) {
+    .card--calendar__extra {
+      flex-direction: column; }
+      .card--calendar__extra ul {
+        width: 100%; }
+        .card--calendar__extra ul:last-child {
+          padding-left: 0;
+          padding-bottom: 0; } }
 
 .card--calendar + .card--calendar {
   margin-top: 20px; }
@@ -11099,8 +11144,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
   .card--side-modal__content {
     flex: 1 1 auto;
     overflow-x: hidden;
@@ -11347,8 +11391,7 @@ input[type="search"]::-webkit-search-results-decoration {
       left: 0;
       width: 100%;
       height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover; }
+      object-fit: cover; }
   .card--gallery-modal__content {
     flex: 1 1 auto;
     padding: var(--p60) var(--p40);
@@ -11404,8 +11447,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .gallery-modal__picture > video {
       max-width: 100%;
       max-height: 100%;
-      -o-object-fit: contain;
-         object-fit: contain; }
+      object-fit: contain; }
   .gallery-modal__nav {
     position: absolute;
     display: flex;
@@ -11591,11 +11633,9 @@ input[type="search"]::-webkit-search-results-decoration {
         left: 0;
         width: 100%;
         height: 100%;
-        -o-object-fit: cover;
-           object-fit: cover; }
+        object-fit: cover; }
       .search__thumb .picture > img {
-        -o-object-fit: cover;
-           object-fit: cover; }
+        object-fit: cover; }
   .search__content {
     flex: 1 0 70%;
     max-width: 70%;
@@ -11622,11 +11662,9 @@ input[type="search"]::-webkit-search-results-decoration {
         left: 0;
         width: 100%;
         height: 100%;
-        -o-object-fit: cover;
-           object-fit: cover; }
+        object-fit: cover; }
       .search__thumb .picture > img {
-        -o-object-fit: cover;
-           object-fit: cover; } }
+        object-fit: cover; } }
 
 .page--product, .page--product-bfc, .page--product-ntf, .page--product-polymers, .page--location-country,
 .page--location-detail {
