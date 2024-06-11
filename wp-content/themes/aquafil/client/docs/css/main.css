@@ -10421,7 +10421,8 @@ input[type="search"]::-webkit-search-results-decoration {
     .page--investors .main {
       font-size: 16px; }
       .page--investors .main section {
-        padding-bottom: 40px; }
+        padding-bottom: 40px;
+        position: relative; }
         .page--investors .main section:last-child {
           padding-bottom: 160px; } }
   @media (max-width: 1023.98px) {
@@ -10600,6 +10601,20 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .page--investors .page--investors__content .btn--certification {
   max-width: 600px; }
+
+.page--investors .btn--more-md {
+  position: absolute;
+  right: 0;
+  top: -110px; }
+  @media (max-width: 1439.98px) {
+    .page--investors .btn--more-md {
+      top: -100px; } }
+  @media (max-width: 1023.98px) {
+    .page--investors .btn--more-md {
+      top: auto;
+      right: auto;
+      position: relative;
+      margin: 20px 0 40px 0; } }
 
 .card--calendar {
   position: relative; }

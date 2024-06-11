@@ -21,6 +21,7 @@
 
 			section {
 				padding-bottom: 40px;
+				position: relative;
 
 				&:last-child {
 					padding-bottom: 160px;
@@ -289,6 +290,23 @@
 			max-width: 600px;
 		}
 	}
+
+	.btn--more-md {
+		position: absolute;
+		right: 0;
+		top: -110px;
+
+		@include media-down(md) {
+			top: -100px;
+		}
+
+		@include media-down(sm) {
+			top: auto;
+			right: auto;
+			position: relative;
+			margin: 20px 0 40px 0;
+		}
+	}
 }
 
 .card--calendar {
@@ -422,7 +440,8 @@
 		padding: 15px;
 		background-color: $quaternary;
 
-		&__left, &__right {
+		&__left,
+		&__right {
 			margin-bottom: 20px;
 		}
 
@@ -464,7 +483,7 @@
 					padding-bottom: 0;
 				}
 
-				
+
 			}
 		}
 	}
