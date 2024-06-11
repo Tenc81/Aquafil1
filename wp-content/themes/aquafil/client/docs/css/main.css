@@ -10659,9 +10659,9 @@ input[type="search"]::-webkit-search-results-decoration {
         padding-right: 0px;
         margin-right: 20px; }
       .card--calendar__extra ul li {
-        list-style-type: none; }
+        list-style-type: none;
+        position: relative; }
         .card--calendar__extra ul li a {
-          display: block;
           display: flex;
           align-items: center;
           column-gap: 20px;
@@ -10773,6 +10773,36 @@ input[type="search"]::-webkit-search-results-decoration {
       .table__cell[data-title]:before,
       .table__cell[data-title] .table__value {
         flex: 1; } }
+
+add-to-calendar-button#css-part-example::part(atcb-button-wrapper),
+#atcb-btn-css-part-example-modal-host::part(atcb-button-wrapper) {
+  font-size: 16px; }
+  @media (max-width: 1023.98px) {
+    add-to-calendar-button#css-part-example::part(atcb-button-wrapper),
+    #atcb-btn-css-part-example-modal-host::part(atcb-button-wrapper) {
+      font-size: 14px; } }
+
+add-to-calendar-button#css-part-example::part(atcb-button),
+#atcb-btn-css-part-example-modal-host::part(atcb-button) {
+  background-color: transparent;
+  font-family: var(--font-primary);
+  color: #3D5D6C;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  margin: 0; }
+
+add-to-calendar-button#css-part-example::part(atcb-button-text),
+#atcb-btn-css-part-example-modal-host::part(atcb-button-text) {
+  text-align: left;
+  line-height: 20px;
+  letter-spacing: var(--letter-spacing); }
+
+add-to-calendar-button#css-part-example::part(atcb-button-icon),
+#atcb-btn-css-part-example-modal-host::part(atcb-button-icon) {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px; }
 
 .page--investor__menu-toggle {
   position: absolute;

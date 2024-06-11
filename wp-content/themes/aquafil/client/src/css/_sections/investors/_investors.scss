@@ -383,9 +383,11 @@
 
 			li {
 				list-style-type: none;
+				position: relative;
+
+
 
 				a {
-					display: block;
 					display: flex;
 					align-items: center;
 					column-gap: 20px;
@@ -586,4 +588,38 @@
 			}
 		}
 	}
+}
+
+add-to-calendar-button#css-part-example::part(atcb-button-wrapper),
+#atcb-btn-css-part-example-modal-host::part(atcb-button-wrapper) {
+	font-size: 16px;
+
+	@include media-down(sm) {
+		font-size: 14px;
+	}
+}
+
+add-to-calendar-button#css-part-example::part(atcb-button),
+#atcb-btn-css-part-example-modal-host::part(atcb-button) {
+	background-color: transparent;
+	font-family: var(--font-primary);
+	color: $text;
+	padding: 0;
+	border: 0;
+	box-shadow: none;
+	margin: 0;
+}
+
+add-to-calendar-button#css-part-example::part(atcb-button-text),
+#atcb-btn-css-part-example-modal-host::part(atcb-button-text) {
+	text-align: left;
+	line-height: 20px;
+	letter-spacing: var(--letter-spacing);
+}
+
+add-to-calendar-button#css-part-example::part(atcb-button-icon),
+#atcb-btn-css-part-example-modal-host::part(atcb-button-icon) {
+	width: 20px;
+    height: 20px;
+    margin-right: 20px;
 }
