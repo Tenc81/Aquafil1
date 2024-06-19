@@ -1,5 +1,6 @@
 import { Browser } from 'rxcomp';
 import { AppModule } from './app.module';
+import 'add-to-calendar-button';
 
 Browser.bootstrap(AppModule);
 

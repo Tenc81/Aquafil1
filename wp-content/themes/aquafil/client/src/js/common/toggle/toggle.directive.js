@@ -7,12 +7,14 @@ export class ToggleDirective extends Directive {
 		const { node } = getContext(this);
 		fromEvent(node, 'click').pipe(
 			tap(_ => {
-				const items = Array.prototype.slice.call(document.querySelectorAll(this.toggle));
-				items.forEach(item => {
-					if (item === node) {
-						item.classList.contains('active') ? item.classList.remove('active') : item.classList.add('active');
+				const targetSelector = this.toggle;
+				const targetElements = document.querySelectorAll(targetSelector);
+				
+				targetElements.forEach(target => {
+					if (target === node || target.contains(node)) {
+						target.classList.toggle('active');
 					} else {
-						item.classList.remove('active');
+						target.classList.remove('active');
 					}
 				});
 			}),
