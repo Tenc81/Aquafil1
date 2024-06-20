@@ -590,7 +590,7 @@
 	}
 }
 
-add-to-calendar-button#css-part-example::part(atcb-button-wrapper),
+add-to-calendar-button[id^=calendar-]::part(atcb-button-wrapper),
 #atcb-btn-css-part-example-modal-host::part(atcb-button-wrapper) {
 	font-size: 16px;
 
@@ -599,7 +599,7 @@ add-to-calendar-button#css-part-example::part(atcb-button-wrapper),
 	}
 }
 
-add-to-calendar-button#css-part-example::part(atcb-button),
+add-to-calendar-button[id^=calendar-]::part(atcb-button),
 #atcb-btn-css-part-example-modal-host::part(atcb-button) {
 	background-color: transparent;
 	font-family: var(--font-primary);
@@ -610,14 +610,14 @@ add-to-calendar-button#css-part-example::part(atcb-button),
 	margin: 0;
 }
 
-add-to-calendar-button#css-part-example::part(atcb-button-text),
+add-to-calendar-button[id^=calendar-]::part(atcb-button-text),
 #atcb-btn-css-part-example-modal-host::part(atcb-button-text) {
 	text-align: left;
 	line-height: 20px;
 	letter-spacing: var(--letter-spacing);
 }
 
-add-to-calendar-button#css-part-example::part(atcb-button-icon),
+add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
 #atcb-btn-css-part-example-modal-host::part(atcb-button-icon) {
 	width: 20px;
     height: 20px;
