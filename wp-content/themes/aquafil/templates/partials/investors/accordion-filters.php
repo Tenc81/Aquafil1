@@ -20,7 +20,7 @@ if(!empty($_args['filters']) || !empty($_args['oldfilters'])) :
     $("#switch_events").on("click", function() {
       $("span", this).toggleClass("hidden");
       $(".history-filter").removeClass("active");
-      $(".nav--horizontal-menu").toggleClass("hidden");
+      $(".nav--horizontal-menu, .page--investors__section-title", '#financial-calendar').toggleClass("hidden");
       $('.history-filter:first', '.nav--horizontal-menu').addClass("active");
       $("#financial-calendar .card--calendar").removeAttr("style");
       $("#financial-calendar .card--calendar").toggleClass("hidden");
@@ -28,6 +28,7 @@ if(!empty($_args['filters']) || !empty($_args['oldfilters'])) :
   })(jQuery);
 </script>
 <h2 class="page--investors__section-title"><?= __("Programmed events", "wstheme"); ?></h2>
+<h2 class="page--investors__section-title hidden"><?= __("Past events", "wstheme"); ?></h2>
 
 <div class="horizontal-menu">
   <div class="horizontal-menu__content">
