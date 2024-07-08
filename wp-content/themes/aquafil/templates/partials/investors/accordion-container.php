@@ -76,14 +76,14 @@ if(!empty($_args['section']) && !empty($_args['section']['list_accordion_contain
         </li>
         <?php endif; ?>
         <?php foreach($accordion['links_sx_highlighted_date'] as $link) : ?>
-        <li><a class="a-icon" href="<?= $link['url']; ?>"><span class="icon"><svg><use xlink:href="<?= preg_match("@\.(pdf|zip)$@", $link['url']) ? "#download" : "#arrow-next-md"; ?>"></use></svg></span><?= $link['label']; ?></a></li>
+        <li><a class="a-icon" href="<?= $link['url']; ?>" target="_blank"><span class="icon"><svg><use xlink:href="<?= preg_match("@\.(pdf|zip)$@", $link['url']) ? "#download" : "#arrow-next-md"; ?>"></use></svg></span><?= $link['label']; ?></a></li>
         <?php endforeach; ?>
       </ul>
       <?php endif; ?>
       <?php if(!empty($accordion['links_dx_highlighted_date'])) : ?>
       <ul>
         <?php foreach($accordion['links_dx_highlighted_date'] as $link) : ?>
-        <li><a class="a-icon" href="<?= $link['url']; ?>"><span class="icon"><svg><use xlink:href="<?= preg_match("@\.(pdf|zip)$@", $link['url']) ? "#download" : "#arrow-next-md"; ?>"></use></svg></span><?= $link['label']; ?></a></li>
+        <li><a class="a-icon" href="<?= $link['url']; ?>" target="_blank"><span class="icon"><svg><use xlink:href="<?= preg_match("@\.(pdf|zip)$@", $link['url']) ? "#download" : "#arrow-next-md"; ?>"></use></svg></span><?= $link['label']; ?></a></li>
         <?php endforeach; ?>
       </ul>
       <?php endif; ?>
