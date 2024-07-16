@@ -10674,10 +10674,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .card--calendar {
   position: relative; }
-  .card--calendar.reporting-dates .card--calendar__date {
+  .card--calendar.reporting-dates .card--calendar__date, .card--calendar.risultati-finanziari .card--calendar__date {
     background-color: #bad1d9;
     color: var(--background-negative); }
-  .card--calendar.investor-conference .card--calendar__date {
+  .card--calendar.investor-conference .card--calendar__date, .card--calendar.conferenze-eventi .card--calendar__date {
     background-color: var(--background-negative); }
   .card--calendar.active .btn--plus svg, .card--calendar.active .zoom-button svg {
     transform: rotate(45deg); }

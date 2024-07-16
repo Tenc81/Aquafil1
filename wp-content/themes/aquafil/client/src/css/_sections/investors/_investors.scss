@@ -312,14 +312,14 @@
 .card--calendar {
 	position: relative;
 
-	&.reporting-dates {
+	&.reporting-dates, &.risultati-finanziari {
 		.card--calendar__date {
 			background-color: #bad1d9;
 			color: var(--background-negative);
 		}
 	}
 
-	&.investor-conference {
+	&.investor-conference, &.conferenze-eventi {
 		.card--calendar__date {
 			background-color: var(--background-negative);
 		}
