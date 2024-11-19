@@ -1,8 +1,9 @@
 import { Component } from 'rxcomp';
 import { FormControl, FormGroup, Validators } from 'rxcomp-form';
-import { first, takeUntil, tap } from 'rxjs/operators';
+import { first, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { GtmService } from '../../common/gtm/gtm.service';
 import { ModalService } from '../../common/modal/modal.service';
+import { RecaptchaService } from '../../common/recaptcha/recaptcha.service';
 import { FormService } from '../../controls/form.service';
 import { ContactsService } from './contacts.service';
 
@@ -11,8 +12,7 @@ export class ContactModalComponent extends Component {
 	onInit() {
 		this.error = null;
 		this.success = false;
-		this.response = null;
-		this.message = null;
+		this.data = null;
 		const form = this.form = new FormGroup({
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
 			lastName: new FormControl(null, [Validators.RequiredValidator()]),
@@ -38,6 +38,11 @@ export class ContactModalComponent extends Component {
 		this.load$().pipe(
 			first(),
 		).subscribe();
+		RecaptchaService.grecaptcha$().pipe(
+			takeUntil(this.unsubscribe$)
+		).subscribe((grecaptcha) => {
+			console.log('ContactModalComponent.recaptcha', grecaptcha);
+		});
 	}
 
 	load$() {
@@ -83,21 +88,30 @@ export class ContactModalComponent extends Component {
 
 	onSubmit(model) {
 		const form = this.form;
-		console.log('ContactModalComponent.onSubmit', form.value);
+		// console.log('ContactModalComponent.onSubmit', form.value);
 		// console.log('ContactModalComponent.onSubmit', 'form.valid', valid);
 		if (form.valid) {
 			// console.log('ContactModalComponent.onSubmit', form.value);
 			form.submitted = true;
-			ContactsService.submit$(form.value).pipe(
-				first(),
-			).subscribe(_ => {
-				if (_.success) {
+			RecaptchaService.execute$('contact').pipe(
+				switchMap(token => {
+					const payload = {
+						...form.value,
+						recaptcha: token,
+					};
+					console.log('ContactModalComponent.onSubmit', payload);
+					return ContactsService.submit$(payload).pipe(
+						first(),
+					)
+				})
+			).subscribe(response => {
+				if (response.success) {
 					GtmService.push({ 'event': "Contact", 'form_name': "Contatti" });
 				}
 				this.success = true;
 				form.reset();
-				this.response = _.data["response"];
-				this.message = _.data["message"];
+				console.log(response.data);
+				this.data = response.data;
 			}, error => {
 				console.log('ContactModalComponent.error', error);
 				this.error = error;

@@ -45,6 +45,9 @@ export const environmentServed = {
 	googleMaps: {
 		apiKey: 'AIzaSyByTXqwtyFUcD6d4PY7ab4GBwS5IYjEVcc',
 	},
+	grecaptcha: {
+		sitekey: '6LcpWXsqAAAAAMzYRiMn4XJ9TfNxDeA85m6437ow',
+	},
 	thron: {
 		clientId: '',
 	},

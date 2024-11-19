@@ -15,7 +15,7 @@ export class ContactsService {
 		if (environment.flags.production) {
 			return ApiService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', payload, 'application/x-www-form-urlencoded');
 		} else {
-			return ApiService.get$('/contacts/submit.json');
+			return ApiService.http$('GET', environment.api + '/contacts/submit.json');
 		}
 	}
 

@@ -1,0 +1,8 @@
+{
+  "data": {
+    "response": "Richiesta Inviata",
+    "message": "Grazie per averci contattato. La tua richiesta è stata inviata correttamente."
+  },
+  "statusCode": 200,
+  "status": "success"
+}
