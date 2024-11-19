@@ -71,9 +71,9 @@
 		<div class="container-fluid" *if="success">
 			<div class="row">
 				<div class="col-sm-22 offset-sm-1">
-					<div class="contacts-form__title" [innerHTML]="response"></div>
+					<div class="contacts-form__title" [innerHTML]="data.response"></div>
 					<div class="contacts-form__content">
-						<div class="contacts-form__abstract" [innerHTML]="message"></div>
+						<div class="contacts-form__abstract" [innerHTML]="data.message"></div>
 					</div>
 				</div>
 			</div>

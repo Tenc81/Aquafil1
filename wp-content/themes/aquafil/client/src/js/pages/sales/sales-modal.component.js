@@ -4,6 +4,7 @@ import { first, takeUntil, tap } from 'rxjs/operators';
 import { GtmService } from '../../common/gtm/gtm.service';
 import { ModalOutletComponent } from '../../common/modal/modal-outlet.component';
 import { ModalService } from '../../common/modal/modal.service';
+import { RecaptchaService } from '../../common/recaptcha/recaptcha.service';
 import { FormService } from '../../controls/form.service';
 import { SalesService } from './sales.service';
 
@@ -22,8 +23,7 @@ export class SalesModalComponent extends Component {
 		}
 		this.error = null;
 		this.success = false;
-		this.response = '';
-		this.message = '';
+		this.data = null;
 		const form = this.form = new FormGroup({
 			productName: this.productName,
 			countryOfInterest: new FormControl(this.countryOfInterestId),
@@ -52,6 +52,11 @@ export class SalesModalComponent extends Component {
 		this.load$().pipe(
 			first(),
 		).subscribe();
+		RecaptchaService.grecaptcha$().pipe(
+			takeUntil(this.unsubscribe$)
+		).subscribe((grecaptcha) => {
+			console.log('SalesModalComponent.recaptcha', grecaptcha);
+		});
 	}
 
 	load$() {
@@ -92,21 +97,29 @@ export class SalesModalComponent extends Component {
 
 	onSubmit(model) {
 		const form = this.form;
-		console.log('SalesModalComponent.onSubmit', form.value);
+		// console.log('SalesModalComponent.onSubmit', form.value);
 		// console.log('SalesModalComponent.onSubmit', 'form.valid', valid);
 		if (form.valid) {
 			// console.log('SalesModalComponent.onSubmit', form.value);
 			form.submitted = true;
-			SalesService.submit$(form.value).pipe(
-				first(),
-			).subscribe(_ => {
-				if (_.success) {
+			RecaptchaService.execute$('contact').pipe(
+				switchMap(token => {
+					const payload = {
+						...form.value,
+						recaptcha: token,
+					};
+					console.log('SalesModalComponent.onSubmit', payload);
+					return SalesService.submit$(payload).pipe(
+						first(),
+					)
+				})
+			).subscribe(response => {
+				if (response.success) {
 					GtmService.push({ 'event': "Sales", 'form_name': "Contatti" });
 				}
 				this.success = true;
 				form.reset();
-				this.response = _.data["response"];
-				this.message = _.data["message"];
+				this.data = response.data;
 			}, error => {
 				console.log('SalesModalComponent.error', error);
 				this.error = error;
