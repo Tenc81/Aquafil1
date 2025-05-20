@@ -46,42 +46,47 @@ main {
 
 main {
 	@include media-up(md) {
-
-		&>div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary)+div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary),
-		&>div.negative+div.negative,
-		&>div.secondary+div.secondary {
+		&
+			> div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(
+				.media-text-primary
+			):not(.negative):not(.secondary)
+			+ div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(
+				.media-text-primary
+			):not(.negative):not(.secondary),
+		& > div.negative + div.negative,
+		& > div.secondary + div.secondary {
 			padding-top: 0;
 		}
 
-		&>.borders+.borders {
+		& > .borders + .borders {
 			padding-top: var(--p80) !important;
 		}
 	}
 
 	@include media-down(md) {
-
-		&>div,
-		&>section {
+		& > div,
+		& > section {
 			overflow: hidden;
 		}
 	}
 
 	@include media-down(sm) {
-
-		&>div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary)+div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary),
-		&>div.negative+div.negative,
-		&>div.secondary+div.secondary {
+		&
+			> div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary)
+			+ div:not(.breadcrumb):not(.horizontal-menu):not(.negative):not(.secondary),
+		& > div.negative + div.negative,
+		& > div.secondary + div.secondary {
 			padding-top: 0;
 		}
 
-		&>.borders+.borders {
+		& > .borders + .borders {
 			padding-top: var(--p40) !important;
 		}
 	}
 }
 
 .hidden {
-	display: none!important;
+	display: none !important;
 }
 
 [unselectable] {
@@ -104,7 +109,7 @@ main {
 
 	&:before,
 	&:after {
-		content: '';
+		content: "";
 		display: none;
 		position: absolute;
 		height: 1px;
@@ -122,7 +127,6 @@ main {
 	}
 
 	@include media-up(md) {
-
 		&:before,
 		&:after {
 			left: 100% / 24 * 3;
@@ -131,7 +135,6 @@ main {
 	}
 
 	@include media-down(sm) {
-
 		&:before,
 		&:after {
 			left: 100% / 24 * 2;
@@ -140,7 +143,6 @@ main {
 	}
 
 	@include media-down(xs) {
-
 		&:before,
 		&:after {
 			left: 0;
@@ -149,7 +151,6 @@ main {
 	}
 
 	&.negative {
-
 		&:before,
 		&:after {
 			background: rgba(255, 255, 255, 0.2);
@@ -157,8 +158,12 @@ main {
 	}
 }
 
-.borders+.borders {
+.borders + .borders {
 	&:before {
 		display: block;
 	}
+}
+
+strong {
+	font-weight: bold;
 }
