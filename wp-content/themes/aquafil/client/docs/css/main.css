@@ -124,7 +124,9 @@ main {
   min-height: 100vh; }
 
 @media (min-width: 1024px) {
-  main > div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary) + div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(.media-text-primary):not(.negative):not(.secondary),
+  main > div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(
+  .media-text-primary):not(.negative):not(.secondary) + div:not(.breadcrumb):not(.horizontal-menu):not(.primary-hero):not(.secondary-hero):not(
+  .media-text-primary):not(.negative):not(.secondary),
   main > div.negative + div.negative,
   main > div.secondary + div.secondary {
     padding-top: 0; }
@@ -164,7 +166,7 @@ main {
 .borders {
   position: relative; }
   .borders:before, .borders:after {
-    content: '';
+    content: "";
     display: none;
     position: absolute;
     height: 1px;
@@ -190,6 +192,9 @@ main {
 
 .borders + .borders:before {
   display: block; }
+
+strong {
+  font-weight: bold; }
 
 /*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {
@@ -9580,6 +9585,7 @@ input[type="search"]::-webkit-search-results-decoration {
       .media-text__picture {
         margin-bottom: var(--p80); } }
 
+
 .media-text-primary {
   position: relative; }
   @media (min-width: 768px) {
@@ -9600,6 +9606,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .media-text-primary__content {
       padding: var(--p120) 0; } }
   @media (max-width: 1023.98px) {
+    
     .media-text-primary {
       padding: var(--p80) 0; }
       .media-text-primary__picture {
