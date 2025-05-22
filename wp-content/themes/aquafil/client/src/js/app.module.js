@@ -9,6 +9,7 @@ import { CareersModalComponent } from './pages/careers/careers-modal.component';
 import { ContactModalComponent } from './pages/contact-modal/contact-modal.component';
 import { OpenModallyDirective } from './pages/open-modally/open-modally.directive';
 import { ProductRequestComponent } from './pages/product-request/product-request.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 import { SalesModalComponent } from './pages/sales/sales-modal.component';
 import { SideModalComponent } from './pages/side-modal/side-modal.component';
 import { SharedModule } from './shared/shared.module';
@@ -30,6 +31,7 @@ AppModule.meta = {
 		CardSaleDetailComponent,
 		OpenModallyDirective,
 		ProductRequestComponent,
+		ProductListComponent,
 		SalesModalComponent,
 		SideModalComponent,
 	],

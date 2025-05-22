@@ -4039,6 +4039,130 @@ OpenModallyDirective.meta = {
 ProductRequestComponent.meta = {
   selector: '[product-request]',
   inputs: ['productName', 'download']
+};var ProductListComponent = /*#__PURE__*/function (_Component) {
+  function ProductListComponent() {
+    return _Component.apply(this, arguments) || this;
+  }
+  _inheritsLoose(ProductListComponent, _Component);
+  var _proto = ProductListComponent.prototype;
+  _proto.onInit = function onInit() {
+    this.activeFilters = new Set();
+    this.currentCategory = 'all';
+    this.initializeFilters();
+    this.initializeSidebarFilters();
+    this.updateFilterCounts();
+  };
+  _proto.initializeSidebarFilters = function initializeSidebarFilters() {
+    var _this = this;
+    var sidebarButtons = document.querySelectorAll('.product-list__sidebar .list-filters .btn');
+    sidebarButtons.forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        var filterText = event.target.textContent.trim();
+
+        // Toggle active state of the button
+        button.classList.toggle('active');
+        if (button.classList.contains('active')) {
+          _this.activeFilters.add(filterText);
+        } else {
+          _this.activeFilters.delete(filterText);
+        }
+        _this.filterCards();
+      });
+    });
+  };
+  _proto.filterCards = function filterCards() {
+    var _this2 = this;
+    var cards = document.querySelectorAll('.card--calendar');
+    var visibleCards = 0;
+    var noResultsDiv = document.querySelector('.no-results');
+    cards.forEach(function (card) {
+      // Prima controlla se la card appartiene alla categoria corrente
+      var matchesCategory = _this2.currentCategory === 'all' || card.classList.contains(_this2.currentCategory);
+
+      // Se non appartiene alla categoria, nascondi la card
+      if (!matchesCategory) {
+        card.style.display = 'none';
+        return;
+      }
+
+      // Se non ci sono filtri attivi nella sidebar e la card appartiene alla categoria, mostrala
+      if (_this2.activeFilters.size === 0) {
+        card.style.display = 'flex';
+        visibleCards++;
+        return;
+      }
+
+      // Controlla i tag della card
+      var tagList = card.querySelector('.tag-list');
+      var tags = Array.from(tagList.querySelectorAll('.btn')).map(function (tag) {
+        return tag.textContent.trim();
+      });
+
+      // Check if any of the card's tags match any of the active filters
+      var hasMatchingTag = Array.from(_this2.activeFilters).some(function (filter) {
+        // Handle comma-separated tags (like "Filled, Impact Modified, Colored")
+        var cardTagsExpanded = tags.reduce(function (acc, tag) {
+          return acc.concat(tag.split(', '));
+        }, []);
+        return cardTagsExpanded.includes(filter);
+      });
+      card.style.display = hasMatchingTag ? 'flex' : 'none';
+      if (hasMatchingTag) visibleCards++;
+    });
+
+    // Mostra/nascondi il messaggio "nessun risultato"
+    if (visibleCards === 0) {
+      noResultsDiv.style.display = 'block';
+    } else {
+      noResultsDiv.style.display = 'none';
+    }
+  };
+  _proto.updateFilterCounts = function updateFilterCounts() {
+    // Get all cards
+    var allCards = document.querySelectorAll('.card--calendar');
+    var basedPolymerCards = document.querySelectorAll('.card--calendar.based-polymer');
+    var engineeredPolymerCards = document.querySelectorAll('.card--calendar.engineered-polymers');
+
+    // Update count numbers in the filter menu
+    var allCountEl = document.querySelector('.history-filter[data-filter="all"] .count');
+    var basedPolymerCountEl = document.querySelector('.history-filter[data-filter="based-polymer"] .count');
+    var engineeredPolymerCountEl = document.querySelector('.history-filter[data-filter="engineered-polymers"] .count');
+    if (allCountEl) allCountEl.textContent = "(" + allCards.length + ")";
+    if (basedPolymerCountEl) basedPolymerCountEl.textContent = "(" + basedPolymerCards.length + ")";
+    if (engineeredPolymerCountEl) engineeredPolymerCountEl.textContent = "(" + engineeredPolymerCards.length + ")";
+  };
+  _proto.initializeFilters = function initializeFilters() {
+    var _this3 = this;
+    var filters = document.querySelectorAll('.history-filter');
+    filters.forEach(function (filter) {
+      filter.addEventListener('click', function (event) {
+        // Remove active class from all filters
+        filters.forEach(function (f) {
+          return f.classList.remove('active');
+        });
+
+        // Add active class to clicked filter
+        var filterEl = event.target.closest('.history-filter');
+        filterEl.classList.add('active');
+
+        // Get and store the filter value
+        _this3.currentCategory = filterEl.getAttribute('data-filter');
+
+        // Apply filters
+        _this3.filterCards();
+      });
+    });
+
+    // Ensure "All" filter is active by default
+    var allFilter = document.querySelector('.history-filter[data-filter="all"]');
+    if (allFilter) {
+      allFilter.classList.add('active');
+    }
+  };
+  return ProductListComponent;
+}(rxcomp.Component);
+ProductListComponent.meta = {
+  selector: '[product-list]'
 };var SalesModalComponent = /*#__PURE__*/function (_Component) {
   function SalesModalComponent() {
     return _Component.apply(this, arguments) || this;
@@ -5574,7 +5698,7 @@ SharedModule.meta = {
 }(rxcomp.Module);
 AppModule.meta = {
   imports: [rxcomp.CoreModule, rxcompForm.FormModule, CommonModule, ControlsModule, SharedModule],
-  declarations: [CareersModalComponent, ContactModalComponent, CardProductDetailComponent, CardSaleDetailComponent, OpenModallyDirective, ProductRequestComponent, SalesModalComponent, SideModalComponent],
+  declarations: [CareersModalComponent, ContactModalComponent, CardProductDetailComponent, CardSaleDetailComponent, OpenModallyDirective, ProductRequestComponent, ProductListComponent, SalesModalComponent, SideModalComponent],
   bootstrap: AppComponent
 };/*!
  *  @preserve
