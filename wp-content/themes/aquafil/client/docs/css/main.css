@@ -11983,6 +11983,9 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
 .page--product-list .page--investors__accordion {
   padding: 40px 0;
   margin: 0; }
+  @media (max-width: 767.98px) {
+    .page--product-list .page--investors__accordion .card--calendar {
+      flex-direction: column; } }
   .page--product-list .page--investors__accordion .card--calendar__category {
     font-family: var(--font-primary);
     color: var(--foreground-primary);
@@ -11997,6 +12000,9 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
     font-style: normal;
     font-weight: 700;
     line-height: normal; }
+    @media (max-width: 767.98px) {
+      .page--product-list .page--investors__accordion .card--calendar__title {
+        padding-right: 20px; } }
   .page--product-list .page--investors__accordion .card--calendar__description {
     color: #3d5d6c;
     font-size: 16px;
@@ -12053,6 +12059,9 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
   padding-top: 150px;
   padding-right: 50px; }
   @media (max-width: 1023.98px) {
+    .product-list__sidebar {
+      padding-right: 0; } }
+  @media (max-width: 767.98px) {
     .product-list__sidebar {
       padding: 0; } }
   .product-list__sidebar .list-filters .btn.active, .product-list__sidebar .list-filters .modal-outlet .active.btn--close, .modal-outlet .product-list__sidebar .list-filters .active.btn--close {

@@ -2,7 +2,12 @@
 	.page--investors__accordion {
 		padding: 40px 0;
 		margin: 0;
+
 		.card--calendar {
+			@include media-down(xs) {
+				flex-direction: column;
+			}
+
 			&__category {
 				font-family: $font-primary;
 				color: $foreground-primary;
@@ -11,6 +16,7 @@
 				font-weight: 400;
 				line-height: normal;
 			}
+
 			&__title {
 				font-family: $font-primary;
 				color: $foreground;
@@ -18,40 +24,53 @@
 				font-style: normal;
 				font-weight: 700;
 				line-height: normal;
+
+				@include media-down(xs) {
+					padding-right: 20px;
+				}
 			}
+
 			&__description {
 				color: #3d5d6c;
 				font-size: 16px;
 				font-style: normal;
 				font-weight: 300;
-				line-height: 21px; /* 131.25% */
+				line-height: 21px;
+				/* 131.25% */
 				letter-spacing: 1.05px;
 			}
+
 			.tag-list {
 				display: block;
 				align-items: center;
 				gap: 8px;
+
 				.btn {
 					margin-right: 8px;
 					margin-bottom: 8px;
 				}
 			}
+
 			&__extra {
 				padding: 24px 16px;
 				border-top: 1px solid #fff;
+
 				ul {
 					padding: 0;
 					list-style: disc;
 					border: 0;
+
 					li {
 						list-style-type: disc;
+
 						a {
 							color: #3d5d6c;
 							font-family: $font-primary;
 							font-size: 16px;
 							font-style: normal;
 							font-weight: 600;
-							line-height: 21px; /* 131.25% */
+							line-height: 21px;
+							/* 131.25% */
 							text-decoration-line: underline;
 							text-decoration-style: solid;
 							text-decoration-skip-ink: auto;
@@ -84,6 +103,10 @@
 	padding-right: 50px;
 
 	@include media-down(sm) {
+		padding-right: 0;
+	}
+
+	@include media-down(xs) {
 		padding: 0;
 	}
 
@@ -92,10 +115,12 @@
 			&.active {
 				background-color: $foreground-primary;
 				color: #fff;
+
 				&:focus {
 					color: #fff;
 				}
 			}
+
 			&:focus {
 				color: $foreground-primary;
 			}
@@ -135,6 +160,7 @@
 			.sidebar--content {
 				display: block;
 			}
+
 			.btn--title {
 				svg {
 					transform: rotate(180deg);
@@ -143,16 +169,20 @@
 			}
 		}
 	}
+
 	&--content {
 		display: none;
 		padding: 16px 0 0;
+
 		.list-filters {
 			display: block;
+
 			button {
 				margin-right: 0;
 				margin-bottom: 8px;
 			}
 		}
+
 		.filters-title {
 			color: var(--text-blue-wht, #3d5d6c);
 			font-family: $font-primary;
