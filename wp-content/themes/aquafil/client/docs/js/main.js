@@ -4048,9 +4048,14 @@ ProductRequestComponent.meta = {
   _proto.onInit = function onInit() {
     this.activeFilters = new Set();
     this.currentCategory = 'all';
+    this.visibleItemsCount = 10;
+    this.itemsPerLoad = 5;
+    this.filteredCards = [];
     this.initializeFilters();
     this.initializeSidebarFilters();
     this.updateFilterCounts();
+    this.initializeLoadMore();
+    this.applyCardVisibility();
   };
   _proto.initializeSidebarFilters = function initializeSidebarFilters() {
     var _this = this;
@@ -4075,6 +4080,12 @@ ProductRequestComponent.meta = {
     var cards = document.querySelectorAll('.card--calendar');
     var visibleCards = 0;
     var noResultsDiv = document.querySelector('.no-results');
+
+    // Reset visibility counter when applying filters
+    this.visibleItemsCount = 10;
+
+    // Get filtered cards first
+    this.filteredCards = [];
     cards.forEach(function (card) {
       // Prima controlla se la card appartiene alla categoria corrente
       var matchesCategory = _this2.currentCategory === 'all' || card.classList.contains(_this2.currentCategory);
@@ -4085,18 +4096,18 @@ ProductRequestComponent.meta = {
         return;
       }
 
-      // Se non ci sono filtri attivi nella sidebar e la card appartiene alla categoria, mostrala
+      // Se non ci sono filtri attivi nella sidebar e la card appartiene alla categoria
       if (_this2.activeFilters.size === 0) {
-        card.style.display = 'flex';
+        _this2.filteredCards.push(card);
         visibleCards++;
         return;
       }
 
       // Controlla i tag della card
       var tagList = card.querySelector('.tag-list');
-      var tags = Array.from(tagList.querySelectorAll('.btn')).map(function (tag) {
+      var tags = tagList ? Array.from(tagList.querySelectorAll('.btn')).map(function (tag) {
         return tag.textContent.trim();
-      });
+      }) : [];
 
       // Check if any of the card's tags match any of the active filters
       var hasMatchingTag = Array.from(_this2.activeFilters).some(function (filter) {
@@ -4106,9 +4117,19 @@ ProductRequestComponent.meta = {
         }, []);
         return cardTagsExpanded.includes(filter);
       });
-      card.style.display = hasMatchingTag ? 'flex' : 'none';
-      if (hasMatchingTag) visibleCards++;
+      if (hasMatchingTag) {
+        _this2.filteredCards.push(card);
+        visibleCards++;
+      } else {
+        card.style.display = 'none';
+      }
     });
+
+    // Apply visibility based on current visible items count
+    this.applyCardVisibility();
+
+    // Update the load more button
+    this.updateLoadMoreButton();
 
     // Mostra/nascondi il messaggio "nessun risultato"
     if (visibleCards === 0) {
@@ -4131,6 +4152,53 @@ ProductRequestComponent.meta = {
     if (basedPolymerCountEl) basedPolymerCountEl.textContent = "(" + basedPolymerCards.length + ")";
     if (engineeredPolymerCountEl) engineeredPolymerCountEl.textContent = "(" + engineeredPolymerCards.length + ")";
   };
+  _proto.toggleSidebarSections = function toggleSidebarSections(categoryFilter) {
+    // Trova l'elemento della sidebar con le sezioni based polymer e engineered polymers
+    var propertiesContent = document.querySelector('.sidebar--item.properties .sidebar--content');
+    if (!propertiesContent) return;
+
+    // Trova le sezioni in base ai loro titoli
+    var sections = propertiesContent.querySelectorAll('.filters-title');
+    var basedPolymerSection = null;
+    var engineeredPolymerSection = null;
+    sections.forEach(function (section) {
+      var title = section.textContent.trim().toLowerCase();
+      if (title === 'based polymer') {
+        basedPolymerSection = section;
+      } else if (title === 'engineered polymers') {
+        engineeredPolymerSection = section;
+      }
+    });
+    if (basedPolymerSection && engineeredPolymerSection) {
+      // Ottieni gli elementi filters che seguono ciascun titolo
+      var getNextFilters = function getNextFilters(element) {
+        var nextElement = element.nextElementSibling;
+        if (nextElement && nextElement.classList.contains('list-filters')) {
+          return nextElement;
+        }
+        return null;
+      };
+      var basedPolymerFilters = getNextFilters(basedPolymerSection);
+      var engineeredPolymerFilters = getNextFilters(engineeredPolymerSection);
+
+      // Rimuovi tutte le classi hide-section
+      if (basedPolymerSection) basedPolymerSection.classList.remove('hide-section');
+      if (basedPolymerFilters) basedPolymerFilters.classList.remove('hide-section');
+      if (engineeredPolymerSection) engineeredPolymerSection.classList.remove('hide-section');
+      if (engineeredPolymerFilters) engineeredPolymerFilters.classList.remove('hide-section');
+
+      // Aggiungi le classi hide-section in base al filtro selezionato
+      if (categoryFilter === 'based-polymer') {
+        // Nascondi sezione engineered polymers
+        if (engineeredPolymerSection) engineeredPolymerSection.classList.add('hide-section');
+        if (engineeredPolymerFilters) engineeredPolymerFilters.classList.add('hide-section');
+      } else if (categoryFilter === 'engineered-polymers') {
+        // Nascondi sezione based polymer
+        if (basedPolymerSection) basedPolymerSection.classList.add('hide-section');
+        if (basedPolymerFilters) basedPolymerFilters.classList.add('hide-section');
+      }
+    }
+  };
   _proto.initializeFilters = function initializeFilters() {
     var _this3 = this;
     var filters = document.querySelectorAll('.history-filter');
@@ -4148,6 +4216,9 @@ ProductRequestComponent.meta = {
         // Get and store the filter value
         _this3.currentCategory = filterEl.getAttribute('data-filter');
 
+        // Nascondi/mostra sezioni appropriate nella sidebar
+        _this3.toggleSidebarSections(_this3.currentCategory);
+
         // Apply filters
         _this3.filterCards();
       });
@@ -4157,6 +4228,51 @@ ProductRequestComponent.meta = {
     var allFilter = document.querySelector('.history-filter[data-filter="all"]');
     if (allFilter) {
       allFilter.classList.add('active');
+      // Mostra tutte le sezioni della sidebar all'inizio
+      this.toggleSidebarSections('all');
+    }
+  };
+  _proto.initializeLoadMore = function initializeLoadMore() {
+    var _this4 = this;
+    // Inizializza il pulsante "Carica altro"
+    var loadMoreBtn = document.querySelector('.load-more-btn');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', function () {
+        _this4.loadMoreItems();
+      });
+
+      // Impostazione iniziale del pulsante
+      this.updateLoadMoreButton();
+    }
+  };
+  _proto.loadMoreItems = function loadMoreItems() {
+    // Aggiunge altri elementi alla vista
+    this.visibleItemsCount += this.itemsPerLoad;
+    this.applyCardVisibility();
+    this.updateLoadMoreButton();
+  };
+  _proto.applyCardVisibility = function applyCardVisibility() {
+    var _this5 = this;
+    // Applica la visibilità alle card in base all'indice
+    var cards = this.filteredCards.length > 0 ? this.filteredCards : document.querySelectorAll('.card--calendar');
+    cards.forEach(function (card, index) {
+      if (index < _this5.visibleItemsCount) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+  _proto.updateLoadMoreButton = function updateLoadMoreButton() {
+    var loadMoreBtn = document.querySelector('.load-more-btn');
+    if (!loadMoreBtn) return;
+    var filteredCards = this.filteredCards.length > 0 ? this.filteredCards : document.querySelectorAll('.card--calendar');
+
+    // Nascondi il pulsante se non ci sono altre card da mostrare
+    if (filteredCards.length <= this.visibleItemsCount) {
+      loadMoreBtn.classList.add('hidden');
+    } else {
+      loadMoreBtn.classList.remove('hidden');
     }
   };
   return ProductListComponent;

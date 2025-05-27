@@ -1,3 +1,4 @@
+// filepath: c:\Users\Admin\source\repos\Aquafil\wp-content\themes\aquafil\client\src\js\pages\product-list\product-list.component.js
 import { Component } from 'rxcomp';
 
 export class ProductListComponent extends Component {
