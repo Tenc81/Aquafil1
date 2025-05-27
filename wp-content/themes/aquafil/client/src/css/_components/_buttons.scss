@@ -56,15 +56,33 @@ a {
 	@extend %btn;
 }
 
-@mixin btn($fill: transparent,
+.btn--outline {
+	border: 1px solid $foreground-primary;
+	color: $foreground-primary;
+	border-radius: 500px;
+	padding: 8px 16px;
+	font-family: $font-primary;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	&:hover {
+		background-color: $foreground-primary;
+		color: $foreground-negative;
+	}
+}
+
+@mixin btn(
+	$fill: transparent,
 	$color: $foreground,
 	$fillOver: $fill,
 	$colorOver: $color,
 	$fillPressed: $fillOver,
 	$colorPressed: $colorOver,
 	$fillDisabled: $fill,
-	$colorDisabled: $color) {
-
+	$colorDisabled: $color
+) {
 	@extend %btn;
 
 	&,
@@ -87,7 +105,6 @@ a {
 	}
 
 	&.disabled {
-
 		&,
 		&:active,
 		&:focus,
@@ -108,7 +125,7 @@ a {
 
 	&:before,
 	&:after {
-		content: '';
+		content: "";
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -176,7 +193,7 @@ a {
 	position: relative;
 
 	&:after {
-		content: '';
+		content: "";
 		position: absolute;
 		width: 100%;
 		height: 1px;
@@ -261,7 +278,6 @@ a {
 	}
 
 	&.disabled {
-
 		&,
 		&:active,
 		&:focus,
@@ -340,7 +356,6 @@ a {
 	}
 
 	&.disabled {
-
 		&,
 		&:active,
 		&:focus,
@@ -382,13 +397,13 @@ a {
 	align-items: stretch;
 	min-height: var(--p60);
 
-	&>span {
+	& > span {
 		display: flex;
 		align-items: center;
 		padding: var(--p10) var(--p20);
 	}
 
-	&>.icon {
+	& > .icon {
 		background-color: $foreground-primary;
 		color: $foreground-negative;
 		padding: 0 var(--p10);
@@ -510,7 +525,6 @@ a {
 	}
 
 	&.disabled {
-
 		&,
 		&:active,
 		&:focus,
@@ -565,7 +579,6 @@ a {
 	}
 
 	&.disabled {
-
 		&,
 		&:active,
 		&:focus,
@@ -577,7 +590,6 @@ a {
 	}
 
 	.negative & {
-
 		&,
 		&:active,
 		&:focus,
@@ -594,7 +606,6 @@ a {
 		}
 
 		&.disabled {
-
 			&,
 			&:active,
 			&:focus,
@@ -638,7 +649,6 @@ a {
 	}
 
 	&.disabled {
-
 		&,
 		&:active,
 		&:focus,

@@ -5937,10 +5937,24 @@ a {
     opacity: 0.5;
     pointer-events: none; }
 
+.btn--outline {
+  border: 1px solid var(--foreground-primary);
+  color: var(--foreground-primary);
+  border-radius: 500px;
+  padding: 8px 16px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; }
+  .btn--outline:hover {
+    background-color: var(--foreground-primary);
+    color: var(--foreground-negative); }
+
 .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a {
   position: relative; }
   .btn--link:after, .group--form--checkbox label > span > a:after, .group--form--privacy label > span > a:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 1px;
@@ -12021,6 +12035,164 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
   .page--product .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-bfc .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-ntf .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--product-polymers .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--location-country .research-proposition .row > div:nth-child(3n+3) .card--innovation, .page--location-detail .research-proposition .row > div:nth-child(3n+3) .card--innovation {
     background: #4D4D4D;
     color: var(--foreground-negative); }
+
+.page--product-list .page--investors__accordion {
+  padding: 40px 0;
+  margin: 0; }
+  @media (max-width: 767.98px) {
+    .page--product-list .page--investors__accordion .card--calendar {
+      flex-direction: column; } }
+  .page--product-list .page--investors__accordion .card--calendar__category {
+    font-family: var(--font-primary);
+    color: var(--foreground-primary);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; }
+  .page--product-list .page--investors__accordion .card--calendar__title {
+    font-family: var(--font-primary);
+    color: var(--foreground);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; }
+    @media (max-width: 767.98px) {
+      .page--product-list .page--investors__accordion .card--calendar__title {
+        padding-right: 20px; } }
+  .page--product-list .page--investors__accordion .card--calendar__description {
+    color: #3d5d6c;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 21px;
+    /* 131.25% */
+    letter-spacing: 1.05px; }
+  .page--product-list .page--investors__accordion .card--calendar .tag-list {
+    display: block;
+    align-items: center;
+    gap: 8px; }
+    .page--product-list .page--investors__accordion .card--calendar .tag-list .btn, .page--product-list .page--investors__accordion .card--calendar .tag-list .modal-outlet .btn--close, .modal-outlet .page--product-list .page--investors__accordion .card--calendar .tag-list .btn--close {
+      margin-right: 8px;
+      margin-bottom: 8px; }
+  .page--product-list .page--investors__accordion .card--calendar__extra {
+    padding: 24px 16px;
+    border-top: 1px solid #fff; }
+    .page--product-list .page--investors__accordion .card--calendar__extra ul {
+      padding: 0;
+      list-style: disc;
+      border: 0; }
+      .page--product-list .page--investors__accordion .card--calendar__extra ul li {
+        list-style-type: disc; }
+        .page--product-list .page--investors__accordion .card--calendar__extra ul li a {
+          color: #3d5d6c;
+          font-family: var(--font-primary);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 21px;
+          /* 131.25% */
+          -webkit-text-decoration-line: underline;
+                  text-decoration-line: underline;
+          -webkit-text-decoration-style: solid;
+                  text-decoration-style: solid;
+          -webkit-text-decoration-skip: ink;
+                  text-decoration-skip-ink: auto;
+          text-decoration-thickness: auto;
+          text-underline-offset: auto;
+          text-underline-position: from-font; }
+
+.page--product-list .load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+  .page--product-list .load-more-container .load-more-btn.hidden {
+    display: none; }
+
+.page--product-list .hide-section {
+  display: none !important; }
+
+.page--product-list .no-results {
+  text-align: center;
+  padding: 40px 0; }
+  .page--product-list .no-results p {
+    color: #3d5d6c;
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400; }
+
+.product-list__sidebar {
+  padding-top: 80px;
+  padding-right: 50px; }
+  @media (max-width: 1023.98px) {
+    .product-list__sidebar {
+      padding-right: 0; } }
+  @media (max-width: 767.98px) {
+    .product-list__sidebar {
+      padding: 0; } }
+  @media (min-width: 768px) {
+    .product-list__sidebar {
+      position: sticky;
+      top: 120px;
+      /* Regola questo valore in base all'altezza dell'header */
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding-bottom: 20px;
+      /* Nasconde la scrollbar ma mantiene la funzionalità di scroll */
+      /* Per Firefox */
+      scrollbar-width: none; }
+      .product-list__sidebar::-webkit-scrollbar {
+        width: 0;
+        background: transparent; } }
+  .product-list__sidebar .list-filters .btn.active, .product-list__sidebar .list-filters .modal-outlet .active.btn--close, .modal-outlet .product-list__sidebar .list-filters .active.btn--close {
+    background-color: #3d5d6c;
+    color: #fff; }
+
+.sidebar--item .btn--title {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 0;
+  cursor: pointer; }
+  .sidebar--item .btn--title span {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; }
+  .sidebar--item .btn--title svg {
+    width: 16px;
+    height: 9px;
+    transition: transform ease-in-out 0.2s; }
+
+.sidebar--item.active .sidebar--content {
+  display: block; }
+
+.sidebar--item.active .btn--title svg {
+  transform: rotate(180deg);
+  transition: transform ease-in-out 0.2s; }
+
+.sidebar--content {
+  display: none;
+  padding: 16px 0 0; }
+  .sidebar--content .list-filters {
+    display: block; }
+    .sidebar--content .list-filters button {
+      margin-right: 0;
+      margin-bottom: 8px; }
+  .sidebar--content .filters-title {
+    color: var(--text-blue-wht, #3d5d6c);
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 16px; }
 
 @media (min-width: 1024px) {
   .section-generic {

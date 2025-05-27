@@ -1,0 +1,252 @@
+import { Component } from 'rxcomp';
+
+export class ProductListComponent extends Component {
+	onInit() {
+		this.activeFilters = new Set();
+		this.currentCategory = 'all';
+		this.visibleItemsCount = 10;
+		this.itemsPerLoad = 5;
+		this.filteredCards = [];
+		this.initializeFilters();
+		this.initializeSidebarFilters();
+		this.updateFilterCounts();
+		this.initializeLoadMore();
+		this.applyCardVisibility();
+	}
+
+	initializeSidebarFilters() {
+		const sidebarButtons = document.querySelectorAll('.product-list__sidebar .list-filters .btn');
+
+		sidebarButtons.forEach(button => {
+			button.addEventListener('click', (event) => {
+				const filterText = event.target.textContent.trim();
+
+				// Toggle active state of the button
+				button.classList.toggle('active');
+
+				if (button.classList.contains('active')) {
+					this.activeFilters.add(filterText);
+				} else {
+					this.activeFilters.delete(filterText);
+				}
+
+				this.filterCards();
+			});
+		});
+	}
+
+	filterCards() {
+		const cards = document.querySelectorAll('.card--calendar');
+		let visibleCards = 0;
+		const noResultsDiv = document.querySelector('.no-results');
+
+		// Reset visibility counter when applying filters
+		this.visibleItemsCount = 10;
+
+		// Get filtered cards first
+		this.filteredCards = [];
+
+		cards.forEach(card => {
+			// Prima controlla se la card appartiene alla categoria corrente
+			const matchesCategory = this.currentCategory === 'all' || card.classList.contains(this.currentCategory);
+
+			// Se non appartiene alla categoria, nascondi la card
+			if (!matchesCategory) {
+				card.style.display = 'none';
+				return;
+			}
+
+			// Se non ci sono filtri attivi nella sidebar e la card appartiene alla categoria
+			if (this.activeFilters.size === 0) {
+				this.filteredCards.push(card);
+				visibleCards++;
+				return;
+			}
+
+			// Controlla i tag della card
+			const tagList = card.querySelector('.tag-list');
+			const tags = tagList ? Array.from(tagList.querySelectorAll('.btn')).map(tag => tag.textContent.trim()) : [];
+
+			// Check if any of the card's tags match any of the active filters
+			const hasMatchingTag = Array.from(this.activeFilters).some(filter => {
+				// Handle comma-separated tags (like "Filled, Impact Modified, Colored")
+				const cardTagsExpanded = tags.reduce((acc, tag) => {
+					return acc.concat(tag.split(', '));
+				}, []);
+
+				return cardTagsExpanded.includes(filter);
+			});
+
+			if (hasMatchingTag) {
+				this.filteredCards.push(card);
+				visibleCards++;
+			} else {
+				card.style.display = 'none';
+			}
+		});
+
+		// Apply visibility based on current visible items count
+		this.applyCardVisibility();
+
+		// Update the load more button
+		this.updateLoadMoreButton();
+
+		// Mostra/nascondi il messaggio "nessun risultato"
+		if (visibleCards === 0) {
+			noResultsDiv.style.display = 'block';
+		} else {
+			noResultsDiv.style.display = 'none';
+		}
+	}
+
+	updateFilterCounts() {
+		// Get all cards
+		const allCards = document.querySelectorAll('.card--calendar');
+		const basedPolymerCards = document.querySelectorAll('.card--calendar.based-polymer');
+		const engineeredPolymerCards = document.querySelectorAll('.card--calendar.engineered-polymers');
+
+		// Update count numbers in the filter menu
+		const allCountEl = document.querySelector('.history-filter[data-filter="all"] .count');
+		const basedPolymerCountEl = document.querySelector('.history-filter[data-filter="based-polymer"] .count');
+		const engineeredPolymerCountEl = document.querySelector('.history-filter[data-filter="engineered-polymers"] .count');
+
+		if (allCountEl) allCountEl.textContent = `(${allCards.length})`;
+		if (basedPolymerCountEl) basedPolymerCountEl.textContent = `(${basedPolymerCards.length})`;
+		if (engineeredPolymerCountEl) engineeredPolymerCountEl.textContent = `(${engineeredPolymerCards.length})`;
+	}
+
+	toggleSidebarSections(categoryFilter) {
+		// Trova l'elemento della sidebar con le sezioni based polymer e engineered polymers
+		const propertiesContent = document.querySelector('.sidebar--item.properties .sidebar--content');
+		if (!propertiesContent) return;
+
+		// Trova le sezioni in base ai loro titoli
+		const sections = propertiesContent.querySelectorAll('.filters-title');
+		let basedPolymerSection = null;
+		let engineeredPolymerSection = null;
+
+		sections.forEach(section => {
+			const title = section.textContent.trim().toLowerCase();
+			if (title === 'based polymer') {
+				basedPolymerSection = section;
+			} else if (title === 'engineered polymers') {
+				engineeredPolymerSection = section;
+			}
+		});
+
+		if (basedPolymerSection && engineeredPolymerSection) {
+			// Ottieni gli elementi filters che seguono ciascun titolo
+			const getNextFilters = (element) => {
+				let nextElement = element.nextElementSibling;
+				if (nextElement && nextElement.classList.contains('list-filters')) {
+					return nextElement;
+				}
+				return null;
+			};
+
+			const basedPolymerFilters = getNextFilters(basedPolymerSection);
+			const engineeredPolymerFilters = getNextFilters(engineeredPolymerSection);
+
+			// Rimuovi tutte le classi hide-section
+			if (basedPolymerSection) basedPolymerSection.classList.remove('hide-section');
+			if (basedPolymerFilters) basedPolymerFilters.classList.remove('hide-section');
+			if (engineeredPolymerSection) engineeredPolymerSection.classList.remove('hide-section');
+			if (engineeredPolymerFilters) engineeredPolymerFilters.classList.remove('hide-section');
+
+			// Aggiungi le classi hide-section in base al filtro selezionato
+			if (categoryFilter === 'based-polymer') {
+				// Nascondi sezione engineered polymers
+				if (engineeredPolymerSection) engineeredPolymerSection.classList.add('hide-section');
+				if (engineeredPolymerFilters) engineeredPolymerFilters.classList.add('hide-section');
+			}
+			else if (categoryFilter === 'engineered-polymers') {
+				// Nascondi sezione based polymer
+				if (basedPolymerSection) basedPolymerSection.classList.add('hide-section');
+				if (basedPolymerFilters) basedPolymerFilters.classList.add('hide-section');
+			}
+		}
+	}
+
+	initializeFilters() {
+		const filters = document.querySelectorAll('.history-filter');
+		filters.forEach(filter => {
+			filter.addEventListener('click', (event) => {
+				// Remove active class from all filters
+				filters.forEach(f => f.classList.remove('active'));
+
+				// Add active class to clicked filter
+				const filterEl = event.target.closest('.history-filter');
+				filterEl.classList.add('active');
+
+				// Get and store the filter value
+				this.currentCategory = filterEl.getAttribute('data-filter');
+
+				// Nascondi/mostra sezioni appropriate nella sidebar
+				this.toggleSidebarSections(this.currentCategory);
+
+				// Apply filters
+				this.filterCards();
+			});
+		});
+
+		// Ensure "All" filter is active by default
+		const allFilter = document.querySelector('.history-filter[data-filter="all"]');
+		if (allFilter) {
+			allFilter.classList.add('active');
+			// Mostra tutte le sezioni della sidebar all'inizio
+			this.toggleSidebarSections('all');
+		}
+	}
+
+	initializeLoadMore() {
+		// Inizializza il pulsante "Carica altro"
+		const loadMoreBtn = document.querySelector('.load-more-btn');
+
+		if (loadMoreBtn) {
+			loadMoreBtn.addEventListener('click', () => {
+				this.loadMoreItems();
+			});
+
+			// Impostazione iniziale del pulsante
+			this.updateLoadMoreButton();
+		}
+	}
+
+	loadMoreItems() {
+		// Aggiunge altri elementi alla vista
+		this.visibleItemsCount += this.itemsPerLoad;
+		this.applyCardVisibility();
+		this.updateLoadMoreButton();
+	}
+
+	applyCardVisibility() {
+		// Applica la visibilità alle card in base all'indice
+		const cards = this.filteredCards.length > 0 ? this.filteredCards : document.querySelectorAll('.card--calendar');
+
+		cards.forEach((card, index) => {
+			if (index < this.visibleItemsCount) {
+				card.style.display = 'flex';
+			} else {
+				card.style.display = 'none';
+			}
+		});
+	}
+
+	updateLoadMoreButton() {
+		const loadMoreBtn = document.querySelector('.load-more-btn');
+		if (!loadMoreBtn) return;
+
+		const filteredCards = this.filteredCards.length > 0 ? this.filteredCards : document.querySelectorAll('.card--calendar');
+
+		// Nascondi il pulsante se non ci sono altre card da mostrare
+		if (filteredCards.length <= this.visibleItemsCount) {
+			loadMoreBtn.classList.add('hidden');
+		} else {
+			loadMoreBtn.classList.remove('hidden');
+		}
+	}
+}
+
+ProductListComponent.meta = {
+	selector: '[product-list]'
+};
