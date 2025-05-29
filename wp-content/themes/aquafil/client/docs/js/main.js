@@ -4078,7 +4078,6 @@ ProductRequestComponent.meta = {
   _proto.filterCards = function filterCards() {
     var _this2 = this;
     var cards = document.querySelectorAll('.card--calendar');
-    var visibleCards = 0;
     var noResultsDiv = document.querySelector('.no-results');
 
     // Reset visibility counter when applying filters
@@ -4099,7 +4098,6 @@ ProductRequestComponent.meta = {
       // Se non ci sono filtri attivi nella sidebar e la card appartiene alla categoria
       if (_this2.activeFilters.size === 0) {
         _this2.filteredCards.push(card);
-        visibleCards++;
         return;
       }
 
@@ -4119,24 +4117,26 @@ ProductRequestComponent.meta = {
       });
       if (hasMatchingTag) {
         _this2.filteredCards.push(card);
-        visibleCards++;
       } else {
         card.style.display = 'none';
       }
     });
+
+    // Mostra/nascondi il messaggio "nessun risultato"
+    if (this.filteredCards.length === 0) {
+      noResultsDiv.style.display = 'block';
+      // Nascondi anche il pulsante "Carica altro" quando non ci sono risultati
+      var loadMoreBtn = document.querySelector('.load-more-btn');
+      if (loadMoreBtn) loadMoreBtn.classList.add('hidden');
+    } else {
+      noResultsDiv.style.display = 'none';
+    }
 
     // Apply visibility based on current visible items count
     this.applyCardVisibility();
 
     // Update the load more button
     this.updateLoadMoreButton();
-
-    // Mostra/nascondi il messaggio "nessun risultato"
-    if (visibleCards === 0) {
-      noResultsDiv.style.display = 'block';
-    } else {
-      noResultsDiv.style.display = 'none';
-    }
   };
   _proto.updateFilterCounts = function updateFilterCounts() {
     // Get all cards
@@ -4255,6 +4255,17 @@ ProductRequestComponent.meta = {
     var _this5 = this;
     // Applica la visibilità alle card in base all'indice
     var cards = this.filteredCards.length > 0 ? this.filteredCards : document.querySelectorAll('.card--calendar');
+    var noResultsVisible = document.querySelector('.no-results').style.display === 'block';
+
+    // Se il messaggio "nessun risultato" è visibile, nascondi tutte le cards
+    if (noResultsVisible) {
+      cards.forEach(function (card) {
+        card.style.display = 'none';
+      });
+      return;
+    }
+
+    // Altrimenti, applica la logica di visibilità in base all'indice
     cards.forEach(function (card, index) {
       if (index < _this5.visibleItemsCount) {
         card.style.display = 'flex';
@@ -4267,9 +4278,10 @@ ProductRequestComponent.meta = {
     var loadMoreBtn = document.querySelector('.load-more-btn');
     if (!loadMoreBtn) return;
     var filteredCards = this.filteredCards.length > 0 ? this.filteredCards : document.querySelectorAll('.card--calendar');
+    var noResultsVisible = document.querySelector('.no-results').style.display === 'block';
 
-    // Nascondi il pulsante se non ci sono altre card da mostrare
-    if (filteredCards.length <= this.visibleItemsCount) {
+    // Nascondi il pulsante se il messaggio "no results" è visibile o non ci sono altre card da mostrare
+    if (noResultsVisible || filteredCards.length <= this.visibleItemsCount) {
       loadMoreBtn.classList.add('hidden');
     } else {
       loadMoreBtn.classList.remove('hidden');
