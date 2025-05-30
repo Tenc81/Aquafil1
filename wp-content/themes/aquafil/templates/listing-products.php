@@ -5,7 +5,7 @@
 get_header();
 ?>
 
-<main class="main">
+<main class="main" product-list>
 	<?php
 	$fields = get_fields(get_queried_object());
 	$filtered = array_filter($fields['sezioni'], function($section) {

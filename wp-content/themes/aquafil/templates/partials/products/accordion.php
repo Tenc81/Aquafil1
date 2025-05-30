@@ -58,7 +58,7 @@ if (!empty($_args['section']) && !empty($_args['section']['list_accordion'])):
  
  <section class="page--investors__accordion" <?= setAnchor($_args['section']); ?>>
    <div class="no-results" style="display: none;">
-    <p>Nessun prodotto trovato con i filtri selezionati</p>
+    <p><?= __("No products found with the selected filters", "wstheme"); ?></p>
   </div>
   <?php foreach ($_args['section']['list_accordion'] as $accordion) : ?>
     <div class="card--calendar <?= $accordion['categoria_prod']['value']; ?>">
@@ -101,6 +101,6 @@ if (!empty($_args['section']) && !empty($_args['section']['list_accordion'])):
   <?php endforeach; ?>
 </section>
 <div class="load-more-container">
-    <button type="button" class="btn btn--primary load-more-btn">Carica altro</button>
+    <button type="button" class="btn btn--primary load-more-btn"><?= __("Show More", "wstheme"); ?></button>
 </div>
 <?php endif; ?>
