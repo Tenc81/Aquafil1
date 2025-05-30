@@ -64,7 +64,9 @@
 				$class = 'page--sales';
 			} elseif(is_page_template("templates/sustainability.php")) {
 				$class = 'page--report';
-			} else {
+			} elseif(is_page_template("templates/listing-products.php")) {
+				$class = 'page--product-list';
+			} else{
 				$class = 'page--location page--product-bfc';
 			}
 			?>
