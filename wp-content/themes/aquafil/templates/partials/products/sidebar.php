@@ -52,8 +52,8 @@
                                             <div class="based-polymer">
                                                 <div class="filters-title">Based Polymer</div>
                                                 <div class="list-filters">
-                                                    <button class="btn btn--outline">Raw polymer</button>
-                                                    <button class="btn btn--outline">Lubricated+Nucleated</button>
+                                                    <button class="btn btn--outline">Lubricated</button>
+                                                    <button class="btn btn--outline">Nucleated</button>
                                                     <button class="btn btn--outline">Food contact</button>
                                                 </div>
                                             </div>
