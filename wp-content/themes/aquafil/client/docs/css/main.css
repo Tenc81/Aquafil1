@@ -11995,7 +11995,7 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
     line-height: normal; }
   .page--product-list .page--investors__accordion .card--calendar__title {
     font-family: var(--font-primary);
-    color: var(--foreground);
+    color: #3d5d6c;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -12094,6 +12094,7 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
     color: #fff; }
 
 .sidebar--item .btn--title {
+  color: #3d5d6c;
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid var(--foreground);
