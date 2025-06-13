@@ -17,7 +17,7 @@
 						default:;
 					}
 				}
-				if(!is_page_template('templates/landing.php') && !is_page_template('templates/listing-products.php') && !empty($footerMenu)) {
+				if(!is_page_template('templates/landing.php') && !is_page_template('templates/listing-products.php') && !is_page_template('templates/listing-contacts.php') && !empty($footerMenu)) {
 					echo '
 						<ul class="nav--footer">';
 					foreach ($footerMenu as $item) {
