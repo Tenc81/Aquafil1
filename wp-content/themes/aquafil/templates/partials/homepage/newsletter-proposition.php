@@ -1,5 +1,6 @@
 <?php
-if(get_the_ID() != 31744 && get_the_ID() != 24299) {
+//if(get_the_ID() != 31744 && get_the_ID() != 24299) {  Eliminaz slovenia
+if(get_the_ID() != 24299) {
   return; // provvisorio
 }
 
