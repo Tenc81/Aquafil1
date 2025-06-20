@@ -14,13 +14,15 @@ $fields = get_fields(get_queried_object());
 ?>
 
 <main class="main" product-list>
-	
-      <div class="page--investors__content">
+	<div class="contacts-form__wrapper">
+      <div class="container-fluid">
+	    <div class="row">
 	      <div class="col-sm-22 offset-sm-1">
 			    <h1 class="page--investors__page-title"><?= get_the_title(); ?></h1>
 				<div class="contacts-form__text-top"><?= __("Per ulteriori informazioni, contattaci compilando il form sottostante:", "wstheme"); ?></div>
 			</div>
 		</div>
+	  </div>
 <?php	foreach($fields['sezioni'] as $i=>$section) {
 		$partialPathRaw = explode('-', $section['acf_fc_layout']);
 		$template = locate_template_part($partialPathRaw);
@@ -31,7 +33,7 @@ $fields = get_fields(get_queried_object());
 	} ?>
 				</div>
 
-	
+	</div>
 </main>
 
 <?php get_footer('landing'); ?>
