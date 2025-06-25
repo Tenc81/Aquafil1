@@ -96,6 +96,9 @@ if (!empty($_args['section']) && !empty($_args['section']['list_accordion'])):
             endif; ?>
           </ul>
         <?php endif; ?>
+        <a class="a-icon" href="<?= __("/richiedi-info", "wstheme"); ?>" target="_blank">
+           <?= __("Richiedi informazioni", "wstheme"); ?>
+        </a>
       </div>
     </div>
   <?php endforeach; ?>

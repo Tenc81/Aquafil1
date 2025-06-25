@@ -2,7 +2,7 @@
 /**
  * Template Name: Listing Products
  */
-get_header();
+get_header('landing');
 ?>
 
 <main class="main" product-list>
@@ -54,4 +54,4 @@ get_header();
 	?>
 </main>
 
-<?php get_footer("ircg"); ?>
+<?php get_footer('landing'); ?>
