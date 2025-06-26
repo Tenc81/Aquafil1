@@ -11019,6 +11019,8 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
   float: left;
   margin-right: 10px;
   width: 100%; }
+  .wpcf7-form .wpcf7-form-control-wrap[data-name="privacy"] {
+    width: auto; }
 
 .careers-hero .row {
   align-items: flex-start; }

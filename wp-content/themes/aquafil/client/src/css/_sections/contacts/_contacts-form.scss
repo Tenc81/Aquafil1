@@ -73,5 +73,9 @@
 		float: left;
 		margin-right: 10px;
 		width: 100%;
+
+		&[data-name="privacy"] {
+			width: auto;
+		}
 	}
 }
