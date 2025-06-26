@@ -11002,7 +11002,8 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
 .wpcf7-form .wpcf7-form-control {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 10px; }
+  column-gap: 20px;
+  row-gap: 10px; }
 
 .wpcf7-form .wpcf7-list-item {
   margin: 0; }
@@ -11016,7 +11017,8 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
 
 .wpcf7-form .wpcf7-form-control-wrap {
   float: left;
-  margin-right: 10px; }
+  margin-right: 10px;
+  width: 100%; }
 
 .careers-hero .row {
   align-items: flex-start; }
