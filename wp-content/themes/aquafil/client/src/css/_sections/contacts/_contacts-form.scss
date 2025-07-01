@@ -2,7 +2,7 @@
 	padding: 40px 0;
 
 	&.secondary {
-		background: #F8F8F8;
+		background: #f8f8f8;
 	}
 
 	@include media-up(md) {
@@ -29,6 +29,53 @@
 
 		@include media-up(md) {
 			margin-bottom: 30px;
+		}
+	}
+}
+
+.wpcf7-form {
+	.group--form {
+		color: #3d5d6c;
+
+		&::placeholder {
+			color: #3d5d6c;
+		}
+
+		&--select {
+			color: #3d5d6c;
+		}
+	}
+
+	.wpcf7-form-control {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 20px;
+		row-gap: 10px;
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+
+		label {
+			display: inline-flex;
+
+			input[type="radio"] {
+				width: 15px;
+			}
+		}
+	}
+
+	textarea {
+		font-family: $font-primary;
+	}
+
+	.wpcf7-form-control-wrap {
+		float: left;
+		margin-right: 10px;
+		width: 100%;
+
+		&[data-name="privacy"] {
+			width: auto;
 		}
 	}
 }
