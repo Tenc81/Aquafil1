@@ -26,7 +26,7 @@ if(!empty($_args['filters']) || !empty($_args['oldfilters'])) :
     <?php foreach ($_args['oldfilters'] as $key => $filter) : ?>
       <li class="nav__item">
         <a href="javascript:void(0);" class="history-filter <?= $i == 0 ? 'active' : ''; ?>" data-filter="<?= $key; ?>">
-          <span class="name"><?= esc_html($filter['label']); ?></span>
+          <span class="name"><?= esc_html( apply_filters( 'wpml_translate_single_string', $filter['label'], 'acf', $filter['label'] ) ); ?></span>
           <span class="count">(<?= esc_html($filter['count']); ?>)</span>
         </a>
       </li>

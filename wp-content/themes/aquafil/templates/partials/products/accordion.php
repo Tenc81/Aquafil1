@@ -82,14 +82,14 @@ endif;
       </button>
       <div class="card--calendar__right">
       <?php foreach ($accordion['categoria_prod'] as $category) : ?>
-        <div class="card--calendar__category"><?= $category['label'];?></div>
+        <div class="card--calendar__category"><?= esc_html( apply_filters( 'wpml_translate_single_string', $category['label'], 'acf', $category['label'] ) ); ?></div>
       <?php endforeach; ?>
         <span class="card--calendar__title"><?= $accordion['nome_prod']; ?></span>
         <p class="card--calendar__description"><?= $accordion['descrizione_prod']; ?></p>
            <div class="tag-list">
               <?php if (!empty($accordion['tag_prod'])) :
               foreach ($accordion['tag_prod'] as $tag) : ?>
-                <div class="btn btn--outline"><?= esc_html($tag); ?></div>
+                <div class="btn btn--outline"><?= esc_html( apply_filters( 'wpml_translate_single_string', $tag, 'acf', $tag ) ); ?></div>
               <?php endforeach;
             endif; ?>
            </div>
