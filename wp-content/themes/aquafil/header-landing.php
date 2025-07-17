@@ -67,7 +67,7 @@
 									</div>
 									<div class="header__menu" [class]="{ active: header == 'menu' }">
 										<a href="<?= home_url(); ?>" class="btn--investor"><?= __("Corporate Website", "wstheme"); ?></a>
-									</div>
+										</div>  <?= icl_post_languages(); ?>
 									<button type="button" class="btn--menu" [class]="{ active: header == 'menu' }" (click)="onToggle('menu')">
 										<svg class="menu"><use xlink:href="#menu"></use></svg>
 										<svg class="close"><use xlink:href="#close"></use></svg>
