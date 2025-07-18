@@ -1677,7 +1677,8 @@ RelativeDatePipe.meta = {
       return x.hasAttribute('href');
     }).map(function (x) {
       var href = x.getAttribute('href');
-      var target = document.querySelector(href);
+      // Only use querySelector if href is a valid selector (starts with '#')
+      var target = href && href.startsWith('#') ? document.querySelector(href) : null;
       return {
         a: x,
         href: href,

@@ -11049,9 +11049,9 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
 .wpcf7-form .group--form {
   color: #3d5d6c; }
   .wpcf7-form .group--form:-ms-input-placeholder {
-    color: #3d5d6c; }
+    color: var(--border); }
   .wpcf7-form .group--form::placeholder {
-    color: #3d5d6c; }
+    color: var(--border); }
   .wpcf7-form .group--form--select {
     color: #3d5d6c; }
 
@@ -11060,6 +11060,16 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
   flex-wrap: wrap;
   column-gap: 20px;
   row-gap: 10px; }
+  .wpcf7-form .wpcf7-form-control:-ms-input-placeholder {
+    color: var(--border);
+    font-size: 16px;
+    font-family: inherit; }
+  .wpcf7-form .wpcf7-form-control::placeholder {
+    color: var(--border);
+    font-size: 16px;
+    font-family: inherit; }
+  .wpcf7-form .wpcf7-form-control.wpcf7-radio {
+    margin-bottom: 20px; }
 
 .wpcf7-form .wpcf7-list-item {
   margin: 0; }
@@ -11069,7 +11079,8 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
       width: 15px; }
 
 .wpcf7-form textarea {
-  font-family: var(--font-primary); }
+  font-family: var(--font-primary);
+  padding: 20px 30px; }
 
 .wpcf7-form .wpcf7-form-control-wrap {
   float: left;
@@ -12076,6 +12087,19 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
     .page--product-list .page--investors__accordion .card--calendar,
     .page--landing .page--investors__accordion .card--calendar {
       flex-direction: column; } }
+  .page--product-list .page--investors__accordion .card--calendar__category-wrapper,
+  .page--landing .page--investors__accordion .card--calendar__category-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px; }
+    .page--product-list .page--investors__accordion .card--calendar__category-wrapper .card--calendar__category,
+    .page--landing .page--investors__accordion .card--calendar__category-wrapper .card--calendar__category {
+      font-family: var(--font-primary);
+      color: var(--foreground-primary);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal; }
   .page--product-list .page--investors__accordion .card--calendar__category,
   .page--landing .page--investors__accordion .card--calendar__category {
     font-family: var(--font-primary);
@@ -12091,7 +12115,9 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal; }
+    line-height: normal;
+    display: block;
+    margin: 10px 0; }
     @media (max-width: 767.98px) {
       .page--product-list .page--investors__accordion .card--calendar__title,
       .page--landing .page--investors__accordion .card--calendar__title {
@@ -12119,7 +12145,8 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
   .page--product-list .page--investors__accordion .card--calendar__extra,
   .page--landing .page--investors__accordion .card--calendar__extra {
     padding: 24px 16px;
-    border-top: 1px solid #fff; }
+    border-top: 1px solid #fff;
+    justify-content: space-between; }
     .page--product-list .page--investors__accordion .card--calendar__extra .a-icon,
     .page--landing .page--investors__accordion .card--calendar__extra .a-icon {
       background: var(--foreground-primary);

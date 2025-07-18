@@ -19,7 +19,8 @@ export class ScrollMenuDirective extends Directive {
 		const anchors = this.anchors = Array.prototype.slice.call(node.querySelectorAll('[href]'))
 			.filter(x => x.hasAttribute('href')).map(x => {
 				const href = x.getAttribute('href');
-				const target = document.querySelector(href);
+				// Only use querySelector if href is a valid selector (starts with '#')
+				const target = href && href.startsWith('#') ? document.querySelector(href) : null;
 				return {
 					a: x,
 					href,
