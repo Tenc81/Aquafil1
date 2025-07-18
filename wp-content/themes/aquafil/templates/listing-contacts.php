@@ -14,25 +14,27 @@ $fields = get_fields(get_queried_object());
 ?>
 
 <main class="main" product-list>
-	<div class="contacts-form__wrapper">
-      <div class="container-fluid">
-	    <div class="row">
-	      <div class="col-sm-22 offset-sm-1">
-			    <h1 class="page--investors__page-title"><?= get_the_title(); ?></h1>
-				<div class="contacts-form__text-top"><?= __("Per ulteriori informazioni, contattaci compilando il form sottostante:", "wstheme"); ?></div>
+	<div class="contacts-form secondary">
+		<div class="contacts-form__wrapper">
+		<div class="container-fluid">
+			<div class="row">
+			<div class="col-sm-20 offset-sm-2 col-md-18 offset-md-4">
+					<h1 class="page--investors__page-title"><?= get_the_title(); ?></h1>
+					<div class="contacts-form__text-top"><?= __("Per ulteriori informazioni, contattaci compilando il form sottostante:", "wstheme"); ?></div>
+				</div>
 			</div>
 		</div>
-	  </div>
-<?php	foreach($fields['sezioni'] as $i=>$section) {
-		$partialPathRaw = explode('-', $section['acf_fc_layout']);
-		$template = locate_template_part($partialPathRaw);
-		if($template) {
-			$part = substr(strstr($template, 'templates'), 0, strpos(strstr($template, 'templates'), '.php'));
-			get_template_part($part, null, array("section" => $section, "index" => $i+1));
-		}
-	} ?>
-				</div>
+			<?php foreach($fields['sezioni'] as $i=>$section) {
+				$partialPathRaw = explode('-', $section['acf_fc_layout']);
+				$template = locate_template_part($partialPathRaw);
+				if($template) {
+					$part = substr(strstr($template, 'templates'), 0, strpos(strstr($template, 'templates'), '.php'));
+					get_template_part($part, null, array("section" => $section, "index" => $i+1));
+				}
+			} ?>
+			</div>
 
+		</div>
 	</div>
 </main>
 

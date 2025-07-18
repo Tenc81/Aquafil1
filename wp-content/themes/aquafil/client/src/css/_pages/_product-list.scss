@@ -9,6 +9,21 @@
 				flex-direction: column;
 			}
 
+			&__category-wrapper {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+
+				.card--calendar__category {
+					font-family: $font-primary;
+					color: $foreground-primary;
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: normal;
+				}
+			}
+
 			&__category {
 				font-family: $font-primary;
 				color: $foreground-primary;
@@ -25,6 +40,8 @@
 				font-style: normal;
 				font-weight: 700;
 				line-height: normal;
+				display: block;
+				margin: 10px 0;
 
 				@include media-down(xs) {
 					padding-right: 20px;
@@ -55,6 +72,7 @@
 			&__extra {
 				padding: 24px 16px;
 				border-top: 1px solid #fff;
+				justify-content: space-between;
 
 				.a-icon {
 					background: var(--foreground-primary);
@@ -147,7 +165,8 @@
 	@media (min-width: 768px) {
 		position: -webkit-sticky;
 		position: sticky;
-		top: 120px; /* Regola questo valore in base all'altezza dell'header */
+		top: 120px;
+		/* Regola questo valore in base all'altezza dell'header */
 		max-height: calc(100vh - 120px);
 		overflow-y: auto;
 		padding-bottom: 20px;
