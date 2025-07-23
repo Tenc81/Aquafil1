@@ -21,6 +21,17 @@
 					font-style: normal;
 					font-weight: 400;
 					line-height: normal;
+
+					&::after {
+						content: "|";
+						display: inline-block;
+						color: $foreground-primary;
+						margin-left: 6px;
+					}
+
+					&:last-child::after {
+						content: "";
+					}
 				}
 			}
 

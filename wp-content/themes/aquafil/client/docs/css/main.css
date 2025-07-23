@@ -7503,7 +7503,7 @@ input[type="search"]::-webkit-search-results-decoration {
       margin-top: 20px;
       padding-top: 30px; }
     .header.has--nav .nav--main {
-      border-right: 1px solid #CDCDCD; } }
+      border-right: 1px solid #cdcdcd; } }
   @media (min-width: 1024px) {
     .header:not(.has--nav) {
       height: 80px; } }
@@ -7523,6 +7523,10 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   justify-content: space-between;
   align-items: center; }
+  .header__main .header__right {
+    display: flex;
+    align-items: center;
+    gap: 20px; }
 
 @media (min-width: 1024px) {
   .has--nav .header__menu {
@@ -7858,7 +7862,7 @@ input[type="search"]::-webkit-search-results-decoration {
     border: 1px solid rgba(0, 58, 86, 0.4); } }
 
 .nav--language {
-  margin: 0 0 10px 0; }
+  margin: 0; }
   .nav--language > .nav__item > a,
   .nav--language > .nav__item > span {
     display: flex;
@@ -7930,6 +7934,9 @@ input[type="search"]::-webkit-search-results-decoration {
           .nav--language > .nav__item > a .down,
           .nav--language > .nav__item > span .down {
             display: none; } }
+
+.nav--submenu .nav__item:nth-child(2) {
+  display: none; }
 
 .nav--submenu > .nav__item > a,
 .nav--submenu > .nav__item > span {
@@ -12044,6 +12051,15 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
       font-style: normal;
       font-weight: 400;
       line-height: normal; }
+      .page--product-list .page--investors__accordion .card--calendar__category-wrapper .card--calendar__category::after,
+      .page--landing .page--investors__accordion .card--calendar__category-wrapper .card--calendar__category::after {
+        content: "|";
+        display: inline-block;
+        color: var(--foreground-primary);
+        margin-left: 6px; }
+      .page--product-list .page--investors__accordion .card--calendar__category-wrapper .card--calendar__category:last-child::after,
+      .page--landing .page--investors__accordion .card--calendar__category-wrapper .card--calendar__category:last-child::after {
+        content: ""; }
   .page--product-list .page--investors__accordion .card--calendar__category,
   .page--landing .page--investors__accordion .card--calendar__category {
     font-family: var(--font-primary);
