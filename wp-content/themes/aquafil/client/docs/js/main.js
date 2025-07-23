@@ -4828,6 +4828,12 @@ _defineProperty(HeaderService, "header$_", new rxjs.BehaviorSubject(-1));var Hea
   _proto.onBack = function onBack(event) {
     MenuService.onBack();
   };
+  _proto.onLanguageClickOutside = function onLanguageClickOutside(event) {
+    // Se il menu della lingua (id = 5 per template statico o id = 100 per template PHP) è attivo, chiudilo
+    if (this.menu === 5 || this.menu === 100) {
+      MenuService.onBack();
+    }
+  };
   return _createClass(HeaderComponent, [{
     key: "direction",
     get: function get() {

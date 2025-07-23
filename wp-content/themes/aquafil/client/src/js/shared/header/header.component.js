@@ -73,6 +73,13 @@ export class HeaderComponent extends Component {
 	onBack(event) {
 		MenuService.onBack();
 	}
+
+	onLanguageClickOutside(event) {
+		// Se il menu della lingua (id = 5 per template statico o id = 100 per template PHP) è attivo, chiudilo
+		if (this.menu === 5 || this.menu === 100) {
+			MenuService.onBack();
+		}
+	}
 }
 
 HeaderComponent.meta = {

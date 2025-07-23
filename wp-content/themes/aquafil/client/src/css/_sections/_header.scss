@@ -8,7 +8,7 @@
 
 	.container,
 	.container-fluid,
-	.row>div {
+	.row > div {
 		position: static;
 	}
 
@@ -53,14 +53,14 @@
 		}
 
 		@include media-up(md) {
-			&>.container-fluid>.row {
+			& > .container-fluid > .row {
 				border-top: 1px solid currentColor;
 				margin-top: 20px;
 				padding-top: 30px;
 			}
 
 			.nav--main {
-				border-right: 1px solid #CDCDCD;
+				border-right: 1px solid #cdcdcd;
 			}
 		}
 	}
@@ -94,11 +94,16 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	.header__right {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
 }
 
 .header__menu {
 	.has--nav & {
-
 		@include media-up(md) {
 			display: flex;
 			justify-content: flex-end;
@@ -167,7 +172,7 @@
 				display: none;
 			}
 
-			&>.btn--investor {
+			& > .btn--investor {
 				display: none;
 			}
 		}
@@ -230,17 +235,16 @@
 .nav--main {
 	@extend %nav;
 
-	&>.nav__item {
-
-		&>a,
-		&>span {
+	& > .nav__item {
+		& > a,
+		& > span {
 			display: flex;
 			align-items: center;
 			font-size: Max(12px, Min(18px, 1vw));
 			margin: 0;
 			padding: var(--p10) 0;
 
-			&>span {
+			& > span {
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -262,11 +266,9 @@
 
 	.negative &,
 	.page--homepage & {
-
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				svg {
 					fill: currentColor;
 				}
@@ -275,20 +277,18 @@
 	}
 
 	@include media-up(lg) {
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				max-width: calc(20vw - 150px);
 			}
 		}
 	}
 
 	@include media-only(md) {
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				max-width: calc(20vw - 105px);
 			}
 		}
@@ -297,10 +297,9 @@
 	@include media-up(md) {
 		justify-content: space-around;
 
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				.next {
 					display: none;
 				}
@@ -312,11 +311,11 @@
 		flex-direction: column;
 		padding-top: var(--p80);
 
-		&>.nav__item {
+		& > .nav__item {
 			position: static;
 
-			&>a,
-			&>span {
+			& > a,
+			& > span {
 				font-size: 30px;
 				padding: var(--p20) var(--cw2);
 
@@ -335,11 +334,11 @@
 		flex-direction: column;
 		padding-top: var(--p40);
 
-		&>.nav__item {
+		& > .nav__item {
 			position: static;
 
-			&>a,
-			&>span {
+			& > a,
+			& > span {
 				font-size: 22px;
 				line-height: 1.2;
 				padding: var(--p20) var(--cw2);
@@ -419,7 +418,7 @@
 		@include media-up(md) {
 			justify-content: flex-end;
 
-			&+li {
+			& + li {
 				padding-left: var(--p10);
 				margin-left: 5px;
 				border-left: 1px solid $border;
@@ -455,7 +454,6 @@
 		}
 
 		@include media-down(sm) {
-
 			input,
 			input:focus {
 				padding: 7px;
@@ -467,10 +465,9 @@
 		}
 	}
 
-	&>.nav__item {
-
-		&>a,
-		&>span {
+	& > .nav__item {
+		& > a,
+		& > span {
 			display: flex;
 			align-items: center;
 			@extend .smallest;
@@ -487,10 +484,9 @@
 		padding-right: var(--p10);
 		margin: 0 0 10px 0;
 
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				margin: 0 var(--p10);
 			}
 
@@ -504,7 +500,7 @@
 		.search {
 			order: 10;
 
-			&>span {
+			& > span {
 				display: inline-block;
 				width: 100%;
 			}
@@ -525,15 +521,14 @@
 		}
 	}
 
-
 	@include media-only(sm) {
 		flex-direction: column;
 
-		&>.nav__item {
+		& > .nav__item {
 			position: static;
 
-			&>a,
-			&>span {
+			& > a,
+			& > span {
 				font-size: 30px;
 				padding: var(--p20) var(--cw2);
 				text-transform: none;
@@ -544,11 +539,11 @@
 	@include media-down(xs) {
 		flex-direction: column;
 
-		&>.nav__item {
+		& > .nav__item {
 			position: static;
 
-			&>a,
-			&>span {
+			& > a,
+			& > span {
 				font-size: 22px;
 				line-height: 1.2;
 				padding: var(--p20) var(--cw2);
@@ -559,7 +554,6 @@
 }
 
 @include media-up(md) {
-
 	.page:not(.page--homepage),
 	.header.scrolled {
 		.nav--service {
@@ -574,12 +568,11 @@
 
 .nav--language {
 	@extend %nav;
-	margin: 0 0 10px 0;
+	margin: 0;
 
-	&>.nav__item {
-
-		&>a,
-		&>span {
+	& > .nav__item {
+		& > a,
+		& > span {
 			display: flex;
 			align-items: center;
 			@extend .extrasmall;
@@ -605,11 +598,9 @@
 
 	.negative &,
 	.page--homepage & {
-
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				svg {
 					fill: currentColor;
 				}
@@ -626,10 +617,9 @@
 		padding-left: var(--p20);
 		border-left: 1px solid $border;
 
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				svg {
 					margin-left: var(--p10);
 				}
@@ -640,7 +630,7 @@
 			}
 		}
 
-		&>.nav__item+.nav__item {
+		& > .nav__item + .nav__item {
 			margin-left: var(--p40);
 		}
 	}
@@ -649,11 +639,11 @@
 		flex-direction: column;
 		padding-top: 1em;
 
-		&>.nav__item {
+		& > .nav__item {
 			position: static;
 
-			&>a,
-			&>span {
+			& > a,
+			& > span {
 				font-size: 30px;
 				padding: var(--p20) var(--cw2);
 
@@ -672,11 +662,11 @@
 		flex-direction: column;
 		padding-top: 20px;
 
-		&>.nav__item {
+		& > .nav__item {
 			position: static;
 
-			&>a,
-			&>span {
+			& > a,
+			& > span {
 				font-size: 22px;
 				line-height: 1.2;
 				padding: var(--p20) var(--cw2);
@@ -696,10 +686,13 @@
 .nav--submenu {
 	@extend %nav-vertical;
 
-	&>.nav__item {
+	.nav__item:nth-child(2) {
+		display: none;
+	}
 
-		&>a,
-		&>span {
+	& > .nav__item {
+		& > a,
+		& > span {
 			display: flex;
 			align-items: center;
 			@extend .extrasmall;
@@ -728,17 +721,15 @@
 		background: #fff;
 		color: #000;
 
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				justify-content: center;
 			}
 
 			&:hover {
-
-				&>a,
-				&>span {
+				& > a,
+				& > span {
 					background: $background-primary;
 					color: $foreground-negative;
 				}
@@ -749,7 +740,7 @@
 			}
 		}
 
-		.nav__item:hover>& {
+		.nav__item:hover > & {
 			display: block;
 		}
 	}
@@ -772,10 +763,9 @@
 	@include media-only(sm) {
 		padding-top: var(--p80);
 
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				font-size: 30px;
 				padding: var(--p20) var(--cw2);
 
@@ -794,10 +784,9 @@
 	@include media-down(xs) {
 		padding-top: var(--p40);
 
-		&>.nav__item {
-
-			&>a,
-			&>span {
+		& > .nav__item {
+			& > a,
+			& > span {
 				font-size: 22px;
 				line-height: 1.2;
 				padding: var(--p20) var(--cw2);
@@ -860,7 +849,6 @@
 			padding: 10px 20px;
 		}
 	}
-
 }
 
 @include media-down(sm) {

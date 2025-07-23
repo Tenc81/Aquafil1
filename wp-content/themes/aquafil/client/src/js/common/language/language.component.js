@@ -23,15 +23,24 @@ export class LanguageComponent extends Component {
 		this.showLanguages = !this.showLanguages;
 		this.pushChanges();
 	}
+
+	onClickOutside(event) {
+		if (this.showLanguages) {
+			this.showLanguages = false;
+			this.pushChanges();
+		}
+	}
 }
 
 LanguageComponent.meta = {
 	selector: '[language]',
 	outputs: ['set'],
 	template: /* html */ `
-		<button type="button" class="btn--language" (click)="toggleLanguages()" *if="languageService.hasLanguages"><span [innerHTML]="languageService.activeLanguage.title"></span> <svg viewBox="0 0 8 5"><use xlink:href="#caret-down"></use></svg></button>
-		<ul class="nav--language" *if="showLanguages">
-			<li (click)="setLanguage(language)" *for="let language of languageService.languages"><span [innerHTML]="language.title"></span></li>
-		</ul>
+		<div (clickOutside)="onClickOutside($event)">
+			<button type="button" class="btn--language" (click)="toggleLanguages()" *if="languageService.hasLanguages"><span [innerHTML]="languageService.activeLanguage.title"></span> <svg viewBox="0 0 8 5"><use xlink:href="#caret-down"></use></svg></button>
+			<ul class="nav--language" *if="showLanguages">
+				<li (click)="setLanguage(language)" *for="let language of languageService.languages"><span [innerHTML]="language.title"></span></li>
+			</ul>
+		</div>
 	`
 };
