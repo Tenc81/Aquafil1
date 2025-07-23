@@ -4774,7 +4774,7 @@ body {
   to {
     transform: translateY(-10px); } }
 
-.nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a,
+.nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .page--product-list .nav--language > li > a, .page--landing .nav--language > li > a,
 .nav--main > li > button,
 .nav--service > li > button,
 .nav--language > li > button,
@@ -4783,6 +4783,8 @@ body {
 .nav--breadcrumb > li > button,
 .nav--horizontal-menu > li > button,
 .nav--scroll-menu > li > button,
+.page--product-list .nav--language > li > button,
+.page--landing .nav--language > li > button,
 .nav--main > li > span,
 .nav--service > li > span,
 .nav--language > li > span,
@@ -4790,11 +4792,17 @@ body {
 .nav--social > li > span,
 .nav--breadcrumb > li > span,
 .nav--horizontal-menu > li > span,
-.nav--scroll-menu > li > span, .nav--submenu > li > a, .nav--footer ul > li > a,
+.nav--scroll-menu > li > span,
+.page--product-list .nav--language > li > span,
+.page--landing .nav--language > li > span, .nav--submenu > li > a, .nav--footer ul > li > a, .page--product-list .nav--submenu > li > a, .page--landing .nav--submenu > li > a,
 .nav--submenu > li > button,
 .nav--footer ul > li > button,
+.page--product-list .nav--submenu > li > button,
+.page--landing .nav--submenu > li > button,
 .nav--submenu > li > span,
-.nav--footer ul > li > span, .nav--dropdown > li > a,
+.nav--footer ul > li > span,
+.page--product-list .nav--submenu > li > span,
+.page--landing .nav--submenu > li > span, .nav--dropdown > li > a,
 .nav--dropdown > li > span, .nav--options > li > a,
 .nav--options > li > span {
   flex-grow: 0;
@@ -4806,7 +4814,7 @@ body {
   z-index: 1;
   transition: ease-in-out 250ms;
   transition-property: background-color, color, border, opacity; }
-  .nav--main > li > a:focus, .nav--service > li > a:focus, .nav--language > li > a:focus, .nav--footer > li > a:focus, .nav--social > li > a:focus, .nav--breadcrumb > li > a:focus, .nav--horizontal-menu > li > a:focus, .nav--scroll-menu > li > a:focus,
+  .nav--main > li > a:focus, .nav--service > li > a:focus, .nav--language > li > a:focus, .nav--footer > li > a:focus, .nav--social > li > a:focus, .nav--breadcrumb > li > a:focus, .nav--horizontal-menu > li > a:focus, .nav--scroll-menu > li > a:focus, .page--product-list .nav--language > li > a:focus, .page--landing .nav--language > li > a:focus,
   .nav--main > li > button:focus,
   .nav--service > li > button:focus,
   .nav--language > li > button:focus,
@@ -4815,6 +4823,8 @@ body {
   .nav--breadcrumb > li > button:focus,
   .nav--horizontal-menu > li > button:focus,
   .nav--scroll-menu > li > button:focus,
+  .page--product-list .nav--language > li > button:focus,
+  .page--landing .nav--language > li > button:focus,
   .nav--main > li > span:focus,
   .nav--service > li > span:focus,
   .nav--language > li > span:focus,
@@ -4822,22 +4832,30 @@ body {
   .nav--social > li > span:focus,
   .nav--breadcrumb > li > span:focus,
   .nav--horizontal-menu > li > span:focus,
-  .nav--scroll-menu > li > span:focus, .nav--submenu > li > a:focus, .nav--footer ul > li > a:focus,
+  .nav--scroll-menu > li > span:focus,
+  .page--product-list .nav--language > li > span:focus,
+  .page--landing .nav--language > li > span:focus, .nav--submenu > li > a:focus, .nav--footer ul > li > a:focus, .page--product-list .nav--submenu > li > a:focus, .page--landing .nav--submenu > li > a:focus,
   .nav--submenu > li > button:focus,
   .nav--footer ul > li > button:focus,
+  .page--product-list .nav--submenu > li > button:focus,
+  .page--landing .nav--submenu > li > button:focus,
   .nav--submenu > li > span:focus,
-  .nav--footer ul > li > span:focus, .nav--dropdown > li > a:focus,
+  .nav--footer ul > li > span:focus,
+  .page--product-list .nav--submenu > li > span:focus,
+  .page--landing .nav--submenu > li > span:focus, .nav--dropdown > li > a:focus,
   .nav--dropdown > li > span:focus, .nav--options > li > a:focus,
   .nav--options > li > span:focus {
     outline: 0; }
 
-.nav--main, .nav--service, .nav--language, .nav--footer, .nav--social, .nav--breadcrumb, .nav--horizontal-menu, .nav--scroll-menu, .nav--submenu, .nav--footer ul, .nav--dropdown, .nav--options, .nav--index {
+.nav--main, .nav--service, .nav--language, .nav--footer, .nav--social, .nav--breadcrumb, .nav--horizontal-menu, .nav--scroll-menu, .page--product-list .nav--language,
+.page--landing .nav--language, .nav--submenu, .nav--footer ul, .page--product-list .nav--submenu,
+.page--landing .nav--submenu, .nav--dropdown, .nav--options, .nav--index {
   list-style: none;
   padding: 0;
   margin: 0; }
-  .nav--main > li, .nav--service > li, .nav--language > li, .nav--footer > li, .nav--social > li, .nav--breadcrumb > li, .nav--horizontal-menu > li, .nav--scroll-menu > li, .nav--submenu > li, .nav--footer ul > li, .nav--dropdown > li, .nav--options > li, .nav--index > li {
+  .nav--main > li, .nav--service > li, .nav--language > li, .nav--footer > li, .nav--social > li, .nav--breadcrumb > li, .nav--horizontal-menu > li, .nav--scroll-menu > li, .page--product-list .nav--language > li, .page--landing .nav--language > li, .nav--submenu > li, .nav--footer ul > li, .page--product-list .nav--submenu > li, .page--landing .nav--submenu > li, .nav--dropdown > li, .nav--options > li, .nav--index > li {
     display: block; }
-    .nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
+    .nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .page--product-list .nav--language > li > a, .page--landing .nav--language > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .page--product-list .nav--submenu > li > a, .page--landing .nav--submenu > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
     .nav--main > li > button,
     .nav--service > li > button,
     .nav--language > li > button,
@@ -4846,8 +4864,12 @@ body {
     .nav--breadcrumb > li > button,
     .nav--horizontal-menu > li > button,
     .nav--scroll-menu > li > button,
+    .page--product-list .nav--language > li > button,
+    .page--landing .nav--language > li > button,
     .nav--submenu > li > button,
     .nav--footer ul > li > button,
+    .page--product-list .nav--submenu > li > button,
+    .page--landing .nav--submenu > li > button,
     .nav--dropdown > li > button,
     .nav--options > li > button,
     .nav--index > li > button,
@@ -4859,14 +4881,18 @@ body {
     .nav--breadcrumb > li > span,
     .nav--horizontal-menu > li > span,
     .nav--scroll-menu > li > span,
+    .page--product-list .nav--language > li > span,
+    .page--landing .nav--language > li > span,
     .nav--submenu > li > span,
     .nav--footer ul > li > span,
+    .page--product-list .nav--submenu > li > span,
+    .page--landing .nav--submenu > li > span,
     .nav--dropdown > li > span,
     .nav--options > li > span,
     .nav--index > li > span {
       transition: ease-in-out 250ms;
       transition-property: background-color, color, border, opacity; }
-      .nav--main > li > a:focus, .nav--service > li > a:focus, .nav--language > li > a:focus, .nav--footer > li > a:focus, .nav--social > li > a:focus, .nav--breadcrumb > li > a:focus, .nav--horizontal-menu > li > a:focus, .nav--scroll-menu > li > a:focus, .nav--submenu > li > a:focus, .nav--footer ul > li > a:focus, .nav--dropdown > li > a:focus, .nav--options > li > a:focus, .nav--index > li > a:focus,
+      .nav--main > li > a:focus, .nav--service > li > a:focus, .nav--language > li > a:focus, .nav--footer > li > a:focus, .nav--social > li > a:focus, .nav--breadcrumb > li > a:focus, .nav--horizontal-menu > li > a:focus, .nav--scroll-menu > li > a:focus, .page--product-list .nav--language > li > a:focus, .page--landing .nav--language > li > a:focus, .nav--submenu > li > a:focus, .nav--footer ul > li > a:focus, .page--product-list .nav--submenu > li > a:focus, .page--landing .nav--submenu > li > a:focus, .nav--dropdown > li > a:focus, .nav--options > li > a:focus, .nav--index > li > a:focus,
       .nav--main > li > button:focus,
       .nav--service > li > button:focus,
       .nav--language > li > button:focus,
@@ -4875,8 +4901,12 @@ body {
       .nav--breadcrumb > li > button:focus,
       .nav--horizontal-menu > li > button:focus,
       .nav--scroll-menu > li > button:focus,
+      .page--product-list .nav--language > li > button:focus,
+      .page--landing .nav--language > li > button:focus,
       .nav--submenu > li > button:focus,
       .nav--footer ul > li > button:focus,
+      .page--product-list .nav--submenu > li > button:focus,
+      .page--landing .nav--submenu > li > button:focus,
       .nav--dropdown > li > button:focus,
       .nav--options > li > button:focus,
       .nav--index > li > button:focus,
@@ -4888,14 +4918,19 @@ body {
       .nav--breadcrumb > li > span:focus,
       .nav--horizontal-menu > li > span:focus,
       .nav--scroll-menu > li > span:focus,
+      .page--product-list .nav--language > li > span:focus,
+      .page--landing .nav--language > li > span:focus,
       .nav--submenu > li > span:focus,
       .nav--footer ul > li > span:focus,
+      .page--product-list .nav--submenu > li > span:focus,
+      .page--landing .nav--submenu > li > span:focus,
       .nav--dropdown > li > span:focus,
       .nav--options > li > span:focus,
       .nav--index > li > span:focus {
         outline: 0; }
 
-.nav--main, .nav--service, .nav--language, .nav--footer, .nav--social, .nav--breadcrumb, .nav--horizontal-menu, .nav--scroll-menu {
+.nav--main, .nav--service, .nav--language, .nav--footer, .nav--social, .nav--breadcrumb, .nav--horizontal-menu, .nav--scroll-menu, .page--product-list .nav--language,
+.page--landing .nav--language {
   display: flex;
   justify-content: flex-start;
   /*
@@ -4909,11 +4944,12 @@ body {
 		// margin-bottom: 100px;
 	}
 	*/ }
-  .nav--main > li, .nav--service > li, .nav--language > li, .nav--footer > li, .nav--social > li, .nav--breadcrumb > li, .nav--horizontal-menu > li, .nav--scroll-menu > li {
+  .nav--main > li, .nav--service > li, .nav--language > li, .nav--footer > li, .nav--social > li, .nav--breadcrumb > li, .nav--horizontal-menu > li, .nav--scroll-menu > li, .page--product-list .nav--language > li, .page--landing .nav--language > li {
     position: relative;
     display: block; }
 
-.nav--submenu, .nav--footer ul {
+.nav--submenu, .nav--footer ul, .page--product-list .nav--submenu,
+.page--landing .nav--submenu {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -4932,7 +4968,7 @@ body {
 		// margin-bottom: 100px;
 	}
 	*/ }
-  .nav--submenu > li, .nav--footer ul > li {
+  .nav--submenu > li, .nav--footer ul > li, .page--product-list .nav--submenu > li, .page--landing .nav--submenu > li {
     position: relative;
     display: block; }
 
@@ -5258,7 +5294,13 @@ h6 {
 .nav--submenu > .nav__item > span, .nav--footer .nav__item > span,
 .nav--footer .nav__item > a,
 .nav--footer .nav__item > button, .horizontal-menu__title, .nav--horizontal-menu > .nav__item > a,
-.nav--horizontal-menu > .nav__item > span, .sticky-menu__title, .nav--scroll-menu > .nav__item > a, .card--location__category, .card--location__abstract, .card--icon__description, .card--history__category, .card--history-detail__category, .card--side-modal__abstract, .contact-modal__abstract, .card--gallery-modal__abstract {
+.nav--horizontal-menu > .nav__item > span, .sticky-menu__title, .nav--scroll-menu > .nav__item > a, .card--location__category, .card--location__abstract, .card--icon__description, .card--history__category, .card--history-detail__category, .card--side-modal__abstract, .contact-modal__abstract, .card--gallery-modal__abstract, .page--product-list .nav--language > .nav__item > a,
+.page--product-list .nav--language > .nav__item > span,
+.page--landing .nav--language > .nav__item > a,
+.page--landing .nav--language > .nav__item > span, .page--product-list .nav--submenu > .nav__item > a,
+.page--product-list .nav--submenu > .nav__item > span,
+.page--landing .nav--submenu > .nav__item > a,
+.page--landing .nav--submenu > .nav__item > span {
   font-size: Max(11px, Min(16px, 0.83333vw));
   line-height: 1.5; }
 
@@ -5776,7 +5818,7 @@ a {
   color: inherit;
   text-decoration: none; }
 
-.nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
+.nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .page--product-list .nav--language > li > a, .page--landing .nav--language > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .page--product-list .nav--submenu > li > a, .page--landing .nav--submenu > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
 .nav--main > li > button,
 .nav--service > li > button,
 .nav--language > li > button,
@@ -5785,8 +5827,12 @@ a {
 .nav--breadcrumb > li > button,
 .nav--horizontal-menu > li > button,
 .nav--scroll-menu > li > button,
+.page--product-list .nav--language > li > button,
+.page--landing .nav--language > li > button,
 .nav--submenu > li > button,
 .nav--footer ul > li > button,
+.page--product-list .nav--submenu > li > button,
+.page--landing .nav--submenu > li > button,
 .nav--dropdown > li > button,
 .nav--options > li > button,
 .nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .btn--press, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
@@ -5803,7 +5849,7 @@ a {
   font: inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-  .nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
+  .nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .page--product-list .nav--language > li > a, .page--landing .nav--language > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .page--product-list .nav--submenu > li > a, .page--landing .nav--submenu > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
   .nav--main > li > button,
   .nav--service > li > button,
   .nav--language > li > button,
@@ -5812,15 +5858,19 @@ a {
   .nav--breadcrumb > li > button,
   .nav--horizontal-menu > li > button,
   .nav--scroll-menu > li > button,
+  .page--product-list .nav--language > li > button,
+  .page--landing .nav--language > li > button,
   .nav--submenu > li > button,
   .nav--footer ul > li > button,
+  .page--product-list .nav--submenu > li > button,
+  .page--landing .nav--submenu > li > button,
   .nav--dropdown > li > button,
   .nav--options > li > button,
   .nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .btn--press, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
   .btn--next, .btn--up,
   .btn--down, .btn--gallery-prev,
   .btn--gallery-next, .section--index .title, .nav--index > .nav__item > a,
-  .nav--index > .nav__item > span, .nav--main > li > a:active, .nav--service > li > a:active, .nav--language > li > a:active, .nav--footer > li > a:active, .nav--social > li > a:active, .nav--breadcrumb > li > a:active, .nav--horizontal-menu > li > a:active, .nav--scroll-menu > li > a:active, .nav--submenu > li > a:active, .nav--footer ul > li > a:active, .nav--dropdown > li > a:active, .nav--options > li > a:active, .nav--index > li > a:active,
+  .nav--index > .nav__item > span, .nav--main > li > a:active, .nav--service > li > a:active, .nav--language > li > a:active, .nav--footer > li > a:active, .nav--social > li > a:active, .nav--breadcrumb > li > a:active, .nav--horizontal-menu > li > a:active, .nav--scroll-menu > li > a:active, .page--product-list .nav--language > li > a:active, .page--landing .nav--language > li > a:active, .nav--submenu > li > a:active, .nav--footer ul > li > a:active, .page--product-list .nav--submenu > li > a:active, .page--landing .nav--submenu > li > a:active, .nav--dropdown > li > a:active, .nav--options > li > a:active, .nav--index > li > a:active,
   .nav--main > li > button:active,
   .nav--service > li > button:active,
   .nav--language > li > button:active,
@@ -5829,15 +5879,19 @@ a {
   .nav--breadcrumb > li > button:active,
   .nav--horizontal-menu > li > button:active,
   .nav--scroll-menu > li > button:active,
+  .page--product-list .nav--language > li > button:active,
+  .page--landing .nav--language > li > button:active,
   .nav--submenu > li > button:active,
   .nav--footer ul > li > button:active,
+  .page--product-list .nav--submenu > li > button:active,
+  .page--landing .nav--submenu > li > button:active,
   .nav--dropdown > li > button:active,
   .nav--options > li > button:active,
   .nav--index > li > button:active, .btn:active, .modal-outlet .btn--close:active, .btn--link:active, .group--form--checkbox label > span > a:active, .group--form--privacy label > span > a:active, .btn--primary:active, .btn--more:active, .btn--download:active, .btn--right:active, .btn--certification:active, .btn--press:active, .btn--plus:active, .zoom-button:active, .btn--more-md:active, .btn--category:active, .btn--submit:active, .btn--search:active, .btn--logo:active, .btn--menu:active, .btn--investor:active, .page--investors .header .btn--back:active, .btn--websolute:active, .btn--prev:active,
   .btn--next:active, .btn--up:active,
   .btn--down:active, .btn--gallery-prev:active,
   .btn--gallery-next:active, .section--index .title:active, .nav--index > .nav__item > a:active,
-  .nav--index > .nav__item > span:active, .nav--main > li > a:focus, .nav--service > li > a:focus, .nav--language > li > a:focus, .nav--footer > li > a:focus, .nav--social > li > a:focus, .nav--breadcrumb > li > a:focus, .nav--horizontal-menu > li > a:focus, .nav--scroll-menu > li > a:focus, .nav--submenu > li > a:focus, .nav--footer ul > li > a:focus, .nav--dropdown > li > a:focus, .nav--options > li > a:focus, .nav--index > li > a:focus,
+  .nav--index > .nav__item > span:active, .nav--main > li > a:focus, .nav--service > li > a:focus, .nav--language > li > a:focus, .nav--footer > li > a:focus, .nav--social > li > a:focus, .nav--breadcrumb > li > a:focus, .nav--horizontal-menu > li > a:focus, .nav--scroll-menu > li > a:focus, .page--product-list .nav--language > li > a:focus, .page--landing .nav--language > li > a:focus, .nav--submenu > li > a:focus, .nav--footer ul > li > a:focus, .page--product-list .nav--submenu > li > a:focus, .page--landing .nav--submenu > li > a:focus, .nav--dropdown > li > a:focus, .nav--options > li > a:focus, .nav--index > li > a:focus,
   .nav--main > li > button:focus,
   .nav--service > li > button:focus,
   .nav--language > li > button:focus,
@@ -5846,15 +5900,19 @@ a {
   .nav--breadcrumb > li > button:focus,
   .nav--horizontal-menu > li > button:focus,
   .nav--scroll-menu > li > button:focus,
+  .page--product-list .nav--language > li > button:focus,
+  .page--landing .nav--language > li > button:focus,
   .nav--submenu > li > button:focus,
   .nav--footer ul > li > button:focus,
+  .page--product-list .nav--submenu > li > button:focus,
+  .page--landing .nav--submenu > li > button:focus,
   .nav--dropdown > li > button:focus,
   .nav--options > li > button:focus,
   .nav--index > li > button:focus, .btn:focus, .modal-outlet .btn--close:focus, .btn--link:focus, .group--form--checkbox label > span > a:focus, .group--form--privacy label > span > a:focus, .btn--primary:focus, .btn--more:focus, .btn--download:focus, .btn--right:focus, .btn--certification:focus, .btn--press:focus, .btn--plus:focus, .zoom-button:focus, .btn--more-md:focus, .btn--category:focus, .btn--submit:focus, .btn--search:focus, .btn--logo:focus, .btn--menu:focus, .btn--investor:focus, .page--investors .header .btn--back:focus, .btn--websolute:focus, .btn--prev:focus,
   .btn--next:focus, .btn--up:focus,
   .btn--down:focus, .btn--gallery-prev:focus,
   .btn--gallery-next:focus, .section--index .title:focus, .nav--index > .nav__item > a:focus,
-  .nav--index > .nav__item > span:focus, .nav--main > li > a:hover, .nav--service > li > a:hover, .nav--language > li > a:hover, .nav--footer > li > a:hover, .nav--social > li > a:hover, .nav--breadcrumb > li > a:hover, .nav--horizontal-menu > li > a:hover, .nav--scroll-menu > li > a:hover, .nav--submenu > li > a:hover, .nav--footer ul > li > a:hover, .nav--dropdown > li > a:hover, .nav--options > li > a:hover, .nav--index > li > a:hover,
+  .nav--index > .nav__item > span:focus, .nav--main > li > a:hover, .nav--service > li > a:hover, .nav--language > li > a:hover, .nav--footer > li > a:hover, .nav--social > li > a:hover, .nav--breadcrumb > li > a:hover, .nav--horizontal-menu > li > a:hover, .nav--scroll-menu > li > a:hover, .page--product-list .nav--language > li > a:hover, .page--landing .nav--language > li > a:hover, .nav--submenu > li > a:hover, .nav--footer ul > li > a:hover, .page--product-list .nav--submenu > li > a:hover, .page--landing .nav--submenu > li > a:hover, .nav--dropdown > li > a:hover, .nav--options > li > a:hover, .nav--index > li > a:hover,
   .nav--main > li > button:hover,
   .nav--service > li > button:hover,
   .nav--language > li > button:hover,
@@ -5863,15 +5921,19 @@ a {
   .nav--breadcrumb > li > button:hover,
   .nav--horizontal-menu > li > button:hover,
   .nav--scroll-menu > li > button:hover,
+  .page--product-list .nav--language > li > button:hover,
+  .page--landing .nav--language > li > button:hover,
   .nav--submenu > li > button:hover,
   .nav--footer ul > li > button:hover,
+  .page--product-list .nav--submenu > li > button:hover,
+  .page--landing .nav--submenu > li > button:hover,
   .nav--dropdown > li > button:hover,
   .nav--options > li > button:hover,
   .nav--index > li > button:hover, .btn:hover, .modal-outlet .btn--close:hover, .btn--link:hover, .group--form--checkbox label > span > a:hover, .group--form--privacy label > span > a:hover, .btn--primary:hover, .btn--more:hover, .btn--download:hover, .btn--right:hover, .btn--certification:hover, .btn--press:hover, .btn--plus:hover, .zoom-button:hover, .btn--more-md:hover, .btn--category:hover, .btn--submit:hover, .btn--search:hover, .btn--logo:hover, .btn--menu:hover, .btn--investor:hover, .page--investors .header .btn--back:hover, .btn--websolute:hover, .btn--prev:hover,
   .btn--next:hover, .btn--up:hover,
   .btn--down:hover, .btn--gallery-prev:hover,
   .btn--gallery-next:hover, .section--index .title:hover, .nav--index > .nav__item > a:hover,
-  .nav--index > .nav__item > span:hover, .nav--main > li > a:visited, .nav--service > li > a:visited, .nav--language > li > a:visited, .nav--footer > li > a:visited, .nav--social > li > a:visited, .nav--breadcrumb > li > a:visited, .nav--horizontal-menu > li > a:visited, .nav--scroll-menu > li > a:visited, .nav--submenu > li > a:visited, .nav--footer ul > li > a:visited, .nav--dropdown > li > a:visited, .nav--options > li > a:visited, .nav--index > li > a:visited,
+  .nav--index > .nav__item > span:hover, .nav--main > li > a:visited, .nav--service > li > a:visited, .nav--language > li > a:visited, .nav--footer > li > a:visited, .nav--social > li > a:visited, .nav--breadcrumb > li > a:visited, .nav--horizontal-menu > li > a:visited, .nav--scroll-menu > li > a:visited, .page--product-list .nav--language > li > a:visited, .page--landing .nav--language > li > a:visited, .nav--submenu > li > a:visited, .nav--footer ul > li > a:visited, .page--product-list .nav--submenu > li > a:visited, .page--landing .nav--submenu > li > a:visited, .nav--dropdown > li > a:visited, .nav--options > li > a:visited, .nav--index > li > a:visited,
   .nav--main > li > button:visited,
   .nav--service > li > button:visited,
   .nav--language > li > button:visited,
@@ -5880,8 +5942,12 @@ a {
   .nav--breadcrumb > li > button:visited,
   .nav--horizontal-menu > li > button:visited,
   .nav--scroll-menu > li > button:visited,
+  .page--product-list .nav--language > li > button:visited,
+  .page--landing .nav--language > li > button:visited,
   .nav--submenu > li > button:visited,
   .nav--footer ul > li > button:visited,
+  .page--product-list .nav--submenu > li > button:visited,
+  .page--landing .nav--submenu > li > button:visited,
   .nav--dropdown > li > button:visited,
   .nav--options > li > button:visited,
   .nav--index > li > button:visited, .btn:visited, .modal-outlet .btn--close:visited, .btn--link:visited, .group--form--checkbox label > span > a:visited, .group--form--privacy label > span > a:visited, .btn--primary:visited, .btn--more:visited, .btn--download:visited, .btn--right:visited, .btn--certification:visited, .btn--press:visited, .btn--plus:visited, .zoom-button:visited, .btn--more-md:visited, .btn--category:visited, .btn--submit:visited, .btn--search:visited, .btn--logo:visited, .btn--menu:visited, .btn--investor:visited, .page--investors .header .btn--back:visited, .btn--websolute:visited, .btn--prev:visited,
@@ -5892,10 +5958,10 @@ a {
     color: inherit;
     text-decoration: none;
     outline: none; }
-  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .btn--press svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
+  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .page--product-list .nav--language > li > a svg, .page--landing .nav--language > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .page--product-list .nav--submenu > li > a svg, .page--landing .nav--submenu > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .page--product-list .nav--language > li > button svg, .page--landing .nav--language > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .page--product-list .nav--submenu > li > button svg, .page--landing .nav--submenu > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .btn--press svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
     fill: currentColor; }
 
-.nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
+.nav--main > li > a, .nav--service > li > a, .nav--language > li > a, .nav--footer > li > a, .nav--social > li > a, .nav--breadcrumb > li > a, .nav--horizontal-menu > li > a, .nav--scroll-menu > li > a, .page--product-list .nav--language > li > a, .page--landing .nav--language > li > a, .nav--submenu > li > a, .nav--footer ul > li > a, .page--product-list .nav--submenu > li > a, .page--landing .nav--submenu > li > a, .nav--dropdown > li > a, .nav--options > li > a, .nav--index > li > a,
 .nav--main > li > button,
 .nav--service > li > button,
 .nav--language > li > button,
@@ -5904,8 +5970,12 @@ a {
 .nav--breadcrumb > li > button,
 .nav--horizontal-menu > li > button,
 .nav--scroll-menu > li > button,
+.page--product-list .nav--language > li > button,
+.page--landing .nav--language > li > button,
 .nav--submenu > li > button,
 .nav--footer ul > li > button,
+.page--product-list .nav--submenu > li > button,
+.page--landing .nav--submenu > li > button,
 .nav--dropdown > li > button,
 .nav--options > li > button,
 .nav--index > li > button, .btn, .modal-outlet .btn--close, .btn--link, .group--form--checkbox label > span > a, .group--form--privacy label > span > a, .btn--primary, .btn--more, .btn--download, .btn--right, .btn--certification, .btn--press, .btn--plus, .zoom-button, .btn--more-md, .btn--category, .btn--submit, .btn--search, .btn--logo, .btn--menu, .btn--investor, .page--investors .header .btn--back, .btn--websolute, .btn--prev,
@@ -5915,11 +5985,11 @@ a {
 .nav--index > .nav__item > span {
   transition: ease-in-out 250ms;
   transition-property: background-color, color, border, opacity; }
-  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .btn--press svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
+  .nav--main > li > a svg, .nav--service > li > a svg, .nav--language > li > a svg, .nav--footer > li > a svg, .nav--social > li > a svg, .nav--breadcrumb > li > a svg, .nav--horizontal-menu > li > a svg, .nav--scroll-menu > li > a svg, .page--product-list .nav--language > li > a svg, .page--landing .nav--language > li > a svg, .nav--submenu > li > a svg, .nav--footer ul > li > a svg, .page--product-list .nav--submenu > li > a svg, .page--landing .nav--submenu > li > a svg, .nav--dropdown > li > a svg, .nav--options > li > a svg, .nav--index > li > a svg, .nav--main > li > button svg, .nav--service > li > button svg, .nav--language > li > button svg, .nav--footer > li > button svg, .nav--social > li > button svg, .nav--breadcrumb > li > button svg, .nav--horizontal-menu > li > button svg, .nav--scroll-menu > li > button svg, .page--product-list .nav--language > li > button svg, .page--landing .nav--language > li > button svg, .nav--submenu > li > button svg, .nav--footer ul > li > button svg, .page--product-list .nav--submenu > li > button svg, .page--landing .nav--submenu > li > button svg, .nav--dropdown > li > button svg, .nav--options > li > button svg, .nav--index > li > button svg, .btn svg, .modal-outlet .btn--close svg, .btn--link svg, .group--form--checkbox label > span > a svg, .group--form--privacy label > span > a svg, .btn--primary svg, .btn--more svg, .btn--download svg, .btn--right svg, .btn--certification svg, .btn--press svg, .btn--plus svg, .zoom-button svg, .btn--more-md svg, .btn--category svg, .btn--submit svg, .btn--search svg, .btn--logo svg, .btn--menu svg, .btn--investor svg, .page--investors .header .btn--back svg, .btn--websolute svg, .btn--prev svg, .btn--next svg, .btn--up svg, .btn--down svg, .btn--gallery-prev svg, .btn--gallery-next svg, .section--index .title svg, .nav--index > .nav__item > a svg, .nav--index > .nav__item > span svg {
     fill: currentColor;
     transition: ease-in-out 250ms;
     transition-property: fill, opacity; }
-  .nav--main > li > a[disabled], .nav--service > li > a[disabled], .nav--language > li > a[disabled], .nav--footer > li > a[disabled], .nav--social > li > a[disabled], .nav--breadcrumb > li > a[disabled], .nav--horizontal-menu > li > a[disabled], .nav--scroll-menu > li > a[disabled], .nav--submenu > li > a[disabled], .nav--footer ul > li > a[disabled], .nav--dropdown > li > a[disabled], .nav--options > li > a[disabled], .nav--index > li > a[disabled],
+  .nav--main > li > a[disabled], .nav--service > li > a[disabled], .nav--language > li > a[disabled], .nav--footer > li > a[disabled], .nav--social > li > a[disabled], .nav--breadcrumb > li > a[disabled], .nav--horizontal-menu > li > a[disabled], .nav--scroll-menu > li > a[disabled], .page--product-list .nav--language > li > a[disabled], .page--landing .nav--language > li > a[disabled], .nav--submenu > li > a[disabled], .nav--footer ul > li > a[disabled], .page--product-list .nav--submenu > li > a[disabled], .page--landing .nav--submenu > li > a[disabled], .nav--dropdown > li > a[disabled], .nav--options > li > a[disabled], .nav--index > li > a[disabled],
   .nav--main > li > button[disabled],
   .nav--service > li > button[disabled],
   .nav--language > li > button[disabled],
@@ -5928,8 +5998,12 @@ a {
   .nav--breadcrumb > li > button[disabled],
   .nav--horizontal-menu > li > button[disabled],
   .nav--scroll-menu > li > button[disabled],
+  .page--product-list .nav--language > li > button[disabled],
+  .page--landing .nav--language > li > button[disabled],
   .nav--submenu > li > button[disabled],
   .nav--footer ul > li > button[disabled],
+  .page--product-list .nav--submenu > li > button[disabled],
+  .page--landing .nav--submenu > li > button[disabled],
   .nav--dropdown > li > button[disabled],
   .nav--options > li > button[disabled],
   .nav--index > li > button[disabled], .btn[disabled], .modal-outlet .btn--close[disabled], .btn--link[disabled], .group--form--checkbox label > span > a[disabled], .group--form--privacy label > span > a[disabled], .btn--primary[disabled], .btn--more[disabled], .btn--download[disabled], .btn--right[disabled], .btn--certification[disabled], .btn--press[disabled], .btn--plus[disabled], .zoom-button[disabled], .btn--more-md[disabled], .btn--category[disabled], .btn--submit[disabled], .btn--search[disabled], .btn--logo[disabled], .btn--menu[disabled], .btn--investor[disabled], .page--investors .header .btn--back[disabled], .btn--websolute[disabled], .btn--prev[disabled],
@@ -12174,6 +12248,179 @@ add-to-calendar-button[id^=calendar-]::part(atcb-button-icon),
     font-size: 18px;
     font-style: normal;
     font-weight: 400; }
+
+@media (max-width: 767.98px) {
+  .page--product-list .header__menu,
+  .page--landing .header__menu {
+    display: none; } }
+
+.page--product-list .nav--language,
+.page--landing .nav--language {
+  margin: 0; }
+  .page--product-list .nav--language > .nav__item > a,
+  .page--product-list .nav--language > .nav__item > span,
+  .page--landing .nav--language > .nav__item > a,
+  .page--landing .nav--language > .nav__item > span {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-transform: uppercase; }
+    .page--product-list .nav--language > .nav__item > a svg,
+    .page--product-list .nav--language > .nav__item > span svg,
+    .page--landing .nav--language > .nav__item > a svg,
+    .page--landing .nav--language > .nav__item > span svg {
+      width: 8px;
+      height: 7px;
+      flex: 0 0 0.4444em;
+      width: 0.4444em;
+      height: 0.3888em;
+      margin-left: 0.4em;
+      fill: #9D9D9C; }
+      .page--product-list .nav--language > .nav__item > a svg.next,
+      .page--product-list .nav--language > .nav__item > span svg.next,
+      .page--landing .nav--language > .nav__item > a svg.next,
+      .page--landing .nav--language > .nav__item > span svg.next {
+        display: none; }
+      .page--product-list .nav--language > .nav__item > a svg.down,
+      .page--product-list .nav--language > .nav__item > span svg.down,
+      .page--landing .nav--language > .nav__item > a svg.down,
+      .page--landing .nav--language > .nav__item > span svg.down {
+        display: block; }
+    .page--product-list .nav--language > .nav__item > a:after,
+    .page--product-list .nav--language > .nav__item > span:after,
+    .page--landing .nav--language > .nav__item > a:after,
+    .page--landing .nav--language > .nav__item > span:after {
+      display: none; }
+  .negative .page--product-list .nav--language > .nav__item > a svg,
+  .negative .page--product-list .nav--language > .nav__item > span svg,
+  .page--homepage .page--product-list .nav--language > .nav__item > a svg,
+  .page--homepage .page--product-list .nav--language > .nav__item > span svg, .negative
+  .page--landing .nav--language > .nav__item > a svg,
+  .negative
+  .page--landing .nav--language > .nav__item > span svg,
+  .page--homepage
+  .page--landing .nav--language > .nav__item > a svg,
+  .page--homepage
+  .page--landing .nav--language > .nav__item > span svg {
+    fill: currentColor; }
+  .page--product-list .nav--language .nav--submenu,
+  .page--landing .nav--language .nav--submenu {
+    text-transform: uppercase; }
+  @media (min-width: 1024px) {
+    .page--product-list .nav--language,
+    .page--landing .nav--language {
+      align-items: center;
+      padding-left: var(--p20);
+      border-left: 1px solid var(--border); }
+      .page--product-list .nav--language > .nav__item > a svg,
+      .page--product-list .nav--language > .nav__item > span svg,
+      .page--landing .nav--language > .nav__item > a svg,
+      .page--landing .nav--language > .nav__item > span svg {
+        margin-left: var(--p10); }
+      .page--product-list .nav--language > .nav__item > a .next,
+      .page--product-list .nav--language > .nav__item > span .next,
+      .page--landing .nav--language > .nav__item > a .next,
+      .page--landing .nav--language > .nav__item > span .next {
+        display: none; }
+      .page--product-list .nav--language > .nav__item + .nav__item,
+      .page--landing .nav--language > .nav__item + .nav__item {
+        margin-left: var(--p40); } }
+
+.page--product-list .nav--submenu .nav__item:nth-child(2),
+.page--landing .nav--submenu .nav__item:nth-child(2) {
+  display: none; }
+
+.page--product-list .nav--submenu > .nav__item > a,
+.page--product-list .nav--submenu > .nav__item > span,
+.page--landing .nav--submenu > .nav__item > a,
+.page--landing .nav--submenu > .nav__item > span {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 0;
+  font-size: 0.7em;
+  line-height: 1.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .page--product-list .nav--submenu > .nav__item > a:after,
+  .page--product-list .nav--submenu > .nav__item > span:after,
+  .page--landing .nav--submenu > .nav__item > a:after,
+  .page--landing .nav--submenu > .nav__item > span:after {
+    display: none; }
+
+@media (max-width: 1023.98px) {
+  .page--product-list .nav--submenu,
+  .page--landing .nav--submenu {
+    position: absolute;
+    display: none;
+    right: 0;
+    top: 100%;
+    margin: 0 0 0 -20px;
+    min-width: Max(120px, 100%);
+    box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.35);
+    background: #fff;
+    color: #000;
+    z-index: 999; }
+    .page--product-list .nav--submenu.active,
+    .page--landing .nav--submenu.active {
+      display: block; }
+    .page--product-list .nav--submenu > .nav__item > a,
+    .page--product-list .nav--submenu > .nav__item > span,
+    .page--landing .nav--submenu > .nav__item > a,
+    .page--landing .nav--submenu > .nav__item > span {
+      justify-content: center; }
+    .page--product-list .nav--submenu > .nav__item:active > a,
+    .page--product-list .nav--submenu > .nav__item:active > span, .page--product-list .nav--submenu > .nav__item:focus > a,
+    .page--product-list .nav--submenu > .nav__item:focus > span,
+    .page--landing .nav--submenu > .nav__item:active > a,
+    .page--landing .nav--submenu > .nav__item:active > span,
+    .page--landing .nav--submenu > .nav__item:focus > a,
+    .page--landing .nav--submenu > .nav__item:focus > span {
+      background: var(--background-primary);
+      color: var(--foreground-negative); }
+    .page--product-list .nav--submenu > .nav__item.back,
+    .page--landing .nav--submenu > .nav__item.back {
+      display: none; }
+    .nav__item.active > .page--product-list .nav--submenu,
+    .nav__item:focus > .page--product-list .nav--submenu,
+    .nav__item:focus-within > .page--product-list .nav--submenu, .nav__item.active >
+    .page--landing .nav--submenu,
+    .nav__item:focus >
+    .page--landing .nav--submenu,
+    .nav__item:focus-within >
+    .page--landing .nav--submenu {
+      display: block; } }
+
+@media (min-width: 1024px) {
+  .page--product-list .nav--submenu,
+  .page--landing .nav--submenu {
+    position: absolute;
+    display: none;
+    right: 0;
+    top: 100%;
+    margin: 0 0 0 -20px;
+    min-width: Max(120px, 100%);
+    box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.35);
+    background: #fff;
+    color: #000; }
+    .page--product-list .nav--submenu > .nav__item > a,
+    .page--product-list .nav--submenu > .nav__item > span,
+    .page--landing .nav--submenu > .nav__item > a,
+    .page--landing .nav--submenu > .nav__item > span {
+      justify-content: center; }
+    .page--product-list .nav--submenu > .nav__item:hover > a,
+    .page--product-list .nav--submenu > .nav__item:hover > span,
+    .page--landing .nav--submenu > .nav__item:hover > a,
+    .page--landing .nav--submenu > .nav__item:hover > span {
+      background: var(--background-primary);
+      color: var(--foreground-negative); }
+    .page--product-list .nav--submenu > .nav__item.back,
+    .page--landing .nav--submenu > .nav__item.back {
+      display: none; }
+    .nav__item:hover > .page--product-list .nav--submenu, .nav__item:hover >
+    .page--landing .nav--submenu {
+      display: block; } }
 
 .product-list__sidebar {
   padding-top: 80px;

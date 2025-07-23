@@ -398,7 +398,7 @@ function icl_post_languages() {
     if($languages && count($languages)>1) {
       $items = '
         <ul class="nav--language">
-					<li class="nav__item">';
+					<li class="nav__item" (clickOutside)="onLanguageClickOutside($event)">';
       $items .= '
 						<span (click)="onMenu(100)">
 							<span>'.$current["code"].'</span>
