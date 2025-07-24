@@ -16,7 +16,7 @@
                                         </div>
                                     </div>
                                     <div class="sidebar--item recycled-type">
-                                        <button type="button" class="btn--title" toggle=".recycled-type"><span><?= __("Recycled type", "wstheme"); ?></span>
+                                        <button type="button" class="btn--title" toggle=".recycled-type"><span><?= __("Recycling", "wstheme"); ?></span>
                                             <svg>
                                                 <use xlink:href="#caret-down"></use>
                                             </svg>
