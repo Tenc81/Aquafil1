@@ -13,7 +13,7 @@ get_header('landing');
 			<div class="col-sm-20 offset-sm-2">
 				<div class="sticky-menu__content">
 					<ul class="nav--scroll-menu" scroll-menu="">
-					<li class="nav__item"><a href="<?= __("/it/", "wstheme"); ?>" class="active"><?= __("Catalogo prodotti", "wstheme"); ?></a></li>
+					<li class="nav__item"><a href="<?= __("/it/engineering-plastic/", "wstheme"); ?>" class="active"><?= __("Torna alla Pagina Principale", "wstheme"); ?></a></li>
 					</ul>
 				</div>
 			</div>
