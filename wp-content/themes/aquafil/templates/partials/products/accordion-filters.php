@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $_args = wp_parse_args(
   $args,
   array(
@@ -7,11 +7,26 @@ $_args = wp_parse_args(
   ));
   //var_dump($_args);
 
-/*echo '<pre>';
-foreach($_args['oldfilters'] as $k => $filter) {
-    echo "Filtro key: $k - label: {$filter['label']} - count: {$filter['count']}\n";
+// Separiamo "ALL" (o come si chiama il filtro che deve rimanere in cima)
+$top_filter = null;
+$other_filters = array();
+
+foreach ($_args['oldfilters'] as $key => $filter) {
+  if (strtolower($key) === 'all') {
+    $top_filter = [$key => $filter]; // Salva come array per facile merge dopo
+  } else {
+    $other_filters[$key] = $filter;
+  }
 }
-echo '</pre>'; */
+
+// Ordina gli altri filtri Z → A per label
+uasort($other_filters, function ($a, $b) {
+  return strcasecmp($b['label'], $a['label']);
+});
+
+// Ricombina: prima il filtro "ALL", poi gli altri
+$_args['oldfilters'] = $top_filter ? ($top_filter + $other_filters) : $other_filters;
+
 
 if(!empty($_args['filters']) || !empty($_args['oldfilters'])) :
 

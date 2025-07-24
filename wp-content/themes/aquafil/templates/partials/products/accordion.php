@@ -81,9 +81,11 @@ endif;
         <svg><use xlink:href="#plus"></use></svg>
       </button>
       <div class="card--calendar__right">
-      <?php foreach ($accordion['categoria_prod'] as $category) : ?>
-        <div class="card--calendar__category"><?= esc_html( apply_filters( 'wpml_translate_single_string', $category['label'], 'acf', $category['label'] ) ); ?></div>
-      <?php endforeach; ?>
+        <div class="card--calendar__category-wrapper">
+          <?php foreach ($accordion['categoria_prod'] as $category) : ?>
+            <div class="card--calendar__category"><?= esc_html( apply_filters( 'wpml_translate_single_string', $category['label'], 'acf', $category['label'] ) ); ?></div>
+          <?php endforeach; ?>
+        </div>
         <span class="card--calendar__title"><?= $accordion['nome_prod']; ?></span>
         <p class="card--calendar__description"><?= $accordion['descrizione_prod']; ?></p>
            <div class="tag-list">

@@ -6,6 +6,21 @@ get_header('landing');
 ?>
 
 <main class="main" product-list>
+
+<div class="sticky-menu">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-20 offset-sm-2">
+				<div class="sticky-menu__content">
+					<ul class="nav--scroll-menu" scroll-menu="">
+					<li class="nav__item"><a href="<?= __("/it/engineering-plastic/", "wstheme"); ?>" class="active"><?= __("Torna alla Pagina Principale", "wstheme"); ?></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 	<?php
 	$fields = get_fields(get_queried_object());
 	$filtered = array_filter($fields['sezioni'], function($section) {

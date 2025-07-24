@@ -1671,7 +1671,8 @@ RelativeDatePipe.meta = {
       return x.hasAttribute('href');
     }).map(function (x) {
       var href = x.getAttribute('href');
-      var target = document.querySelector(href);
+      // Only use querySelector if href is a valid selector (starts with '#')
+      var target = href && href.startsWith('#') ? document.querySelector(href) : null;
       return {
         a: x,
         href: href,
@@ -4689,6 +4690,12 @@ _defineProperty(HeaderService, "header$_", new rxjs.BehaviorSubject(-1));var Hea
   };
   _proto.onBack = function onBack(event) {
     MenuService.onBack();
+  };
+  _proto.onLanguageClickOutside = function onLanguageClickOutside(event) {
+    // Se il menu della lingua (id = 5 per template statico o id = 100 per template PHP) è attivo, chiudilo
+    if (this.menu === 5 || this.menu === 100) {
+      MenuService.onBack();
+    }
   };
   return _createClass(HeaderComponent, [{
     key: "direction",
