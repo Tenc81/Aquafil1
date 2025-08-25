@@ -36,7 +36,7 @@
                                         </button>
                                         <div class="sidebar--content">
                                             <div class="list-filters">
-                                                <button class="btn btn--outline"><?= __("ECONYLÂ® Regenerated Nylon", "wstheme"); ?></button>
+                                                <button class="btn btn--outline"><?= __("ECONYL® Regenerated Nylon", "wstheme"); ?></button>
                                                 <button class="btn btn--outline">Aquamid R</button>
                                                 <button class="btn btn--outline">Aquamid</button>                         
                                             </div>
@@ -55,7 +55,7 @@
                                                     <button class="btn btn--outline"><?= __("Unfilled", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Nucleated", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Lubricated", "wstheme"); ?></button>
-                                                    <button class="btn btn--outline"><?= __("Food contact", "wstheme"); ?></button>
+                                                    <button class="btn btn--outline"><?= __("Food Contact", "wstheme"); ?></button>
                                                 </div>
                                             </div>
                                             <div class="engineered-polymers">
@@ -63,10 +63,10 @@
                                                 <div class="list-filters">
                                                     <button class="btn btn--outline"><?= __("Unfilled", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Filled", "wstheme"); ?></button>
-                                                    <button class="btn btn--outline"><?= __("Impact modified", "wstheme"); ?></button>
+                                                    <button class="btn btn--outline"><?= __("Impact Modified", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Heat aging stabilised", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Uv stabilised", "wstheme"); ?></button>
-                                                    <button class="btn btn--outline"><?= __("Food contact", "wstheme"); ?></button>
+                                                    <button class="btn btn--outline"><?= __("Food Contact", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Colored", "wstheme"); ?></button>
                                                 </div>
                                             </div>
