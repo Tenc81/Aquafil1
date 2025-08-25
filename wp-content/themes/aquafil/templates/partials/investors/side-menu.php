@@ -10,7 +10,8 @@ $cposts = get_posts(array(
 	"posts_per_page" => -1,
 	"post_status" => "publish",
 	"orderby" => array("post_type" => "DESC", "menu_order" => "ASC", "post_name" => "ASC"),
-	"suppress_filters" => false
+	"suppress_filters" => false,
+	"post_parent" => 0
 ));
 
 if(!empty($cposts)) {
