@@ -36,7 +36,7 @@
                                         </button>
                                         <div class="sidebar--content">
                                             <div class="list-filters">
-                                                <button class="btn btn--outline"><?= __("ECONYL® Regenerated Nylon", "wstheme"); ?></button>
+                                                <button class="btn btn--outline"><?= __("ECONYL&reg; Regenerated Nylon", "wstheme"); ?></button>
                                                 <button class="btn btn--outline">Aquamid R</button>
                                                 <button class="btn btn--outline">Aquamid</button>                         
                                             </div>
