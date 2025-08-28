@@ -90,8 +90,12 @@ endif;
         <p class="card--calendar__description"><?= $accordion['descrizione_prod']; ?></p>
            <div class="tag-list">
               <?php if (!empty($accordion['tag_prod'])) :
-              foreach ($accordion['tag_prod'] as $tag) : ?>
-                <div class="btn btn--outline"><?= esc_html( apply_filters( 'wpml_translate_single_string', $tag, 'acf', $tag ) ); ?></div>
+              foreach ($accordion['tag_prod'] as $tag) : 
+                $labels = [
+                   'Econyl_regenerated_nylon' => 'ECONYL&reg; Regenerated Nylon',
+                ];
+                $label = $labels[$tag] ?? $tag; ?>
+                <div class="btn btn--outline"><?= esc_html( apply_filters( 'wpml_translate_single_string', $label, 'acf', $label ) ); ?></div>
               <?php endforeach;
             endif; ?>
            </div>
