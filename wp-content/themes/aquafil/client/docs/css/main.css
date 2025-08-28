@@ -8007,7 +8007,7 @@ input[type="search"]::-webkit-search-results-decoration {
             display: none; } }
 
 .nav--submenu .nav__item:nth-child(2) {
-  display: none; }
+  /*	display: none; */ }
 
 .nav--submenu > .nav__item > a,
 .nav--submenu > .nav__item > span {
