@@ -64,8 +64,8 @@
                                                     <button class="btn btn--outline"><?= __("Unfilled", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Filled", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Impact Modified", "wstheme"); ?></button>
-                                                    <button class="btn btn--outline"><?= __("Heat aging stabilised", "wstheme"); ?></button>
-                                                    <button class="btn btn--outline"><?= __("Uv stabilised", "wstheme"); ?></button>
+                                                    <button class="btn btn--outline"><?= __("Heat ageing stabilised", "wstheme"); ?></button>
+                                                    <button class="btn btn--outline"><?= __("UV stabilised", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Food Contact", "wstheme"); ?></button>
                                                     <button class="btn btn--outline"><?= __("Colored", "wstheme"); ?></button>
                                                 </div>
