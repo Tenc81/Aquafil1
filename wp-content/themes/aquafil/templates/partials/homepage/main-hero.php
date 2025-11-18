@@ -26,9 +26,20 @@ if(!empty($_args['section'])) :
 									<div class="card--main-hero__category"><?=$s['hero_abstract'] ?></div>
 									<h1 class="card--main-hero__title"><?= $s['hero_titolo'] ?></h1>
 									<div class="card--main-hero__abstract"><?=$s['hero_sottotitolo'] ?></div>
+									<?php
+									// normalize link: trim whitespace, remove surrounding quotes, trim trailing semicolons
+									$link = isset($s['hero_link_cta']) ? trim($s['hero_link_cta']) : '';
+									// remove surrounding single/double quotes and whitespace
+									$link = trim($link, " \t\n\r\0\x0B'\"");
+									// remove trailing semicolons
+									$link = rtrim($link, ';');
+									$link_l = strtolower($link);
+									// skip placeholders like javascript:void(0) or '#'
+									if ( ! empty( $link ) && strpos($link_l, 'javascript:void') === false && $link_l !== '#') : ?>
 									<div class="card--main-hero__cta">
-										<a href="<?=$s['hero_link_cta']?>" target="<?=$s['hero_target_cta']?>" class="btn--primary"><?=($s['hero_testo_cta'] != '' ? $s['hero_testo_cta'] : __('Read more', "wstheme"))?></a>
+										<a href="<?=$link?>" target="<?=$s['hero_target_cta']?>" class="btn--primary"><?=($s['hero_testo_cta'] != '' ? $s['hero_testo_cta'] : __('Read more', "wstheme"))?></a>
 									</div>
+									<?php endif; ?>
 								</div>
 							</div>
 						</div>
