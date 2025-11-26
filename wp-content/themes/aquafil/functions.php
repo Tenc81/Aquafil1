@@ -82,7 +82,8 @@ function aquafil_enqueue_scripts() {
 				'salesModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/sales-modal.html',
 				'galleryModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/gallery-modal.html',
 				'userModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/user-modal.html',
-				'productRequestModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal.html'
+				'productRequestModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal.html',
+				'productRequestModalSlo' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal-slo.html',
 			)
 		),
 		'labels' => array(
@@ -104,7 +105,10 @@ function aquafil_enqueue_scripts() {
 			'inviato' => get_the_ID() == 31744 || get_the_ID() == 24299 ? "Zahteva poslana" : __("Richiesta inviata", "wstheme"),
 			'select' => __("Seleziona", "wstheme"),
 			'error_required' => __("campo obbligatorio", "wstheme"),
-			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme")
+			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme"),
+			'naslov' => __("Naslov", "wstheme"),
+            'mesto' => __("Mesto", "wstheme"),
+            'postna_stevilka' => __("Poštna številka", "wstheme")
 		)
   ));
 }
@@ -1551,7 +1555,6 @@ function flamingo_inbound_message_timestamp($args) {
 }
 add_filter('wpcf7_flamingo_inbound_message_parameters', 'flamingo_inbound_message_timestamp', 10, 1);
 add_filter('flamingo_add_contact', 'flamingo_inbound_message_timestamp', 10, 1);
-
 
 
 function landing_labels($translation, $text, $domain) {
