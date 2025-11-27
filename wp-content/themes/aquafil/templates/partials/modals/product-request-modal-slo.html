@@ -15,14 +15,25 @@
           </div>
           <div class="row">
             <div class="col-sm-11">
-              <div control-custom-select="control-custom-select" [control]="controls.country" label="Država"></div>
-            </div>
-            <div class="col-sm-11 offset-sm-2">
               <div control-text="control-text" [control]="controls.email" label="E-pošta"></div>
             </div>
+            <div class="col-sm-11 offset-sm-2">
+              <div control-text="control-text" [control]="controls.address" label="Naslov"></div>
+            </div>
           </div>
-          <div control-text="control-text" [control]="controls.subject" label="Predmet"></div>
-          <div control-textarea="control-textarea" [control]="controls.message" label="Sporočilo"></div>
+          <div class="row">
+            <div class="col-sm-11">
+              <div control-text="control-text" [control]="controls.city" label="Mesto"></div>
+            </div>
+            <div class="col-sm-11 offset-sm-2">
+              <div control-text="control-text" [control]="controls.zip" label="Poštna številka"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-24">
+              <div control-file="control-file" [control]="controls.file" label="Dodaj življenjepis"></div>
+            </div>
+          </div>
           <test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
           <div class="full" control-checkbox="control-checkbox" [control]="controls.privacy" label="S prijavo na razpis za delovno mesto v podjetju AquafilSLO d.o.o."></div>
           <div class="form__error" *if="error">
