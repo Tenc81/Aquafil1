@@ -1078,6 +1078,8 @@ add_action('wp_ajax_save_career', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_career', 'frm_create_custom_contact');
 add_action('wp_ajax_save_product_request', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_save_product_request', 'frm_create_custom_contact');
+add_action('wp_ajax_save_product_request_slo', 'frm_create_custom_contact');
+add_action('wp_ajax_nopriv_save_product_request_slo', 'frm_create_custom_contact');
 add_action('wp_ajax_subscribe_newsletter', 'frm_create_custom_contact');
 add_action('wp_ajax_nopriv_subscribe_newsletter', 'frm_create_custom_contact');
 
