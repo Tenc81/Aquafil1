@@ -1,0 +1,54 @@
+﻿<div class="side-modal" product-request="product-request" id="product-request-slo">
+  <div class="card--side-modal">
+    <div class="card--side-modal__content">
+      <div *if="!success">
+        <div class="card--side-modal__title" [innerhtml]="productName"></div>
+        <form class="form" [formgroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate="novalidate" autocomplete="off">
+          <div class="row">
+            <div class="col-sm-11">
+              <input name="checkField" [formcontrol]="controls.checkField" value="" type="text" style="display:none !important;"/>
+              <div control-text="control-text" [control]="controls.firstName" label="Ime"></div>
+            </div>
+            <div class="col-sm-11 offset-sm-2">
+              <div control-text="control-text" [control]="controls.lastName" label="Priimek"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-11">
+              <div control-custom-select="control-custom-select" [control]="controls.country" label="Država"></div>
+            </div>
+            <div class="col-sm-11 offset-sm-2">
+              <div control-text="control-text" [control]="controls.email" label="E-pošta"></div>
+            </div>
+          </div>
+          <div control-text="control-text" [control]="controls.subject" label="Predmet"></div>
+          <div control-textarea="control-textarea" [control]="controls.message" label="Sporočilo"></div>
+          <test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
+          <div class="full" control-checkbox="control-checkbox" [control]="controls.privacy" label="S prijavo na razpis za delovno mesto v podjetju AquafilSLO d.o.o."></div>
+          <div class="form__error" *if="error">
+            <span class="status-code" [innerhtml]="error.statusCode"></span>
+            <span class="status-message" [innerhtml]="error.statusMessage"></span>
+            <span class="friendly-message" [innerhtml]="error.friendlyMessage"></span>
+          </div>
+          <button type="submit" class="btn--submit" data-title="Pošlji" *if="!form.submitted">
+            <span>Pošlji</span>
+          </button>
+          <button type="submit" class="btn--submit is-sending" data-title="Pošiljanje..." *if="form.submitted">
+            <span>Pošiljanje...</span>
+          </button>
+        </form>
+      </div>
+      <div *if="success">
+        <div class="card--side-modal__title">Zahteva Poslana</div>
+        <div class="card--side-modal__text">
+          <p>Hvala za kontakt. Vaša zahteva je bila uspešno poslana.</p>
+        </div>
+      </div>
+      <button type="button" class="btn--close" (click)="onClose()">
+        <svg width="24" height="24" viewbox="0 0 24 24">
+          <use xlink:href="#close"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

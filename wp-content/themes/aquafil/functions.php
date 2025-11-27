@@ -63,10 +63,45 @@ function aquafil_enqueue_scripts() {
 
 	//wp_register_script('websolute_helper', DOCS_DIR . 'js/customizer.js', array('jquery'), '1.0.0', true );
 	//wp_enqueue_script('websolute_helper');
+  // Check for form_sloveno in nested repeater fields
+  $form_sloveno = false;
+  if (is_singular()) {
+    $post_id = get_the_ID();
+    // Try direct field first
+    $form_sloveno = get_field('form_sloveno', $post_id);
+    
+    // If not found, search in repeater fields
+    if (!$form_sloveno) {
+      // Get all fields for this post
+      $fields = get_fields($post_id);
+      if ($fields && is_array($fields)) {
+        foreach ($fields as $field_key => $field_value) {
+          if (is_array($field_value)) {
+            foreach ($field_value as $row) {
+              if (is_array($row)) {
+                foreach ($row as $subfield_key => $subfield_value) {
+                  if (is_array($subfield_value)) {
+                    foreach ($subfield_value as $nested_row) {
+                      if (is_array($nested_row) && isset($nested_row['form_sloveno']) && $nested_row['form_sloveno']) {
+                        $form_sloveno = true;
+                        break 4;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
   wp_localize_script('jquery', 'ws_vars', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'docsDir' => DOCS_DIR,
-		'post_id' => is_singular() ? get_the_ID() : 0
+		'post_id' => is_singular() ? get_the_ID() : 0,
+		'form_sloveno' => (bool) $form_sloveno
   ));
   wp_localize_script('jquery', 'environment', array(
 		'flags' => array(
@@ -82,7 +117,8 @@ function aquafil_enqueue_scripts() {
 				'salesModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/sales-modal.html',
 				'galleryModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/gallery-modal.html',
 				'userModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/user-modal.html',
-				'productRequestModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal.html'
+				'productRequestModal' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal.html',
+				'productRequestModalSlo' => WP_CONTENT_URL.'/themes/aquafil/templates/partials/modals/product-request-modal-slo.html',
 			)
 		),
 		'labels' => array(
@@ -104,7 +140,10 @@ function aquafil_enqueue_scripts() {
 			'inviato' => get_the_ID() == 31744 || get_the_ID() == 24299 ? "Zahteva poslana" : __("Richiesta inviata", "wstheme"),
 			'select' => __("Seleziona", "wstheme"),
 			'error_required' => __("campo obbligatorio", "wstheme"),
-			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme")
+			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme"),
+			'naslov' => __("Naslov", "wstheme"),
+            'mesto' => __("Mesto", "wstheme"),
+            'postna_stevilka' => __("Poštna številka", "wstheme")
 		)
   ));
 }
@@ -1551,7 +1590,6 @@ function flamingo_inbound_message_timestamp($args) {
 }
 add_filter('wpcf7_flamingo_inbound_message_parameters', 'flamingo_inbound_message_timestamp', 10, 1);
 add_filter('flamingo_add_contact', 'flamingo_inbound_message_timestamp', 10, 1);
-
 
 
 function landing_labels($translation, $text, $domain) {
