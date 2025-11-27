@@ -36,7 +36,7 @@
             </div>
           </div>
           <test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
-          <div class="full" control-checkbox="control-checkbox" [control]="controls.privacy" label="S prijavo na razpis za delovno mesto v podjetju AquafilSLO d.o.o."></div>
+          <div class="full" control-checkbox="control-checkbox" [control]="controls.privacy" label="S prijavo na razpis za delovno mesto v podjetju AquafilSLO d.o.o. podajam nedvoumno privolitev, da podjetje obdeluje moje osebne podatke, ki jih posredujem v postopku zaposlovanja, v skladu z veljavno zakonodajo o varstvu osebnih podatkov (Splošna uredba o varstvu podatkov - GDPR)."></div>
           <div class="form__error" *if="error">
             <span class="status-code" [innerhtml]="error.statusCode"></span>
             <span class="status-message" [innerhtml]="error.statusMessage"></span>
