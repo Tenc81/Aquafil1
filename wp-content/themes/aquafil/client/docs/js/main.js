@@ -3177,8 +3177,19 @@ ControlsModule.meta = {
   _inheritsLoose(CardProductDetailComponent, _Component);
   var _proto = CardProductDetailComponent.prototype;
   _proto.onRequestInfo = function onRequestInfo(id, product, download, recipient) {
+    // Check if Slovenian form is enabled via ACF field
+    // Handle various ACF checkbox return values: true, "1", 1, or empty string
+    var formSloValue = window.ws_vars ? window.ws_vars.form_sloveno : false;
+    var isSlovenianForm = formSloValue === true || formSloValue === "1" || formSloValue === 1 || formSloValue === "true";
+    console.log('Form Sloveno Debug:', {
+      ws_vars: window.ws_vars,
+      form_sloveno_raw: formSloValue,
+      isSlovenianForm: isSlovenianForm
+    });
+    var modalSrc = isSlovenianForm ? environment.template.modal.productRequestModalSlo : environment.template.modal.productRequestModal;
+    console.log('Modal selected:', modalSrc);
     ModalService.open$({
-      src: environment.template.modal.productRequestModal,
+      src: modalSrc,
       data: {
         id: id,
         productName: product,
