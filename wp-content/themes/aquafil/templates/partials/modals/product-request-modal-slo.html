@@ -1,4 +1,4 @@
-﻿<div class="side-modal" product-request="product-request" id="product-request-slo">
+﻿<div class="side-modal" product-request-slo="product-request-slo" id="product-request-slo">
   <div class="card--side-modal">
     <div class="card--side-modal__content">
       <div *if="!success">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <test-component [form]="form" (test)="test($event)" (reset)="reset($event)"></test-component>
-          <div class="full" control-checkbox="control-checkbox" [control]="controls.privacy" label="S prijavo na razpis za delovno mesto v podjetju AquafilSLO d.o.o."></div>
+          <div class="full" control-checkbox="control-checkbox" [control]="controls.privacy" label="S prijavo na delovno mesto podajam nedvoumno privolitev za obdelavo mojih osebnih podatkov s strani podjetja AquafilSLO d.o.o. (Letališka cesta 15, 1000 Ljubljana), v skladu z veljavno zakonodajo (Splošna uredba o varstvu podatkov - GDPR.). Dovoljujem zbiranje, shranjevanje, obdelavo in uporabo vseh podatkov, navedenih v moji prijavi za namen postopka izbire in zaposlitve. Podatki ne bodo posredovani tretjim osebam brez mojega soglasja, razen če to zahteva zakon. Strinjam se s Pogoji zasebnosti pri oddaji prijave za zaposlitev družbe AquafilSLO d.o.o. Zavedam se svojih pravic glede dostopa, popravka, izbrisa, omejitve obdelave in ugovora. Privolitev ne vpliva na zakonitost obdelave in jo lahko kadarkoli prekličem."></div>
           <div class="form__error" *if="error">
             <span class="status-code" [innerhtml]="error.statusCode"></span>
             <span class="status-message" [innerhtml]="error.statusMessage"></span>
@@ -51,7 +51,7 @@
         </form>
       </div>
       <div *if="success">
-        <div class="card--side-modal__title">Zahteva Poslana</div>
+        <div class="card--side-modal__title">Zahteva poslana</div>
         <div class="card--side-modal__text">
           <p>Hvala za kontakt. Vaša zahteva je bila uspešno poslana.</p>
         </div>

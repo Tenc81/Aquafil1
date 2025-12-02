@@ -9,6 +9,7 @@ import { CareersModalComponent } from './pages/careers/careers-modal.component';
 import { ContactModalComponent } from './pages/contact-modal/contact-modal.component';
 import { OpenModallyDirective } from './pages/open-modally/open-modally.directive';
 import { ProductRequestComponent } from './pages/product-request/product-request.component';
+import { ProductRequestSloComponent } from './pages/product-request-slo/product-request-slo.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { SalesModalComponent } from './pages/sales/sales-modal.component';
 import { SideModalComponent } from './pages/side-modal/side-modal.component';
@@ -17,23 +18,24 @@ import { SharedModule } from './shared/shared.module';
 export class AppModule extends Module { }
 
 AppModule.meta = {
-	imports: [
-		CoreModule,
-		FormModule,
-		CommonModule,
-		ControlsModule,
-		SharedModule,
-	],
-	declarations: [
-		CareersModalComponent,
-		ContactModalComponent,
-		CardProductDetailComponent,
-		CardSaleDetailComponent,
-		OpenModallyDirective,
-		ProductRequestComponent,
-		ProductListComponent,
-		SalesModalComponent,
-		SideModalComponent,
-	],
-	bootstrap: AppComponent,
+  imports: [
+    CoreModule,
+    FormModule,
+    CommonModule,
+    ControlsModule,
+    SharedModule,
+  ],
+  declarations: [
+    CareersModalComponent,
+    ContactModalComponent,
+    CardProductDetailComponent,
+    CardSaleDetailComponent,
+    OpenModallyDirective,
+    ProductRequestComponent,
+    ProductRequestSloComponent,
+    ProductListComponent,
+    SalesModalComponent,
+    SideModalComponent,
+  ],
+  bootstrap: AppComponent,
 };

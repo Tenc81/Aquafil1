@@ -4181,6 +4181,118 @@ OpenModallyDirective.meta = {
 ProductRequestComponent.meta = {
   selector: '[product-request]',
   inputs: ['productName', 'download']
+};var ProductRequestSloService = /*#__PURE__*/function () {
+  function ProductRequestSloService() {}
+  ProductRequestSloService.submit$ = function submit$(data) {
+    if (environment.flags.production) {
+      return HttpService.http$('POST', environment.api + '/wp-admin/admin-ajax.php', data, 'application/x-www-form-urlencoded');
+    } else {
+      return HttpService.get$('/product-request/submit.json');
+    }
+  };
+  return ProductRequestSloService;
+}();var ProductRequestSloComponent = /*#__PURE__*/function (_Component) {
+  function ProductRequestSloComponent() {
+    return _Component.apply(this, arguments) || this;
+  }
+  _inheritsLoose(ProductRequestSloComponent, _Component);
+  var _proto = ProductRequestSloComponent.prototype;
+  _proto.onInit = function onInit() {
+    var _this = this;
+    var _getContext = rxcomp.getContext(this),
+      parentInstance = _getContext.parentInstance;
+    if (parentInstance instanceof ModalOutletComponent) {
+      var data = parentInstance.modal.data;
+      var id = data.id;
+      var productName = data.productName;
+      this.productName = productName ? productName : this.productName;
+      var recipient = data.recipient;
+      this.recipient = recipient ? recipient : this.recipient;
+      var download = data.download;
+      this.download = download ? download : this.download;
+      console.log('ProductRequestSloComponent.onInit', id, productName);
+    }
+    this.error = null;
+    this.success = false;
+    this.response = '';
+    this.message = '';
+    var form = this.form = new rxcompForm.FormGroup({
+      productName: this.productName,
+      recipient: this.recipient,
+      download: this.download,
+      firstName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      lastName: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      email: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator(), rxcompForm.Validators.EmailValidator()]),
+      address: new rxcompForm.FormControl(null),
+      city: new rxcompForm.FormControl(null),
+      zip: new rxcompForm.FormControl(null),
+      message: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredValidator()]),
+      file: new rxcompForm.FormControl(null),
+      privacy: new rxcompForm.FormControl(null, [rxcompForm.Validators.RequiredTrueValidator()]),
+      checkRequest: window.antiforgery,
+      checkField: '',
+      action: 'save_product_request_slo'
+    });
+    var controls = this.controls = form.controls;
+    form.changes$.pipe(operators.takeUntil(this.unsubscribe$)).subscribe(function (_) {
+      _this.pushChanges();
+    });
+    this.pushChanges();
+  };
+  _proto.test = function test() {
+    var form = this.form;
+    var controls = this.controls;
+    form.patch({
+      firstName: 'Janez',
+      lastName: 'Novak',
+      email: 'janez.novak@gmail.com',
+      address: 'Slovenska cesta 1',
+      city: 'Ljubljana',
+      zip: '1000',
+      message: 'Pozdravljeni!',
+      privacy: true,
+      checkRequest: window.antiforgery,
+      checkField: ''
+    });
+  };
+  _proto.reset = function reset() {
+    var form = this.form;
+    form.reset();
+  };
+  _proto.onSubmit = function onSubmit(model) {
+    var _this2 = this;
+    var form = this.form;
+    console.log('ProductRequestSloComponent.onSubmit', form.value);
+    if (form.valid) {
+      form.submitted = true;
+      ProductRequestSloService.submit$(form.value).pipe(operators.first()).subscribe(function (_) {
+        if (_.success) {
+          GtmService.push({
+            'event': "Product Request SLO",
+            'form_name': "Product Request Slovenian"
+          });
+        }
+        _this2.success = true;
+        form.reset();
+        _this2.response = _.data["response"];
+        _this2.message = _.data["message"];
+      }, function (error) {
+        console.log('ProductRequestSloComponent.error', error);
+        _this2.error = error;
+        _this2.pushChanges();
+      });
+    } else {
+      form.touched = true;
+    }
+  };
+  _proto.onClose = function onClose() {
+    ModalService.reject();
+  };
+  return ProductRequestSloComponent;
+}(rxcomp.Component);
+ProductRequestSloComponent.meta = {
+  selector: '[product-request-slo]',
+  inputs: ['productName', 'download']
 };var ProductListComponent = /*#__PURE__*/function (_Component) {
   function ProductListComponent() {
     return _Component.apply(this, arguments) || this;
@@ -5936,7 +6048,7 @@ SharedModule.meta = {
 }(rxcomp.Module);
 AppModule.meta = {
   imports: [rxcomp.CoreModule, rxcompForm.FormModule, CommonModule, ControlsModule, SharedModule],
-  declarations: [CareersModalComponent, ContactModalComponent, CardProductDetailComponent, CardSaleDetailComponent, OpenModallyDirective, ProductRequestComponent, ProductListComponent, SalesModalComponent, SideModalComponent],
+  declarations: [CareersModalComponent, ContactModalComponent, CardProductDetailComponent, CardSaleDetailComponent, OpenModallyDirective, ProductRequestComponent, ProductRequestSloComponent, ProductListComponent, SalesModalComponent, SideModalComponent],
   bootstrap: AppComponent
 };/*!
  *  @preserve
