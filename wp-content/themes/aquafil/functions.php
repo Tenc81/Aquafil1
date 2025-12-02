@@ -139,8 +139,9 @@ function aquafil_enqueue_scripts() {
 			'invia' => __("Invia", "wstheme"),
 			'inviato' => get_the_ID() == 31744 || get_the_ID() == 24299 ? "Zahteva poslana" : __("Richiesta inviata", "wstheme"),
 			'select' => __("Seleziona", "wstheme"),
-			'error_required' => __("campo obbligatorio", "wstheme"),
-			'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme"),
+			'error_required' => $form_sloveno ? "obvezno polje" : __("campo obbligatorio", "wstheme"),
+            'error_email' => $form_sloveno ? "neveljaven email" : __("Email non valida", "wstheme"),
+            'select_file' => __("Seleziona un file (max 15 Mb)", "wstheme"),
 			'naslov' => __("Naslov", "wstheme"),
             'mesto' => __("Mesto", "wstheme"),
             'postna_stevilka' => __("Poštna številka", "wstheme")

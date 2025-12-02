@@ -114,7 +114,8 @@ if(!empty($_args['section'])) :
 				$filters = explode(',', $product['filtro_prodotto']);
 				$filters = array_map(function($filter) {
 					return sanitize_title(trim($filter));
-				}, $filters);
+				}, $filters); 
+				$slo = $product["form_sloveno"];
 				echo '
 									<div class="listing__item '.($_args['section']['aggiungi_filtri'] ? implode(' ', $filters) : '').'" appear>
 										<div class="card--product" open-modally="#'.sanitize_title($_args['section']['titolo_prodotti_correlati']).'-detail-'.($i+1).'">
@@ -142,8 +143,8 @@ if(!empty($_args['section'])) :
 											<div class="card--side-modal__cta">
 												'.(!empty($link) ? '<a href="'.$link["url"].'" target="'.$link["target"].'" class="btn--more-md"><span>'.$link["title"].'</span> <svg><use xlink:href="#arrow-next-md"></use></svg></a>' : '').
 												($product['inserisci_bottone_contatti_prodotto'] ? '
-												<button type="button" class="btn--more-md" (click)="onRequestInfo(\'product-request\', \''.$product['titolo_prodotto'].'\', \'\', \''.$product["email_destinatario_prodotto"].'\')">
-													<span>'.__("Maggiori informazioni", "wstheme").'</span> <svg><use xlink:href="#pencil"></use></svg>
+												<button type="button" class="btn--more-md" (click)="onRequestInfo(\''.($slo ? 'product-request-slo' : 'product-request').'\', \''.$product['titolo_prodotto'].'\', \'\', \''.$product["email_destinatario_prodotto"].'\')">
+													<span>'.($slo ? __("Oddajte va&scaron;o prijavo", "wstheme") : __("Maggiori informazioni", "wstheme")).'</span> <svg><use xlink:href="#pencil"></use></svg>
 												</button>' : '').'
 											</div>
 										</div>
