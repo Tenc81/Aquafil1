@@ -200,7 +200,7 @@ function the_breadcrumb()
 	$after = '</span></li>'; // tag after the current crumb
 
 	$output = '';
-
+	
 
 
 	global $post;
@@ -928,7 +928,6 @@ function frm_create_custom_contact() {
 		$attach_data = wp_generate_attachment_metadata($attach_id, $file);
 		wp_update_attachment_metadata($attach_id, $attach_data);
 		if ($attach_id) {
-			//file_put_contents(ABSPATH.'error_log.txt', get_the_date("d F Y H:i:s") .PHP_EOL. $attach_id.PHP_EOL. print_r($attachment, true).PHP_EOL , FILE_APPEND | LOCK_EX);
 			$_POST['curriculum'] = $upload_dir["url"].'/'.$_POST['file']['name'];
 			$form = WPCF7_ContactForm::get_instance(22509);
 			$result = $form->submit();
@@ -979,7 +978,83 @@ function frm_create_custom_contact() {
 
 			wp_send_json_error(array('message' => $strings['errorsave'], 'response' => $strings['error']));
 		}
-	} elseif(strpos(current_filter(), "save_product_request") !== false) {
+	} elseif(strpos(current_filter(), "save_product_request_slo") !== false) {
+		$upload_dir = wp_upload_dir();
+		if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+			$file = $upload_dir['path'] . '/' . $_POST['file']['name'];
+		}
+		else {
+			$file = $upload_dir['basedir'] . '/' . $_POST['file']['name'];
+		}
+		$content = explode(',', $_POST['file']['content']);
+		$content = end($content);
+		file_put_contents(
+			$file,
+			base64_decode($content)
+		);
+
+		$attachment = array(
+			'post_mime_type' => $_POST['file']['type'],
+			'post_title' => sanitize_file_name($_POST['file']['name']),
+			'post_content' => '',
+			'post_status' => 'inherit'
+		);
+
+		$attach_id = wp_insert_attachment($attachment, $file);
+		$attach_data = wp_generate_attachment_metadata($attach_id, $file);
+		wp_update_attachment_metadata($attach_id, $attach_data);
+		if ($attach_id) {
+			$_POST['file'] = $upload_dir["url"].'/'.$_POST['file']['name'];
+			$form_id = $_SERVER['HTTP_HOST'] === 'www.aquafil.com' ? 50053 : 35466;
+			$form = WPCF7_ContactForm::get_instance($form_id);
+			$result = $form->submit();
+
+			$default = array(
+				'msg' => __($result['message'], "wstheme"),
+				'error' => __("Errore during l'invio", "wstheme"),
+				'sent' => __("Richiesta inviata", "wstheme")
+			);
+			$s1 = $wpdb->get_var($wpdb->prepare($query, $result['message']));
+			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore during l'invio"));
+			$s3 = $wpdb->get_var($wpdb->prepare($query, "Richiesta inviata"));
+			$values = array_filter(array(
+					'msg' => is_null($s1) ? '' : __($s1, "wstheme"),
+					'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+					'sent' => is_null($s3) ? '' : __($s3, "wstheme")
+				), function($s) {
+				return $s != '';
+			});
+			$strings = wp_parse_args(
+				$values,
+				$default
+			);
+
+			if($result['status'] == "mail_failed") {
+				wp_send_json_error(array('message' => $strings['msg'], 'response' => $strings['error']));
+			} else {
+				wp_send_json_success(array('message' => $strings['msg'], 'response' => $strings['sent']));
+			}
+		} else {
+			$default = array(
+				'error' => __("Errore durante l'invio", "wstheme"),
+				'errorsave' => __("Errore durante il salvataggio del file", "wstheme")
+			);
+			$s2 = $wpdb->get_var($wpdb->prepare($query, "Errore durante l'invio"));
+			$s4 = $wpdb->get_var($wpdb->prepare($query, "Errore durante il salvataggio del file"));
+			$values = array_filter(array(
+					'error' => is_null($s2) ? '' : __($s2, "wstheme"),
+					'errorsave' => is_null($s4) ? '' : __($s4, "wstheme")
+				), function($s) {
+				return $s != '';
+			});
+			$strings = wp_parse_args(
+				$values,
+				$default
+			);
+
+			wp_send_json_error(array('message' => $strings['errorsave'], 'response' => $strings['error']));
+		}
+	} elseif(strpos(current_filter(), "save_product_request") !== false && strpos(current_filter(), "save_product_request_slo") === false) {
 		$form = WPCF7_ContactForm::get_instance(23293);
 		$result = $form->submit();
 
@@ -1485,8 +1560,7 @@ add_filter('rewrite_rules_array', 'filter_rewrite_rules_array', 10, 1);
 function debug_page_request() {
     if(!is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
         global $wp, $template;
-        echo '<!--'.PHP_EOL;
-        echo 'Request: '. esc_html($wp->request) .PHP_EOL;
+        echo '<!--Request: '. esc_html($wp->request) .PHP_EOL;
         echo 'Matched Rewrite Rules: '. esc_html($wp->matched_rule) .PHP_EOL;
         echo 'Matched Query: '. esc_html($wp->matched_query).PHP_EOL;
         echo 'Loaded Template: '. esc_html(basename($template)) .PHP_EOL;
@@ -1608,7 +1682,7 @@ function landing_labels($translation, $text, $domain) {
 add_filter('gettext_wstheme', 'landing_labels', 10, 3);
 
 
-/**
+ /**
  * aggiunge un container html all'output del campo
  */
 function wysiwyg_html_container( $field ) {
