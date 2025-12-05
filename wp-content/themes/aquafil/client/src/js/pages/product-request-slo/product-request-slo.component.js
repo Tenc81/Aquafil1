@@ -37,7 +37,7 @@ export class ProductRequestSloComponent extends Component {
 			city: new FormControl(null),
 			zip: new FormControl(null),
 			message: new FormControl(null, [Validators.RequiredValidator()]),
-			file: new FormControl(null),
+			file: new FormControl(null, [Validators.RequiredValidator()]),
 			privacy: new FormControl(null, [Validators.RequiredTrueValidator()]),
 			checkRequest: window.antiforgery,
 			checkField: '',
