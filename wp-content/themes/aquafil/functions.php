@@ -979,6 +979,13 @@ function frm_create_custom_contact() {
 			wp_send_json_error(array('message' => $strings['errorsave'], 'response' => $strings['error']));
 		}
 	} elseif(strpos(current_filter(), "save_product_request_slo") !== false) {
+		// Map frontend product fields to CF7 expected field name before processing upload
+		if (isset($_POST['productName']) && empty($_POST['your-product'])) {
+			$_POST['your-product'] = sanitize_text_field($_POST['productName']);
+		}
+		if (isset($_POST['titolo_prodotto']) && empty($_POST['your-product'])) {
+			$_POST['your-product'] = sanitize_text_field($_POST['titolo_prodotto']);
+		}
 		$upload_dir = wp_upload_dir();
 		if ( wp_mkdir_p( $upload_dir['path'] ) ) {
 			$file = $upload_dir['path'] . '/' . $_POST['file']['name'];
@@ -1005,6 +1012,13 @@ function frm_create_custom_contact() {
 		wp_update_attachment_metadata($attach_id, $attach_data);
 		if ($attach_id) {
 			$_POST['file'] = $upload_dir["url"].'/'.$_POST['file']['name'];
+			if(isset($_POST['titolo_prodotto'])) {
+				$_POST['your-product'] = sanitize_text_field($_POST['titolo_prodotto']);
+			}
+			// If frontend sent productName instead (productName = "test titolo"), map it to CF7 field
+			if (empty($_POST['your-product']) && isset($_POST['productName'])) {
+				$_POST['your-product'] = sanitize_text_field($_POST['productName']);
+			}
 			$form_id = $_SERVER['HTTP_HOST'] === 'www.aquafil.com' ? 50053 : 35466;
 			$form = WPCF7_ContactForm::get_instance($form_id);
 			$result = $form->submit();
