@@ -28,6 +28,7 @@ export class ProductRequestSloComponent extends Component {
 		this.message = '';
 		const form = this.form = new FormGroup({
 			productName: this.productName,
+			titolo_prodotto: this.productName,
 			recipient: this.recipient,
 			download: this.download,
 			firstName: new FormControl(null, [Validators.RequiredValidator()]),
@@ -44,6 +45,12 @@ export class ProductRequestSloComponent extends Component {
 			action: 'save_product_request_slo',
 		});
 		const controls = this.controls = form.controls;
+		// ensure titolo_prodotto control contains the product name
+		if (this.productName) {
+			form.patch({
+				'titolo_prodotto': this.productName
+			});
+		}
 		form.changes$.pipe(
 			takeUntil(this.unsubscribe$)
 		).subscribe((_) => {

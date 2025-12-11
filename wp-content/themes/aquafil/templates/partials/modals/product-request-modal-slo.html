@@ -4,6 +4,8 @@
       <div *if="!success">
         <div class="card--side-modal__title" [innerhtml]="productName"></div>
         <form class="form" [formgroup]="form" (submit)="onSubmit($event)" name="form" role="form" novalidate="novalidate" autocomplete="off">
+          <!-- send product title directly to CF7 field name 'your-product' -->
+          <input type="hidden" name="your-product" [formcontrol]="controls.titolo_prodotto" />
           <div class="row">
             <div class="col-sm-11">
               <input name="checkField" [formcontrol]="controls.checkField" value="" type="text" style="display:none !important;"/>
